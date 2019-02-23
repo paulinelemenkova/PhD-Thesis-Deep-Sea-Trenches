@@ -1,0 +1,9 @@
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning style file ./concepts.ist...done (3 attributes redefined, 0 ignored).
+Scanning input file concepts.idx....done (111 entries accepted, 0 rejected).
+Scanning input file concepts.idx....done (111 entries accepted, 0 rejected).
+Overall 2 files read (222 entries accepted, 0 rejected).
+Sorting entries.....done (1953 comparisons).
+Generating output file concepts.ind....done (175 lines written, 0 warnings).
+Output written in concepts.ind.
+Transcript written in concepts.ilg.

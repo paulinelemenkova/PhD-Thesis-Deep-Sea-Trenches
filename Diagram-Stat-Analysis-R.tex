@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+[mindmap,
+every node/.style={concept, execute at begin node=\hskip0pt}, 
+root concept/.append style={
+concept color=black, fill=white, line width=1ex, text=black},          text=black, grow cyclic, 
+	level 1/.append style={level distance=4.5cm,sibling angle=90}, 
+	level 2/.append style={level distance=3cm,sibling angle=45}] 
+\node [root concept] {Statistical Analysis on R Language} % root
+ child [concept color=Plum1] { node {Data Correlation and Grouping}
+      child { node {Cluster Analysis k-means} }
+      child { node {Compositional Waffle Charts} }   
+      child { node {Scatterplot Matrices} }                
+      child { node {Correlograms \& Dendrograms} }  
+      child { node {Double Y-axis Plots} }
+      child { node {Categorywise Bar Charts} }
+      child { node {Correlation Ellipses} }      
+    }
+ child [concept color=Lavender] { node {Computational Data Models}
+      child { node {Network Analysis} }
+      child { node {Strip \& Dot Plots} }      
+      child { node {Animations} }  
+      child { node {Dumbbell \& Levelplots} }
+      child { node {Silhouette, Association \& Mosaics} }    
+      child { node {ANOVA} }
+    }
+child [concept color=LightSteelBlue1] { node {Measuring Logic Complexity}
+      child { node {Circular Barplots} }   
+      child { node {Principal Component Analysis} }
+      child { node {Ternary Diagrams} }
+      child { node {Factor Analysis} }  
+      child { node {Ridgeline Plots} }       
+      child { node {Hierarchical Edge Bundling} } 
+      child { node {Wordclouds \& Treemaps} }
+      child { node {Euler-Venn} }    
+    }
+child [concept color=PaleTurquoise1] { node {Data Distribution}
+      child { node {Histograms} }
+      child { node {QQ \& Density} }
+      child { node {Regression Analysis} }
+      child { node {Diverging Bars} }      
+      child { node {Scatter Plots} }
+      child { node {Radar Charts} }
+      child { node {Hexagonal Plots} }  
+};
+\end{tikzpicture}
+\\

@@ -1,0 +1,9 @@
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning input file year-title.idx...
+!! Input index error (file = year-title.idx, line = 1):
+   -- Extra `@' at position 84 of first argument.
+.done (256 entries accepted, 1 rejected).
+Sorting entries.....done (2139 comparisons).
+Generating output file year-title.ind....done (504 lines written, 0 warnings).
+Output written in year-title.ind.
+Transcript written in year-title.ilg.

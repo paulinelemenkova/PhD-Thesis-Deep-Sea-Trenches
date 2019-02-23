@@ -1,0 +1,72 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1.1}{\ignorespaces Study area: Mariana Trench. Visualization: QuantumGIS\relax }}{5}{figure.2.1.1}
+\contentsline {figure}{\numberline {2.1.2}{\ignorespaces Mariana Trench. Mapping: \ac {QGIS}\relax }}{8}{figure.2.1.2}
+\contentsline {figure}{\numberline {2.1.3}{\ignorespaces Sediment thickness in the world ocean. Mapping: \ac {QGIS}\relax }}{9}{figure.2.1.3}
+\contentsline {figure}{\numberline {2.1.4}{\ignorespaces Geological provinces of the East Asia. Mapping: \ac {QGIS}\relax }}{10}{figure.2.1.4}
+\contentsline {figure}{\numberline {2.1.5}{\ignorespaces Mariana Trench. Mapping: \ac {QGIS}\relax }}{12}{figure.2.1.5}
+\contentsline {figure}{\numberline {2.1.6}{\ignorespaces Igneous volcanic areas, ophiolite and lithology of the adjacent area around the Mariana Trench. Mapping: \ac {QGIS}\relax }}{14}{figure.2.1.6}
+\contentsline {figure}{\numberline {2.1.7}{\ignorespaces Tectonic plates and geologic provinces around Mariana Trench.. Mapping: \ac {QGIS}\relax }}{15}{figure.2.1.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1.1}{\ignorespaces Digitizing 25 bathymetric profiles across the Mariana Trench. Visualization: QGIS 3.0.\relax }}{21}{figure.3.1.1}
+\contentsline {figure}{\numberline {3.1.2}{\ignorespaces Four steps of creating 25 bathymetric profiles in QuantumGIS\relax }}{22}{figure.3.1.2}
+\contentsline {figure}{\numberline {3.1.3}{\ignorespaces Graphs of the 25 bathymetric profiles, Mariana Trench, Quantum GIS 3.0\relax }}{23}{figure.3.1.3}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.2.1}{\ignorespaces Selected bathymetric profiles of the Mariana Trench. Plot visualization: \LaTeX \relax }}{26}{figure.4.2.1}
+\contentsline {figure}{\numberline {4.2.2}{\ignorespaces 3D-view of the 25 bathymetric profiles of the Mariana Trench. Plot visualization: \LaTeX \relax }}{26}{figure.4.2.2}
+\contentsline {figure}{\numberline {4.2.3}{\ignorespaces 25 cross-section bathymetric profiles of Mariana Trench. Plotting: \LaTeX \relax }}{27}{figure.4.2.3}
+\contentsline {figure}{\numberline {4.3.1}{\ignorespaces Histograms of the 25 profiles, Mariana Trench. Computed and visualized in R by \ref {R:01} code\relax }}{29}{figure.4.3.1}
+\contentsline {figure}{\numberline {4.3.2}{\ignorespaces Box plot histograms on data distribution, Mariana Trench bathymetric profiles 1:25. Computed and visualized by R code: \ref {R:02}\relax }}{31}{figure.4.3.2}
+\contentsline {figure}{\numberline {4.3.3}{\ignorespaces Violin plots showing depth data distribution for observation points of the 25 bathymetric profiles of the Mariana Trench. Computed and visualized by R code: \ref {R:25}\relax }}{31}{figure.4.3.3}
+\contentsline {figure}{\numberline {4.3.4}{\ignorespaces \ac {QQ}, \ac {ECDF} and notched plot. Computed and visualized in R by \ref {R:03} code\relax }}{32}{figure.4.3.4}
+\contentsline {figure}{\numberline {4.3.5}{\ignorespaces Kernel density estimation for 25 bathymetric profiles. Computed and visualized by R code: \ref {R:19}\relax }}{33}{figure.4.3.5}
+\contentsline {figure}{\numberline {4.3.6}{\ignorespaces Regression analysis of the 25 profiles, Mariana Trench. Computed and visualized by R code: \ref {R:05}\relax }}{34}{figure.4.3.6}
+\contentsline {figure}{\numberline {4.3.7}{\ignorespaces Regression analysis for selected profiles, Mariana Trench. Computed and visualized by R code: \ref {R:05}\relax }}{35}{figure.4.3.7}
+\contentsline {figure}{\numberline {4.3.8}{\ignorespaces Distribution of slope angle, sedimental thickness, depth and igneous volcanic zones, by four tectonic plates. Computed and visualized in R: \ref {R:17}\relax }}{36}{figure.4.3.8}
+\contentsline {figure}{\numberline {4.3.9}{\ignorespaces Multiple panel by groups: four tectonic plates, trench slope angle in the deepest point. Computed and visualized in R: \ref {R:18}\relax }}{37}{figure.4.3.9}
+\contentsline {figure}{\numberline {4.3.10}{\ignorespaces Multiple panels by groups: four tectonic plates, depth scope (min-max) by profiles using overlapping points. Computed and visualized in R: \ref {R:18}\relax }}{38}{figure.4.3.10}
+\contentsline {figure}{\numberline {4.3.11}{\ignorespaces Ridgeline Plots by tectonic plates and bathymetric profiles. Computed and visualized in R: \ref {R:35}\relax }}{38}{figure.4.3.11}
+\contentsline {figure}{\numberline {4.3.12}{\ignorespaces Categorywise distribution of depth by tectonic plates (left), R code: \ref {R:13}; circular bar plot, arranged by depth (right). Computed and visualized in R: \ref {R:16}\relax }}{39}{figure.4.3.12}
+\contentsline {figure}{\numberline {4.3.13}{\ignorespaces Ternary diagrams and radar chart: facetted plot. Computed and visualized in R: \ref {R:29}\relax }}{40}{figure.4.3.13}
+\contentsline {figure}{\numberline {4.3.14}{\ignorespaces Double-Y-axis plot of correlation of environmental factors. Computed and visualized in R: \ref {R:15}\relax }}{41}{figure.4.3.14}
+\contentsline {figure}{\numberline {4.3.15}{\ignorespaces Dumbbell diagrams for pairwise comparison of the tectonic plates. Computed and visualized in R: \ref {R:12}\relax }}{42}{figure.4.3.15}
+\contentsline {figure}{\numberline {4.3.16}{\ignorespaces Ranking dot plots by data grouping. Computed and visualized in R: \ref {R:14}\relax }}{43}{figure.4.3.16}
+\contentsline {figure}{\numberline {4.3.17}{\ignorespaces Compositional chart of geometric properties of the Mariana Trench. Computed and visualized in R\relax }}{43}{figure.4.3.17}
+\contentsline {figure}{\numberline {4.3.18}{\ignorespaces Mosaic plot and silhouette plots for categorical values of the environmental determinants. Computed and visualized in R code: \ref {R:30} and \ref {R:31}\relax }}{44}{figure.4.3.18}
+\contentsline {figure}{\numberline {4.3.19}{\ignorespaces Association plot with statistical Pearson residuals, Mariana Trench. Computed and visualized in R: \ref {R:31}\relax }}{45}{figure.4.3.19}
+\contentsline {figure}{\numberline {4.3.20}{\ignorespaces Results of the k-means of the clustering of the Mariana Trench profiles. Computed and visualized in R: \ref {R:09}\relax }}{46}{figure.4.3.20}
+\contentsline {figure}{\numberline {4.3.21}{\ignorespaces Results of the k-means clustering of the Mariana Trench with different k-values. Computed and visualized in R: \ref {R:09}\relax }}{47}{figure.4.3.21}
+\contentsline {figure}{\numberline {4.3.22}{\ignorespaces Correlation matrix. Computed and visualized in R: \ref {R:09}\relax }}{48}{figure.4.3.22}
+\contentsline {figure}{\numberline {4.3.23}{\ignorespaces Classification of the k-means clustering of the Mariana Trench by tectonic plates. Computed and visualized in R: \ref {R:09}\relax }}{49}{figure.4.3.23}
+\contentsline {figure}{\numberline {4.3.24}{\ignorespaces Correlation ellipses and numerical correlation of the factors affecting Mariana Trench geomorphology. Computed and visualized in R: \ref {R:32}\relax }}{50}{figure.4.3.24}
+\contentsline {figure}{\numberline {4.3.25}{\ignorespaces Normalized steepness angle (left); level plot of the sedimental thickness (right). Computed and visualized in R: \ref {R:33}\relax }}{50}{figure.4.3.25}
+\contentsline {figure}{\numberline {4.3.26}{\ignorespaces Steepness angles by the bathymetric profiles 1:25 of the Mariana Trench: unsorted (left); sorted and grouped (right). Computed and visualized in R: \ref {R:22}\relax }}{51}{figure.4.3.26}
+\contentsline {figure}{\numberline {4.3.27}{\ignorespaces Normalized steepness slope angle, bathymetric profiles 1:25 of the Mariana Trench. Computed and visualized by R code\relax }}{52}{figure.4.3.27}
+\contentsline {figure}{\numberline {4.3.28}{\ignorespaces Pearson correlation for the Mariana Trench geomorphological impact factors (left). Spearman $\rho $ correlation ranking for Mariana Trench geomorphological impact factors (right). Computed and visualized by R code: \ref {R:41}\relax }}{53}{figure.4.3.28}
+\contentsline {figure}{\numberline {4.3.29}{\ignorespaces Numerical scatterplot matrix of correlation of the geomorphological impact factors of Mariana Trench (left). Visualized Kendall $\tau $-correlation for geomorphological impact factors of the Mariana Trench (right). Computed and visualized by R code: \ref {R:41}\relax }}{54}{figure.4.3.29}
+\contentsline {figure}{\numberline {4.3.30}{\ignorespaces Cross-correlation matrix of the depth values in the bathymetric profiles of the Mariana Trench. Computed and visualized by R code: \ref {R:08} (left). Principal component analysis of correlation of the bathymetric profiles of the Mariana Trench. Computed and visualized by R code: \ref {R:08} (right)\relax }}{55}{figure.4.3.30}
+\contentsline {figure}{\numberline {4.3.31}{\ignorespaces R based dendrogram tree of the 25 profiles. Left: unsorted, right: sorted. Computed and visualized by R code: \ref {R:06}\relax }}{56}{figure.4.3.31}
+\contentsline {figure}{\numberline {4.3.32}{\ignorespaces Cluster analysis in R programming: comparison between cluster groups. Computed and visualized by R code: \ref {R:06}\relax }}{56}{figure.4.3.32}
+\contentsline {figure}{\numberline {4.3.33}{\ignorespaces Hierarchical clustering with p-values using multiscale bootstrap probability. Computed and visualized by R code: \ref {R:06}\relax }}{57}{figure.4.3.33}
+\contentsline {figure}{\numberline {4.3.34}{\ignorespaces Scatter plot matrices of impact factors on four tectonic plates underlying Mariana Trench\relax }}{58}{figure.4.3.34}
+\contentsline {figure}{\numberline {4.3.35}{\ignorespaces Correlation matrix of factors of the Mariana Trench. R Programming (left). Standardized loadings based upon correlation matrix of factor analysis (right). Computed and visualized by R code: \ref {R:26}\relax }}{59}{figure.4.3.35}
+\contentsline {figure}{\numberline {4.3.36}{\ignorespaces Exploratory factor analysis (left). Parallel analysis scree plots (right). Computed and visualized by R code: \ref {R:26}\relax }}{60}{figure.4.3.36}
+\contentsline {figure}{\numberline {4.3.37}{\ignorespaces EFA correlation matrix (left). iCLUST analysis (right). Computed and visualized by R code: \ref {R:26}\relax }}{60}{figure.4.3.37}
+\contentsline {figure}{\numberline {4.3.38}{\ignorespaces General factor saturation ($\omega $h) (left). General factor saturation through $\omega $ coefficient: 3 factors ($\omega $) (right). Computed and visualized by R code: \ref {R:26}\relax }}{61}{figure.4.3.38}
+\contentsline {figure}{\numberline {4.3.39}{\ignorespaces ANOVA hypothesis testing. Computed and visualized in R code: \ref {R:28}\relax }}{62}{figure.4.3.39}
+\contentsline {figure}{\numberline {4.3.40}{\ignorespaces Euler-Venn logical diagram on correlation of impact factors affecting Mariana Trench. Left: four tectonic plates. Right: environmental factors. Computed and visualized by R code: \ref {R:23}\relax }}{63}{figure.4.3.40}
+\contentsline {figure}{\numberline {4.3.41}{\ignorespaces Euler-Venn logical diagram on correlation of impact factors affecting Mariana Trench (7 factors loadings). Computed and visualized by R code: \ref {R:23}\relax }}{64}{figure.4.3.41}
+\contentsline {figure}{\numberline {4.3.42}{\ignorespaces Logical schemes of the Mariana Trench project: inter-connections of the factors (left), by R code \ref {R:34}. Wordcloud (right), by R code: \ref {R:36}\relax }}{64}{figure.4.3.42}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1.1}{\ignorespaces Circular bar plot on slope angle (\%). Computed and visualized by R code: \ref {R:22}\relax }}{68}{figure.5.1.1}
+\contentsline {figure}{\numberline {5.2.1}{\ignorespaces Hierarchical tree map of impact factors affecting formation of the Mariana Trench, computed and visualized by R code: \ref {R:38}\relax }}{70}{figure.5.2.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

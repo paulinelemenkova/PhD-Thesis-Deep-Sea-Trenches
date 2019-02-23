@@ -46,7 +46,7 @@
 \usepackage{multicol} 
 \usepackage{textcomp}
 
-%%%%%%%%% R %%%%%%%
+%%%%%%%%% R: начало %%%%%%%
 \usepackage{listings} % insert R codes
 \lstset{
 	language=R,
@@ -73,6 +73,7 @@
     	escapeinside={},
     	otherkeywords={!=, ~, $,*, \&, \%/\%, \%*\%, \%\%, <-,<<-, /, .,},
 }
+%%%%%%%%% R: конец %%%%%%%
 
 %%%%%%%%% Biblatex %%%%%%
 \usepackage{siunitx}
@@ -1632,7 +1633,7 @@ Source data available on my \href{https://github.com/paulinelemenkova/R-3-QQ-Sta
 MDepths <- read.csv("Depths.csv", header=TRUE, sep = ",")
 	# step-2. clean up data frame from NA values
 MDF <- na.omit(MDepths) 
-row.has.na <- apply(MDF, 1, function(x){any(is.na(x))}) # проверяем, удалил ли все NA
+row.has.na <- apply(MDF, 1, function(x){any(is.na(x))}) #
 sum(row.has.na) # sum up all NA: [1] 0
 head(MDF) # look up data frame.
 

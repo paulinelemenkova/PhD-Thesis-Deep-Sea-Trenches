@@ -1,0 +1,29 @@
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'PhD-Thesis-Lemenkova.blg'
+[55] biber-darwin:313> INFO - === Sat Dec  8, 2018, 20:24:51
+[91] Biber.pm:371> INFO - Reading 'PhD-Thesis-Lemenkova.bcf'
+[227] Biber.pm:857> INFO - Found 233 citekeys in bib section 0
+[228] Biber.pm:857> INFO - Found 6 citekeys in bib section 1
+[228] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[253] Biber.pm:3976> INFO - Processing section 0
+[269] Biber.pm:4136> INFO - Looking for bibtex format file 'PacificOcean.bib' for section 0
+[281] bibtex.pm:1500> INFO - LaTeX decoding ...
+[741] bibtex.pm:1316> INFO - Found BibTeX data source 'PacificOcean.bib'
+[2230] Utils.pm:193> WARN - ISBN '978-0-8058-403' in entry 'MyersWell2003' is invalid - run biber with '--validate_datamodel' for details.
+[2288] Utils.pm:193> WARN - Name in key 'Nunouraetal2015' is empty (probably consecutive 'and'): skipping name
+[2843] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/h0/tbj87rtj2tvdgp0q94lwc_q00000gn/T/Yyadavdtwy/PacificOcean.bib_93162.utf8, line 200, warning: possible runaway string started at line 199
+[2843] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/h0/tbj87rtj2tvdgp0q94lwc_q00000gn/T/Yyadavdtwy/PacificOcean.bib_93162.utf8, line 1151, warning: possible runaway string started at line 1150
+[2843] Utils.pm:193> WARN - BibTeX subsystem: substring 12, warning: empty substring
+[3477] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[3477] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[3477] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[3477] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[3838] Biber.pm:3976> INFO - Processing section 1
+[3839] Biber.pm:4136> INFO - Looking for bibtex format file 'PacificOcean.bib' for section 1
+[3886] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[3887] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[3887] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[3887] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[3897] bbl.pm:617> INFO - Writing 'PhD-Thesis-Lemenkova.bbl' with encoding 'UTF-8'
+[4194] bbl.pm:720> INFO - Output to PhD-Thesis-Lemenkova.bbl
+[4195] Biber.pm:110> INFO - WARNINGS: 5

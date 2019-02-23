@@ -1,0 +1,9 @@
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning style file ./name-authors.ist......done (6 attributes redefined, 0 ignored).
+Scanning input file name-authors.idx....done (440 entries accepted, 0 rejected).
+Scanning input file name-authors.idx....done (440 entries accepted, 0 rejected).
+Overall 2 files read (880 entries accepted, 0 rejected).
+Sorting entries..........done (9583 comparisons).
+Generating output file name-authors.ind....done (457 lines written, 0 warnings).
+Output written in name-authors.ind.
+Transcript written in name-authors.ilg.

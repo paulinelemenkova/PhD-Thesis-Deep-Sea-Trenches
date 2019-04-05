@@ -391,6 +391,7 @@ Grant \#2016SOA002, 2016-2020.\\
 	\acro{IDLE}{Integrated Development and Learning Environment}
 	\acro{IRIS}{Incorporated Research Institutions for Seismology}
 	\acro{KDE}{Kernel Density Estimation}
+	\acro{OLS}{Ordinary Least Square}
 	\acro{OUC}{Ocean University of China}
 	\acro{NumPy}{Numerical Python}
 	\acro{PCA}{Principal Component Analysis}
@@ -398,12 +399,14 @@ Grant \#2016SOA002, 2016-2020.\\
 	\acro{QQ}{Quantile-Quantile}
 	\acro{R/V}{Research Vessel}
 	\acro{ROV}{Remotely Operated underwater Vehicle}
+	\acro{SARIMA}{State Autoregressive Moving Average}
 	\acro{SSL}{Secure Sockets Layer}
 	\acro{SciPy}{Scientific Python}
 	\acro{SPOT}{Satellite Pour l’Observation de la Terre}
 	\acro{StatsModels}{Statistical Models}
 	\acro{USGS}{United States Geological Survey}
 	\acro{UTM}{Universal Transverse Mercator coordinate system}
+	\acro{WLS}{Weighted Least Squares}
 \end{acronym}
 \pagebreak
 
@@ -419,7 +422,7 @@ Grant \#2016SOA002, 2016-2020.\\
 	\textbf{Main Tools}:
 		\begin{itemize}
 			\item \href{https://www.r-project.org/about.html}{R}: Programming and statistical analysis
-			\item \href{https://www.r-project.org/about.html}{Python}: Programming and statistical analysis
+			\item \href{https://www.python.org/}{Python}: Programming and statistical analysis
 			\item \href{http://www.qgis.org/}{Quantum GIS}: viewer of GIS layers 
 			\item \href{http://grass.fbk.eu/}{GRASS GIS}: GIS mapping and spatial analysis 
 		\end{itemize}
@@ -546,7 +549,9 @@ The research questions consist in two questions: one thematic (environmental) an
 \end{itemize}
 
 \section{Technical approach}
-The major technical tools of this research is open source \ac{GIS} software and R programming. Choosing the right statistical methods for specific tasks of the ocean floor modelling is a crucial step in planning research. Available data may vary depending on the current research scope, be it structure of the sedimentary cover of the ocean trench, geometric features of the deep horizons (angle steepness), waves velocity characteristics as reflected by rock density, submarine earthquakes, deep ocean currents etc. Methodological approach\index[concepts]{approach} require careful reflection of the data set and the goal of the statistical analysis. Oceanographic measurements for marine geology supported by the R programming prove an effective processing of the raw set of data on the topography of the ocean floor and variable environmental layers of the underlying rocks. Such data available online as free \ac{GIS} layers in vector and raster formats have been used for the current research. Generally speaking, the ocean research methodology is based on application of various \ac{GIS} with specific tools for geospatial rater of vector data processing. Both commercial ArcGIS and open-source \ac{GRASS GIS} or \ac{QGIS} are suited for specialized study of the seabed relief, processing attribute data of the biological and geological resources of the hadal trenches, geophysical fields and tectonic plates. The diversity of the scientific tasks and the need to study completely different properties of the trench structure recorded as objects in the machine system, led to the creation of the specialized geological and geophysical methods, \ac{GIS} and different equipment and tools.
+The major technical tools of this research is open source \ac{GIS} software and programming languages: R and Python. Choosing the right statistical methods for specific tasks of the ocean floor modelling is a crucial step in planning research. Available data may vary depending on the current research scope, be it structure of the sedimentary cover of the ocean trench, geometric features of the deep horizons (angle steepness), waves velocity characteristics as reflected by rock density, submarine earthquakes, deep ocean currents etc. Methodological approach\index[concepts]{approach} require careful reflection of the data set and the goal of the statistical analysis. Oceanographic measurements for marine geology supported by the R and Python programming prove an effective processing of the raw set of data on the topography of the ocean floor and variable environmental layers of the underlying rocks. Such data available online as free \ac{GIS} layers in vector and raster formats have been used for the current research. Generally speaking, the ocean research methodology is based on application of various \ac{GIS} with specific tools for geospatial rater of vector data processing. Both commercial ArcGIS and open-source \ac{GRASS GIS} or \ac{QGIS} are suited for specialized study of the seabed relief, processing attribute data of the biological and geological resources of the hadal trenches, geophysical fields and tectonic plates. The diversity of the scientific tasks and the need to study completely different properties of the trench structure recorded as objects in the machine system, led to the creation of the specialized geological and geophysical methods, \ac{GIS} and different equipment and tools.\\
+While the usage of the traditional methods of geoinformatics and spatial analysis is, beyond doubts, strongly recommended for any research in geoscience, there is another powerful tool for the geospatial data processing other than GIS, sometimes overlooked or skipped by the geographers: a data modelling by use of Python or R programming languages. Python, an open source free programming language is highly suitable for the statistical analysis in geoscience research, since it has a powerful statistical and math libraries, e.g. \ac{StatsModels}, highly effective for scientific computing and used in the current research. The functionality of R and Python languages and their statistical libraries, tested in this work, is proved to be highly effective for the statistical analysis of the geo-marine sets. \\
+The proposed approach of the R and Python based statistical analysis enables accurate and efficient computation and modelling of the large data sets in marine geology and oceanology. A challenge in the evaluation of geological big data sets (that is, several thousand of observation points) concerns the difficulty in manual identifying a correct algorithms in the computations and data distribution analysis. The necessity to apply a precise machine learning algorithms is recently increased in geographic sciences with respect to the importance of choosing an effective method for data visualization and computation. The solutions to the mentioned above problems are provided by Pandas data frames: for example, optimizing structure of the data, selecting the correct parts from the whole data frame (columns, rows in the data arrays) and plotting. Based on the presented results, the application of R and Python programming languages is strongly recommended in geoscience research as an addition to the traditional \ac{GIS} methods.
 
 %%%%%%%%%%%%%%%%%  Section  2: Geology %%%%%%%%%%%
 
@@ -558,15 +563,24 @@ The major technical tools of this research is open source \ac{GIS} software and 
 	\subsection{Geographic location}
 		 \subsubsection{Bathymetry}
 Mariana Trench \index[places]{Mariana Trench} is a long and narrow topographic depression of the sea floor, located in the west Pacific Ocean \index[places]{Pacific Ocean}, 200 km to the east of the Mariana Islands, eastwards of the Philippine Islands \index[places]{Philippine Islands} and China \index[places]{China}, Fig.\ref{fig:4-1-1a}. It belongs to the deepest trenches of the Earth, with maximal depths above 9-11 km, all of which are located in the western half of the Pacific Ocean.
+
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=14cm]{Fig-4-1-1a.jpg}
 	\caption{Study area: Mariana Trench. Visualization: QuantumGIS}\label{fig:4-1-1a}
 \end{figure}
-It is the deepest part of the World Ocean \index[places]{World Ocean} with a maximal depth of 10,984$\pm$ 25 m (95\%) at 11.329903\degree N / 142.199305\degree E m at the Challenger Deep\index[places]{Challenger Deep} \cite{Gardneretal2014}. North-western Pacific Ocean is especially characteristic for the vast areas of the bottom of the basins occupied by depressions deeper 6000m with a special case of Mariana Trench. Despite the extreme bathymetric values of the Mariana Trench at Challenger Deep, its structure has following pattern: a major total area is being occupied by the abyssal depths (3-6 km), while the extreme depths exceeding 6 km, are smaller in comparison to the previous areas \cite{UyedaKanamori1979}. The abyssal make up relatively small part of the total area of the Mariana Trench, while the second ones cover about two thirds of the whole. Depths of more than 6000 m are confined mainly to the deepest part of the trench located in the south-western part of the Mariana Trench, although individual depressions to depths of 6-7 km, rarely up to 7.5 km, occur in the central part of the basins along the trench \cite{Morgan1974}. The typical depths of the ocean floor of the Mariana Trench are 4000-5000 m where mid-ocean ridges and deep-sea basins formed by numerous seamounts \index[concepts]{seamounts} and deep-sea depressions\index[concepts]{deep-sea depressions}  are located. \\
+
+It is the deepest part of the World Ocean \index[places]{World Ocean} with a maximal depth of 10,984$\pm$ 25 m (95\%) at 11.329903\degree N / 142.199305\degree E m at the Challenger Deep\index[places]{Challenger Deep} \cite{Gardneretal2014}. North-western Pacific Ocean is especially characteristic for the vast areas of the bottom of the basins occupied by depressions deeper 6000m with a special case of Mariana Trench. Despite the extreme bathymetric values of the Mariana Trench at Challenger Deep, its structure has following pattern: a major total area is being occupied by the abyssal depths (3-6 km), while the extreme depths exceeding 6 km, are smaller in comparison to the previous areas \cite{UyedaKanamori1979}. The abyssal make up relatively small part of the total area of the Mariana Trench, while the second ones cover about two thirds of the whole. Depths of more than 6000 m are confined mainly to the deepest part of the trench located in the south-western part of the Mariana Trench, although individual depressions to depths of 6-7 km, rarely up to 7.5 km, occur in the central part of the basins along the trench \cite{Morgan1974}. The typical depths of the ocean floor of the Mariana Trench are 4000-5000 m where mid-ocean ridges and deep-sea basins formed by numerous seamounts \index[concepts]{seamounts} and deep-sea depressions\index[concepts]{deep-sea depressions} are located. \\
 The general form of the bathymetric structure of the Mariana Trench is inclined toward the margin plate being connected with the ocean basic zone. It has high and steep island or continental slopes and more low and gentle slopes from the south-eastern side. The main area of the seafloor of the trench has prevailing depths of more than 3000 m, a seabed being the most ancient parts of the ocean floor formed in the late Jurassic \index[concepts]{Jurassic}.
 The geographic location of the edge of the Mariana Trench along the coasts of the continents or island arcs is explained mainly by the subduction of oceanic tectonic plates at the boundaries of their collision with Mariana \index[places]{Mariana Plate}, Pacific \index[places]{Pacific Plate}, Philippine \index[places]{Philippine Plate}, Caroline \index[places]{Caroline Plate} tectonic plates \ref{Ishibashietal2015}. The seabed structure of the Mariana Trench is composed in the following way from top to bottom: a sedimentary cover, a basalt of the leitic composition, a complex of parallel dykes of diabases \index[concepts]{diabases}, an isotropic gabbro\index[concepts]{gabbro}, a banded gabbro-ultrabasic complex \index[concepts]{gabbro-ultrabasic complex} lying on the mantle \index[concepts]{mantle} ultrabasites\index[concepts]{ultrabasites} \ref{Butuzova2003}. There are differences in the velocity of the longitudinal seismic waves in the geological layers of the Mariana Trench structure: water and sedimentary layer have speed of 3.5 6.2 km/s, basalt\index[concepts]{basalt} layer has speed of 6.5-7.0 km/s. The layer of gabbro and banded gabbro are located beneath. The boundary of the crust-mantle \index[concepts]{crust-mantle} is made by a sharp increase in the velocities from 7 to 8 km/s (the boundary of the Mohorovicic). The upper mantle is the region with the velocities of 8.0-8.2 km/s \cite{Garfunkeletal1986}. Analogues of the oceanic crust on the ground are ophiolites \index[concepts]{ophiolites} (Fig. \ref{fig:2-1-3}). The average thickness of the crust of this type under the platforms is about 40 km \cite{Gurevich1998}. The regions with bark continental type in the ocean are fragments of continental mass formed as a result of the formation of the modern ocean floor \index[concepts]{ocean floor} causing migration and slow movement of the trench \cite{Husson2012}.
-Mariana Trench has a a distinctive morphological feature of the convergent plate boundaries, along which lithospheric plates \index[concepts]{lithospheric plates} move towards each other, located about 200 km parallel to a volcanic island arc \index[concepts]{volcanic island arc} \cite{Karatoetal2001}. The formation of the trench is caused by the complex interconnection of various environmental factors \cite{Gardneretal2014}. A trench marks the position at which the subducting slab \index[concepts]{subducting slab} descends beneath another lithospheric slab \cite{DeschampsLallemand2003}. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression stretching for hundreds kilometers and having a narrow depression on the ocean floor with very steep slopes \index[concepts]{slopes} and the depths of 3-5 km width of the bottoms rarely exceeding 5 km in breadth \cite{NakanishiHashimoto2011}. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and processes of sedimentation \index[concepts]{sedimentation}. The steepness of its geomorphic depth averages in 4-5 \degree, but its individual parts can be limited to steeper slopes as subjects to the gravitational flow system \index[concepts]{gravitational flow system} of the submarine canyons \index[concepts]{submarine canyons} and valleys \index[concepts]{submarine valleys}\cite{Kawabe1993}. Complex distribution of the various geomorphic material on the adjacent abyssal plains \index[concepts]{abyssal plains} of the ocean contributes to the formation of the geomorphic features of the particular region of the Mariana Trench.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm]{Fig-ASE-1.jpg}
+	\caption{Volcanic spots around the Philippine Sea, west Pacific Ocean. Visualization: QuantumGIS}\label{fig:ASE-1}
+\end{figure}
+
+Mariana Trench has a a distinctive morphological feature of the convergent plate boundaries, along which lithospheric plates \index[concepts]{lithospheric plates} move towards each other, located about 200 km parallel to a volcanic island arc \index[concepts]{volcanic island arc} \cite{Karatoetal2001}, Fig. \ref{fig:ASE-1}. The formation of the trench is caused by the complex interconnection of various environmental factors \cite{Gardneretal2014}. A trench marks the position at which the subducting slab \index[concepts]{subducting slab} descends beneath another lithospheric slab \cite{DeschampsLallemand2003}. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression stretching for hundreds kilometers and having a narrow depression on the ocean floor with very steep slopes \index[concepts]{slopes} and the depths of 3-5 km width of the bottoms rarely exceeding 5 km in breadth \cite{NakanishiHashimoto2011}. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and processes of sedimentation \index[concepts]{sedimentation}. The steepness of its geomorphic depth averages in 4-5 \degree, but its individual parts can be limited to steeper slopes as subjects to the gravitational flow system \index[concepts]{gravitational flow system} of the submarine canyons \index[concepts]{submarine canyons} and valleys \index[concepts]{submarine valleys}\cite{Kawabe1993}. Complex distribution of the various geomorphic material on the adjacent abyssal plains \index[concepts]{abyssal plains} of the ocean contributes to the formation of the geomorphic features of the particular region of the Mariana Trench.
 
 		\subsubsection{Geometry and Shape}
 Mariana Trench has a distinctive morphological feature of the convergent Pacific plate boundaries, along which lithospheric plates move towards each other. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression. Its transverse profile is asymmetric: the slope is higher on the side of the Mariana island arc \index[places]{Mariana island arc} \ref{fig:2-1-1}. The slopes of the trench are dissected by deep underwater canyons. Various narrow steps are also often found on the slopes of the trench. On the longitudinal profiles of the bottom of the Mariana there are many deepwater detected transverse steps and thresholds \index[concepts]{thresholds} connected by the movements of the earth's crust along transverse faults\index[concepts]{faults} \cite{Zhouetal2015}. These thresholds can play important role in the evolution of the deep water trough \index[concepts]{trough}, for example, to control the intensity of its filling by sediment precipitation \index[concepts]{sediment precipitation}. In this process very important are the streams of the precipitation moving along the bottom from the part of the trough which is closer to the continent \cite{Tairaetal2004}. At the bottom of the trough there is a transverse threshold, which can present kind of a dam, in front of which there is accumulation of a thick layer of sediment precipitation.\\
@@ -578,13 +592,13 @@ Thin Quaternary \index[concepts]{Quaternary} clayey sediments overlie a 400 m th
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm]{Fig-2-1-1.jpg}
-	\caption{Mariana Trench. Mapping: \ac{QGIS}}\label{fig:2-1-1}
+	\caption{Mariana Trench. Mapping: QGIS}\label{fig:2-1-1}
 \end{figure}
 As a result of such sedimentation, over one kilometer of sediments have accumulated in the southern Aleutian and Chilean trenches over the last several hundred thousand years. On the bottom of the deep ocean trenches a longitudinal main channel is usually formed under the influence of turbidite currents \cite{Pabstetal2012}. It creates favorable conditions for distinctive movements of the sand sediments that shape large elongated accumulations of the sediments \cite{Ernst2001}, Fig. \ref{fig:2-1-6}. As a hadal trench, Mariana Trench belongs to the one of the deepest 45\% of the ocean’s depth range, and its unique topography disrupts the continental shelf- slope-rise to abyssal plain continuum, resulting in an array of deep isolated habitats. The often abrupt and distinct topography is likely to further promote speciation through high hydrostatic pressure, remoteness from surface derived food sources and geographic isolation \cite{Eustaceetal2016}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=14cm]{Fig-2-1-6.jpg}
-	\caption{Sediment thickness in the world ocean. Mapping: \ac{QGIS}}\label{fig:2-1-6}
+	\caption{Sediment thickness in the world ocean. Mapping: QGIS}\label{fig:2-1-6}
 \end{figure}
 Processes of the deep-sea terrigenous sedimentation are formed by the transfer of the erosion materials from the adjacent land. The main processes include transportation, deposition and re-deposition of the sedimentation materials. The origin of the deep ocean sedimentation is diverse. In general, apart from the sediments from the rivers, the terrigenous material goes to the oceans through iceberg melting and glacial deposits transferred to the seafloor, as well as dusty material moved by the aeolian processes. Normally, the sediments transferred by rivers are deposited within the shelf sublittoral areas, and rarely reach deeper regions of the continental slope and, even less the abyssal basins. However, sediments deposited on the shelf may move to the deeper parts of the ocean including hadal trenches, due to further move from the shelf edge downwards, avalanche sedimentation, i.e. gravitational flows, which are caused by the gravity. For the case of the Mariana Trench, the deep currents flow through the trench ventilating its bottom water flowing through the West Pacific trenches originates from the Southern Ocean \index[places]{Southern Ocean} and Antarctic \index[places]{Antarctic} and flows northward \cite{Warrenetal1988}, in a clockwise direction, passing through the trenches on the west of the Pacific (i.e. the Kermadec Trench and the Tonga Trench. Through the Samoan Passage, it flows northwest across the equator to the east Mariana Trench. Among other hadal trenches \index[concepts]{hadal trenches}, Mariana Trench is the largest structural trap located in the continental margins \index[concepts]{continental margins}. Therefore, the geomorphic conditions of Mariana Trench create ideal conditions for the sedimentation processes intercepting almost all clastic material \index[concepts]{clastic material} originating from the adjacent land, Fig. \ref{fig:2-1-5}. 
 \begin{figure}[H]
@@ -743,9 +757,11 @@ The Makran Trench \index[places]{Makran Trench} is located \\
 
 \section{Data}
 	 \subsection{Data sources}
-	 
+The study area is located in the Mariana Trench, west Pacific Ocean, where the deepest place of the Earth is recorded (\cite{Theberge2008}). The geomorphology of the Mariana Trench was studied through the spatial and statistical analysis of the 25 cross-section bathymetric profiles digitized across the trench. Each profile has a length of 1000 km and a distance between each two is 100 km. The methodology consists of two parts: geospatial data processing and statistical analysis. \\
+First, during the geospatial part of the research, the data were collected from the \ac{QGIS} project as vector layers. The attribute tables contained numerical data on bathymetry, geology, tectonic plates and geometric features of the Mariana Trench in its various segments of the geographic location: north-west, centre, south-west. \\
+Second, during the statistical part of the research, the table in .csv format was then read into the Python environment using Pandas package. The profiles were observed using methods of the statistical modelling performed by Python programming language. During the statistical testing and experiment, several existing approaches (\cite{BoxTiao1992}; \cite{Timm2007}; \cite{Oliphant2007}; \cite{Oliphant2015}) provided by the Python \ac{StatsModel} and Matplotlib libraries were used as the core algorithms described below. 
 	 \subsection{Generating \ac{GIS} project}
-Data integration.
+Data integration
 	 
 	 \subsection{Geodata collection}
 The \ac{GIS} part of the research is performed in the \ac{QGIS} \ref{fig:3-1-1}. 
@@ -1281,6 +1297,7 @@ The geomorphic structure of the Mariana Trench has been analyzed using geostatis
 		\includegraphics[width=10cm,clip]{Fig-COMU-2.jpg}
 	\caption{Reading data from tables into Python using Pandas environment}\label{fig:COMU-2}
 \end{figure}
+
 Current research uses the most recent version of Python: 3.7.2. installed via pip. The installation of the Python libraries and dependancies has been implemented via the command line of the bash terminal. Because this process is not trivial, a brief explanation of the crucial installation steps is provided below. Upon the installing the core package of the Python language, the settings tools have been adjusted. The package installer for Python ‘pip’ version 19.0.3 has been installed first, to ensure further installation of all necessary libraries: \\
 \$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
 Afterwards, the pip was installed using following command: 
@@ -1684,16 +1701,16 @@ The following Python libraries were used to plot stacked area charts: \ac{NumPy}
 \end{figure}
 
 	\subsection{Analyzing distribution of the sediment thickness by stacked bar charts}
-	Analysis of the distribution of the sediment thickness is visualized by the stacked bar charts (Figure 7). The Python code \ref{P:20} in 7 steps provides an approach to visualize the sediment thickness by profiles and its correlation with closeness of the igneous volcanic areas as by distance. The code was written using calling following Python libraries: NumPy, Matplotlib, Pandas and OS. 
+	Analysis of the distribution of the sediment thickness is visualized by the stacked bar charts (Figure \ref{fig:AR-7}). The Python code \ref{P:20} in 7 steps provides an approach to visualize the sediment thickness by profiles and its correlation with closeness of the igneous volcanic areas as by distance. The code was written using calling following Python libraries: \ac{NumPy}, Matplotlib, Pandas and OS. 
 	
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=16cm,clip]{Fig-AR-7.jpg}
-	\caption{Stacked bar charts showing distribution of values of sediment thickness by profiles (left), versus distance from the igneous volcanic areas (right), Mariana Trench..}\label{fig:AR-7}
+	\caption{Stacked bar charts showing distribution of values of sediment thickness by profiles (left), versus distance from the igneous volcanic areas (right), Mariana Trench.}\label{fig:AR-7}
 \end{figure}
 
 	\subsection{Circular visualization of the bathymetry versus tectonic plates by pie charts}
-	Regarding the categorial distribution methods, a pie chart plotting is based on the analysis of the bathymetric distribution of the values by four tectonic plates (Figure 8). Circular visualization of the bathymetry showing the relationship between tectonic plates and distribution of bathymetric data by pie charts was performed by Python code \ref{P:21} in 3 steps. It used the following Python libraries: Pandas, NumPy, Matplotlib and OS.  
+	Regarding the categorial distribution methods, a pie chart plotting is based on the analysis of the bathymetric distribution of the values by four tectonic plates (Figure \ref{fig:AR-8}). Circular visualization of the bathymetry showing the relationship between tectonic plates and distribution of bathymetric data by pie charts was performed by Python code \ref{P:21} in 3 steps. It used the following Python libraries: Pandas, NumPy, Matplotlib and OS.  
 
 \begin{figure}[H]
 	\centering
@@ -1715,17 +1732,134 @@ As the observation points change their position from plates by 518 observation p
 	\subsection{Visualized concept of the Mariana Trench project}
 	
 	Fundamental principle of the usage of Python libraries in oceanography is still a novel topic There are many approaches to analyze big data sets in marine science, and many of them are based on the use of \ac{GIS} in various contexts: e.g. marine biology, bathymetric mapping, navigation, marine geology for exploration, etc. The difficulty of the current research lies in the attempt to perform a multidisciplinary approach that combine Python coding using its various libraries with traditionally geoscience domain of marine geology. Moreover, most of the current \ac{GIS} tools do not include the power functionality of Python for the statistical analysis of the large data sets in full. Certain plugins do not able to perform a Python-level data analysis with the same effectiveness and visualization.
+	
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=10cm,clip]{Fig-AR-10.jpg}
 	\caption{Word cloud on the ‘Mariana Trench’ project.}\label{fig:AR-10}
 \end{figure}
-	In addition, Python powerful libraries, such as \ac{NumPy}, \ac{SciPy}, as well as their dependancies such as Matplotlib, developed for a particular application in the IT domain, such as computer data analysis or data science ‘pure’, can effectively be applied in the domain of the marine geology. An example of a programming tool in open source code provided in this research has a main focus of the analysis of the submarine geomorphology and factors affecting its structure and variability across various segments of the hadal trench, rather than the analysis of the marine ecosystems. However, in view of the multidiscuplinarity of the Python algorithms, the methods and codes demonstrated with a case study of the given data frame can effectively be applied in other aspects of the oceanographic data, including those focused on the marine biological analysis of the data taken from the cruise \ac{R/V} observations. The schematic view of the combination of various methods and key words, concepts and tools, are visualized as a word cloud (Figure 10). 
+
+	In addition, Python powerful libraries, such as \ac{NumPy}, \ac{SciPy}, as well as their dependancies such as Matplotlib, developed for a particular application in the IT domain, such as computer data analysis or data science ‘pure’, can effectively be applied in the domain of the marine geology. An example of a programming tool in open source code provided in this research has a main focus of the analysis of the submarine geomorphology and factors affecting its structure and variability across various segments of the hadal trench, rather than the analysis of the marine ecosystems. However, in view of the multidiscuplinarity of the Python algorithms, the methods and codes demonstrated with a case study of the given data frame can effectively be applied in other aspects of the oceanographic data, including those focused on the marine biological analysis of the data taken from the cruise \ac{R/V} observations. The schematic view of the combination of various methods and key words, concepts and tools, are visualized as a word cloud (Figure \ref{fig:AR-10}). 
 	
 	\subsection{Discussion on using Python scripting libraries}
 	This paper, has presented a new approach for processing oceanographic data in big data sets on marine geology. The Python language and its libraries adequately perform statistical analysis and represent visualized graphs. The research implemented the proposed statistical approach using SciPy, NumPy and Pandas libraries of Python and embedded algorithms. Applied methods of Python programming defines the variability in the local geomorphological structure of the Mariana Trench, Pacific Ocean. Spatial correlation between certain environmental variables, such as sediment thickness, slope angle degree of the profiles and the geospatial location of the segments of the trench were detected. 
 	Moreover, using Python language in the marina geology domain provides an appropriate base for the geospatial analysis of the environmental factors that may affect the morphology of the trench in its distinct parts across the crescent: south-west, central and north-west. Finally, processing a large set of data consisting of 518 observation points in 25 profiles, respectively, gives a set of 12.590 bathymetric points with variable numeric values: geomorphic, geologic and tectonic, as well as geometric values (degree of angle slope steepness by profiles). 
-	The novelty and perspectives of the proposed approach lies in its repeatability using provided codes. The proposed research methodology can guide similar research focused on the understanding marine geologic variables in other trenches, in the context of oceanographic studies and marine geologic spatial analysis. Six Python codes supported this research are provided in full in for repeatability of the methods in other case studies of the oceanography.
+	The novelty and perspectives of the proposed approach lies in its repeatability using provided codes. The proposed research methodology can guide similar research focused on the understanding marine geologic variables in other trenches, in the context of oceanographic studies and marine geologic spatial analysis. The Python codes supported this research are provided in full in for repeatability of the methods in other case studies of the oceanography.
+	
+	\section{Linear regressions by StatsModels library of Python language}
+This research section aims is to apply linear regression statistical approaches for oceanological data interpretation. Specific aim is to investigate correlation between various factors, such as bathymetric depths, geomorphic shape, geographic location on four tectonic plates of the sampling points along the trench, and their influence on the geologic sediment thickness. Technically, the advantages of applying Python programming language for oceanographic data sets was tested. The methodological approaches include GIS data collecting, data analysis, statistical modelling, plotting and visualizing. Statistical methods include several algorithms that were tested: 
+\begin{enumerate}
+	\item weighted least square linear regression between geological variables;
+	\item autocorrelation; 
+	\item design matrix;
+	\item \ac{OLS} regression;
+	\item quantile regression.
+\end{enumerate}
+The spatial and statistical analysis of the correlation of these factors aimed at the understanding, which geological and geodetic factors affect the distribution of the steepness and shape of the trench. Following factors were analyzed: geology (sediment thickness), geographic location of the trench on four tectonics plates: Philippine, Pacific, Mariana and Caroline and bathymetric depth range records along the profiles: maximal and mean, minimal values, as well as the statistical calculations of the 1st and 3rd quantiles. The study revealed correlations between the sediment thickness and distinct variations of the trench geomorphology and sampling locations across various segments along the crescent of the trench. 
+	
+	\subsection{Design matrix and model fit summary by the Ordinary Least Squares}
+	The variables of geologic interest were stored in the table consisting of 18 rows where numeric information describes geology, bathymetry, geodesy and tectonics of the Mariana Trench. To fit most of the models covered by \ac{StatsModels} Python library, the design or regressor matrix was created using existing approaches (\cite{Everitt2002}; \cite{BoxTiao1992}; \cite{MillmanAivazis2011}). The first is a matrix of endogenous variables of sediment thickness, which show the response or geological regressand on changed environmental conditions: geographic location, depth or tectonic plate.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Tab-ASE-1.jpg}
+	\caption{Python code for design matrix ‘dmatrices’ (left) and OLS computation by StatsModels of Python (right), Mariana Trench data frame.}\label{fig:tabASE-1}
+\end{figure}
+
+The design matrix (Fig. \ref{fig:tabASE-1}, left) shows the results of the first six lines representing values of explanatory variables in a set of geological attributes, Mariana Trench. The computing of the \ac{OLS} was based on the formula (1):
+Formula (1)
+Where,      
+n is the sample size;
+x is a constant and a scalar regressor; 
+y is a random regressor, sampled together with x;
+h is the number of lags being tested;
+Each row of the calculated \ac{OLS} coefficient estimates (Table \ref{fig:ASE-1}, right) shows an individual bathymetric profile with the successive columns corresponding to the geologic and oceanographic variables and their specific values across the profiles. 
+	
+	\subsection{Quantile statistics (QQ)}
+	The used algorithm is very straightforward with a selected function of qqplot() by StatsModels to perform this task. The \ac{QQ} regression is a common abbreviation for ‘quantile by quantile’ statistical plot. The plot shows (Figure 2) one quantile against another across various geological parameters (from left to right):  A) Sediment thickness; B) Slope angle degrees; C) Pacific Plate; D); Philippine Plate E) Mariana Plate; F) Distribution of samples of igneous volcanic areas. 
+Technically, the plotting was performed using Python code \ref{P:22} for each corresponding plot. The \ac{QQ} statistics calculation has been based on the following formula (2) after \cite{LjungBox1978}:
+Formula (2)
+Where,      
+n is the sample size;
+rho is the sample autocorrelation at lag k, and 
+h is the number of lags being tested.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Fig-ASE-2.jpg}
+	\caption{Plotted QQ statistics for the data distribution: A) Sediment thickness; B) Slope angle degrees; C) Pacific Plate; D); Philippine Plate E) Mariana Plate; F) Volcanic spots.}\label{fig:ASE-2}
+\end{figure}
+
+The comparison of all the six subplots enables to analyze the form of their shape against a straight line. The quantiles are bathymetric sample observations with geologic attribute values placed in the ascending order. The \ac{QQ} statistics is used over the pool of the sampling data to study their distribution. A \ac{QQ} statistic is a visual representation of the quantiles of a standard normal distribution of the geological data set across the Mariana Trench, showing their variation in space.
+	
+	\subsection{Weighted Least Squares}
+A \ac{WLS} for the geological variables is shown on Figure \ref{fig:ASE-3}. The approach of a weighted least squares is a standard approach in regression analysis to approximate the solution of overdetermined systems which is the case for the complex marine geological systems. The least squares algorithms has two sub-types: linear or ordinary least squares and nonlinear least squares. In the scope of this research, only the linear least squares were tested: ordinary least squares and weighted least square which is a generalization of the first one. In this case, the off-diagonal entries of the correlation matrix of the geological residuals are null the variances of the observations, yet unequal along the covariance matrix.	
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Fig-ASE-3.jpg}
+	\caption{Weighted Least Squares plotted for data distribution: A) Pacific Plate, B) Philippine Plate, C) Mariana Plate, D) Sediment thickness, E) Depths (max); F) Slope angle degree. A \ac{WLS} is a statistical approach representing a special case of the generalized least squares.}\label{fig:ASE-3}
+\end{figure}
+
+The calculation is based on the principle of the Gauss–Newton algorithm that solves a non-linear least squares problem by modifying a Newton's method for finding a minimum of a function. The computation was based on the general approach of existing equation (after \cite{Bjoerck1996}):
+
+Formula (3)
+Where 
+W is a diagonal when the observational errors are uncorrelated and the weight matrix;
+J (t) is a transposed Jacobian matrix;
+β are unbiased estimators as linear column vectors, the entries of the Jacobian matrix;
+y is a vector of the response values.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Tab-ASE-2.jpg}
+	\caption{Computed results of the WLS modelling for the data distribution by plates: A) Pacific; B) Philippine; C) Mariana; D) Sediment thickness; E) Depths; F) Slope angle.}\label{fig:tabASE-2}
+\end{figure}
+
+The calculations of the \ac{WLS} for the data set (Table \ref{fig:tabASE-2}) were done according to the reported procedures (\cite{SeaboldPerktold2010}; \cite{Strutz2016} by the Python code snippet \ref{P:23}.
+
+	\subsection{Quantile regressions}
+		Quantile regression shows (Figure \ref{fig:ASE-4}) the estimated conditional median and other quantiles of the response geological variables. Thus the upper two rows of the plot show (Figure \ref{fig:ASE-4}, A, B, C, D) data distribution across tectonic plates: Pacific Plate, Philippine Plate, Mariana Plate and Caroline Plate. The lower row of the plot (Figure \ref{fig:ASE-4}, E, F) shows data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted (Figure \ref{fig:ASE-4}) using Python code \label{P:24} by \ac{StatsModel}.
+		
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Fig-ASE-4.jpg}
+	\caption{Quantile regression plotted for sediment thickness (m) versus geologic parameters: A) Pacific Plate, B) Philippine Plate, C) Mariana Plate, D) Caroline Plate, E) Cumulative sediment thickness and F) Slope angle degree by profiles.}\label{fig:ASE-4}
+\end{figure}
+	Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Table {fig:tabASE-3}, with respect to the relevant plots shown on Figure \ref{fig:ASE-4} (corresponding to Figure \ref{fig:ASE-4}: A, B, C, D, E, F).
+	
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Tab-ASE-3.jpg}
+	\caption{Results of the computations for the quantile regression for sediment thickness versus geologic parameters: A) Pacific Plate, B) Philippine Plate, C) Mariana Plate, D) Caroline Plate, E) Cumulative sediment thickness and F) Slope angle degree by profiles.}\label{fig:tabASE-3}
+\end{figure}
+	
+	\subsection{Dynamic regression model: SARIMA}
+	The methodology of the dynamic regression model is based on the StatsModels embedded algorithm (\cite{SeaboldPerktold2010}). The abbreviation \ac{SARIMA} stands for the model, initially developed by \cite{AnsleyKohn1985}. The concept of the application of the \ac{SARIMA} time series estimation and post estimation lies in the following. The changes in the variables that are taken as time lags in classic dynamic regression models are applied towards bathymetric profiles from 1 to 25. In this way, unlike in time series case when the ARIMA fits the univariate models with time-dependent disturbances, this case applies space-dependent disturbances, crossing the sampling selection from 1 to 25 (X axe). 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Fig-ASE-5.jpg}
+	\caption{Plotted SARIMAX statistics for the bathymetry: A) Sediment thickness index; B) Data distribution index, Philippine Plate; C) Autocorrelation; D); Partial Autocorrelation.}\label{fig:ASE-5}
+\end{figure}
+
+Because the model includes both dependent and independent variables, the selected type of \ac{SARIMA} was SARIMAX (see the Python code snippet {P:25}). The first group consists in changing variables that is geologic settings and bathymetry (depths). The second group (independent variables) is presented by the profiles lags that cross the Mariana Trench with the distance between each of 100 km and the length of 1000 km. This cross-section profiles are taken as independent variables. Therefore, the dependent variables differ spatially in different segments of the trench.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=16cm,clip]{Tab-ASE-4.jpg}
+	\caption{Python programming code for used SARIMAX algorithm (left) and Statespace Model Results (right). Tested case in Mariana Trench tectonics: sediment thickness across Philippine Plate.}\label{fig:tabASE-4}
+\end{figure}
+
+The model (Figure \ref{fig:tabASE-4}) fits univariate model of the geomorphic structure of the trench by independent values of the distribution of the bathymetric observation by profiles with dependent disturbances of depths. Fitting the model was done using the Python snippet {P:25}.
+	
+	\subsection{Discussion on Modelling}
+	The conducted statistical data modelling and several types of the regression analysis were aimed to compare the variance in the geological data sets of the Mariana Trench explained by the complex interplay of the geomorphic, geological and oceanological attributes of the data and the bathymetric factors of then location of several segments of the trench in various parts of the Pacific Ocean. Using StatsModels library of Python, in particular several linear models of the correlation between various factors were computed, analyzed and explained by the groups of variables. \\
+Tested environmental variables of the Mariana Trench include four main geological factors (location on the tectonic plates, slope steepness degree, sediment thickness of the layer and bathymetric depth and submarine volcanism) and attributes of the 25 cross-section bathymetric profiles (mean values, maximal depths, median values and two quartile sub-division of the data sets) and the shared variances between environment and attributes. Shared variance arises due to correlations between the factor of sediment thickness and slope angle degree, e.g. because the attributes of the sediment accumulation are influenced by the canyon shape apart from the directly or indirectly depending on the oceanological conditions of the submarine currents.\\
+The graphical output shows normal data distribution as demonstrated by (Figure \ref{fig:ASE-2}), where each \ac{QQ} profile has a given value for data distribution by quantiles across the trench profiles. The distribution of the geologic residuals is shown on Figure \ref{fig:ASE-3} showing particularly data correlation for several cases: frequency of the data distribution by Pacific Plate, Philippine Plate, Mariana Plate, sediment thickness, and range of the bathymetric depths taken for the maximal values, and finally, geomorphological shape as slope angle degree. The results shown on Table \ref{fig:tabASE-2} represent the computed numerical values of the previous graph (Figure \ref{fig:ASE-3}).  
+ The results on the Quantile regression (Figure \ref{fig:ASE-4}) show the conditional median of the response geologic variable given changing bathymetric values with movement southwards across the Mariana Trench. Thus, the upper plots shows (Figure \ref{fig:ASE-4}, A, B, C) data distribution across tectonic plates: Pacific Plate, Philippine Plate, Mariana Plate and Caroline Plate. The lower plot (Figure \ref{fig:ASE-4}, D, E, F) shows data distribution for the Caroline Plate and cumulative sediment thickness and slope angle degree by profiles. 
+The numerical explanation of the Figure \ref{fig:ASE-4} with corresponding sub-plots is presented in Table \ref{fig:tabASE-3}. The Figure \ref{fig:ASE-5} shows dynamic regression model using Python function embedded in StatsModel: State Autoregressive Moving Average. Finally, Table \ref{fig:tabASE-4} shows the Python code that was used to perform the procedure of SARIMAX and the resulting output table. The model shows autocorrelation of the data by bathymetric profiles. The results demonstrated a correlation between the geological variables and geospatial location of the samplings across Mariana Trench, which proves the interplay between multiple factors affecting its geomorphology.
+	
 \pagebreak
 %%%%%%%%%%%%%%%%%  Section  5: Results%%%%%%%%%%%%
 
@@ -1792,7 +1926,7 @@ The similarities and differences in the geomorphic structure (steepness of the s
 \chapter{Discussion}\label{sec:6}
 	\markright{Discussion}
 	\section{Effects of the impact factors on geomorphic structure of the ocean trenches}
-	The study of the structure of the Mariana Trench has a great scientific and practical interest. The first relates to the testing theory of plate tectonics. The second is caused by the estimation of the time and place of where earthquakes and tsunami may arise. Moreover, a correlation with distribution of the volcanic igneous areas, as well as economic needs for the mineral resources are other important goals for deep trench studies. The aim of the presented research was to identify bathymetric cross section profiles of the Mariana Trench that show similarity by their complex parameters, so that they could be grouped into patters. Using combination of R programming, \LaTeX visualization and GIS, supported by the traditional geologic research, this study enabled to identify variabilities among factors affecting Mariana trench morphology. The accuracy of the performed statistical measurements is impacted by the chosen methodology and the input data: geomorphological maps, geological attribute tables, bathymetric maps, other geospatial thematic layers.\\ The question of the formation and structure of the ocean trenches has long attracted oceanographers. A variety of research work has been performed applied for various aspects of the hadal trenches: to measure trench depth, to assess the volumes of possible hidden resources in the abyssal depths, to analyze pelagic and biotic communities, to predict earthquakes frequencies. Nowadays, sound statistical methods are elaborated as important additions for traditional GIS methods of geospatial analysis of the deep ocean trenches. Without machine learning algorithms, a geospatial analysis of the big data cannot be considered as accurate and may lead to minor or major shortcomings and errors. Machine learning is therefore indispensable for such remotely located areas as abyssal depths.\\ The principle of R based geospatial data mining for the ocean research is to perform fusion and integration of multi-source data that allows integration of the heterogeneous information from a variety of sources for the possibility of in-depth analysis. In such a way, a multi-dimensional data processing is possible including following thematic layers: tectonic (continental margin plates), geological (geologic structure), lithological (sedimentation) and oceanological (direction of the deep currents). Automatic reflection of the multi-variant data by the machine learning methods enables to speed up our understanding of the oceans, as well as to increase the accuracy of the research.
+	The study of the structure of the Mariana Trench has a great scientific and practical interest. The first relates to the testing theory of plate tectonics. The second is caused by the estimation of the time and place of where earthquakes and tsunami may arise. Moreover, a correlation with distribution of the volcanic igneous areas, as well as economic needs for the mineral resources are other important goals for deep trench studies. The aim of the presented research was to identify bathymetric cross section profiles of the Mariana Trench that show similarity by their complex parameters, so that they could be grouped into patters. Using combination of R programming, \LaTeX visualization and \ac{GIS}, supported by the traditional geologic research, this study enabled to identify variabilities among factors affecting Mariana trench morphology. The accuracy of the performed statistical measurements is impacted by the chosen methodology and the input data: geomorphological maps, geological attribute tables, bathymetric maps, other geospatial thematic layers.\\ The question of the formation and structure of the ocean trenches has long attracted oceanographers. A variety of research work has been performed applied for various aspects of the hadal trenches: to measure trench depth, to assess the volumes of possible hidden resources in the abyssal depths, to analyze pelagic and biotic communities, to predict earthquakes frequencies. Nowadays, sound statistical methods are elaborated as important additions for traditional \ac{GIS} methods of geospatial analysis of the deep ocean trenches. Without machine learning algorithms, a geospatial analysis of the big data cannot be considered as accurate and may lead to minor or major shortcomings and errors. Machine learning is therefore indispensable for such remotely located areas as abyssal depths.\\ The principle of R based geospatial data mining for the ocean research is to perform fusion and integration of multi-source data that allows integration of the heterogeneous information from a variety of sources for the possibility of in-depth analysis. In such a way, a multi-dimensional data processing is possible including following thematic layers: tectonic (continental margin plates), geological (geologic structure), lithological (sedimentation) and oceanological (direction of the deep currents). Automatic reflection of the multi-variant data by the machine learning methods enables to speed up our understanding of the oceans, as well as to increase the accuracy of the research.
 
 	\section{Perspectives of the geostatistical analysis in marine geology}
 Systematic ocean exploration in the \nth{21} century started combining remote sensing methods, \ac{GIS} tools for data processing and a variety of machine learning tools for data post- processing and statistical analysis. The study of the ocean floor is possible not only through the \ac{GIS}, yet also by means of the available R statistical approaches: network analysis, factors analysis, plotting, diagrams, cluster analysis by various methods (k-means, dendrograms, silhouettes), triple correlation by ternary diagrams, to mention a few.\\
@@ -1812,8 +1946,8 @@ The paper presents an application of the R language towards geological studies w
 	\section{Using Python programming language in oceanology}
 	The geomorphology of the ocean hadal trenches reflects the fluvial geometry of the rivers, albeit in a rather general approximation. Setting aside the complexity of the real river structure that includes the mainstreams, branches and other geomorphic features (\cite{Rosgen1994}; \cite{Stricketal2018}; \cite{Theiling1998}) the overall approach of the riverine geomorphology may be adopted to the studies of the submarine canyon to come extent, in scope of the computer modeling and numerical analysis. The submarine canyons are important spaces within the ocean ecosystems (\cite{DeLeoetal2010}). They may be approximated to the tributary river flows as channels for the flow of turbidity currents across the seafloor. The fine-grained sediments, e.g. clay and silt, are deposited from the turbidity currents channeled from the continental margins along submarine canyons down into deep ocean trenches. 
 Hence, the interconnectivity between various parts of the ocean submarine geomorphology is very complex which requires a numerical approach in studies. Solutions proposed by Python language demonstrated in this research prove to be effective tool for the analysis of the data sets in marine geology.\\
-	The big data are often used in the marine research, because the data are taken from the cruise observations and measurements in in-situ conditions. Therefore, the advantages of the Python language lies in its usage for marine sciences lie in its effectiveness and functionality when operating large data sets. The machine learning tools are highly effective for processing arrays and tables containing data of thousands of observation, for example as in the presented research where the data set was 12.590 points taken from the 25 profiles containing 518 data each. Python is an interpreted language that enables programs to be written compactly and readably splitting them into reusable modules (\cite{Rossumatal2018}) that in turn process and model big data sets. Simple and vectorized syntax structures of Python enable to write code concisely yet effectively resulting in fewer bugs comparing to the codes written on C++. Using \ac{NumPy} for processing tables in .csv format and arrays facilitate advanced mathematical operations on large numbers of data. The encapsulation, inheritance and polymorphism of Python are the main advantages while working with big data in marine science and processing large tables.	\\
-	There are proven correlations between various geodetic features, bathymetric locations of the ocean trenches, geomorphic shapes and geophysical properties of the submarine phenomena (for example, \cite{MckenzieBowin1976}; \cite{SandwellSmith2009}; \cite{JimenezDiazetal2014}; \cite{JudgeMcNutt1991}; \cite{KalninsWatts2009}). Understanding the deep interconnections between various part of the ocean ecosystem gives a key to the proper modelling of the location of the ocean mineral resources and prognosis of the dynamic processes, such as earthquakes. The importance of the precision of such numerical computing for the resource economies cannot be underestimated. Current paper contributed towards the development of the numerical approaches in the marine sciences demonstrating the applied usage of Python. The use of Python proved to be an effective method for the aquatic or marine studies where thematic data has to be statistically processed and visualized. The code snippets or scripts in full are provided in the presented paper to enable repeatability of this research. Clear syntax and semantics of Python minimizes the chance of conflicts caused by hard-to-find bugs in a code. \\
+	The big data are often used in the marine research, because the data are taken from the cruise observations and measurements in in-situ conditions. Therefore, the advantages of the Python language lies in its usage for marine sciences lie in its effectiveness and functionality when operating large data sets. The machine learning tools are highly effective for processing arrays and tables containing data of thousands of observation, for example as in the presented research where the data set was 12.590 points taken from the 25 profiles containing 518 data each. Python is an interpreted language that enables programs to be written compactly and readably splitting them into reusable modules (\cite{Rossumatal2018}) that in turn process and model big data sets. Simple and vectorized syntax structures of Python enable to write code concisely yet effectively resulting in fewer bugs comparing to the codes written on C++. Using \ac{NumPy} for processing tables in .csv format and arrays facilitate advanced mathematical operations on large numbers of data. The encapsulation, inheritance and polymorphism of Python are the main advantages while working with big data in marine science and processing large tables. \\
+	There are proven correlations between various geodetic features, bathymetric locations of the ocean trenches, geomorphic shapes and geophysical properties of the submarine phenomena (for example, \cite{MckenzieBowin1976}; \cite{SandwellSmith2009}; \cite{JimenezDiazetal2014}; \cite{JudgeMcNutt1991}; \cite{KalninsWatts2009}). Understanding the deep interconnections between various part of the ocean ecosystem gives a key to the proper modelling of the location of the ocean mineral resources and prognosis of the dynamic processes, such as earthquakes. The importance of the precision of such numerical computing for the resource economies cannot be underestimated. Current paper contributed towards the development of the numerical approaches in the marine sciences demonstrating the applied usage of Python. The use of Python proved to be an effective method for the aquatic or marine studies where thematic data has to be statistically processed and visualized. The code snippets or scripts in full are provided in the presented paper to enable repeatability of this research. Clear syntax and semantics of Python minimizes the chance of conflicts caused by hard-to-find bugs in a code.\\
 	The statistical data analysis has been implemented using Python machine learning libraries and algorithms. The seamless integration of the multi-dimensional data by the Matplotlib Python package enabled to perform marine geodata analysis and proper selection of the optimal algorithms to process the data features. The fully provided codes written on Python language make this research easily repeatable and accessible for other scientists. The adoption of the open source programming rapidly replacing the commercial technologies, Python will soon become popular among the marine geologists, geographers and Earth data analysts. This research contributes towards the development of the technical implementation of the machine learning algorithms for effective processing of the geodata. 
 
 \pagebreak
@@ -4524,7 +4658,7 @@ plt.title('Mariana Plate \ncorrelation of the factors: \n sediment thickness, sl
 plt.show()
 \end{python}
 
-\subsection{Python code for \ac{ANOVA}}\label{P:15}
+\subsection{Python code for ANOVA}\label{P:15}
 \begin{python}
 # Libraries
 from __future__ import print_function
@@ -4741,6 +4875,117 @@ df.plot(kind='pie', subplots=True, figsize=(10, 10),  legend=False, table=False,
 plt.show()
 \end{python}
 
+\subsection{Python code for QQ plots visualizing descriptive statistics for the bathymetry}\label{P:22}
+\begin{python}
+#!/usr/bin/env python
+# coding: utf-8
+# In[14]:
+from __future__ import print_function
+#get_ipython().run_line_magic('matplotlib', 'inline')
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
+import pandas as pd
+import seaborn as sns
+import statsmodels.api as sm
+from statsmodels.graphics.api import qqplot
+import seaborn as sns
+import os
+sns.set_style('darkgrid')
+
+# Step-2. Import data
+os.chdir('/Users/pauline/Documents/Python')
+df = pd.read_csv("Tab-Morph.csv")
+
+fig, axes = plt.subplots(2, 3, figsize=(14,7), sharey=True, sharex=True)
+#st = fig.suptitle('QQ statistics plots of the geology of the Mariana Trench', 
+ #            fontsize=12)
+plt.suptitle('QQ statistics plots of the geology of the Mariana Trench', 
+             x=0.54, y=.92, fontsize=12,)
+
+fig = qqplot(df.sedim_thick, line='q', fit=True, 
+                 linewidth=.5, alpha = .5, markerfacecolor='#00a497', markeredgecolor='grey', ax=axes[0, 0])
+axes[0, 0].annotate('A', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
+           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
+
+fig = qqplot(df.slope_angle, line='q', fit=True, 
+                 linewidth=.5, alpha = .5, markerfacecolor='#4d5aaf', markeredgecolor='grey', ax=axes[0, 1])
+axes[0, 1].annotate('B', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
+           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
+
+fig = qqplot(df.plate_pacif, line='q', fit=True, 
+                 linewidth=.5, alpha = .4, markerfacecolor='#69821b', markeredgecolor='grey', ax=axes[0, 2])
+axes[0, 2].annotate('C', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
+           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
+
+fig = qqplot(df.plate_phill, line='q', fit=True, 
+                 linewidth=.5, alpha = .4, markerfacecolor='#640125', markeredgecolor='grey', ax=axes[1, 0])
+axes[1, 0].annotate('D', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
+           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
+
+fig = qqplot(df.plate_maria, line='q', fit=True, 
+                 linewidth=.1, alpha = .4, markerfacecolor='#b44c97', markeredgecolor='grey', ax=axes[1, 1])
+axes[1, 1].annotate('E', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
+           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
+
+fig = qqplot(df.igneous_volc, line='q',  fit=True, 
+                 lw=.1, alpha = .4, markerfacecolor='#4d5aaf', markeredgecolor='grey', ax=axes[1, 2])
+axes[1, 2].annotate('F', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
+           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
+
+plt.show()
+# In[ ]:
+\end{python}
+
+\subsection{Python code for WLS calculations}\label{P:23}
+\begin{python}
+	# Step-1. 
+mod_wls = sm.WLS(y, X, weights=1./(w ** 2))
+res_wls = mod_wls.fit()
+print(res_wls.summary())
+	# Step-2.
+res_ols = sm.OLS(y, X).fit()
+print(res_ols.params)
+print(res_wls.params)
+	# Step-3.
+se = np.vstack([[res_wls.bse], [res_ols.bse], [res_ols.HC0_se], [res_ols.HC1_se], [res_ols.HC2_se], [res_ols.HC3_se]])
+se = np.round(se,4)
+colnames = ['x1', 'const']
+rownames = ['WLS', 'OLS', 'OLS_HC0', 'OLS_HC1', 'OLS_HC3', 'OLS_HC3']
+tabl = SimpleTable(se, colnames, rownames, txt_fmt=default_txt_fmt)
+print(tabl)
+\end{python}
+
+\subsection{Python code for quantile (QQ) regression}\label{P:24}
+\begin{python}
+# Step-1. Least Absolute Deviation 
+mod = smf.quantreg('profile ~ slope_angle', data) 
+res = mod.fit(q=.5) 
+print(res.summary())  
+# Step-2. Placing the quantile regression results in a Pandas DataFrame, and the OLS results in a dictionary 
+quantiles = np.arange(.05, .96, .1) 
+	def fit_model(q):     
+		res = mod.fit(q=q)     
+		return [q, res.params['Intercept'], res.params['slope_angle']] +             				res.conf_int().loc['slope_angle'].tolist()      
+models = [fit_model(x) for x in quantiles] 
+models = pd.DataFrame(models, columns=['q', 'a', 'b','lb','ub'])  
+ols = smf.ols('profile ~ slope_angle', data).fit() 
+ols_ci = ols.conf_int().loc['slope_angle'].tolist() 
+ols = dict(a = ols.params['Intercept'], b = ols.params['slope_angle'], lb = ols_ci[0],            
+		ub = ols_ci[1])  
+print(models) 
+print(ols)
+\end{python}
+
+\subsection{Python code for SARIMA model}\label{P:25}
+\begin{python}
+mod = sm.tsa.statespace.SARIMAX(data['sedim_thick'], trend='c', order=(1,1,1))
+res = mod.fit(disp=False)
+print(res.summary())
+fig = sm.graphics.tsa.plot_pacf(data.iloc[1:]['Ddf.geology'], lags=25, ax=axes[1])
+The algorithm fits a model where the disturbances follow a linear specification of the bathymetric distribution across the trench. The dependent and independent geological variables vary by profiles (Figure 5). Plotting was done using sublplot function of Matplotlib:
+fig, axes = plt.subplots(2, 2, figsize=(15,8))
+\end{python}
 
 \end{appendices}
 \pagebreak
@@ -4754,13 +4999,13 @@ plt.show()
 	\item  1999-2004: BSc studies at \href{http://www.eng.geogr.msu.ru/}{Lomonosov Moscow State University, Faculty of Geography, \\Department of Cartography and Geoinformatics}. BSc degree in 'Geography and Cartography'. BSc Thesis 'Ecological Mapping of the Barents and the Pechora Seas'. Graduated with Honours, Summa Cum Laude. University Gold Medal awarded for Academic Excellence.\\
 	\href{https://drive.google.com/open?id=1vFEW9bNuPBPisME54wvyTad-ygS1qAWg}{BSc Diploma} (Russian original).
 \href{https://drive.google.com/open?id=1Uyv3QE2n3Bj3NMAWbGZ9bTXU_sYmM3yx}{BSc Diploma} (English translated apostille, London). 
-	\item 2006: Participant of the \href{http://www.ats.aq/documents/ie/deanu06e.pdf}{Antarctic Polar expedition ANT/XXIII-4} (Pacific Ocean) onboard the R/V 'Polarstern' organized by \ac{AWI}. Profession: Cartographer. Duties: cartographic assistance during the cruise: sonar data capture (Hydrosweep DS), data conversion and processing (Caris HIPS), bathymetric mapping (ArcMap), data management and administration (ArcCatalog). Region: Amundsen and Bellingshausen Seas (Pacific Ocean).
+	\item 2006: Participant of the \href{http://www.ats.aq/documents/ie/deanu06e.pdf}{Antarctic Polar expedition ANT/XXIII-4} (Pacific Ocean) onboard the R/V 'Polarstern' by \ac{AWI}. Profession: Cartographer. Duties: cartographic assistance during the cruise: sonar data capture (Hydrosweep DS), data conversion and processing (Caris HIPS), bathymetric mapping (ArcMap), data management and administration (ArcCatalog). Region: Amundsen and Bellingshausen Seas (Pacific Ocean).
 	\item 2007/2008. Visiting researcher at \ac{AWI}, Department of the Marine Geology \& Palaeontology.
-Digitizing maps by AutoTrace. Published paper in \textit{Hydrographische Nachrichten Journal}.
+Digitizing maps by AutoTrace. Published paper \href{https://zenodo.org/record/2158076}{'Zur Frage der Meeresboden-Kartographie: Die Nutzung von AutoTrace Digitizer f\"{u}r die Vektorisierung der Bathymetrischen Daten in der Petschora-See' (To the question of the seafloor mapping: using Auto Trace digitizer for the vectorization of the bathymetric data of the Pechora Sea)} in \textit{Hydrographische Nachrichten}.
 	\item 2008/2009. Visiting student at \href{http://www.unibas.ch/}{Universit\"at Basel, Institut of Geography} (Switzerland, Basel). Research focus: Using ArcGIS Spatial Analyst for processing satellite imageries.
 	\item  2009-2011: MSc studies (joint program at four European universities): \href{http://www.utwente.nl/en}{Universiteit Twente}, \href{http://www.itc.nl/}{Faculty of Geo-Information Science and \& Earth Observation} (Netherlands), \href{http://www.lunduniversity.lu.se/}{Lunds Universitet} (Sweden), \href{http://www.southampton.ac.uk/}{University of Southampton} (UK, England), University of Warsaw (Poland). \\MSc Thesis 'Seagrass mapping \& monitoring along the coasts of Crete, Greece'\\MSc degree in 'GIS \& Earth Observation for Environmental Modeling \& Management'\\
 	\href{https://drive.google.com/open?id=1Nz-u77UwjqpeJ440NvZWCpIjBM_49Y3G}{MSc Diploma (UK)}  \href{https://drive.google.com/open?id=1RwWADtrr6mqwYxRotQTZVqLpJvv6q-dK}{MSc Diploma (Netherlands)}
-	\item  2011-2015: Visiting graduate student at the European universities as a grant holder. Upon completion my MSc I continuously had short research stays at various European universities. My visits and studies at the Universiteis of Vienna, Lapland, Eötvös Loránd, Tartu, Matej Bel, Brussels, NTU, Ege, TU Dresden and Charles University were interspersed with attending numerous events. My research concerned GIS/RS based satellite image processing (Landsat TM/ETM+) for land cover change detection. I have also published on environmental monitoring of the Barents Sea. Some of my papers focus on the aspects of education and methods of teaching GIS. My research resulted in over 100 published short papers and communications (posters and presentations) at more than 30 conferences. I have been awarded research grants by the Joanneum Research, DAAD, CIMO, Swiss ESKAS, Erasmus Mundus, ÖAD, HSB, ESF, WBI, TÜBİTAK, MOE Taiwan, SAIA and other agencies. I have also held travel grants for participation at the workshops funded by Rijksuniversiteit Groningen (Netherlands, 2013) and Maison des Sciences de l\textquotesingle Homme et de l\textquotesingle Environnement Claude Nicolas Ledoux (France, 2014). 
+	\item  2011-2015: Visiting graduate student at the European universities as a grant holder. Upon completion my MSc I continuously had research at various European universities: University of Vienna, University of Lapland (Finland), E\"{o}tv\"{o}s Lor\'{a}nd University (Budapest, Hungary), University of Tartu (Estonia), Matej Bel University (Slovakia), Universit\'{e} Libre de Bruxelles (Belgium), NTU (Taibei, China), Ege University (Izmir, Turkey), TU Dresden (Germany), Charles University in Prague (Czech Republic). Attendee of numerous events (conferences, meetings, workshops etc). My research concerned GIS/RS based satellite image processing (Landsat TM/ETM+) for land cover change detection. I have also published on environmental monitoring of the Barents Sea. Some of my papers focus on the aspects of education and methods of teaching GIS. My research resulted in over 100 published short papers and communications (posters, presentations) at > 30 conferences. 
 	
 	\item  2016-2020: PhD studies at \ac{OUC}. The educational activities comprise 3 Parts:\\
 \end{itemize}	
@@ -4777,18 +5022,20 @@ Digitizing maps by AutoTrace. Published paper in \textit{Hydrographische Nachric
  	\item \textit{Language School: Chinese Language Course at \ac{OUC}}: 09.2016-01.2017. Winter semester, Level A2 (Beginner). \textit{Modules}: Characters, 34 h., Intensive Reading (136 h.), Speaking (102 h.),  Listening (68 h.). \href{https://drive.google.com/open?id=1_44s_8_SIjz6Ua-5JH0uTKB25nWm-kbj}{Certificate}
 \end{enumerate}
 	
-	\nth{2} Part: a minimum of \textit{18 ECTS} of courses at College of Marine Geo-sciences (\href{https://drive.google.com/open?id=1Ua0MxFv9XKVWmQSJXgpYTQSl70ZNyMqF}{Certificate}): 
+	\nth{2} Part: a minimum of \textit{18 ECTS} of courses at College of Marine Geo-sciences (\href{https://drive.google.com/open?id=12srbtmwtrGC7cgaRw0rtWJN1DLzwLgBh}{Transcripts Certificate}): 
 \begin{enumerate}
 \setlength{\parskip}{0pt}
   \setlength{\itemsep}{0pt plus 1pt}
-	\item  Continental Margin Tectonics and Marine Geodynamics; ECTS: 3, Scores: 96/100
+  	\item Progress in Marine Geology (ongoing, ECTS: 3)
+	\item Methods of the Seabed Survey and Digital Technologies; ECTS: 3, Scores: 92/100
+	\item Continental Margin Tectonics and Marine Geodynamics; ECTS: 3, Scores: 96/100
 	\item Analysis Methods of Marine Sediments; ECTS: 3, Scores: 88/100
 	\item Advanced Marine Geology; ECTS: 3, Scores: 89/100
 	\item Introduction to Chinese Culture; ECTS: 3, Scores: 92/100
 	\item PhD Academic Norms; ECTS: 1, Scores: 92/100.
 \end{enumerate}
 
-	\nth{3} Part: a minimum of \textit{2} publications in the peer-reviewed journals: listed in Chapter \ref{sec:10}\\
+	\nth{3} Part: a minimum of \textit{2} publications in the peer-reviewed journals. Author's publications are listed in Chapter \ref{sec:10}\\
 
 %%%%%%%%%%% Bibliography %%%%%%%
 \chapter{Bibliography}

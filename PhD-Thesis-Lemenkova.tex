@@ -12,17 +12,32 @@
 \usepackage{color}
 \usepackage[fit]{truncate}
 \usepackage[left=30mm,right=20mm,top=30mm,bottom=35mm]{geometry}
-\headsep=15pt % header distance to the main text
+\headsep=5pt % header distance to the main text
 \usepackage{calc}
 \parindent 0pt
 \usepackage{float}
 %\floatstyle{boxed} % to add frame box around pictures
 \floatstyle{plain}
 \restylefloat{figure}
-\usepackage{gensymb}
+\usepackage{gensymb} % degree symbol
+%\usepackage{textcomp}  % numero symbol
 \usepackage{amsmath}
 \usepackage{tocloft}
+
+%%%%%%%% цветная таблица: начало
+\usepackage{booktabs} 
+\usepackage{tabularx}
+\usepackage{array,etoolbox}
+\usepackage{boldline}
+\usepackage{colortbl} %% цветная таблица
+\setlength{\arrayrulewidth}{0.3mm}
+%%%%%% нумерация внутри таблицы %%%
+\preto\tabular{\setcounter{magicrownumbers}{0}}
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
 \usepackage{longtable}
+%%%%%%%%  цветная таблица: конец
+
 \usepackage{pslatex}
 \usepackage{graphics}
 \usepackage{graphicx}
@@ -36,7 +51,7 @@
 \pagestyle{fancy}
 \fancyhead[L]{\nouppercase{\rightmark}}
 \fancyhead[R]{\nouppercase{\leftmark}}
-\setlength{\headheight}{52pt}
+\setlength{\headheight}{14pt}
 %%%%%%%% header end %%%%%%
 
 \usepackage{lastpage}
@@ -50,7 +65,11 @@
 \setcounter{secnumdepth}{3}
 \makeatother
 \usepackage{rotating}
-\usepackage[svgnames,table]{xcolor}
+\usepackage[svgnames,dvipsnames,x11names,table]{xcolor}
+\usepackage{tikz} % load xcolor before tikz
+\usetikzlibrary{calc,shadows.blur,shadings,decorations.pathmorphing,
+	shapes.arrows,shapes.symbols,arrows,arrows.spaced,arrows.meta,
+	decorations.text}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.3}
 \usepackage[super]{nth}
 \usepackage{verbatim}
@@ -229,21 +248,11 @@
 	urlcolor=blue,
 	pdfkeywords={Pacific Ocean, hadal trench, Mariana Trench, Philippine Trench, Kurile Trench, geomorphology, bathymetry, Python, R, programming language, Matplotlib, Seaborn, submarine geomorphology, data analysis, statistics, spatial analysis, comparative analysis, statistical analysis, cluster analysis, factor analysis, algorithm, oceanography, GIS, marine geology, geomorphology}
 	}	
-%%%%%%%%% Glossary after the hyperref !  %%%%%%%%% 
-%\usepackage[style=index]{glossaries}
-\usepackage[toc,section=chapter,nopostdot,nonumberlist]{glossaries}
-%     \setglossarystyle{tree}
-  %  \setglossarystyle{altlist}
-     \setglossarystyle{altlist}
 
-\makenoidxglossaries
-
-\newglossaryentry{graben}{name={graben},description={is a geological body}}
-\newglossaryentry{basalt}{name={basalt}, description={a dark, fine-grained mafic extrusive igneous volcanic rock that sometimes displays a columnar structure, formed from the rapid cooling of magnesium-rich and iron-rich lava. More than 90\% of all volcanic rock on Earth is basalt}}
- \newglossaryentry{ringwoodite}{name={ringwoodite},description={a raised fault block bounded by normal faults}}
- \newglossaryentry{horst}{name={horst},description={a high-pressure phase of Mg2SiO4 formed at high temperatures and pressures of the Earth's mantle between 525 and 660 km}}
- \newglossaryentry{seabed}{name={seabed},description={the bottom of the ocean}}
- 
+%%%%%%%% цветные разделители
+\usepackage[object=vectorian]{pgfornament}
+%%%%%%%% цветные разделители
+	
 %%%%%%%%%%% List of Equations %%%%%%%%%%%%%
 \newcommand{\listequationsname}{}
 \newlistof{myequations}{equ}{\listequationsname}
@@ -356,7 +365,7 @@ Grant \#2016SOA002, 2016-2020.\\
 
 \vspace{1em}
 
-		Qingdao, People's Republic of China (P.R.C). \\ \date{\today}
+		Qingdao, People's Republic of China (P. R. C). \\ \date{\today}
 \pagebreak
 
 %%%%%%%%%%%%%% Abstract %%%%%%%%
@@ -374,7 +383,6 @@ Grant \#2016SOA002, 2016-2020.\\
 \pagebreak
 
 %%%%%%%%%%%%%% List of Equations %%%%%%%%
-
 \chapter*{List of Equations}
 	\markright{List of Equations}
 	\addcontentsline{toc}{section}{List of Equations}
@@ -386,13 +394,13 @@ Grant \#2016SOA002, 2016-2020.\\
 \chapter*{List of Acronyms\footnote{The page is given where the glossary is first entered and defined}}
 	\markright{Acronyms}
 	\addcontentsline{toc}{section}{List of Acronyms}
-\singlespacing
 
-\begin{acronym}
+\begin{acronym}[JSONP]\itemsep0pt
 	\acro{ANOVA}{Analysis of Variance}
 	\acro{ASCII}{American Standard Code for Information Interchange}
 	\acro{AWI}{Alfred Wegener Institute for Polar and Marine Research}
 	\acro{BAB}{Back-Arc Basin}
+	\acro{BODC}{British Oceanographic Data Centre}
 	\acro{BSL}{below sea level}
 	\acro{CTAN}{The Comprehensive TEX Archive Network}
 	\acro{CTD}{Conductivity-Temperature-Depth profiler}
@@ -412,7 +420,9 @@ Grant \#2016SOA002, 2016-2020.\\
 	\acro{KDE}{Kernel Density Estimation}
 	\acro{OLS}{Ordinary Least Square}
 	\acro{OUC}{Ocean University of China}
+	\acro{NetCDF}{Network Common Data Form}
 	\acro{NumPy}{Numerical Python}
+	\acro{NASA}{National Aeronautics and Space Administration}
 	\acro{NOAA}{National Oceanic and Atmospheric Administration}
 	\acro{PCA}{Principal Component Analysis}
 	\acro{QGIS}{Quantum GIS}
@@ -425,7 +435,7 @@ Grant \#2016SOA002, 2016-2020.\\
 	\acro{SSL}{Secure Sockets Layer}
 	\acro{SciPy}{Scientific Python}
 	\acro{SPOT}{Satellite Pour l’Observation de la Terre}
-	acro{SPSS}{Statistical Package for the Social Sciences}
+	\acro{SPSS}{Statistical Package for the Social Sciences}
 	\acro{StatsModels}{Statistical Models}
 	\acro{USGS}{United States Geological Survey}
 	\acro{UTM}{Universal Transverse Mercator coordinate system}
@@ -438,9 +448,8 @@ Grant \#2016SOA002, 2016-2020.\\
 \chapter*{List of Tools}
 	\markright{List of Tools}
 	\addcontentsline{toc}{section}{List of Tools}
-	\vspace{2em}
-	\textbf{Software and utilities used in the current work}:\\
-	
+%	\vspace{2em}
+	\textbf{Software and utilities used in the current work}:\\	
 	\vspace{1ex}
 	\textbf{Main Tools}:
 		\begin{itemize}
@@ -451,16 +460,14 @@ Grant \#2016SOA002, 2016-2020.\\
 			\item \href{https://github.com/onetrueawk/awk}{AWK}: Programming language for tables reformatiing and reshaping 
 			\item \href{https://www.gnu.org/software/octave/}{GNU Octave}: Programming language for statistical analysis 
 		\end{itemize}
-	
 	\vspace{1ex}
 	\textbf{Auxiliary Tools}:
 		\begin{itemize}
 			\item \href{http://www.latex-project.org/}{\LaTeX}: document typesetting and formatting
 			\item \href{http://www.bibtex.org/de/}{Bib\LaTeX}: for management of bibliography and reference database
-			\item \href{http://www.libreoffice.org/}{LibreOffice}: text typesetting
-			\item \href{http://www.gimp.org/}{GIMP}: auxiliary drawing	
-			\item \href{http://gretl.sourceforge.net/}: Gnu Regression, Econometrics and Time-series Library for statistical analysis
-			\item \href{http://www.gimp.org/}{SPSS}: statistical analysis		
+			\item \href{http://gretl.sourceforge.net/}{Gretl}: Gnu Regression, Econometrics and Time-series Library for statistical analysis
+			\item \href{http://www.gimp.org/}{SPSS}: statistical analysis
+			\item \href{http://www.gimp.org/}{GIMP}: auxiliary drawing			
 		\end{itemize}
 
 \pagebreak
@@ -476,9 +483,10 @@ Grant \#2016SOA002, 2016-2020.\\
 
 %%%%%%%%%%%%%% List of Tables %%%%%%%%
 \singlespace
-\chapter*{List of Tables}
+\chapter*{}
 	\markright{List of Tables}
 	\addcontentsline{toc}{section}{List of Tables}
+\listoftables
 \pagebreak
 
 %%%%%%%%%%%%%% Document Outline %%%%%%%%
@@ -523,14 +531,7 @@ The geographic focus of the current study Mariana Trench, the deepest point of t
 
 \subsubsection{Submarine geomorphology}
 	There are various geodynamic processes that influence tectonic rift dynamics and structure as well as and rifted margin geomorphology. Currently, the interest towards the geodynamics, the drivers and consequences of these processes was implemented as a key target goals of the oceanographic research in China (\cite{Cuietal2014a}; \cite{Cui-Wu2018}). Knowing and proper understanding of the driving factors affecting the ocean ecosystems gives an understanding of the possible dynamics, accumulation and location of the target ocean resources that are crucial for the economic development. \\
-	Understanding bathymetry of the ocean is crucial for the marina geological research. As noted by \cite{DierssenTheberge2014b}, the distribution of elevations on the Earth or hypsography is highly uneven. Thus, the majority of the depths is occupied by deep basins (4–6.5 km) covered with abyssal plains and hills, while seafloor with ranges 2-4 km depth mostly consists of oceanic ridges and in total cover about 30\% of the total ocean seafloor. Finally, the shallow areas and continental margins with 2 km depth and shallower cover only  the least amount of area, that is 15\% of the seafloor (\cite{Litvin1987}).  Finally, the valley, seamounts, and submarine canyons are only the minor features of the seafloor \ref{fig:COMU-1}. 
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=14cm,clip]{Fig-COMU-1.jpg}
-	\caption{Seamounts, ophiolite areas and fault lines around the Mariana Trench}\label{fig:COMU-1}
-\end{figure}
-
+	Understanding bathymetry of the ocean is crucial for the marina geological research. As noted by \cite{DierssenTheberge2014b}, the distribution of elevations on the Earth or hypsography is highly uneven. Thus, the majority of the depths is occupied by deep basins (4–6.5 km) covered with abyssal plains and hills, while seafloor with ranges 2-4 km depth mostly consists of oceanic ridges and in total cover about 30\% of the total ocean seafloor. Finally, the shallow areas and continental margins with 2 km depth and shallower cover only  the least amount of area, that is 15\% of the seafloor (\cite{Litvin1987}).  Finally, the valley, seamounts, and submarine canyons are only the minor features of the seafloor. 
 	Given the importance of the hadal areas,  study of the ocean trenches geomorphology and distribution of its features with regards to the bathymetry seems to be obvious. \\
 	There are many attempts undertaken to understand, to what extent and how do the geophysical movements in the subduction zones affect the trench geomorphology, deformation and migration (e.g. \cite{Doglioni2009}; \cite{FernandezMarques2018}; \cite{Gorbatovetal2001}; \cite{Hubbleetal2016}; \cite{Lemoineetal2002}). General concepts and understanding of the functioning and current problems in research directions of the marine hadal observations were implied in the current research. Active sedimentation on the bottom of the seafloor leads to the accumulated amount at rifted margins, particularly at the deltas of the large rivers. Sediments outflowing further to the ocean provide important geological bodies and resources.  Besides, the natural hazards taking place in the ocean, strongly correlate with submarine earthquakes and volcanic eruptions during active rifting (\cite{Brune2016}). Moreover, there is a certain correlation between the high oceanic features and thickness of the subduction channels and earthquake rupture segments, as shown with a case study of the trenches in east Pacific Ocean by \cite{ContrerasReyesCarrizo2011}. Ocean hadal trenches result from the complex geodynamic processes that continuously shape the surface of the seafloor (\cite{BogolepovChikov1976}). Nowadays, the ocean seafloor demonstrates ‘footprints’ of the many continuous steps of the seafloor evolution. \\
 	Traditional methods of the marine geological modelling include using \ac{GIS} based processing of the remote sensing images, such as for instance aerial photos, \ac{SPOT}3, \ac{SPOT}4 and \ac{ENVISAT} data, or producing digital maps based on the data capture in the field (e.g., \cite{Bogdanovetal2011}). On the contrary, current paper makes an accent on using high-level programming language Python and its libraries Pandas, \ac{NumPy} and \ac{SciPy} for the processing of the large data frames imported from GIS. The effectiveness of the data computing and visualization by Python was the key factor for the applying its functionality in this research. Some approaches of the scientific visualization and methods of the data analytics discussed previously by \cite{Crameri2018} were considered in this research. \\
@@ -544,19 +545,9 @@ Correct prognosis of the possible accumulation of the sediments with reference t
 	Conversion of the two tectonic plates at the ocean margins causes sinks or subduction of the oceanic plates. The mechanism of faulting in the subducting plates at the Mariana Trench is well described previously (\cite{Zhouetal2015}; \cite{Zhengetal2013}). The terrestrial crust appearing at the top of this new lays is formed either by a new masses of the terrestrial crust caused by the arc volcanism, or because of the piled up sediment deposits coming from the subducting lower tectonic plate (\cite{HueneScholl1991}). Therefore, the ocean margin areas with high seismisity, repeated earthquakes and volcanism (Figure 2) indicate the areas of the collision and movements of the ocean plates as well as active sedimentation, where hadal trenches are located. Such and other geodynamic processes of the deep subduction take place of the western Pacific Plate underneath Northeast China causing extensional events and volcanism (\cite{Zhuetal2009}). Specific changes in the geochemical content of the underlying seafloor has also beed detected. \\
 	Thus, as recently noticed by \cite{Cartapanisetal2018}, the content of the geological CO2 burial rates varies in the seafloor, with the increase in the Pacific basin during the last glacial period. There are various Two distinctly different domains of the seafloor exist, on which carbon burial takes place: surfaces located by the fringes of the continents and the constantly submerged surfaces of continental slopes and the deep sea. The mixture of the geochemical components located at various depths of the continental slope and trench implies that sediments from upper to lower slope has been incorporated into a single bed (\cite{Voelkeretal2008}). Other examples of the geochemical complex circulation, system of deposition and transport are given by various papers (e.g., \cite{SattarovaAksentov2018}; \cite{Yangetal2018}; \cite{Lehuetal2015}). 
 
-
 \subsubsection{Benthos: Life in the Deep Sea}
-Life exists in the ocean's hadal zones of the deep ocean Mariana Trench where the depths overstep 11.000 meters (\cite{Harenetal2017}). 
-Figure \ref{fig:GP-1}: bathymetry in the Philippine Sea.
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=14cm]{Fig-GP-1.jpg}
-	\caption{Study area: Philippine Sea. Mapping: QGIS}\label{fig:GP-1}
-\end{figure}
-
-The existence of the organisms at such depths strongly depends on the turbulence of the streams and motion of the submarine currents. In turn, they are strongly influenced by the physical oceanographic properties and geomorphic structure of the trench \cite{Romankevichetal2008}. High sedimentation rates and biomass of the hadal trenches, intense microbial activity and chemosynthetic communities play crucial role in the global ocean biogeochemical cycles. Many studies described the existing organisms life at extreme depths of the Pacific Ocean (e. g. \cite{Hartwelletal2018}; \cite{Hessleretal1978};  \cite{Itohetal2011}; \cite{Kouetal2018}; \cite{Stewart-Jamieson2018}; \cite{Webbeal2010}). 
-	Life in the hadal trenches is strongly restricted by a variety of factors that delimit the vertical constrains within distinct bathymetric strata and define the distribution of the marina organisms. The effects of hydrostatic pressure, temperature, pressure, salinity, oxygen, and food supply strongly affect and determine the location of the species level. Thus, the hydrostatic pressure within the trench increases by 1 MPa per 100 m, reaching 100 MPa in the deepest places of the tectonic trenches (\cite{Yanceyetal2014}). However, the continued studies of the biology of the Mariana Trench trenches recently discovered new phenomena: the biomass and abundance of fauna increase with depth in some hadal trenches, although their species richness decreased downward (\cite{Danovaroetal2002}). Another example is discovered new species of the deep-sea spongicolid genus Spongicoloides and glass sponge genus Corbitella detected by \cite{Kouetal2018} on a seamounts around the Mariana Trench, Figure 1. Life at such depths requires supply of nutrients in form of chemical species that is mainly transported by the bottom water of the hadal trenches through the deep currents flows ventilating the trenches and upbringing the nutrients. Moreover, based on the vertical sampling and analysis of the microbial community from the epipelagic to the hadal zones at the Mariana Trench it has recently ben discovered (\cite{Tianetal2018}) that microbes communities play a certain role in the global carbon sequestration and carbon cycle of the hadal trench system.
+Life exists in the ocean's hadal zones of the deep ocean Mariana Trench where the depths overstep 11.000 meters (\cite{Harenetal2017}).The existence of the organisms at such depths strongly depends on the turbulence of the streams and motion of the submarine currents. In turn, they are strongly influenced by the physical oceanographic properties and geomorphic structure of the trench \cite{Romankevichetal2008}. High sedimentation rates and biomass of the hadal trenches, intense microbial activity and chemosynthetic communities play crucial role in the global ocean biogeochemical cycles. Many studies described the existing organisms life at extreme depths of the Pacific Ocean (e. g. \cite{Hartwelletal2018}; \cite{Hessleretal1978};  \cite{Itohetal2011}; \cite{Kouetal2018}; \cite{Stewart-Jamieson2018}; \cite{Webbeal2010}). 
+	Life in the hadal trenches is strongly restricted by a variety of factors that delimit the vertical constrains within distinct bathymetric strata and define the distribution of the marina organisms. The effects of hydrostatic pressure, temperature, pressure, salinity, oxygen, and food supply strongly affect and determine the location of the species level. Thus, the hydrostatic pressure within the trench increases by 1 MPa per 100 m, reaching 100 MPa in the deepest places of the tectonic trenches (\cite{Yanceyetal2014}). However, the continued studies of the biology of the Mariana Trench trenches recently discovered new phenomena: the biomass and abundance of fauna increase with depth in some hadal trenches, although their species richness decreased downward (\cite{Danovaroetal2002}). Another example is discovered new species of the deep-sea spongicolid genus Spongicoloides and glass sponge genus Corbitella detected by \cite{Kouetal2018} on a seamounts around the Mariana Trench. Life at such depths requires supply of nutrients in form of chemical species that is mainly transported by the bottom water of the hadal trenches through the deep currents flows ventilating the trenches and upbringing the nutrients. Moreover, based on the vertical sampling and analysis of the microbial community from the epipelagic to the hadal zones at the Mariana Trench it has recently ben discovered (\cite{Tianetal2018}) that microbes communities play a certain role in the global carbon sequestration and carbon cycle of the hadal trench system.
 	 Strong topographical isolation and complex mix of different water masses distinct hadal trenches from other ocean regions. The difficulties to understand the deep-sea hadal life and habitats hadal zone (6000-11,000m) that represents the last great frontier in marine science, are caused by the remote location of such study object as ocean trenches. As pointed by \cite{Ichinoetal2015}, modern investigations in the marine biology are currently limited to the bathyal (200-3000m) and abyssal depths (3000-6000m). The specific of the benthic biology consists in the shape of the trench geomorphology: despite representing 1-2\% of the global benthic area, the hadal zone constitute the deepest 45\% area of the vertical depth gradient (\cite{Jamiesonetal2009}). Consequently, the communities of the hadal trenches representing spatially isolated environments highly distinct from the by shallower areas. The trenches represent a cluster of deep habitats that include features of the continental slopes, abyssal plains and unique properties of the hadal geomorphology affecting the biological aspects of the hadal ecosystems. Hadal fauna survive on the fringes of two extremes caused by the hydrostatic pressure and remoteness from the surface-derived food supply (\cite{JamiesonFujii2011}). The interconnectivity of the environmental factors affecting the hadal ecosystems is well described buy \cite{Xuetal2018}, who reviewed various aspects of the hadal biogeochemistry: the effect of food supply on hadal ecosystems, hadal carbon cycle in the sub-seafloor under high hydrostatic pressure and pollution in the hadal trenches. 
 	The geographic location and geomorphic structure of the trench have affects on the biomass in the hadal trenches. Thus, the trenches that are located closer to the continents receive more inputs of the organic matter from the adjacent shelves. Hence, this creates more food supplies for the continental slope that have steep angles and on the contrary, less food for the oceanic slopes with low angle degrees. Therefore, understanding the geomorphology of the trench is crucial for the studies of marine biology. Example of the morphological heterogeneity affected by the geographic isolation of the trenches was given by \cite{Laceyetal2018} with a case study of New Hebrides and Kermadec Trench, south-west of the Pacific Ocean. The effects of the geographical proximity and geological ages of the trenches, as well as bottom current patterns and seabed topography on the patterns of the biogenetic structure are explained by the geographical isolation and demographic independency of the marine species which preserve species endemism (\cite{Ritchieetal2017}). Specific processes characteristic for the deep hadal communities were reported by \cite{Langetal2014} with a case study of Dermacoccus abyssi isolated from the deepest areas of the oceans for dye decolorization. 
 	The geologic development of the Mariana Trench took place in several phases shaped by the influence of various factors, such as geologic conditions, volcanic submarine areas, and hydrological properties of the currents and sedimentary changes. Therefore, a special focus has been made on the analysis of the geomorphology of the Mariana Trench including the steepness angle of the slopes of the bathymetric cross section profiles. The seafloor bathymetry of the Mariana Trench varies significantly seaward of the trench axis. The Caroline Ridge is located near and off the trench axis at distance of about 0-250km. A prominent trench-parallel belt of seamounts with trench-perpendicular width of about 250 km, is located not far than 1350km. Another prominent group of wide seamounts,  intersects the trench at distance of 1600-2000km (\cite{Zhangetal2014}). The affects of the volcanism on the biological communities were recently demonstrated by \cite{Kitahashietal2014} who proved the relationship earthquake events and the assemblage structures. Because rapid sedimentation was induced by the turbidity currents, the organic matter content increased in the topmost layers which indicate that disturbances to deep-sea sediments affects vertical distribution structure of meiofauna in the trenches.
@@ -613,72 +604,91 @@ The major technical tools of this research is open source \ac{GIS} software and 
 While the usage of the traditional methods of geoinformatics and spatial analysis is, beyond doubts, strongly recommended for any research in geoscience, there is another powerful tool for the geospatial data processing other than \ac{GIS}, sometimes overlooked or skipped by the geographers: a data modelling by use of Python or R programming languages. Python, an open source free programming language is highly suitable for the statistical analysis in geoscience research, since it has a powerful statistical and math libraries, e.g. \ac{StatsModels}, highly effective for scientific computing and used in the current research. The functionality of R and Python languages and their statistical libraries, tested in this work, is proved to be highly effective for the statistical analysis of the geo-marine sets. \\
 The proposed approach of the R and Python based statistical analysis enables accurate and efficient computation and modelling of the large data sets in marine geology and oceanology. A challenge in the evaluation of geological big data sets (that is, several thousand of observation points) concerns the difficulty in manual identifying a correct algorithms in the computations and data distribution analysis. The necessity to apply a precise machine learning algorithms is recently increased in geographic sciences with respect to the importance of choosing an effective method for data visualization and computation. The solutions to the mentioned above problems are provided by Pandas data frames: for example, optimizing structure of the data, selecting the correct parts from the whole data frame (columns, rows in the data arrays) and plotting. Based on the presented results, the application of R and Python programming languages is strongly recommended in geoscience research as an addition to the traditional \ac{GIS} methods.
 
+\hspace{7em}\pgfornament[color=Plum,width=10cm]{84}
+
 %%%%%%%%%%%%%%%%%  Section  2: Geology %%%%%%%%%%%
 
 \chapter{Trenches of the Pacific Ocean} \label{sec:2}
 	\counterwithin{figure}{section}
 	\counterwithin{table}{section}
 
+There are 17 major trenches of the Pacific Ocean (Tab. \ref{tab:T1}). 
+\pagebreak
+
+\begin{table}\caption{Summary of the statistics on deep-sea trenches, Pacific Ocean}\label{tab:T1}
+\begin{tabular}{@{\makebox[2em][r]{\rownumber\space}} | p{5.5cm} p{2.5cm} p{2.5cm} p{2.5cm} |}
+\multicolumn{1}{@{\makebox[2em][r]{No}} | l}{Name} & Max. depth (m) & Length (km) & Width (km) \\ 
+		\arrayrulecolor[RGB]{184,210,0}\hline\hline\hline
+	Aleutian & 8,109 & 3,400 & 59 \\
+       		\arrayrulecolor[RGB]{195,216,37}\hline\hline
+	Mariana & 10,994  & 2,550 & 59 \\
+        		\arrayrulecolor[RGB]{170,207,83}\hline\hline
+	Philippine & 10,540 & 1,320 & 65 \\
+        		\arrayrulecolor[RGB]{199,220,104}\hline\hline
+	Kuril-Kamchatka & 10,542 & 2,900 & 59 \\
+        		\arrayrulecolor[RGB]{216,230,152}\hline\hline
+	Middle America & 6,669 & 2,750 & 34 \\
+        		\arrayrulecolor[RGB]{224,235,175}\hline\hline
+	Peru-Chile & 8,065 & 5,900 & 64 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline	
+	Palau & 11,034 & 700 & 47 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Japan & 8,513 & 800 & 59 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Kermadec & 10,047 & 1,200 & 88 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Tonga & 10,882 & 1,375 & 78 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Izu-Bonin & 9,780 & 2,800 & 82 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Bougainville-New Britain & 9,140 & 335 & 70 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Hikurangi & 3,750 & 400 & 80 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Manila & 5,400 & 648 & 76 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Yap & 8,850 & 500 & 45 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	New Hebrides & 7,600 & 1,200 & 34 \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Ryukyu & 7,460 & 2,250 & 38 \\
+        		\arrayrulecolor[RGB]{131,155,92}\hline\hline\hline
+\end{tabular}
+\end{table}
+
+
 \section{Mariana Trench}
 	\subsection{Geographic location}
 		 \subsubsection{Bathymetry}
-Mariana Trench \index[places]{Mariana Trench} is a long and narrow topographic depression of the sea floor, located in the west Pacific Ocean \index[places]{Pacific Ocean}, 200 km to the east of the Mariana Islands, eastwards of the Philippine Islands \index[places]{Philippine Islands} and China \index[places]{China}, Fig.\ref{fig:4-1-1a}. It belongs to the deepest trenches of the Earth, with maximal depths above 9-11 km, all of which are located in the western half of the Pacific Ocean.
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=14cm]{Fig-4-1-1a.jpg}
-	\caption{Study area: Mariana Trench. Visualization: QuantumGIS}\label{fig:4-1-1a}
-\end{figure}
+Mariana Trench \index[places]{Mariana Trench} is a long and narrow topographic depression of the sea floor, located in the west Pacific Ocean \index[places]{Pacific Ocean}, 200 km to the east of the Mariana Islands, eastwards of the Philippine Islands \index[places]{Philippine Islands} and China \index[places]{China}, Fig. \ref{fig:Bathy-MT}. It belongs to the deepest trenches of the Earth, with maximal depths above 9-11 km, all of which are located in the western half of the Pacific Ocean.
 
 It is the deepest part of the World Ocean \index[places]{World Ocean} with a maximal depth of 10,984$\pm$ 25 m (95\%) at 11.329903\degree N / 142.199305\degree E m at the Challenger Deep\index[places]{Challenger Deep} \cite{Gardneretal2014}. North-western Pacific Ocean is especially characteristic for the vast areas of the bottom of the basins occupied by depressions deeper 6000m with a special case of Mariana Trench. Despite the extreme bathymetric values of the Mariana Trench at Challenger Deep, its structure has following pattern: a major total area is being occupied by the abyssal depths (3-6 km), while the extreme depths exceeding 6 km, are smaller in comparison to the previous areas \cite{UyedaKanamori1979}. The abyssal make up relatively small part of the total area of the Mariana Trench, while the second ones cover about two thirds of the whole. Depths of more than 6000 m are confined mainly to the deepest part of the trench located in the south-western part of the Mariana Trench, although individual depressions to depths of 6-7 km, rarely up to 7.5 km, occur in the central part of the basins along the trench \cite{Morgan1974}. The typical depths of the ocean floor of the Mariana Trench are 4000-5000 m where mid-ocean ridges and deep-sea basins formed by numerous seamounts \index[concepts]{seamounts} and deep-sea depressions\index[concepts]{deep-sea depressions} are located. \\
 The general form of the bathymetric structure of the Mariana Trench is inclined toward the margin plate being connected with the ocean basic zone. It has high and steep island or continental slopes and more low and gentle slopes from the south-eastern side. The main area of the seafloor of the trench has prevailing depths of more than 3000 m, a seabed being the most ancient parts of the ocean floor formed in the late Jurassic \index[concepts]{Jurassic}.
-The geographic location of the edge of the Mariana Trench along the coasts of the continents or island arcs is explained mainly by the subduction of oceanic tectonic plates at the boundaries of their collision with Mariana \index[places]{Mariana Plate}, Pacific \index[places]{Pacific Plate}, Philippine \index[places]{Philippine Plate}, Caroline \index[places]{Caroline Plate} tectonic plates \ref{Ishibashietal2015}. The seabed structure of the Mariana Trench is composed in the following way from top to bottom: a sedimentary cover, a basalt of the leitic composition, a complex of parallel dykes of diabases \index[concepts]{diabases}, an isotropic gabbro\index[concepts]{gabbro}, a banded gabbro-ultrabasic complex \index[concepts]{gabbro-ultrabasic complex} lying on the mantle \index[concepts]{mantle} ultrabasites\index[concepts]{ultrabasites} \ref{Butuzova2003}. There are differences in the velocity of the longitudinal seismic waves in the geological layers of the Mariana Trench structure: water and sedimentary layer have speed of 3.5 6.2 km/s, basalt\index[concepts]{basalt} layer has speed of 6.5-7.0 km/s. The layer of gabbro and banded gabbro are located beneath. The boundary of the crust-mantle \index[concepts]{crust-mantle} is made by a sharp increase in the velocities from 7 to 8 km/s (the boundary of the Mohorovicic). The upper mantle is the region with the velocities of 8.0-8.2 km/s \cite{Garfunkeletal1986}. Analogues of the oceanic crust on the ground are ophiolites \index[concepts]{ophiolites} (Fig. \ref{fig:2-1-3}). The average thickness of the crust of this type under the platforms is about 40 km \cite{Gurevich1998}. The regions with bark continental type in the ocean are fragments of continental mass formed as a result of the formation of the modern ocean floor \index[concepts]{ocean floor} causing migration and slow movement of the trench \cite{Husson2012}.
+The geographic location of the edge of the Mariana Trench along the coasts of the continents or island arcs is explained mainly by the subduction of oceanic tectonic plates at the boundaries of their collision with Mariana \index[places]{Mariana Plate}, Pacific \index[places]{Pacific Plate}, Philippine \index[places]{Philippine Plate}, Caroline \index[places]{Caroline Plate} tectonic plates \ref{Ishibashietal2015}. The seabed structure of the Mariana Trench is composed in the following way from top to bottom: a sedimentary cover, a basalt of the leitic composition, a complex of parallel dykes of diabases \index[concepts]{diabases}, an isotropic gabbro\index[concepts]{gabbro}, a banded gabbro-ultrabasic complex \index[concepts]{gabbro-ultrabasic complex} lying on the mantle \index[concepts]{mantle} ultrabasites\index[concepts]{ultrabasites} \ref{Butuzova2003}. There are differences in the velocity of the longitudinal seismic waves in the geological layers of the Mariana Trench structure: water and sedimentary layer have speed of 3.5 6.2 km/s, basalt\index[concepts]{basalt} layer has speed of 6.5-7.0 km/s. The layer of gabbro and banded gabbro are located beneath. The boundary of the crust-mantle \index[concepts]{crust-mantle} is made by a sharp increase in the velocities from 7 to 8 km/s (the boundary of the Mohorovicic). The upper mantle is the region with the velocities of 8.0-8.2 km/s \cite{Garfunkeletal1986}. Analogues of the oceanic crust on the ground are ophiolites \index[concepts]{ophiolites}. The average thickness of the crust of this type under the platforms is about 40 km \cite{Gurevich1998}. The regions with bark continental type in the ocean are fragments of continental mass formed as a result of the formation of the modern ocean floor \index[concepts]{ocean floor} causing migration and slow movement of the trench \cite{Husson2012}.
 
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=14cm]{Fig-ASE-1.jpg}
-	\caption{Volcanic spots around the Philippine Sea, west Pacific Ocean. Visualization: QuantumGIS}\label{fig:ASE-1}
-\end{figure}
-
-Mariana Trench has a a distinctive morphological feature of the convergent plate boundaries, along which lithospheric plates \index[concepts]{lithospheric plates} move towards each other, located about 200 km parallel to a volcanic island arc \index[concepts]{volcanic island arc} \cite{Karatoetal2001}, Fig. \ref{fig:ASE-1}. The formation of the trench is caused by the complex interconnection of various environmental factors \cite{Gardneretal2014}. A trench marks the position at which the subducting slab \index[concepts]{subducting slab} descends beneath another lithospheric slab \cite{DeschampsLallemand2003}. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression stretching for hundreds kilometers and having a narrow depression on the ocean floor with very steep slopes \index[concepts]{slopes} and the depths of 3-5 km width of the bottoms rarely exceeding 5 km in breadth \cite{NakanishiHashimoto2011}. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and processes of sedimentation \index[concepts]{sedimentation}. The steepness of its geomorphic depth averages in 4-5 \degree, but its individual parts can be limited to steeper slopes as subjects to the gravitational flow system \index[concepts]{gravitational flow system} of the submarine canyons \index[concepts]{submarine canyons} and valleys \index[concepts]{submarine valleys}\cite{Kawabe1993}. Complex distribution of the various geomorphic material on the adjacent abyssal plains \index[concepts]{abyssal plains} of the ocean contributes to the formation of the geomorphic features of the particular region of the Mariana Trench.
+Mariana Trench has a a distinctive morphological feature of the convergent plate boundaries, along which lithospheric plates \index[concepts]{lithospheric plates} move towards each other, located about 200 km parallel to a volcanic island arc \index[concepts]{volcanic island arc} \cite{Karatoetal2001}. The formation of the trench is caused by the complex interconnection of various environmental factors \cite{Gardneretal2014}. A trench marks the position at which the subducting slab \index[concepts]{subducting slab} descends beneath another lithospheric slab \cite{DeschampsLallemand2003}. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression stretching for hundreds kilometers and having a narrow depression on the ocean floor with very steep slopes \index[concepts]{slopes} and the depths of 3-5 km width of the bottoms rarely exceeding 5 km in breadth \cite{NakanishiHashimoto2011}. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and processes of sedimentation \index[concepts]{sedimentation}. The steepness of its geomorphic depth averages in 4-5 \degree, but its individual parts can be limited to steeper slopes as subjects to the gravitational flow system \index[concepts]{gravitational flow system} of the submarine canyons \index[concepts]{submarine canyons} and valleys \index[concepts]{submarine valleys}\cite{Kawabe1993}. Complex distribution of the various geomorphic material on the adjacent abyssal plains \index[concepts]{abyssal plains} of the ocean contributes to the formation of the geomorphic features of the particular region of the Mariana Trench.
 
 		\subsubsection{Geometry and Shape}
-Mariana Trench has a distinctive morphological feature of the convergent Pacific plate boundaries, along which lithospheric plates move towards each other. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression. Its transverse profile is asymmetric: the slope is higher on the side of the Mariana island arc \index[places]{Mariana island arc} \ref{fig:2-1-1}. The slopes of the trench are dissected by deep underwater canyons. Various narrow steps are also often found on the slopes of the trench. On the longitudinal profiles of the bottom of the Mariana there are many deepwater detected transverse steps and thresholds \index[concepts]{thresholds} connected by the movements of the earth's crust along transverse faults\index[concepts]{faults} \cite{Zhouetal2015}. These thresholds can play important role in the evolution of the deep water trough \index[concepts]{trough}, for example, to control the intensity of its filling by sediment precipitation \index[concepts]{sediment precipitation}. In this process very important are the streams of the precipitation moving along the bottom from the part of the trough which is closer to the continent \cite{Tairaetal2004}. At the bottom of the trough there is a transverse threshold, which can present kind of a dam, in front of which there is accumulation of a thick layer of sediment precipitation.\\
+Mariana Trench has a distinctive morphological feature of the convergent Pacific plate boundaries, along which lithospheric plates move towards each other. Mariana Trench presents a strongly elongated, arched in plan and lesser rectilinear depression. Its transverse profile is asymmetric: the slope is higher on the side of the Mariana island arc \index[places]{Mariana island arc}. The slopes of the trench are dissected by deep underwater canyons. Various narrow steps are also often found on the slopes of the trench. On the longitudinal profiles of the bottom of the Mariana there are many deepwater detected transverse steps and thresholds \index[concepts]{thresholds} connected by the movements of the earth's crust along transverse faults\index[concepts]{faults} \cite{Zhouetal2015}. These thresholds can play important role in the evolution of the deep water trough \index[concepts]{trough}, for example, to control the intensity of its filling by sediment precipitation \index[concepts]{sediment precipitation}. In this process very important are the streams of the precipitation moving along the bottom from the part of the trough which is closer to the continent \cite{Tairaetal2004}. At the bottom of the trough there is a transverse threshold, which can present kind of a dam, in front of which there is accumulation of a thick layer of sediment precipitation.\\
 The total length of the trench measures about 2,550 km long approximately. Mariana Trench is one of the 37 known deep-water trenches of the World Ocean, 28 of which located in the margin areas of the tectonic plates of the Pacific Ocean \cite{PushharovskijNeprochnov1984}. It forms the peripheral framing, of which five are located in the  \index[places]{Atlantic Ocean} Atlantic Ocean \cite{Bogdanov1997} and four in Indian Ocean \index[places]{Indian Ocean} \cite{Gurevich1998}. Crossing four tectonic plates – Mariana, Caroline, Pacific and Philippine, – Mariana Trench creates a complex of the deeply interrelated factors and processes. Factors affecting formation, geomorphic development and bathymetric patterns of the Mariana Trench are diverse. The most important ones include geological, hydro-chemical, biological, geothermal, climatic, tectonic, bathymetric and geomorphological determinants. For instance, the impact of lithosphere \index[concepts]{lithosphere} is illustrated by a constant exchange of matter and energy between the submarine volcanoes \index[concepts]{submarine volcanoes} located nearby \cite{HussongUyeda1982}. The hydrosphere \index[concepts]{hydrosphere} influence on the Mariana Trench is reflected by deep ocean currents bringing sediments to the trench bottom and contributing towards accumulation of the sediment thickness \cite{HorlestonHelffrich2012}.
 
 	\subsection{Geology}
 		\subsubsection{Sedimentation}
 Thin Quaternary \index[concepts]{Quaternary} clayey sediments overlie a 400 m thick alternating sequence of the Early Cretaceous \index[concepts]{Cretaceous, Early} quartz-trachyte \index[concepts]{quartz-trachyte} pillow lava and Early to Late Cretaceous \index[concepts]{Cretaceouse, Late} radiolarian cherts in the oceanward slope of the Mariana Trench \cite{Hiranoetal2002}. The sediment cover is less than 10 m thick and is composed of soft, bedded clay with sand-size ash fragments. This clayey sediment covers a very gentle terrace 500 m wide \cite{CurtisMoyer2005}. The turbidite currents \index[concepts]{turbidite currents} are being generated on the outer shelf and upper continental slope \index[concepts]{continental slope}, due to the precipitation and transport via the submarine canyons to the axial part of the trench. The speed of such sedimentation in the bottoms of trenches closely depends on the volumes of the incoming sediments \index[concepts]{sediments} ranging from 300 to 3000 mm/thousand years \cite{Ishizukaetal2018}. 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=14cm]{Fig-2-1-1.jpg}
-	\caption{Mariana Trench. Mapping: QGIS}\label{fig:2-1-1}
-\end{figure}
-As a result of such sedimentation, over one kilometer of sediments have accumulated in the southern Aleutian \index[places]{Aleutian Trench} and Peru-Chile trenches \index[places]{Peru-Chile Trench} over the last several hundred thousand years. On the bottom of the deep ocean trenches a longitudinal main channel is usually formed under the influence of turbidite currents \cite{Pabstetal2012}. It creates favorable conditions for distinctive movements of the sand sediments that shape large elongated accumulations of the sediments \cite{Ernst2001}, Fig. \ref{fig:2-1-6}. As a hadal trench, Mariana Trench belongs to the one of the deepest 45\% of the ocean’s depth range, and its unique topography disrupts the continental shelf- slope-rise to abyssal plain continuum, resulting in an array of deep isolated habitats. The often abrupt and distinct topography is likely to further promote speciation through high hydrostatic pressure, remoteness from surface derived food sources and geographic isolation \cite{Eustaceetal2016}.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=14cm]{Fig-2-1-6.jpg}
-	\caption{Sediment thickness in the world ocean. Mapping: QGIS}\label{fig:2-1-6}
-\end{figure}
-Processes of the deep-sea terrigenous sedimentation are formed by the transfer of the erosion materials from the adjacent land. The main processes include transportation, deposition and re-deposition of the sedimentation materials. The origin of the deep ocean sedimentation is diverse. In general, apart from the sediments from the rivers, the terrigenous material goes to the oceans through iceberg melting and glacial deposits transferred to the seafloor, as well as dusty material moved by the aeolian processes. Normally, the sediments transferred by rivers are deposited within the shelf sublittoral areas, and rarely reach deeper regions of the continental slope and, even less the abyssal basins. However, sediments deposited on the shelf may move to the deeper parts of the ocean including hadal trenches, due to further move from the shelf edge downwards, avalanche sedimentation, i.e. gravitational flows, which are caused by the gravity. For the case of the Mariana Trench, the deep currents flow through the trench ventilating its bottom water flowing through the West Pacific trenches originates from the Southern Ocean \index[places]{Southern Ocean} and Antarctic \index[places]{Antarctic} and flows northward \cite{Warrenetal1988}, in a clockwise direction, passing through the trenches on the west of the Pacific (i.e. the Kermadec Trench and the Tonga Trench. Through the Samoan Passage, it flows northwest across the equator to the east Mariana Trench. Among other hadal trenches \index[concepts]{hadal trenches}, Mariana Trench is the largest structural trap located in the continental margins \index[concepts]{continental margins}. Therefore, the geomorphic conditions of Mariana Trench create ideal conditions for the sedimentation processes intercepting almost all clastic material \index[concepts]{clastic material} originating from the adjacent land, Fig. \ref{fig:2-1-5}. 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=14cm]{Fig-2-1-5.jpg}
-	\caption{Geological provinces of the East Asia. Mapping: \ac{QGIS}}\label{fig:2-1-5}
-\end{figure}
-The accumulation \index[concepts]{sedimentation, accumulation} of the terrigenous sedimentation \index[concepts]{sedimentation, terrigenous} on the Mariana Trench seafloor depends on various factors. These include climatic and hydrodynamic local characteristics, tectonics, structure of the seafloor bathymetry, geomorphic characteristics of the trench, type and size of particles and others. Large areas of active sedimentation processes can be distinguished in the areas where the speed of the sedimentation and their volumes are very high, as well as local areas of active sedimentation, or, on the contrary, dominating erosion areas. In general, sedimentation processes mainly occur in various sediment traps, however, some areas are noted by areal sedimentation. Therefore, the processes of the sedimentation within the Mariana Trench are highly uneven.
+As a result of such sedimentation, over one kilometer of sediments have accumulated in the southern Aleutian \index[places]{Aleutian Trench} and Peru-Chile trenches \index[places]{Peru-Chile Trench} over the last several hundred thousand years. On the bottom of the deep ocean trenches a longitudinal main channel is usually formed under the influence of turbidite currents \cite{Pabstetal2012}. It creates favorable conditions for distinctive movements of the sand sediments that shape large elongated accumulations of the sediments \cite{Ernst2001}. As a hadal trench, Mariana Trench belongs to the one of the deepest 45\% of the ocean’s depth range, and its unique topography disrupts the continental shelf- slope-rise to abyssal plain continuum, resulting in an array of deep isolated habitats. The often abrupt and distinct topography is likely to further promote speciation through high hydrostatic pressure, remoteness from surface derived food sources and geographic isolation \cite{Eustaceetal2016}. \\
+Processes of the deep-sea terrigenous sedimentation are formed by the transfer of the erosion materials from the adjacent land. The main processes include transportation, deposition and re-deposition of the sedimentation materials. The origin of the deep ocean sedimentation is diverse. In general, apart from the sediments from the rivers, the terrigenous material goes to the oceans through iceberg melting and glacial deposits transferred to the seafloor, as well as dusty material moved by the aeolian processes. Normally, the sediments transferred by rivers are deposited within the shelf sublittoral areas, and rarely reach deeper regions of the continental slope and, even less the abyssal basins. However, sediments deposited on the shelf may move to the deeper parts of the ocean including hadal trenches, due to further move from the shelf edge downwards, avalanche sedimentation, i.e. gravitational flows, which are caused by the gravity. For the case of the Mariana Trench, the deep currents flow through the trench ventilating its bottom water flowing through the West Pacific trenches originates from the Southern Ocean \index[places]{Southern Ocean} and Antarctic \index[places]{Antarctic} and flows northward \cite{Warrenetal1988}, in a clockwise direction, passing through the trenches on the west of the Pacific (i.e. the Kermadec Trench and the Tonga Trench. Through the Samoan Passage, it flows northwest across the equator to the east Mariana Trench. Among other hadal trenches \index[concepts]{hadal trenches}, Mariana Trench is the largest structural trap located in the continental margins \index[concepts]{continental margins}. Therefore, the geomorphic conditions of Mariana Trench create ideal conditions for the sedimentation processes intercepting almost all clastic material \index[concepts]{clastic material} originating from the adjacent land. The accumulation \index[concepts]{sedimentation, accumulation} of the terrigenous sedimentation \index[concepts]{sedimentation, terrigenous} on the Mariana Trench seafloor depends on various factors. These include climatic and hydrodynamic local characteristics, tectonics, structure of the seafloor bathymetry, geomorphic characteristics of the trench, type and size of particles and others. Large areas of active sedimentation processes can be distinguished in the areas where the speed of the sedimentation and their volumes are very high, as well as local areas of active sedimentation, or, on the contrary, dominating erosion areas. In general, sedimentation processes mainly occur in various sediment traps, however, some areas are noted by areal sedimentation. Therefore, the processes of the sedimentation within the Mariana Trench are highly uneven.
 
 	\subsubsection{Lithology}
 The lithological structure and sediment thickness are among the other factors affecting Mariana Trench formation. Relatively few other trenches, comparing to Mariana Trench, also formed on the boundaries of the tectonic plates, but usually at a greater distance from the continents in the rift zones \index[concepts]{rift zones}. Therefore, the sedimentation processes within Marina Trench are deeply impacted by the location near the rift zones that are mainly associated with the formation of the underwater mountain ranges \index[concepts]{underwater mountain ranges} and spreading \index[concepts]{spreading}. Their expansion in the sides of the neighboring lithospheric plates is a result of the rise towards Mariana Trench. The outflow to the surface of the ocean floor of the substance of the upper layer of the Earth's mantle \index[concepts]{Earth's mantle}. As a result of the unevenness of this process, the transversed faults are formed that have excellent conditions for sedimentation accumulation. According to available geophysical data \cite{DubininUshakov2001}, the oceanic crust of the tectonic plates surrounding Mariana Trench is composed by a number of layers. Therefore, the impact of the sediment subduction \index[concepts]{subduction} on the trench dynamics \index[concepts]{trench dynamics} is relatively high, which is highlighted by \cite{HorlestonHelffrich2012}.
 
 	\subsubsection{Geomorphology}
 	\paragraph{Geomorphic structure}
-Mariana Trench has a complicated geomorphic structure \index[concepts]{geomorphology} with various types of the continental tectonic plate \index[concepts]{tectonic plate} boundaries producing a unique type of its seafloor  \index[concepts]{seafloor} bathymetry  \index[concepts]{bathymetry} (Fig. \ref{fig:2-1-2}). The seafloor of the Mariana Trench is a background, on which all the processes occurring in the Mariana Trench are reflected \cite{Dic1974}. The main morphostructure elements of the seafloor are the outskirts of the continents and of the ocean bedrock \index[concepts]{ocean bedrock}. The structure of the Mariana Trench and the nature of its relief are greatly complicated by the multiple secondary tectonic disturbances, i.e. by the occurrence of faults and displacements on of graben, 
+Mariana Trench has a complicated geomorphic structure \index[concepts]{geomorphology} with various types of the continental tectonic plate \index[concepts]{tectonic plate} boundaries producing a unique type of its seafloor  \index[concepts]{seafloor} bathymetry  \index[concepts]{bathymetry}. The seafloor of the Mariana Trench is a background, on which all the processes occurring in the Mariana Trench are reflected \cite{Dic1974}. The main morphostructure elements of the seafloor are the outskirts of the continents and of the ocean bedrock \index[concepts]{ocean bedrock}. The structure of the Mariana Trench and the nature of its relief are greatly complicated by the multiple secondary tectonic disturbances, i.e. by the occurrence of faults and displacements on of graben, 
 horsts \index[concepts]{horsts} and lateral geologic shifts \index[concepts]{lateral geologic shifts} \cite{Lisicynetal1990}. Among other trenches, Mariana Trench is distinct for its edge type associated with the marginal tectonic plate subduction processes \cite{Boutelieretal2014}. Namely, Mariana Trench is formed in the process of the subduction of one plate beneath another. Submarine terrain of the Mariana trench has a complex structure of various objects, the scale of which sharply exceeds the dimensions forms of the earth's surface on the margin continents. These include the system of the mid-ocean ridges, crossing their sub-system of transform faults, deep-sea ridges \index[concepts]{deep-sea ridges}, vast ocean plains complicated by chains and mountain groups, ridges \index[concepts]{ridge} and plateaus \index[concepts]{plateau} \cite{Jarrard1986}. The width of the continental shelf \index[concepts]{continental shelf} of the margin plates connecting to the Mariana trench occupies varies from a few tens to thousands of km and the average bottom slope is 17-25 \degree \cite{PushharovskijMelanholina1992}. The main ridge axes of the Mariana trench represent a place in the system where the upwelling magma encounters cold seawater in the location of four tectonic plates crossing Mariana trench. Since functionality of the biological communities of the Marina trench goes beyond the scopes of the current research, it should be only briefly mention as an example of interconnection of the system \cite{Galloetal2015}, \cite{Laceyetal2016}. Hence, the hydrothermal cooling of magma at the ridge axes causes recycling of the entire volume of the water in the hadal column. In this way it provides nutrients for biological communities\index[concepts]{biological communities} in the abyssal of trench \index[concepts]{abyssal of trench}, as studies, for example in various research papers \cite{Langetal2014}, \cite{Luoetal2017}, \cite{Ichinoetal2015}. The main part of the seabed of the Mariana Trench is composed by the oceanic crust forming rift zones of the mid-ocean ridges with a capacity of 5 to 10 km \cite{Morgan1974}. Since the system of the Mariana trench is complicated and constituent of the interrelated factors forming its tectonic structure, there are various attempt to answer the question of trench tectonics. Thus, it is discovered \cite{RuffKanamori1980} that deformations of the trench respond to the coupling between the upper and lower plates, that is, coupling itself relating to the continental slab age-buoyancy \index[concepts]{continental slab age-buoyancy}. Nevertheless, is has been found \cite{HeuretLallemand2005} that back-arc deformation roughly correlate with upper continental tectonic plate velocity \index[concepts]{tectonic plate velocity}. The trench migration rates are chiefly controlled by the lower continental tectonic plate velocity \cite{Lallemandetal2008}, which in turn depends on the tectonic slab age buoyancy \cite{Chase1978}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=14cm]{Fig-2-1-2.jpg}
-	\caption{Mariana Trench. Mapping: \ac{QGIS}}\label{fig:2-1-2}
+	\includegraphics[width=14cm]{Bathy-MT.jpg}
+	\caption{Mariana Trench. Mapping: \ac{GMT}}\label{fig:Bathy-MT}
 \end{figure}
 Its transverse profile is strongly asymmetric: the slopes of the Mariana Trench are higher on the side of the island arc. The slopes of the trench are dissected by deep underwater canyons. On the slopes of the trench are also often found various narrow steps. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and sedimental processes. Mariana Trench is the largest structural trap located in the continental margins of the Pacific Ocean: the sediments are being carrying by the ocean waves in a clockwise direction, passing through the trenches on the west of the Pacific (i.e. the Kermadec Trench and the Tonga Trench. Through the Samoan Passage). They furthermore flow northwest across the equator to the east Mariana Trench.
 The adjusting continental slopes are high, reaching up to several thousand meters and inclining to 3-6 \degree (in the south-western part of the trench up to 30-40 \degree), the upper boundary of which coincides with the edges of the shelf (depths of 150-200 m). Slopes of the passive margins \index[concepts]{passive margins} are strongly complicated by the terraces \index[concepts]{terraces}, ledges, marginal plateaus \index[concepts]{plateau, marginal} and canyons \index[concepts]{canyons}. Slopes of the margins are steeper, reaching can 5-7 km in height. The geomorphic structure of the Mariana Trench is complicated by the longitudinal ridges \index[concepts]{ridges, longitudinal}, steps\index[concepts]{steps}, large landslide \index[concepts]{landslide}, bodies and ledges \index[concepts]{ledges}. At the base of the continental slope of passive margins formed by the adjacent tectonic plates, Philippine Sea, Pacific and Caroline on the south-west, continental foot forms accumulative body. In turn it is formed by the merged cones of the removal and plumes of the suspension flows \index[concepts]{suspension flows} and submarine landslides \index[concepts]{landslides, submarine} with abyssal sedimentation \index[concepts]{sedimentation, abyssal}. Submarine margins of continents \index[concepts]{submarine margins of continents}, or transition zones depend on the features of the relief and geology. According to them they are divided into two types: the passive ones and the active ones. The first ones include the shelf \index[concepts]{shelf}, that is mainland bank \index[concepts]{mainland bank}, the slope and the mainland foot. Having complicated relief structure with marginal seas \index[concepts]{marginal seas}, island arcs \index[concepts]{island arcs} and deep-sea gutters, Mariana Trench belongs to the active type of trench. Due to the geodynamic reasons, Mariana Trench motion, migration and upper plate deformation \index[concepts]{plate deformation} can be described as the result of the response to the mantle flow and the imbalance between the forces exerted by the lower and upper continental plates at the plate interface.
@@ -690,26 +700,11 @@ Mariana Trench is notable for its well-developed systems of cracks in the struct
 Deep earthquakes are important factors causing system of cracks of the Mariana Trench. The occurrence of the deep earthquakes could be explained by various factors. For instance, transformation faulting was proposed as the mechanism for deep earthquakes by \cite{Kirbyetal1996}. This research is largely based on the basis of experimental observations \cite{GreenBurnley1989}, \cite{BurnleyGreen1991}, \cite{Kirbyetal1991} and involves a shear instability that develops during the incipient transformation of metastable olivine \index[concepts]{metastable olivine} to wadsleyite \index[concepts]{wadsleyite} or ringwoodite \index[concepts]{ringwoodite}.\\The horizontal tensional stress during the earthquake shaking triggers development of the system of cracks in the Mariana Trench, because the stress difference under static conditions is caused by the slope inclination \index[concepts]{slope inclination}. The majority of the cracks within the Mariana Trench are open tensile failures and are situated in areas of very gentle slope or horizontal parts of the seabed, in most cases near the edges of steep cliffs which delimit the terraces. There is no lateral nor vertical dislocations \index[concepts]{dislocations, lateral}\index[concepts]{dislocations, vertical} on both sides of the cracks, so they are open fractures \index[concepts]{fractures}.
 
 	\subsubsection{Igneous volcanic areas}
-Mariana Trench is an important integral feature of the active continental margins that naturally includes deep plate subduction \ref{fig:2-1-3}. Subduction of slabs of oceanic lithosphere into the deep mantle involves a wide range of the geophysical and geochemical processes and is of major importance for the physical and chemical evolution of the Earth \cite{Milleretal2004}. Thus, the subduction and subduction-related volcanism are the major processes through which geochemical components are being recycled between the Earth’s crust, lithosphere and mantle \cite{Yoshiokaetal2015}. A large proportion of the world’s earthquakes and volcanoes are related to the subduction \cite{Kirbyetal1996}. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=14cm]{Fig-2-1-3.jpg}
-	\caption{Igneous volcanic areas, ophiolite and lithology of the adjacent area around the Mariana Trench. Mapping: \ac{QGIS}}\label{fig:2-1-3}
-\end{figure}
-
-Deep sea volcanism results from a range of processes including dehydration\index[concepts]{dehydration}, melting \index[concepts]{melting} and melt migration. The deepest known earthquakes occur in the subducted lithosphere at depths of 660–700 km but their cause is still not explained. In addition, the motion and velocities of the lithospheric plates at the Earth’s surface are controlled largely by the buoyancy\index[concepts]{buoyancy} forces that drive subduction. Because of the wide variety of processes involved, subduction zones can be regarded as natural laboratories through which dynamic behaviour in the Earth’s mantle can be studied. Factors affecting plate subduction include hydrothermal factors \cite{Yoshikawaetal2012}, buoyancy forces, rheology\index[concepts]{rheology} of mantle minerals, stabilities of hydrous minerals, partial melting, mechanisms and rates of melt migration, kinetics of phase transformations \index[concepts]{transformation, kinetics}\index[concepts]{transformations, phase}, mechanisms of deep earthquakes, geochemical recycling \index[concepts]{geochemical recycling}, and the processes of continental collision \index[concepts]{continental collision} that result from the subduction \cite{Milleretal2005}. One fundamental problem concerns the depth to which subducted lithosphere penetrates into the mantle because this is related to the scale of mantle convection and the Earth’s evolution \index[concepts]{Earth’s evolution}.
+Mariana Trench is an important integral feature of the active continental margins that naturally includes deep plate subduction. Subduction of slabs of oceanic lithosphere into the deep mantle involves a wide range of the geophysical and geochemical processes and is of major importance for the physical and chemical evolution of the Earth \cite{Milleretal2004}. Thus, the subduction and subduction-related volcanism are the major processes through which geochemical components are being recycled between the Earth’s crust, lithosphere and mantle \cite{Yoshiokaetal2015}. A large proportion of the world’s earthquakes and volcanoes are related to the subduction \cite{Kirbyetal1996}. Deep sea volcanism results from a range of processes including dehydration\index[concepts]{dehydration}, melting \index[concepts]{melting} and melt migration. The deepest known earthquakes occur in the subducted lithosphere at depths of 660–700 km but their cause is still not explained. In addition, the motion and velocities of the lithospheric plates at the Earth’s surface are controlled largely by the buoyancy\index[concepts]{buoyancy} forces that drive subduction. Because of the wide variety of processes involved, subduction zones can be regarded as natural laboratories through which dynamic behaviour in the Earth’s mantle can be studied. Factors affecting plate subduction include hydrothermal factors \cite{Yoshikawaetal2012}, buoyancy forces, rheology\index[concepts]{rheology} of mantle minerals, stabilities of hydrous minerals, partial melting, mechanisms and rates of melt migration, kinetics of phase transformations \index[concepts]{transformation, kinetics}\index[concepts]{transformations, phase}, mechanisms of deep earthquakes, geochemical recycling \index[concepts]{geochemical recycling}, and the processes of continental collision \index[concepts]{continental collision} that result from the subduction \cite{Milleretal2005}. One fundamental problem concerns the depth to which subducted lithosphere penetrates into the mantle because this is related to the scale of mantle convection and the Earth’s evolution \index[concepts]{Earth’s evolution}.
 
 \subsection{Tectonics}
 	\subsubsection{Plates subduction}
-Mariana Trench crosses four tectonic plates of the Pacific Ocean: Mariana, Caroline, Philippine and Pacific 
-(Fig. \ref{fig:2-1-4}). It has a distinctive morphological feature of the four convergent Pacific plate boundaries, along which lithospheric plates move towards each other. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=14cm]{Fig-2-1-4.jpg}
-	\caption{Tectonic plates and geologic provinces around Mariana Trench. Mapping: \ac{QGIS}}\label{fig:2-1-4}
-\end{figure}
+Mariana Trench crosses four tectonic plates of the Pacific Ocean: Mariana, Caroline, Philippine and Pacific. It has a distinctive morphological feature of the four convergent Pacific plate boundaries, along which lithospheric plates move towards each other. 
 
 Many physical and chemical processes interact during tectonic plates subduction, and the complexity of the system necessitates an interdisciplinary approach involving seismology \index[concepts]{seismology}, mineral physics \index[concepts]{mineral physics}, geochemistry \index[concepts]{geochemistry}, petrology \index[concepts]{petrology}, structural geology \index[concepts]{structural geology}, rock mechanics \index[concepts]{rock mechanics }, and geodynamic modeling. For example, phase transformation kinetics determine buoyancy, rates of subduction and, therefore, thermal structure, with the latter feeding back to affect the kinetics. Rheology and therefore large scale slab dynamics may also be affected by mineral transformations and their kinetics. The rheology of mantle minerals, though having considerable importance in controlling the subduction process, is exceedingly difficult to study experimentally, due to the experimental limitations, since rheology at pressures of the transition zone and lower mantle \cite{KaratoRubie1997}. An increase of intrinsic density or viscosity with depth as well as phase transitions with a negative Clapeyron slope can all inhibit or delay deep subduction, and the tectonic conditions and the relative motion of the tectonic plates at Earth’s surface also play an important role. The effects of subduction of crustal rocks during continental collision consists in following subduction to depths greater than 90km. Slices of continental crust have been exhumed back to the surface very rapidly, thus ensuring the survival of the high-pressure minerals. 
 
@@ -729,22 +724,12 @@ Processes of the deep-sea terrigenous sedimentation are formed by the transfer o
 The geomorphology of the Mariana Trench was studied through the spatial and statistical analysis of the 25 cross-section bathymetric profiles digitized across the trench. Each profile has a length of 1000 km and a distance between each two is 100 km. The methodology consists of two parts: geospatial data processing and statistical analysis. \\
 First, during the geospatial part of the research, the data were collected from the \ac{QGIS} project as vector layers. The attribute tables contained numerical data on bathymetry, geology, tectonic plates and geometric features of the Mariana Trench in its various segments of the geographic location: north-west, centre, south-west. \\
 Second, during the statistical part of the research, the table in .csv format was then read into the Python environment using Pandas package. The profiles were observed using methods of the statistical modelling performed by Python programming language. During the statistical testing and experiment, several existing approaches (\cite{BoxTiao1992}; \cite{Timm2007}; \cite{Oliphant2007}; \cite{Oliphant2015}) provided by the Python \ac{StatsModel} and Matplotlib libraries were used as the core algorithms described below. 
-The \ac{GIS} part of the research is performed in the \ac{QGIS} \ref{fig:3-1-1}. 
+The \ac{GIS} part of the research is performed in the \ac{QGIS}. 
+
+Using \ac{QGIS} plugins several complex tasks were separated into smaller and more manageable components (e.g. reading coordinates, crossing profile lines, etc). Various geospatial data have been uploaded into the \ac{GIS} to form the project: bathymetric features of the trench, sediment thickness, location of igneous volcanic zones, distribution of the tectonic plates, etc. The \ac{GIS} project has been projected into the \ac{UTM} cartesian coordinate system (square N-55). The GIS processing part consisted in following steps. Firstly, 25 1000-km long cross-section bathymetric profiles were digitized across the trench. The geometry of the first of the 25 profiles has been digitized across the Mariana Trench manually. Then, the line has been copied and re-entered for the next 24 profiles with a distance between every two neighbor lines of 100 km. The numbering of the profiles goes consequently from the north to the south, from 1 to 25. Hence, every profile contained 518 measurement points, XY coordinates, elevation depth data and thematic geological data (e.g. thickness of the sediment layer) stored in an attribute table. The \ac{QGIS} tool plugin 'Lat Lon Tools' adding projected coordinated has been installed to activate \ac{QGIS} option of adding x and y values directly to the Spreadsheet. The data were copied into a table which was used further in this work for the statistical processing. The created profiles are visualized on Figure \ref{fig:3-1-2}
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-3-1-1.jpg}
-	\caption{Digitizing 25 bathymetric profiles across the Mariana Trench. Visualization:\ac{QGIS}3.0.}\label{fig:3-1-1}
-\end{figure}
-Using \ac{QGIS} plugins several complex tasks were separated into smaller and more manageable components (e.g. reading coordinates, crossing profile lines, etc). Various geospatial data have been uploaded into the \ac{GIS} to form the project: bathymetric features of the trench, sediment thickness, location of igneous volcanic zones, distribution of the tectonic plates, etc. The \ac{GIS} project has been projected into the \ac{UTM} cartesian coordinate system (square N-55). The GIS processing part consisted in following steps. Firstly, 25 1000-km long cross-section bathymetric profiles were digitized across the trench, as illustrated on \ref{fig:4-1-1b}. The geometry of the first of the 25 profiles has been digitized across the Mariana Trench manually. Then, the line has been copied and re-entered for the next 24 profiles with a distance between every two neighbor lines of 100 km. The numbering of the profiles goes consequently from the north to the south, from Nr. 1 to Nr. 25, respectively. Hence, every profile contained 518 measurement points, XY coordinates, elevation depth data and thematic geological data (e.g. thickness of the sediment layer) stored in an attribute table. 
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=12cm]{Fig-4-1-1b.jpg}
-	\caption{Four steps of creating 25 bathymetric profiles in QGIS}\label{fig:4-1-1b}
-\end{figure}
-The \ac{QGIS} tool plugin 'Lat Lon Tools' adding projected coordinated has been installed to activate \ac{QGIS} option of adding x and y values directly to the Spreadsheet. The data were copied into a table which was used further in this work for the statistical processing. The created profiles are visualized on Figure \ref{fig:3-1-2}
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=14cm]{Fig-3-1-2.jpg}
+		\includegraphics[width=12cm]{Fig-3-1-2.jpg}
 	\caption{Graphs of the 25 bathymetric profiles, Mariana Trench, Quantum GIS 3.0}\label{fig:3-1-2}
 \end{figure}
 
@@ -798,7 +783,7 @@ The topography of the 25 profiles (Fig. \ref{fig:GML2}) was plotted using ‘Pro
 	
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=14cm]{Fig-GML4.jpg}
+	\includegraphics[width=10cm]{Fig-GML4.jpg}
 	\caption{Ridgeline plot on the topography of the cross-section profiles, Philippine Trench area and Philippine archipelago. Plotting: R.}\label{fig:GML4}
 \end{figure}
 
@@ -844,16 +829,16 @@ The topography of the 25 profiles (Fig. \ref{fig:GML2}) was plotted using ‘Pro
 	
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=14cm]{Fig-GML9.jpg}
+	\includegraphics[width=10cm]{Fig-GML9.jpg}
 	\caption{Correlation matrix by Spearman method visualizing influence of the impact factors on the geomorphology of the cross-section profiles. Plotting: R.}\label{fig:GML9}
 \end{figure}
 
-	The fitted model of the matrix shows (Fig. \ref{fig:GML9}) following variables representing the relationships between the elements of the Philippine Trench system: elevation values as topographic and bathymetric sampling points (maximal, minimal and mean values of the depths and heights in meters), sediment thickness (in meters), number of observation samples across two tectonic plates (Sunda Plate and Philippine Plate), geomorphic elements of slope across the trench (tangent degree and slope aspect), and seven types of the geology (rock lithology: see Table 1 for details). The absolute coordinates were excluded as a factor to remove the effect of the geodetic location. In total 15 variables were tested using following attribute classes: geology: 7, geomorphology: 2, sedimentation: 1, tectonics: 2 and bathymetry: 3. The computed matrix is shown on Fig. \ref{fig:GML9}.
+	The fitted model of the matrix shows (Fig. \ref{fig:GML9}) following variables representing the relationships between the elements of the Philippine Trench system: elevation values as topographic and bathymetric sampling points (maximal, minimal and mean values of the depths and heights in meters), sediment thickness (in meters), number of observation samples across two tectonic plates (Sunda Plate and Philippine Plate), geomorphic elements of slope across the trench (tangent degree and slope aspect), and seven types of the geology (rock lithology: see Table 1 for details). The absolute coordinates were excluded as a factor to remove the effect of the geodetic location. In total 15 variables were tested using following attribute classes: geology: 7, geomorphology: 2, sedimentation: 1, tectonics: 2 and bathymetry: 3. The computed matrix is shown on Fig. \ref{fig:GML9}.\\
 	The effects of the variations in the slope degree were tested by computed tangent angles for each of the 25 profiles, respectively (Fig. \ref{fig:GML10} plot 1)  and repeated the analysis by ranking bathymetric profiles according to the geomorphic slope steepness (Fig. \ref{fig:GML10} plot 2). Finally, the grouping of the profiles by slopes was performed by dividing the range into five classes, as follows: ‘strong slope’, ‘very strong slope’, ‘steep slope’, ‘very steep slope’, ‘extreme slope’. 
 		
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=14cm]{Fig-GML10.jpg}
+	\includegraphics[width=10cm]{Fig-GML10.jpg}
 	\caption{Ranking geomorphology of the cross-section profiles. Plotting: R.}\label{fig:GML10}
 \end{figure}
 
@@ -960,6 +945,7 @@ The statistical results (Fig. \ref{fig:R8}) show certain differences in the dept
 \end{figure}
 However, more significant differences can be seen for the depths >6,000 m. Thus, the southern part of the trench (shown on Fig. \ref{fig:R8} (B) has only few values (9 samples) with depths >6,800m while the northern part shows 41, 59 and 23 records, with a maximal values reaching -7,460 m. Moderate to shallow depths with ranges from -3,000 to -5,000 m are comparable for both parts of the trench with values not exceeding 68 samples for the northern part and 42 samples for the southern, respectively. \\
 The forearc basin deeper than 2,000 m and shallower than 1,000 m \ac{BSL} shows more samples data in the northern part of the trench than in the south. In contrast, a wide terrace with depths shallower than 25 m is generally larger (161 samples) in the southern part of the trench. To conclude, the comparison between the two spatially different segments of the trench show that northern part of the trench has deeper depths comparing to the southern. This can also be noted on the Fig. \ref{fig:R1} where the deepest values of the central part are clearly seen with the deepest area extending seaward offshore from the Miyako Fault \index[places]{Miyako Fault} (Fig. \ref{fig:R2}).
+
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-R8.jpg}
@@ -987,42 +973,105 @@ The Izu-Bonin (a.k.a. Izu-Ogasawara Trench) \index[places]{Izu-Bonin Trench} is 
 
 \section{Aleutian Trench}
 \subsection{Summary}
-The research aim of the work is methodological development of the precise mapping and modelling of the hadal trench based on the Generic Mapping Tools (GMT) scripting. The presented paper laid a strong focus on the technical routines of the cartographic workflow fully based on the GMT scripting. A selected geographic case study of the current research is Aleutian Trench and Aleutian Islands, North Pacific Ocean. The presented modelling and visualized maps demonstrate excellent possibilities of the GMT for the bathymetric mapping, as well as geodetic and geophysical modelling for the selected study area. The modelling demonstrated following results. The topography in the study area ranges between -8000/2000 m. The geoid gravitational model shows the majority of values lies in the interval between -10 to 20 mGal with the lowest values along the trench. According to the statistical histogram modelling, the most often depth value in the study area is -4800 with frequency 1722. Four approaches for the profile linear trend modelling were tested. Finally, a surface modelling was performed using xyz modelling from the ASCII data. The tested functionality of the modules of GMT proved it to be a highly effective cartographic toolset enabling precise geological mapping.
+The research aim of the work is methodological development of the precise mapping and modelling of the hadal trench based on the \ac{GMT} scripting. The presented paper laid a strong focus on the technical routines of the cartographic workflow fully based on the GMT scripting. A selected geographic case study of the current research is Aleutian Trench \index[places]{Aleutian Trench} and Aleutian Islands \index[places]{Aleutian Islands}, North Pacific Ocean, Fig. \ref{fig:A1}. The presented modelling and visualized maps demonstrate excellent possibilities of the GMT for the bathymetric mapping, as well as geodetic and geophysical modelling for the selected study area. The modelling demonstrated following results. The topography in the study area ranges between -8000/2000 m, Fig. \ref{fig:A2}. 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A1.jpg}
+	\caption{Bathymetric and general map of the Aleutian Trench area from the ETOPO1 grid}\label{fig:A1}
+\end{figure}
+
+The geoid gravitational model (Fig. \ref{fig:A4}) shows the majority of values lies in the interval between -10 to 20 mGal with the lowest values along the trench. According to the statistical histogram modelling, the most often depth value in the study area is -4800 with frequency 1722. Four approaches for the profile linear trend modelling were tested. Finally, a surface modelling was performed using xyz modelling from the \ac{ASCII} data. The tested functionality of the modules of \ac{GMT} proved it to be a highly effective cartographic toolset enabling precise geological mapping.
 
 \subsection{Geographic Settings}
-The Aleutian Trench \index[places]{Aleutian Trench} is located in the North Pacific Ocean in the area of tectonic plate subduction \cite{Drewes}. Understanding the geomorphic form and shape of the deep-sea trench is crucial to modelling the geophysical and geological phenomena of the trench. Various factors affect its formation, among which, tectonics plates movement, subduction of the underlying slab into the deep mantle, seismic activities in the study area, e.g. submarine earthquakes \cite{Shepard1963}. Other factors include geological phenomena identifying the characteristics of the submarine geomorphology of the trench system, which has been discussed in numerous papers on geological data modelling \cite{Tibaldi}, \cite{Yogodzinski}, \cite{Munker}.\\
-The seafloor is constantly experiencing deformations under the impact of the plate tectonic processes, modelling shape of the ocean floor is one of the fundamental issues of the marine geology. However, proper techniques of the mapping, visualization and modelling deep-sea hadal trenches are still developing \cite{Wadge}, \cite{WesselSmith1991}. The study of the submarine landforms, such as hadal trenches, has certain limitations in the development and progress due to the remote location of the study object. Therefore, modelling seafloor lies by means of the free open source software by the machine algorithms, data modelling and approximations is an effective tool for the marine mapping.\\
-The particular problem in the geospatial mapping of the seafloor lies in the complexity of the processes involved in the formation of the landforms. Submarine geologic modelling should therefore encompass not only the landforms of the trench itself, but also its explicit links with tectonics, seismisity in the study area, earthquakes repeatability and magnitude, oceanological parameters (current direction and strength) as well as lithology (nature and properties of the underlying rocks).
-Geologically, the Aleutian Islands arc is classified as an accreting margin \cite{Jicha} with most of the arc having a well-developed frontal prism formed in the Plio-Pleistocene. The central Aleutian volcanic front migrated northwards 30–60 km since the formation of the arc massif completed in the late Eocene. Aleutian Trench has weak coupling between the surface tectonic plate and subducting slabs \cite{Yoshida2017}. The seismisity of the Aleutian regions causes tsunami that affect far located regions \cite{Ryan} of which the 1946 was by far the most severe \cite{Bai}. Further studies on the seismisity, earthquake sources and effects distribution in the region of the Aleutian Islands is developed in various studies \cite{Ekstrom}, \cite{Engdahl}. The tectonics of the Aleutian-Komandorsky chain that is proved \cite{Gaedicke} to be colliding with Kamchatka at the Kamchatsky Peninsula Cape. Structural evolution of the Kamchatka-Aleutian junction area in the Mesozoic and Tertiary was affected by the subduction in Kronotskiy subduction zone and collision of the Kronotskiy arc against North-East Eurasia margin \cite{Alexeiev}. The Aleutian tectonics is deeply connected with Kuril-Kamchatka since the Aleutian transform fault separated the Kronotskiy terrane block from the Pacific plate \cite{Freitag}. Relevant studies \cite{Fliedner}, \cite{Holbroock} develop further investigations on the crustal structure transition form oceanic to continental arc in the Aleutian Islands region. The geological composition of the andesite substrate in Aleutian Trench results as melts from subducted Pacific ocean crust \cite{Kay}. More details on the geological and biological uniqueness of the Aleutian islands area are provided in relevant research \cite{Rathburn}. An interesting example of the existing cartographic work as contour bathymetric map dated 1945 can be found by \cite{Murray}.
+The Aleutian Trench \index[places]{Aleutian Trench} is located in the North Pacific Ocean (Fig. \ref{fig:A2}) in the area of tectonic plate subduction \cite{Drewes}. Understanding the geomorphic form and shape of the deep-sea trench is crucial to modelling the geophysical and geological phenomena of the trench. Various factors affect its formation, among which, tectonics plates movement, subduction of the underlying slab into the deep mantle, seismic activities in the study area, e.g. submarine earthquakes \cite{Shepard1963}. Other factors include geological phenomena identifying the characteristics of the submarine geomorphology of the trench system, which has been discussed in numerous papers on geological data modelling \cite{Tibaldi}, \cite{Yogodzinski}, \cite{Munker}.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A2.jpg}
+	\caption{Contour map showing area of the Aleutian Trench}\label{fig:A2}
+\end{figure}
+
+The seafloor is constantly experiencing deformations under the impact of the plate tectonic processes, modelling shape of the ocean floor is one of the fundamental issues of the marine geology. However, proper techniques of the mapping, visualization and modelling deep-sea hadal trenches are still developing \cite{Wadge}, \cite{WesselSmith1991}. The study of the submarine landforms, such as hadal trenches, has certain limitations in the development and progress due to the remote location of the study object. Therefore, modelling seafloor lies by means of the free open source software by the machine algorithms, data modelling and approximations is an effective tool for the marine mapping. The particular problem in the geospatial mapping of the seafloor lies in the complexity of the processes involved in the formation of the landforms. Submarine geologic modelling should therefore encompass not only the landforms of the trench itself, but also its explicit links with tectonics, seismicity in the study area, earthquakes repeatability and magnitude, oceanological parameters (current direction and strength) as well as lithology (nature and properties of the underlying rocks).
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A3.jpg}
+	\caption{Modelling 3D mesh grid of the Aleutian Islands and Aleutian Trench area}\label{fig:A3}
+\end{figure}
+
+Geologically, the Aleutian Islands arc \index[places]{Aleutian Islands arc} is classified as an accreting margin \cite{Jicha} with most of the arc having a well-developed frontal prism formed in the Plio-Pleistocene. The central Aleutian volcanic front migrated northwards 30–60 km since the formation of the arc massif completed in the late Eocene. Aleutian Trench has weak coupling between the surface tectonic plate and subducting slabs \cite{Yoshida2017}. The seismisity of the Aleutian regions causes tsunami that affect far located regions \cite{Ryan} of which the 1946 was by far the most severe \cite{Bai}. Further studies on the seismisity, earthquake sources and effects distribution in the region of the Aleutian Islands is developed in various studies \cite{Ekstrom}, \cite{Engdahl}. The tectonics of the Aleutian-Komandorsky chain \index[places]{Aleutian-Komandorsky chain} that is proved \cite{Gaedicke} to be colliding with Kamchatka at the Kamchatka Peninsula \index[places]{Kamchatka Peninsula}. Structural evolution of the Kamchatka-Aleutian triple junction \index[places]{Kamchatka-Aleutian triple junction} area in the Mesozoic and Tertiary was affected by the subduction in Kronotskiy subduction zone and collision of the Kronotskiy arc \index[places]{Kronotskiy arc} against North-East Eurasia margin \cite{Alexeiev}. The Aleutian tectonics is deeply connected with Kuril-Kamchatka since the Aleutian transform fault separated the Kronotskiy terrane block from the Pacific plate \cite{Freitag}. Relevant studies \cite{Fliedner}, \cite{Holbroock} develop further investigations on the crustal structure transition form oceanic to continental arc in the Aleutian Islands region. The geological composition of the andesite substrate in Aleutian Trench results as melts from subducted Pacific ocean crust \cite{Kay}. More details on the geological and biological uniqueness of the Aleutian islands area are provided in relevant research \cite{Rathburn}. An interesting example of the existing cartographic work as contour bathymetric map dated 1945 can be found by \cite{Murray}.
 
 \subsection{Data Analysis}
-The first steps in every research planning starts from the process of collecting, sorting and organizing high quality data. The more it is actual for the geospatial research where the precision is the key for the research output and final quality \cite{Smith}, \cite{WesselWatts}. In this research, high-resolution geo data collection was performed from the web-site USGS and available embedded GIS layers of the GMT \cite{WesselSmith1996}, \cite{SmithSandwell1995}. The main toolset used in this research as a software is Generic Mapping Tools with modules functionality described in relevant documentation and software release announcement \cite{WesselSmith1995}, \cite{Wesseletal2013}.
+The first steps in every research planning starts from the process of collecting, sorting and organizing high quality data. The more it is actual for the geospatial research where the precision is the key for the research output and final quality \cite{Smith}, \cite{WesselWatts}. In this research, high-resolution geo data collection was performed from the web-site \ac{USGS} and available embedded \ac{GIS} layers of the \ac{GMT} \cite{WesselSmith1996}, \cite{SmithSandwell1995}. 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A4.jpg}
+	\caption{Modelling geoid of the Aleutian Islands and Aleutian Trench area}\label{fig:A4}
+\end{figure}
+
+The main toolset used in this research as a software is \ac{GMT} with modules functionality described in relevant documentation and software release announcement \cite{WesselSmith1995}, \cite{Wesseletal2013}.
 
 \subsubsection{Modelling 3D mesh grid}
-As a result of the combination of several GMT modules the 3D mesh model of the Aleutian trench was computed and visualized (Figure 3). It shows the 3D model of the study area rotated in 165/45 degrees overlapping the contour map of the geoid. \\
-Several GMT modules were used, for example e.g. ‘pscoast’ module used for mapping coastal lines and contour, ‘psscale’ module was used for mapping color legend strip showing visual colors, ‘pstext’ module was used to add textual explanations on the map, etc. The NetCDF grid format \cite{Rew} was processed as a grid file. The cartographic routine include adding elements on the map: plotting ticks, selecting lines for grids, adding directional rose and legend, selecting proper projection, etc. The following script was used for modelling with the workflow steps.
+As a result of the combination of several GMT modules the 3D mesh model of the Aleutian trench (Fig. \ref{fig:A3}) was computed and visualized. It shows the 3D model rotated in 165/45 degrees overlapping the contour map of the geoid. Several \ac{GMT} modules were used, for example e.g. ‘pscoast’ module used for mapping coastal lines and contour, ‘psscale’ module was used for mapping color legend strip showing visual colors, ‘pstext’ module was used to add textual explanations on the map, etc. The \ac{NetCDF} grid format \cite{Rew} was processed as a grid file. The cartographic routine include adding elements on the map: plotting ticks, selecting lines for grids, adding directional rose and legend, selecting proper projection. The following script was used for modelling with the workflow steps.
 
 \subsubsection{Modelling gravity}
-Gravity model is used to support geophysical
-investigations, geological prognosis as well as geological resources management. Here the GMT script is presented for modelling gravity from m the ‘grdimage’ GMT module, and ‘img2grd’ module was used for the data conversion. The combination between the GMT modules and cartographic features enables to properly visualize thematic map by the GMT tools Essential GMT elements include selecting map projections, fonts, map layout, grid, adding elements on the map. The gravity modelling was performed using the
-following script.
+Gravity model is used to support geophysical investigations, geological prognosis as well as geological resources management. Here the \ac{GMT} script is presented for modelling gravity from m the ‘grdimage’ GMT module, and ‘img2grd’ module was used for the data conversion. The combination between the GMT modules and cartographic features enables to properly visualize thematic map by the GMT tools. The essential GMT elements include selecting map projections, fonts, map layout, grid, adding elements on the map. The gravity modelling (Fig. \ref{fig:A5}) was performed using the following script.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A5.jpg}
+	\caption{Modelling gravimetry of the Aleutian Islands and Aleutian Trench area}\label{fig:A5}
+\end{figure}
 
 \subsubsection{Modelling statistical histograms}
 Statistical data modelling in geology is an important tool for the data analysis \cite{Davis2002}. Proper data interpretation always include testing several algorithms, selecting appropriate approaches and statistical packages \cite{Jonesetal2014}.
 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A6.jpg}
+	\caption{Automatic digitizing cross-section profiles on the selected segment of the study area}\label{fig:A6}
+\end{figure}
+
 \subsection{Results}
- The \ac{GMT} based modelling demonstrated following results. The topography in the study area ranges between -8200 to 2000 m. The geoid gravitational model shows the majority of values lies in the interval between -10 to 20 mGal with the lowest values along the trench. The profiles plotted in an automated regime are located with a distance of 20 km between each pair, spaced every 2 km along the profiles itself and have a total length of 400 km, that is 200 km to both sides from the trench. According to the statistical histogram modelling, the most often depth value in the study area is - 4800 with frequency 1722. Four approaches for the profile linear trend modelling were tested. Finally, a surface modelling was performed using xyz modelling from the \ac{ASCII} data. The results of this study demonstrated (Figure 9) distribution of the local occurrence of bathymetric data along the cross-section profiles. Visualizing submarine geomorphology provided context and guidance for further geological and oceanographic discussions regarding hadal trench shape, occurrence of terraces, steepness of the slopes, location of canyons, as well as their distribution. Based on an analysis of the \ac{ETOPO1} map (Figure 1), the suitable segment was selected for plotting sample data on cross-section profiles.
-The general bathymetric map of this study is based on a cartographic visualizing of the \ac{ETOPO1} bathymetric grid \cite{Amante} which is a grid This dataset with a 1 arc-minute resolution. The \ac{ETOPO1} global relief model was modeled (Figure 1) using ‘grdimage’ module of GMT. The bathymetry was visualized using ‘geo’ color palette. The original data is derived from the sea-surface satellite altimetry measurements and ocean soundings provided by numerous global geospatial sources. Therefore, the \ac{ETOPO1} includes existing bathymetry data and uses interpolated gravity values elsewhere. The statistical inventory of the bathymetric data shown (Figure 9) that depths with ranges between -5600 and -5400 m have occurrence of 1106 (8\%); depths with ranges between -5400 and -5200 m have occurrence of 846 (7\%); depths with ranges between -4900 and -5200 m have occurrence of 1297 (11\%). The highest values demonstrated values of -4900 and -4700 with 1722 occurrences (13,2\%). Significantly low values demonstrated shallow areas with depth ranges between -4500 and -3000 m with occurrence of below 200 (all of then less than 2,5\%). Values with ranges shallower than -500 m naturally belong to the coastal shelf areas near the Aleutian Islands adjusting the trench. Furthermore, a geomorphic analysis (Figure 8 and Figure 3) shown that the north-western part of the trench on the side of the chain of islands has steeper and shorter slope, with located series of marine terraces. This paper explores the interaction between geoinformation techniques with an example of the GMT and geological investigation. Several present models and maps describe the geological, geophysical and geomorphic modelling of the study area including an outline of the shell scripting, the model, and visualized maps. To assist in the identification of the geomorphology of the Aleutian trench, the bathymetric \ac{ETOPO1} data were contoured at 500 m intervals using GMT module ‘grdcontour’ (Figure 2). The geomorphic analysis process in GMT module ‘trend1d’ was applied to build statistical trends with four functional approaches (Figure 8) and well as visualization of median and mean profiles (Figure 7 and Figure 8, respectively). The results of the surface modelling (Figure 10 and Figure 11, respectively) were used by modelling xyz dataset. The grid was smoothed prior to use by applying ‘blockmean’ module of the GMT: it interpolated the original values in the table by smoothing algorithm. The derived cross-section profiles on a selected segment of the trench (a map on Figure 7) includes a combination of the ETOPO1 bathymetric map with a set of the automatically drawn profiles (Figure 7, lower part), and a statistical visualization of the median stacked profiles with error bars
-(Figure 7, upper part).
+ The \ac{GMT} based modelling demonstrated following results. The topography in the study area ranges between -8200 to 2000 m (Fig. \ref{fig:A6}). The geoid gravitational model shows the majority of values lies in the interval between -10 to 20 mGal with the lowest values along the trench. The profiles plotted in an automated regime are located with a distance of 20 km between each pair, spaced every 2 km along the profiles itself and have a total length of 400 km, that is 200 km to both sides from the trench. According to the statistical histogram modelling, the most often depth value in the study area is - 4800 with frequency 1722. Four approaches for the profile linear trend modelling were tested. Finally, a surface modelling was performed using xyz modelling from the \ac{ASCII} data. The results of this study demonstrated (Fig. \ref{fig:A10}) distribution of the local occurrence of bathymetric data along the cross-section profiles. Visualizing submarine geomorphology provided context and guidance for further geological and oceanographic discussions regarding hadal trench shape, occurrence of terraces, steepness of the slopes, location of canyons, as well as their distribution. Based on an analysis of the \ac{ETOPO1} map (Fig. \ref{fig:A1}), the suitable segment was selected for plotting sample data on cross-section profiles.
+ 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A7.jpg}
+	\caption{Modelling trends for the relief of the mean cross-section profile}\label{fig:A7}
+\end{figure}
+
+The general bathymetric map of this study is based on a cartographic visualizing of the \ac{ETOPO1} bathymetric grid \cite{Amante}. The \ac{ETOPO1} global relief model was modeled (Fig. \ref{fig:A1}) using ‘grdimage’ module of GMT. The bathymetry was visualized using ‘geo’ color palette. The original data is derived from the sea-surface satellite altimetry measurements and ocean soundings provided by numerous global geospatial sources. Therefore, the \ac{ETOPO1} includes existing bathymetry data and uses interpolated gravity values elsewhere. The statistical inventory of the bathymetric data shown (Fig. \ref{fig:A8}) that depths with ranges between -5600 and -5400 m have occurrence of 1106 (8\%); depths with ranges between -5400 and -5200 m have occurrence of 846 (7\%); depths with ranges between -4900 and -5200 m have occurrence of 1297 (11\%). The highest values demonstrated values of -4900 and -4700 with 1722 occurrences (13,2\%). Significantly low values demonstrated shallow areas with depth ranges between -4500 and -3000 m with occurrence of below 200 (all of then less than 2,5\%). Values with ranges shallower than -500 m naturally belong to the coastal shelf areas near the Aleutian Islands adjusting the trench. 
+ 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A8.jpg}
+	\caption{Histogram chart showing bathymetric data distribution by profiles}\label{fig:A8}
+\end{figure}
+
+Furthermore, a geomorphic analysis (Fig. \ref{fig:A7} and Fig. \ref{fig:A3}) shown that the north-western part of the trench on the side of the chain of islands has steeper and shorter slope, with located series of marine terraces. This paper explores the interaction between geoinformation techniques with an example of the GMT and geological investigation. Several present models and maps describe the geological, geophysical and geomorphic modelling of the study area including an outline of the shell scripting, the model, and visualized maps. To assist in the identification of the geomorphology of the Aleutian trench, the bathymetric \ac{ETOPO1} data were contoured at 500 m intervals using GMT module ‘grdcontour’ (Fig. \ref{fig:A2}). The geomorphic analysis process in GMT module ‘trend1d’ was applied to build statistical trends with four functional approaches (Fig. \ref{fig:A7}) and well as visualization of median and mean profiles (Fig. \ref{fig:A6}). The results of the surface modelling (Fig. \ref{fig:A9} and Fig. \ref{fig:A10}) were used by modelling xyz dataset. 
+ 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A9.jpg}
+	\caption{Topographic surface modelling from the ASCII xyz data}\label{fig:A9}
+\end{figure}
+
+The grid was smoothed prior to use by applying ‘blockmean’ module of the GMT: it interpolated the original values in the table by smoothing algorithm. The derived cross-section profiles on a selected segment of the trench (a map on Fig. \ref{fig:A6}) includes a combination of the \ac{ETOPO1} bathymetric map with a set of the automatically drawn profiles (Fig. \ref{fig:A6}, lower part), and a statistical visualization of the median stacked profiles with error bars (Fig. \ref{fig:A6}, graph on the upper part).
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-A10.jpg}
+	\caption{Surface modelling from the ASCII xyz data}\label{fig:A10}
+\end{figure}
 
 \subsection{Conclusions}
-Advantages of the GMT demonstrated in the presented paper consist in its high efficiency for the cartographic workflow. The GMT effectiveness consists in its scripting approach when the used can define individual features for the cartographic objects as demonstrated in the presented scripts: fonts, colors, lines width and type, layout, map projections, color scales etc. Various approaches in modelling trends are presented to show the variety of the mathematical algorithms embedded in the GMT tool set. The paper discussed methodological algorithms of the mapping stepwise. The GMT scripts provided in full in the methodological section enable repeatability of these techniques in a similar research. The data used in the current work are based on the GIS layers directly embedded in the GMT (coastlines) plus downloaded high-resolution data: ETOPO1, xyz topographic and gravity data sets from the open public repositories of the USGS. The GMT scripts used for the cartographic visualization and modelling of the maps presented on figures are provided for detailed description of the GMT techniques and further applications.
+Advantages of the \ac{GMT} demonstrated in the presented paper consist in its high efficiency for the cartographic workflow. The GMT effectiveness consists in its scripting approach when the used can define individual features for the cartographic objects as demonstrated in the presented scripts: fonts, colors, lines width and type, layout, map projections, color scales etc. Various approaches in modelling trends are presented to show the variety of the mathematical algorithms embedded in the GMT tool set. The paper discussed methodological algorithms of the mapping stepwise. The GMT scripts provided in full in the methodological section enable repeatability of these techniques in a similar research. The data used in the current work are based on the GIS layers directly embedded in the GMT (coastlines) plus downloaded high-resolution data: ETOPO1, xyz topographic and gravity data sets from the open public repositories of the \ac{USGS}. The GMT scripts used for the cartographic visualization and modelling of the maps presented on figures are provided for detailed description of the GMT techniques and further applications.
 
-\section{Bougainville Trench}
-The Bougainville Trench \index[places]{Bougainville Trench} is located \\
-
-\section{New Britain Trench}
-The New Britain Trench \index[places]{New Britain Trench} is located \\
+\section{Bougainville-New Britain Trench}
+The New Britain Trench \index[places]{New Britain Trench} (a.k.a. Bougainville Trench \index[places]{Bougainville Trench} ) is located \\
 
 \section{Hikurangi Trench}
 The Hikurangi Trench \index[places]{Hikurangi Trench} is located \\
@@ -1124,10 +1173,6 @@ The Yap Trench \index[places]{Yap Trench} is located \\
 \section{New Hebrides  Trench}
 The New Hebrides Trench \index[places]{New Hebrides Trench} is located \\
 
-The \gls{graben} is a geological body. The \gls{basalt}, \gls{horst}, \gls{ringwoodite}, \gls{seabed}.\\
-
-
-
 \pagebreak
 
 \cite{Besanaetal1997}
@@ -1184,19 +1229,49 @@ The \gls{graben} is a geological body. The \gls{basalt}, \gls{horst}, \gls{ringw
 \cite{Yessonetal2011}
 \cite{Yuetal2013}
 
-\pagebreak
+\hspace{5em}\pgfornament[color=NavajoWhite,width=12cm]{82}
 
 %%%%%%%%%%%%%%%%%  Section  4: Methodology  %%%%%%%%%%%%%%%%
 
 \chapter{Methodology}\label{sec:4}
 	\counterwithin{figure}{section}
 	\counterwithin{table}{section}
-Various methods have been developed for application at research of ocean trenches. using not only GIS, but also statistical methods and approaches made by programming (e.g. \cite{Warneretal2008}; \cite{Oliphant2007}; \cite{Robertsetal2010}. Recently developed powerful technologies provided by R, Matlab or Octava software, enable to perform precise computations and statistical analysis of big data as well as to create data frames in geosciences. Among others, a python languages has become increasingly popular (\cite{Lin2008}, \cite{Marta-Almeidaetal2011}). Machine learning and data mining for oceanological research is nowadays one of the most important technical goals. Using R programming based machine learning algorithms ensure the preciseness and objectiveness of the big data set processing, which is always the case for oceanographic research. However, a combination of the statistical methods with \ac{GIS} dramatically increases the effectiveness of the research due to the embedded machine learning algorithms that enable to process big data frames dividing them into compatible data sets for statistical analysis. For instance, we can select several attribute tables specifically for magmatism of the nearby areas to analyze the possibilities of the earthquakes, or to focus on the bathymetric properties and distribution of various depth values across the selected profiles, etc. Special packages of the R programming include mathematical algorithms and a range of codes specially designed for statistical analysis (\cite{RCoreTeam2014}), as demonstrated below. In the scope of current research a functionality of R language has been tested. Indeed, it proved to be as an effective tool for studying distribution of the environmental factors affecting the structure of the trench, as well as bathymetric clusters grouped by the similarity of the geomorphic properties at the seafloor basement of the Mariana Trench. The methodological workflow of the current work includes following steps: 
+Various methods have been developed for application at research of ocean trenches. using not only GIS, but also statistical methods and approaches made by programming (e.g. \cite{Warneretal2008}; \cite{Oliphant2007}; \cite{Robertsetal2010}. Recently developed powerful technologies provided by R, Matlab or Octava software, enable to perform precise computations and statistical analysis of the geodata as well as to create data frames in geosciences. Among others, a python languages has become increasingly popular (\cite{Lin2008}, \cite{Marta-Almeidaetal2011}). Machine learning and data mining for oceanological research is nowadays one of the most important technical goals. Using R programming based machine learning algorithms ensure the preciseness and objectiveness of the big data set processing, which is always the case for oceanographic research. Current research is based on using high-precision geospatial raster grids and available data from the sources references in Tab. \ref{tab:T2}
+
+\begin{table}\caption{Data sources, types and precision}\label{tab:T2}
+\begin{tabular}{@{\makebox[2em][r]{\rownumber\space}} | p{1.5cm} p{5cm} p{7cm} }
+\multicolumn{1}{@{\makebox[2em][r]{No}} | l}{Data} & Origine & Type \\ 
+		\arrayrulecolor[RGB]{211,204,214}\hline\hline		
+        \ac{ETOPO1} & \ac{NOAA} & 1 arc-minute global relief model raster grid \\       
+       		\arrayrulecolor[RGB]{166,154,189}\hline
+	\ac{GEBCO} & \ac{BODC} & 15-sec bathymetric DEM raster grid \\       
+       		\arrayrulecolor[RGB]{166,154,189}\hline				
+        \ac{SRTM} & \ac{NASA} & 15-sec DEM raster grid \\      
+        		\arrayrulecolor[RGB]{166,165,196}\hline\hline
+\end{tabular}
+\end{table}
+
+However, a combination of the statistical methods with \ac{GIS} dramatically increases the effectiveness of the research due to the embedded machine learning algorithms that enable to process big data frames dividing them into compatible data sets for statistical analysis. For instance, we can select several attribute tables specifically for magmatism of the nearby areas to analyze the possibilities of the earthquakes, or to focus on the bathymetric properties and distribution of various depth values across the selected profiles, etc. 
+The flowchart demonstrating main modules used for processing in GMT is presented in Tab. \ref{tab:T3}.
+
+\begin{table}\caption{Flowchart in GMT Processing}\label{tab:T3}
+\begin{tabular}{@{\makebox[2em][r]{\rownumber\space}} | p{2.1cm} p{1.8cm} p{9cm} }
+\multicolumn{1}{@{\makebox[2em][r]{No}} | l}{Module} & Processing & link \\ 
+		\arrayrulecolor[RGB]{122,65,113}\hline\hline		
+        psbasemap &  contours & - \\                
+       		\arrayrulecolor[RGB]{204,166,191}\hline			
+        psconvert & converting & - \\             
+        		\arrayrulecolor[RGB]{170,76,143}\hline
+\end{tabular}
+\end{table}
+
+Special packages of the R programming include mathematical algorithms and a range of codes specially designed for statistical analysis (\cite{RCoreTeam2014}), as demonstrated below. In the scope of current research a functionality of R language has been tested. Indeed, it proved to be as an effective tool for studying distribution of the environmental factors affecting the structure of the trench, as well as bathymetric clusters grouped by the similarity of the geomorphic properties at the seafloor basement of the Mariana Trench. The methodological workflow of the current work includes following steps: 
+
 \begin{enumerate}
 \setlength{\parskip}{0pt}
   \setlength{\itemsep}{0pt plus 1pt}
 	\item Bathymetric GIS processing of the geospatial data in \ac{QGIS} and \LaTeX; creating cross-section profiles across the trench; converting coordinates to the \ac{UTM}; reading depths of the observation points into the attribute table. Described in subsection \ref{sssec:num1}
-	\item Statistical analysis of data distribution: histograms, box plots with outliers, theoretical and sample \ac{QQ}; violin plots; \ac{KDE}. Described in subsubsection \ref{sssec:num1}
+	\item Statistical analysis of data distribution, box plots with outliers, theoretical and sample \ac{QQ}; violin plots; \ac{KDE}. Described in subsubsection \ref{sssec:num1}
 	\item Regression analysis with 3 approaches: linear, “loess” and general linear methods. Described in subsection \ref{sssec:RA}
 	\item Clustering (Dendrogram Trees). 
 	\item Correlograms. 
@@ -1231,9 +1306,35 @@ observation data set for generalized linear models. Described in subsubsection \
 \end{enumerate}
 \section{Mapping}
 
+The table below (Tab. \ref{tab:T5}) presents a summary of the approaches of the descriptive statistical analysis used in current research for the profiles.
+
+\begin{table}\caption{Algorithms of the descriptive statistical analysis}\label{tab:T5}
+\begin{tabular}{@{\makebox[2em][r]{\rownumber\space}} | p{3cm} p{5cm} p{2cm} }
+\multicolumn{1}{@{\makebox[2em][r]{No}} | l}{Type} & Method & Link \\ 
+		\arrayrulecolor[RGB]{122,65,113}\hline\hline		
+        Descriptive & Histograms & Link \\                
+       		\arrayrulecolor[RGB]{204,166,191}\hline			
+        Descriptive & Boxplots & Link.\\             
+        		\arrayrulecolor[RGB]{170,76,143}\hline
+\end{tabular}
+\end{table}
+
 \subsection{QuantumGIS}\label{ssec:num1}
 The digitizing of the 25 bathymetric profiles across the trench has been performed in \ac{QGIS}. The \ac{GIS} part of the research is performed in the \ac{QGIS} by creating 25 bathymetric profiles crossing Mariana Trench. Each profile has a length of 1000 km, a distance gap of 100 km in between and 518 measurement points in each. The \ac{GIS} data included projected vector layers on tectonic plates, topography of the profiles, slope angle, depths, aspect class, location of the igneous volcanic areas, sediment thickness. In the \ac{QGIS} several tasks were performed using thematic plugins (e.g. coordinate re-projecting). The length of each profile was taken 1000 km, and the distance between every pair was 100 km. The coordinated were saved in a table with three columns: elevations, latitude and longitude. After a square of the area was crossed by the profiles, the .csv table was imported for processing in \LaTeX. Some necessary packages have been installed from \ac{CTAN}. The visualization of the 25 profiles grouped by three and four has been performed in \LaTeX (Figure 3). Technically, the following \TeX code was used: \ref{L:01}.
-The geospatial data have been uploaded to form the \ac{GIS} project (bathymetric features, sediment thickness, location of the igneous volcanic zones). Multiple thematic layers were upload into the \ac{GIS} system that include among others marine geology data stores in layers, settings, coordinate system, parameters, etc. The geometry of the profiles has been digitized along the Mariana Trench (Fig.\ref{fig:4-1-1b}), the attributes (profiles names and coordinates) have been entered. Every profile had a length of 1.000 km and the distance between each two neighbor profiles 100 km along the path of the trench. The \ac{GIS} processing resulted in bathymetric 25 profiles. The \ac{GIS} project has been re-projected into the \ac{UTM} cartesian coordinate system (square N- 55).
+The summary of the used utilities and software is presented in Tab. \ref{tab:T4}.
+
+\begin{table}\caption{Software and tools used in current research}\label{tab:T4}
+\begin{tabular}{@{\makebox[1.8em][r]{\rownumber\space}} | p{3cm} p{2.5cm} p{8cm} }
+\multicolumn{1}{@{\makebox[1.8em][r]{No}} | l}{Tools} & Methods & Approach \\ 
+		\arrayrulecolor[RGB]{201,23,30}\hline\hline		
+        Software &  Methods & approach \\
+       		\arrayrulecolor[RGB]{212,172,173}\hline			
+        Software & Methods & approach \\
+        		\arrayrulecolor[RGB]{235,110,165}\hline\hline
+\end{tabular}
+\end{table}
+
+The geospatial data have been uploaded to form the \ac{GIS} project (bathymetric features, sediment thickness, location of the igneous volcanic zones). Multiple thematic layers were upload into the \ac{GIS} system that include among others marine geology data stores in layers, settings, coordinate system, parameters, etc. The geometry of the profiles has been digitized along the Mariana Trench, the attributes (profiles names and coordinates) have been entered. Every profile had a length of 1,000 km and the distance between each two neighbor profiles 100 km along the path of the trench. The \ac{GIS} processing resulted in bathymetric 25 profiles. The \ac{GIS} project has been re-projected into the \ac{UTM} cartesian coordinate system (square N- 55).
 
 \section{\LaTeX for processing bathymetric data}\label{sec:Lat}
 
@@ -1247,12 +1348,6 @@ The geospatial data have been uploaded to form the \ac{GIS} project (bathymetric
 	\centering
 		\includegraphics[width=13cm]{Fig-4-2-2.jpg}
 	\caption{3D-view of the 25 bathymetric profiles of the Mariana Trench. Plot visualization: \LaTeX}\label{fig:4-2-2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=13cm]{Fig-4-2-3.jpg}
-	\caption{25 cross-section bathymetric profiles of Mariana Trench. Plotting: \LaTeX}\label{fig:4-1-1}
 \end{figure}
 
 \section{Statistical analysis by R programming}\label{sec:R}
@@ -1280,14 +1375,14 @@ The created box plot of the depths distribution show summary statistics, that is
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=0.7\textwidth]{Fig-4-3.jpg}
-	\caption{Box plot histograms on data distribution, Mariana Trench bathymetric profiles 1:25. \\ Computed and visualized by R code: \ref{R:02}}\label{fig:4-3}
+	\caption{Box plot histograms on data distribution, Mariana Trench bathymetric profiles 1:25. \\ Computed in R by code: \ref{R:02}}\label{fig:4-3}
 \end{figure}
 
 	\subsubsection{Violin plots}
 The violin plots (Fig. \ref{R:25}) were created to show Kernel probability density distribution of the bathymetric observations, as multimodal distributions with multiple peaks. Kernel density distribution plot as shown on the Fig. 2 was created using library \{violinmplot\} of R in a combined plot, which includes calculated quantiles for 0.25 and 0.75 of the data pool. 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-4-3-1b.jpg}\caption{Violin plots showing depth data distribution for observation points of the 25 bathymetric profiles of the Mariana Trench. Computed and visualized by R code: \ref{R:25}}\label{fig:4-3-1b}
+		\includegraphics[width=13cm]{Fig-4-3-1b.jpg}\caption{Violin plots showing depth data distribution for observation points of the 25 bathymetric profiles of the Mariana Trench. Computed in R by code: \ref{R:25}}\label{fig:4-3-1b}
 \end{figure}
 
 	\subsubsection{Notched box plots}
@@ -1306,7 +1401,7 @@ The \ac{KDE} is a non-parametric way to estimate the probability density functio
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=14cm]{Fig-4-3-1k.jpg}
-	\caption{Kernel density estimation for 25 bathymetric profiles. Computed and visualized by R code: \ref{R:19}}\label{fig:4-3-1k}
+	\caption{Kernel density estimation for 25 bathymetric profiles. Computed in R by code: \ref{R:19}}\label{fig:4-3-1k}
 \end{figure}
 
 	\subsection{Regression analysis}\label{ssec:RA}
@@ -1316,7 +1411,7 @@ data values according to their actual distribution. A regression analysis repres
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=15cm]{Fig-4-3-2a.jpg}
-	\caption{Regression analysis of the 25 profiles, Mariana Trench. Computed and visualized by R code: \ref{R:05}}\label{fig:4-3-2a}
+	\caption{Regression analysis of the 25 profiles, Mariana Trench. Computed in R by code: \ref{R:05}}\label{fig:4-3-2a}
 \end{figure}
 
 The confidence interval for each of 25 profiles has been done by four methods, visualized by the facetted plot wrapping for the series data comparison.
@@ -1331,7 +1426,7 @@ The quantiles were drawn by calling (geom-quantile) function of R \ref{fig:4-3-2
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-3-2b.jpg}
-	\caption{Regression analysis for selected profiles, Mariana Trench. Computed and visualized by R code: \ref{R:05}}\label{fig:4-3-2b}
+	\caption{Regression analysis for selected profiles, Mariana Trench. Computed in R by code: \ref{R:05}}\label{fig:4-3-2b}
 \end{figure}
 
 The data outside the upper and lower quartiles are the outliers that are plotted as individual points. The outliers are the non-usual values of the depths indicating specific features of the geomorphology with extra deep values. The histograms show probability of the density distribution of the bathymetric observation by the profiles, i.e. how likely is that the data will belong to this or that part of the group values within certain depth range.
@@ -1450,7 +1545,7 @@ A deviations from the independence of rows and columns containing bathymetric da
 \end{figure}
 It has been computed as a raw residual divided by the square root of the variance function. Technically, association plot method includes execution of the following R code: \ref{R:31}.
 	
-	\subsection{Clustering (k-means method), correlation ellipses and data partition}\label{ssec:Ckme}
+\subsection{Clustering (k-means method), correlation ellipses and data partition}\label{ssec:Ckme}
 	The next working step included finding correlations among the geomorphic factors that impact the morphological formation of the profiles. To this end, cluster analysis and correlation ellipses were created.
 	\paragraph{Clustering (k-means method) by R library(facto-extra)}
 The k-means clustering, a machine learning technique for classification performs data partition into set up number of clusters, has been done using R library (factoextra). 
@@ -1465,12 +1560,29 @@ The goal of the k-means clustering was to perform partition of the dataset of th
 		\includegraphics[width=15cm]{Fig-4-3-12.jpg}
 	\caption{Results of the k-means clustering of the Mariana Trench with different k-values. Computed and visualized in R: \ref{R:09}}\label{fig:4-3-12}
 \end{figure}
-This function provides a solution using a hybrid approach by combining the hierarchical clustering and the k-means methods. The workflow procedure include following steps:
-1. Computed hierarchical clustering and cutting the tree in the k-clusters using R code: \ref{R:09};
-2. Computed pairwise standard scatter plot of k-means cluster correlation (Figure \ref{fig:4-3-11}).
-3. Computed centers (2 to 7 were tested, in total 6 centers) of each cluster (Figure \ref{fig:4-3-12});
-5. Created correlation matrix (Figure \ref{fig:4-3-13}).
-6. Created groups have been tested according to their distributions by the tectonic plates (Figure 17).
+
+This function provides a solution using a hybrid approach by combining the hierarchical clustering and the k-means methods. The workflow procedure include following steps: Tab. \ref{tab:T5}.
+
+\begin{table}
+\caption{Statistical algorithm of clustering, R}\label{tab:T5}
+\begin{tabular}{@{\makebox[1.5em][r]{\rownumber\space}} | p{10cm} p{2cm}}
+\multicolumn{1}{@{\makebox[1.5em][r]{No}} | l}{Step} & Reference \\ 
+		\arrayrulecolor[RGB]{165,154,202}\hline\hline				
+        Computed hierarchical clustering and cutting the tree in the k-clusters & R code: \ref{R:09} \\              
+       		\arrayrulecolor[RGB]{0,123,187}\hline					
+        Computed pairwise standard scatter plot of k-means cluster correlation & Figure \ref{fig:4-3-11} \\           
+        		\arrayrulecolor[RGB]{126,190,165}\hline
+	Computed pairwise standard scatter plot of k-means cluster correlation & Figure \ref{fig:4-3-11} \\           
+        		\arrayrulecolor[RGB]{126,190,165}\hline
+	Computed centers (2 to 7 were tested, in total 6 centers) of each cluster & Figure \ref{fig:4-3-12} \\           
+        		\arrayrulecolor[RGB]{126,190,165}\hline
+	Created correlation matrix & Figure \ref{fig:4-3-13} \\           
+        		\arrayrulecolor[RGB]{126,190,165}\hline
+	Created groups have been tested according to their distributions by the tectonic plates & Figure \ref{fig:4-3-13} \\           
+        		\arrayrulecolor[RGB]{126,190,165}\hline\hline
+\end{tabular}
+\end{table}
+
 The K-means cluster analysis has been performed using set of cluster centers as the initial cluster centers. 
 \begin{figure}[H]
 	\centering
@@ -1515,7 +1627,7 @@ The normalized steepness was computed as a steepness of dominance hierarchies of
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-4.jpg}
-	\caption{Normalized steepness slope angle, bathymetric profiles 1:25 of the Mariana Trench.\\ Computed and visualized by R code}\label{fig:4-4}
+	\caption{Normalized steepness slope angle, bathymetric profiles 1:25 of the Mariana Trench.\\ Computed in R by code}\label{fig:4-4}
 \end{figure}
 
 	\subsection{Correlation analysis of impact factors}\label{ssec:Corr3}
@@ -1534,7 +1646,7 @@ In this case the environmental variables have been tested by the Spearman rank c
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-56.jpg}
-	\caption{Pearson correlation for the Mariana Trench geomorphological impact factors (left). \\Spearman $\rho$ correlation ranking for Mariana Trench geomorphological impact factors (right).\\Computed and visualized by R code: \ref{R:41}}\label{fig:4-56}
+	\caption{Pearson correlation for the Mariana Trench geomorphological impact factors (left). \\Spearman $\rho$ correlation ranking for Mariana Trench geomorphological impact factors (right).\\Computed in R by code: \ref{R:41}}\label{fig:4-56}
 \end{figure}
 
 On the Fig.\ref{fig:4-56} the more correlated variables are represented by the colors of green. The size of the circle also depends on the correlation value. Spearman’s rank correlation coefficient is denoted by $\displaystyle \rho$ or $r_s$. It is given by the following formula \cite{MyersWell2003}:\\
@@ -1558,7 +1670,7 @@ Similar to Spearman coefficient, but unlike Spearman's, can handle ties. Moreove
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-7-8.jpg}
-	\caption{Numerical scatterplot matrix of correlation of the geomorphological impact factors of Mariana Trench (left). Visualized Kendall $\tau$-correlation for geomorphological impact factors of the Mariana Trench (right). Computed and visualized by R code: \ref{R:41}}\label{fig:4-7-8}
+	\caption{Numerical scatterplot matrix of correlation of the geomorphological impact factors of Mariana Trench (left). Visualized Kendall $\tau$-correlation for geomorphological impact factors of the Mariana Trench (right). Computed in R by code: \ref{R:41}}\label{fig:4-7-8}
 \end{figure}
 
 Numerical scatterplot matrix of correlation of the geomorphological impact factors of Mariana Trench (Fig.\ref{fig:4-7-8}) and cross-correlation matrix of the depth values in bathymetric profiles of the Mariana Trench (Fig.\ref{fig:4-9-10}) are drawn using R scripting libraries: \ref{R:06}
@@ -1569,7 +1681,7 @@ The \ac{PCA} (Fig.\ref{fig:4-9-10}) performed using R code \ref{R:07} enabled to
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-9-10.jpg}
-	\caption{Cross-correlation matrix of the depth values in the bathymetric profiles of the Mariana Trench.\\ Computed and visualized by R code: \ref{R:08} (left). Principal component analysis of correlation of the bathymetric profiles of the Mariana Trench. Computed and visualized by R code: \ref{R:08} (right)}\label{fig:4-9-10}
+	\caption{Cross-correlation matrix of the depth values in the bathymetric profiles of the Mariana Trench.\\ Computed in R by code: \ref{R:08} (left). Principal component analysis of correlation of the bathymetric profiles of the Mariana Trench. Computed in R by code: \ref{R:08} (right)}\label{fig:4-9-10}
 \end{figure}
 
 	\subsection{Hierarchical cluster analysis for the data patterns recognition}\label{ssec:HCA}
@@ -1580,7 +1692,7 @@ The \ac{PCA} (Fig.\ref{fig:4-9-10}) performed using R code \ref{R:07} enabled to
 		\subfloat {\includegraphics[scale=0.17]{Fig-4-3-8a.jpg}}
 			\hspace{5mm}
 		\subfloat {\includegraphics[scale=0.17]{Fig-4-3-8b.jpg}}
-	\caption{R based dendrogram tree of the 25 profiles. Left: unsorted, right: sorted. Computed and visualized by R code: \ref{R:06}}\label{fig:4-3-8ab}
+	\caption{R based dendrogram tree of the 25 profiles. Left: unsorted, right: sorted. Computed in R by code: \ref{R:06}}\label{fig:4-3-8ab}
 \end{figure}
 
 	The results of the executed algorithm have been visualized as a plotted dendrogram. The working flowchart include following steps: creating unsorted and sorted dendrograms (Fig. \ref{fig:4-3-8ab}), cross-comparison of the both, hierarchical clustering using p-Values, and dendrogram by clustering using bootstrap probability method (Fig. \ref{fig:4-3-8de}). 	
@@ -1588,7 +1700,7 @@ The \ac{PCA} (Fig.\ref{fig:4-9-10}) performed using R code \ref{R:07} enabled to
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=15cm]{Fig-4-3-8c.jpg}
-	\caption{Cluster analysis in R programming: comparison between cluster groups. Computed and visualized by R code: \ref{R:06}}\label{fig:4-3-8c}
+	\caption{Cluster analysis in R programming: comparison between cluster groups. Computed in R by code: \ref{R:06}}\label{fig:4-3-8c}
 \end{figure}
 
 	The initial step included created unsorted dendrogram. Several adjustments have been made thereafter: changed and colored labels based on real profiles groups category, colored branches based on the procedure of cutting dendrogram tree into the clusters. Then the dendrogram was sorted using machine learning algorithm. After the reflection of the unsorted dendrogram on the sorted according to the data distribution by observation values, the model proceeded to the comparison of the two dendrograms (Fig. \ref{fig:4-3-8ab}). The compared dendrograms now form cluster kernels. Further processing is completed on the machine by an embedded mathematical approach of R that filter out the less significant profiles and compares them to the kernel ones. The information is then stored to create final step: clustering using bootstrap probability method. Thus, there are four modifications of the initial model consisted of cross-section bathymetric profiles of the Mariana trench. The hierarchical dendrogram method was selected to test the data, due to its flexibility: this type of the machine learning is used specially for unlabelled data, i.e. without defined categories or groups, aimed to understand data possible allocation into groups. As the structure of the tectonics and trench geomorphic properties are rather complex, the dendrogram clustering facilitated data partition though defining the resulting groups, with similar morphology, distance to the volcanic areas, slope angles and sedimental thickness. The complete R programming script for cluster analysis is as follows: \ref{R:06}.	
@@ -1598,7 +1710,7 @@ The \ac{PCA} (Fig.\ref{fig:4-9-10}) performed using R code \ref{R:07} enabled to
 		\subfloat {\includegraphics[scale=0.21]{Fig-4-3-8d.jpg}}
 			\hspace{5mm}
 		\subfloat {\includegraphics[scale=0.21]{Fig-4-3-8e.jpg}}
-	\caption{Hierarchical clustering with p-values using multiscale bootstrap probability. Computed and visualized by R code: \ref{R:06}}\label{fig:4-3-8de}
+	\caption{Hierarchical clustering with p-values using multiscale bootstrap probability. Computed in R by code: \ref{R:06}}\label{fig:4-3-8de}
 \end{figure}
 
 	To summarize methodological application of this research, following conclusion can be drawn. The advantages consist in usability of many R libraries and algorithms at one time to understand the best option for the data set. When the proper method is found for each research step, the results are visualized as plot. In this case, the main method was dendrogram by the \{dendextend\} library aimed at data partition according to the environmental properties. As the programs received a table in (.csv) format and called script from the command line, it follows a mathematical algorithm to process the data. The R algorithm then calculated the values for the environmental values (geology, bathymetry, geomorphology, sedimentation and tectonics), and divided the dataset into clusters, according to the similarity of their values. Once the data are analyzed by the machine, the visualization of the bathymetric groups and data partition were successfully performed.
@@ -1621,7 +1733,7 @@ To perform factor analysis and principal component analysis, an approach based o
 		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9a.jpg}}
 			\hspace{5mm}
 		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9b.jpg}}
-	\caption{Correlation matrix of factors of the Mariana Trench. R Programming (left). Standardized loadings based upon correlation matrix of factor analysis (right). Computed and visualized by R code: \ref{R:26}}\label{fig:4-3-9ab}
+	\caption{Correlation matrix of factors of the Mariana Trench. R Programming (left). Standardized loadings based upon correlation matrix of factor analysis (right). Computed in R by code: \ref{R:26}}\label{fig:4-3-9ab}
 \end{figure}
 For this research the fa() function from R was used (\ref{R:26}), which received the following primary arguments: r: the correlation matrix; Nfactors: number of factors to be extracted; rotate: one of several matrix rotation methods, such as “varimax” or “oblimin”. \\
 Next, an alternative to factor for the components analysis was performed using \{FactoMiner\} library by cluster analysis iCLUST (Fig. \ref{fig:4-3-9ef}). This goal is the same as factor or components analysis, but methodologically, it reduces the complexity of the data and attempts to identify homogeneous sub-groups. Here, the exploratory factor analysis aims to extract a more regular impact factors of the geologic morphology development, whereas cluster analysis and hierarchical dendrogram extract the groups and classes in a total cloud of the bathymetric observation points. Finally the factor analysis results in the illustrating cross-influences of the most notable factors: geological, geomorphological, tectonic, geographic and environmental parameters. This enabled to quantitatively analyze correlation between the actual shape of the trench and its environmental impact factors (Fig. \ref{fig:4-3-9cd}). Fm: one of several factoring methods, such as “pa” (principal axis) or “ml” (maximum likelihood), as shown on the code: \ref{R:26}. \\
@@ -1631,7 +1743,7 @@ The $\omega$ testing was done to find out two alternative estimates of the relia
 		\subfloat {\includegraphics[width=7.5cm]{Fig-4-3-9c.jpg}}
 			\hspace{5mm}
 		\subfloat {\includegraphics[width=6.5cm]{Fig-4-3-9d.jpg}}
-	\caption{Exploratory factor analysis (left). Parallel analysis scree plots (right). \\ Computed and visualized by R code: \ref{R:26}}\label{fig:4-3-9cd}
+	\caption{Exploratory factor analysis (left). Parallel analysis scree plots (right). \\ Computed in R by code: \ref{R:26}}\label{fig:4-3-9cd}
 \end{figure}
 Once all the cross-section profiles had been inspected, the assessment of the bathymetric observation points and other environmental parameters (depth, sediment thickness) has been met by the factor analysis correlation matrix: Fig. \ref{fig:4-3-9ef}.  The factor loadings (Fig.\ref{fig:4-3-9ab}) enable to assess the results of the factor solutions. Thus, we can see that the sediment thickness (factor solution = 0.65), slope angle steepness (factor solution = 0.61), and Mariana Plate location (factor solution = 0.74) have high factor loadings >0.5 around 0.7 on the first factor (PA1). 
 \begin{figure}[H]
@@ -1639,7 +1751,7 @@ Once all the cross-section profiles had been inspected, the assessment of the ba
 		\subfloat {\includegraphics[width=8cm]{Fig-4-3-9e.jpg}}
 			\hspace{5mm}
 		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9f.jpg}}
-	\caption{EFA correlation matrix (left). iCLUST analysis (right). \\Computed and visualized by R code: \ref{R:26}}\label{fig:4-3-9ef}
+	\caption{EFA correlation matrix (left). iCLUST analysis (right). \\Computed in R by code: \ref{R:26}}\label{fig:4-3-9ef}
 \end{figure}
 Therefore, these factors are the most influencing and representative for the morphology of the trench. The sediment thickness is mostly impacted by the slope steepness degree. Two geophysical indicators were particularly tested in the comparative analysis (Fig. \ref{fig:4-3-9ab}). It was furthermore found that slope degree and amplitude has important impact on the sediment thickness, while the aspect degree has lesser effect. Secondly, the second column (PA2) reveals (Fig. \ref{fig:4-3-9ab}) that calculated tg \degree slope angle has a factor solution = 0.98 (extremely high), following by depth distribution (factor solution = 0.76). 
 \begin{figure}[H]
@@ -1647,7 +1759,7 @@ Therefore, these factors are the most influencing and representative for the mor
 		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9g.jpg}}
 			\hspace{5mm}
 		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9h.jpg}}
-	\caption{General factor saturation ($\omega$h) (left). General factor saturation through $\omega$ coefficient: 3 factors ($\omega$) (right). Computed and visualized by R code: \ref{R:26}}\label{fig:4-3-9gh}
+	\caption{General factor saturation ($\omega$h) (left). General factor saturation through $\omega$ coefficient: 3 factors ($\omega$) (right). Computed in R by code: \ref{R:26}}\label{fig:4-3-9gh}
 \end{figure}
 The location of the Caroline and Philippine Plates do not affect that much Mariana Trench having negative factor solutions -0.79 and -0.70, respectively), as well as a much lower loading on PA2 (factor solutions = 0.25 and 0.12) and that it has a slight loading on factor PA1. This suggests that statistics is less related to the concept of Caroline and Philippine Plates than Mariana Plate and its geomorphic environmental settings, such as tg\degree slope angle, sediment thickness, slope angle steepness. Furthermore, on the resulting table (Fig. \ref{fig:4-3-9ab}) one can see that each factor accounted for the 20\% (0.26\% and 0.18\%) of the variance in responses, leading to a factor solution that accounted for 100\% of the total variance (Cumulative proportion PA2: 1.00) in the Mariana Trench morphology formation. Finally, these factors are correlated in-between at 0.15 and recall that this choice of the oblique rotation allowed for the recognition of this relationship. The hypothesis testing was sufficient, with following factors having the highest score: tg\degree slope angle, sediment thickness, Mariana Plate location.
 \pagebreak
@@ -1669,12 +1781,12 @@ Finally, the logical visualization of the results as Euler-Venn diagram (Figure 
 			\hspace{3mm}
 		\subfloat {\includegraphics[width=7cm]{Fig-4-3-10b.jpg}}
 			\hspace{3mm}
-	\caption{Euler-Venn logical diagram on correlation of impact factors affecting Mariana Trench. Left: four tectonic plates. Right: environmental factors. Computed and visualized by R code: \ref{R:23}}\label{fig:4-3-10ab}
+	\caption{Euler-Venn logical diagram on correlation of impact factors affecting Mariana Trench. Left: four tectonic plates. Right: environmental factors. Computed in R by code: \ref{R:23}}\label{fig:4-3-10ab}
 \end{figure}
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=10cm,clip]{Fig-4-3-10c.jpg}
-	\caption{Euler-Venn logical diagram on correlation of impact factors affecting Mariana Trench (7 factors loadings). Computed and visualized by R code: \ref{R:23}}\label{fig:4-3-10c}
+	\caption{Euler-Venn logical diagram on correlation of impact factors affecting Mariana Trench (7 factors loadings). Computed in R by code: \ref{R:23}}\label{fig:4-3-10c}
 \end{figure}
 
 	\subsection{Hierarchical edge plotting and word cloud}\label{ssec:Hedge}
@@ -2354,7 +2466,7 @@ Now we can have a more detailed look on the profiles’ shape and the outline (F
 	\caption{Data distribution analysis: ranges of the maximal bathymetric depths by 25 cross-section profiles across the Mariana Trench}\label{fig:GP-5}
 \end{figure}
 
-The groups of profiles 23, 24 and 25, (Figure \ref{fig:GP-4}, F), have the similar geomorphic shapes: the first halve of the profiles is relatively even while the southern part is particular for the increased depths. This and analogous analyses can be drawn from the Figure \ref{fig:GP-4}. For better visualization, the profiles are colored individually with the shared X axes. The increase of depths by profiles can be influenced by multiple various factors including geographic location and location on subducting tectonic plates, geologic settings of the sediment accumulation as well as exposure to other oceanological and environmental factors. A jitter plot visualization of the overlapped observation points by profiles (Figure \ref{fig:GP-5}) shows the concentration of the most frequent, repeated depths by profiles is visualized. The is, comparing to the previous figures (Figure \ref{fig:GP-3} and Figure \ref{fig:GP-4}) where the focus is set up on the data range, the Figure \ref{fig:GP-5} stresses the analysis of frequency in the data range. The Figure \ref{fig:GP-5} is plotted using Bokeh library of Python.
+The groups of profiles 23, 24 and 25, (Figure \ref{fig:GP-4}, F), have the similar geomorphic shapes: the first halve of the profiles is relatively even while the southern part is particular for the increased depths. This and analogous analyses can be drawn from the Figure \ref{fig:GP-4}. For better visualization, the profiles are colored individually with the shared X axes. The increase of depths by profiles can be influenced by multiple various factors including geographic location and location on subducting tectonic plates, geologic settings of the sediment accumulation as well as exposure to other oceanological and environmental factors. A jitter plot visualization of the overlapped observation points by profiles (Figure \ref{fig:GP-5}) shows the concentration of the most frequent, repeated depths by profiles is visualized. That is, comparing to the previous figures (Figure \ref{fig:GP-3} and Figure \ref{fig:GP-4}) where the focus is set up on the data range, the Figure \ref{fig:GP-5} stresses the analysis of frequency in the data range. The Figure \ref{fig:GP-5} is plotted using Bokeh library of Python.
 The geomorphic segments of the Mariana Trench have a relatively balanced bathymetric elevations records ranging from -7.600 m (profile Nr. 11), -7.750 m (profile Nr. 4), -7.800 m (profile Nr. 5),  -7.750 m (profile Nr. 10), to -6.200 m (profile Nr. 1). The modelled depths are shown in on Figure \ref{fig:GP-5} (jitter plot showing depths ranges). The profiles with the least slope degree Nr. 21, 22, 18, 20 are mostly located in the southern segments where trench crosses Caroline Plate. Mostly, the depth values of deeper than -9600 m below the sea level prevails on the bathymetric model for the deepest depth range (Figure \ref{fig:GP-5}), representing the depths of the very steep slopes of the Mariana Trench.  
 
 	\subsection{Variation of the geomorphic steepness: ranking data}
@@ -2395,13 +2507,7 @@ Further references on isotonic regression and its applications are given by \ref
 The benefit of this kind of a model is consists in the flexibility of the model, that is, the function does not assume any form for the target function such as linearity. Thus, the real data o the observed values by 25 profiles can be compared with the isotonic curves (Figure \ref{fig:GP-7}). Further references are given by \cite{Leeuwetal2009}.
 
 	\subsection{Sorting data by circular bar plots}
-	In addition to the variation of the slope degree, the variations in the sediment thickness by profiles were defined in this research, as indirectly impacted from the changed slope degree that gives conditions for the sediment accumulations. The information and conceptual framework for the sediment thickness of the World Ocean published by \cite{Divins2003} was used in this research. For example, the profiles Nr.  1, 24, 25, 23 are notable for high sediment thickness on the Philippine Plate, profiles Nr. 2, 4, 6, 8 have the highest values for the Mariana Trench,  profiles Nr. 3, 5, 8, 6 have the highest values of the sediment thickness for the Pacific Plate, etc. As can be seen from the Figure \ref{fig:GP-8}, the profiles located on the Caroline plate have the least values, since this part of the trench has only a few bathymetric points from the sample pool that cross the Caroline Plate. 	
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=13cm,clip]{Fig-GP-8.jpg}
-	\caption{Unsorted (left) and sorted (right) distribution of the profiles according to the sediment thickness, circular plot by tidyverse library, R.}\label{fig:GP-8}
-\end{figure}
+	In addition to the variation of the slope degree, the variations in the sediment thickness by profiles were defined in this research, as indirectly impacted from the changed slope degree that gives conditions for the sediment accumulations. The information and conceptual framework for the sediment thickness of the World Ocean published by \cite{Divins2003} was used in this research. For example, the profiles Nr.  1, 24, 25, 23 are notable for high sediment thickness on the Philippine Plate, profiles Nr. 2, 4, 6, 8 have the highest values for the Mariana Trench,  profiles Nr. 3, 5, 8, 6 have the highest values of the sediment thickness for the Pacific Plate, etc. The profiles located on the Caroline plate have the least values, since this part of the trench has only a few bathymetric points from the sample pool that cross the Caroline Plate. 
 	
 	Ranking geologic data has a step in geomorphic analysis where the levels of the slope degree are determined by the geospatial impact. Therefore, geomorphic variations typically necessitate an additional sub-task of the geological analysis of the study area. For example, if a certain segment of the trench is located near the active volcanic area the sedimentation rates may increase significantly in this particular region. A \{tidyverse\}, another R package, was used to visualize a circular plot showing the comparative analysis of the bathymetric ranged by the sediment thickness. The algorithms and syntax of R coding was applied from the R manuals and available materials (\cite{RCoreTeam2014}; \cite{KleiberZeileis2008}).
 	
@@ -2414,12 +2520,10 @@ The benefit of this kind of a model is consists in the flexibility of the model,
 	\caption{Modelling intersection and correlation by various factors in the project Mariana Trench by Euler-Venn diagrams. A): Bathymetric observations by plates, cumulative computing; B): Sediment thickness, slope degree and closeness of the volcanic spots; C): Subdivision of the slope steepness by classes; D): Methodological approaches.}\label{fig:GP-9}
 \end{figure}
 The Euler-Venn diagram was done using Python programming code {P:26}.
+ 
+\vspace{0.5em}
+\hspace{3em}\pgfornament[color=Tan1,width=14cm]{88}
 
-
-
-
-
-\pagebreak
 %%%%%%%%%%%%%%%%%  Section  5: Results%%%%%%%%%%%%
 
 \chapter{Results}\label{sec:5}
@@ -2446,7 +2550,7 @@ The spatial characteristics of the steepness distribution across trench have als
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=10cm,clip]{Fig-4-3-18.jpg}
-	\caption{Circular bar plot on slope angle (\%). Computed and visualized by R code: \ref{R:22}}\label{fig:4-3-18}
+	\caption{Circular bar plot on slope angle (\%). Computed in R by code: \ref{R:22}}\label{fig:4-3-18}
 \end{figure}
 The Euler-Venn diagram enabled to analyze logical factors crossing and categories affecting morphology. It shows all possible logical relationships between a collection of data sets: four tectonic plates, sedimental thickness; geometric properties of the trench (that is slope angle, aspect class, hill shade group class derived as quantitative values from the GIS); morphology; volcanic closeness and depth values. As can be noticed (Figure 20, right) the area of the shape is proportional to the number of elements it contains, which is useful for explaining complex hierarchies and overlapping definitions as the case of factors affecting trench morphology. Mariana plate crosses all other plates, yet the most logical relationship has with Pacific plate. Comparing crossings between such categories as sedimental thickness and slope angle, as well as igneous zones distribution and trench slope angle. Thus, upon analysis of all possible combinations, intersections and similarities between categories, one can see the relationship between the mentioned above factors (Figure 20, \ref{fig:4-3-10c}).
 
@@ -2466,7 +2570,7 @@ The algorithm based objective analysis of the Mariana Trench bathymetric unevenn
 \begin{figure}[H]
 	\centering
 		\includegraphics[scale=0.15]{Fig-5-01.jpg}
-	\caption{Hierarchical tree map of impact factors affecting formation of the Mariana Trench, computed and visualized by R code: \ref{R:38}}\label{fig:5-01}
+	\caption{Hierarchical tree map of impact factors affecting formation of the Mariana Trench, Computed in R by code: \ref{R:38}}\label{fig:5-01}
 \end{figure}
 
 Mariana Trench is an important integral feature of the active continental margins of west Pacific Ocean. Mainland and oceanic sides of the trench have complicated steps of various shapes and sizes, caused by active tectonic and sedimental processes. The steepness of the trench depth averages in 4-5 \degree.\\
@@ -2478,6 +2582,11 @@ The geomorphological structure of the Mariana Trench has been impacted by variou
 The studies of the ocean hadal trenches based on the profiles cross-section have been undertaken in the past (for instance, \cite{Murray1945}, yet based on the technical methods of that time. Until now, little attempts has been available on application of R programming language and scripting libraries towards studies of ocean trenches in marine geology. Deep ocean trench formation is a very complex process that is known to be influenced by a variety of geomorphological and oceanological factors. These may not adequately explain the process of trench deep formation, its further development and what is the impact in a variety of factors affecting hadal structure of the ocean trenches. An improvement of the technical tools is therefore required in such studies.\\
 Current analysis of the Mariana Trench geomorphology and dependence of the variability of the angle steepness from affecting factors indicate that the importance of geological factors (closeness of the nearby igneous volcanic areas, location of the part os of the trench on certain tectonic plates, angle aspect and bathymetry, depth and sediment layer thickness) are highly variable. The complex tectonic and geomorphic features of the Mariana Trench has been reviewed using a set of tested 25 cross-section profiles with unique geologic conditions located in four tectonic plates that Mariana Trench crosses. Current study demonstrated the dependences between the geomorphic factors and geology (slope angles and sedimental thickness, respectively) on the profile morphology. The quantified similarities between the distributional data distances were assessed using correlation matrices and cluster analysis (k-mean method).\\
 The similarities and differences in the geomorphic structure (steepness of the slope angle degrees), geological characteristics (sediment thickness layer), geographic location of certain tectonic plates (Mariana, Caroline, Philippine and Pacific) and bathymetry (absolute minimal depths, means and median values) exist along the trench. Large gradients in variability occur within and among norther and southern part of the trench as well as in the eastern curve of its shape directed towards Magellan and Marcus-Wake transform lines. Hence, it enable to identify that geomorphological structure of the trench is mainly dominated by the following factors: the most dominated is geological factors: the closeness of the submarine volcanic areas and location of Philippine and Mariana tectonic plates, whereas sediment thickness is mainly geomorphic dominated. Thus, as a result of the undertaken study, it has been found that the middle part of the Mariana Trench (profiles: 14 up to 17), with very strong slopes, have roughly equal proportions of sediment thickness layer, which indicates that spatial locations and distributions of the volcanic areas and slope angle of the ocean trench are closely interrelated and affect sedimental thickness. The results of the research furthermore demonstrated spatial geomorphic unevenness of the Mariana Trench. Five unique regions across the trench length have been revealed, and the impact of various environmental factors affecting they morphology and characteristics were assessed by means of the applied statistics.
+
+\vspace{0.5em}
+\begin{tikzpicture}[thick]
+	\draw[decorate,Tan1,decoration={coil,segment length=5pt}] (0,4) -- (15,4); 
+\end{tikzpicture}
 
 \pagebreak
 
@@ -2507,7 +2616,10 @@ The paper presents an application of the R language towards geological studies w
 Hence, the interconnectivity between various parts of the ocean submarine geomorphology is very complex which requires a numerical approach in studies. Solutions proposed by Python language demonstrated in this research prove to be effective tool for the analysis of the data sets in marine geology.\\
 	The big data are often used in the marine research, because the data are taken from the cruise observations and measurements in in-situ conditions. Therefore, the advantages of the Python language lies in its usage for marine sciences lie in its effectiveness and functionality when operating large data sets. The machine learning tools are highly effective for processing arrays and tables containing data of thousands of observation, for example as in the presented research where the data set was 12.590 points taken from the 25 profiles containing 518 data each. Python is an interpreted language that enables programs to be written compactly and readably splitting them into reusable modules (\cite{Rossumatal2018}) that in turn process and model big data sets. Simple and vectorized syntax structures of Python enable to write code concisely yet effectively resulting in fewer bugs comparing to the codes written on C++. Using \ac{NumPy} for processing tables in .csv format and arrays facilitate advanced mathematical operations on large numbers of data. The encapsulation, inheritance and polymorphism of Python are the main advantages while working with big data in marine science and processing large tables. \\
 	There are proven correlations between various geodetic features, bathymetric locations of the ocean trenches, geomorphic shapes and geophysical properties of the submarine phenomena (for example, \cite{MckenzieBowin1976}; \cite{SandwellSmith2009}; \cite{JimenezDiazetal2014}; \cite{JudgeMcNutt1991}; \cite{KalninsWatts2009}). Understanding the deep interconnections between various part of the ocean ecosystem gives a key to the proper modelling of the location of the ocean mineral resources and prognosis of the dynamic processes, such as earthquakes. The importance of the precision of such numerical computing for the resource economies cannot be underestimated. Current paper contributed towards the development of the numerical approaches in the marine sciences demonstrating the applied usage of Python. The use of Python proved to be an effective method for the aquatic or marine studies where thematic data has to be statistically processed and visualized. The code snippets or scripts in full are provided in the presented paper to enable repeatability of this research. Clear syntax and semantics of Python minimizes the chance of conflicts caused by hard-to-find bugs in a code.\\
-	The statistical data analysis has been implemented using Python machine learning libraries and algorithms. The seamless integration of the multi-dimensional data by the Matplotlib Python package enabled to perform marine geodata analysis and proper selection of the optimal algorithms to process the data features. The fully provided codes written on Python language make this research easily repeatable and accessible for other scientists. The adoption of the open source programming rapidly replacing the commercial technologies, Python will soon become popular among the marine geologists, geographers and Earth data analysts. This research contributes towards the development of the technical implementation of the machine learning algorithms for effective processing of the geodata. 
+	The statistical data analysis has been implemented using Python machine learning libraries and algorithms. The seamless integration of the multi-dimensional data by the Matplotlib Python package enabled to perform marine geodata analysis and proper selection of the optimal algorithms to process the data features. The fully provided codes written on Python language make this research easily repeatable and accessible for other scientists. The adoption of the open source programming rapidly replacing the commercial technologies, Python will soon become popular among the marine geologists, geographers and Earth data analysts. This research contributes towards the development of the technical implementation of the machine learning algorithms for effective processing of the geodata. 	
+	
+\vspace{0.5em}
+\hspace{8em}\pgfornament[color=LightSteelBlue,width=10cm]{86}
 
 \pagebreak
 
@@ -2527,8 +2639,6 @@ Secondly, the knowledge of the geology of the ocean is connected with a thorough
 Current research was intended to highlight the problem of the Mariana Trench very complex formation consisting of a variety of environmental factors. Mariana Trench is formed as an ocean seafloor geomorphological structure located in the zones of the continental margin tectonic plates bending. Moreover, a special attention was paid to the application of the algorithms of factor analysis: scripts with screen shots of codes, correlation matrix, as well as visualization of factor analysis. As a case study of this research, the application of R and Python programming towards geoscience studies successfully revealed impact factors affecting the abyssal morphology of the Mariana Trench. It contributed towards question of how we can measure and analyze the structure of trench in the least reachable location of the World Ocean.\\
 The ocean conservation nowadays becomes one of the most vibrant, paramount endeavors of the marine ecology since due to the global circulation, even the remotely located areas are not exempt from the anthropogenic impact (\cite{RichmondKotowicz2015}). Understanding the structure of the marine habitats at the deepest places of the hadal trenches helps to improve investigation of the marine biology communities of the ocean. Before now, the hadal trenches were thought to have restricted life activities, which is caused by the extreme environmental conditions. Those include high hydro-pressure, submarine volcanism related to tectonic plate subduction, as well as lack of ultra-violet and food supply. Nevertheless, recent research reports (e.g., \cite{Linleyetal2016}; \cite{Linleyetal2017}) shown vast microbial and faunal community structure, abundance, biodiversity, level of endemism and adaptation towards extreme condition in hadal marine species. This created a special attention towards hadal biosphere where specific life conditions are created including geological, geomorphic, and biochemical factors ({\cite{Liuetal2018b}}; \cite{Leducetal2016}; \cite{Joydasetal2018}). Moreover, deep-sea ecosystems recently arisen a considerable commercial interest due to their potential to serve a various range of the industrial needs (\cite{Senetal2016}). Understanding such complex remotely located environments is crucial for the development of the marine biology. Using high-level programming languages and embedded algorithms for the statistical analysis of large data sets, which are almost always the case for the marine biology studies is a prerequisite for the precise data analysis and environmental forecasting. Current paper presented successful application of the Python and R languages towards oceanographic research with a case study of Mariana Trench. 
 
-\pagebreak
-
 \section{Recommendations}\label{sec:9}
 	\markright{Recommendations}
 	
@@ -2546,6 +2656,15 @@ This thesis presented a view of the Python and R programming application towards
 From all the available statistical methods it is necessary to select the most suitable to the modelling type: data ranking, data distribution (e.g. box plots or ‘violin’ plots, linear regression or isotonic regression), correlation matrix or correlogram ellipses, etc. The correct chosen algorithm of the statistical modelling enable to best visualize and analyze the data set. Visualizing the full range of the geomorphology across the trench can be done using various methods: by the deepest values (i.e. each profiles can have only one dot point), or by showing the full line of profile (i.e. the profile shows the cross section in its length), in circular or bar plot or dot plot types, as presented in this paper. 
 In case the surface of the whole trench is being modeled, the extrapolation or interpolation of the depths by geomorphic profiles may lead to the possibility to increase random errors due to the complex nature of the real situation of physical environment. It can be either the effects of the external environmental factors over the geomorphic structure of the selected profile (e.g. tectonic slab movement that affects the shape of the trench segment) or mathematical approaches of the chosen algorithm of the approximation of the measured depths. 
 For better experimental initial data set, it is necessary to select equal lengths of the geomorphic profiles (in this particular case they ere selected as 1.000 km) and equal distance in between each couple (again, in this case, 100 km between each two profiles). It is also necessary to ensure that the whole range of the trench is covered by the cross-section of the profiles. Moreover, in the most difficult parts of the trench (for instance, where trench crosses two or three tectonic plates), is is possible to intake more dense profiles digitizing. However, in this case it whole be reasonable to large scale this particular area of the selected study area as enlarged fragment.
+
+\vspace{1em}
+\pgfornament[height=1cm,color=NavajoWhite1]{77}
+\pgfornament[height=1cm,color=NavajoWhite1,symmetry=v]{77}
+\pgfornament[height=1cm,color=NavajoWhite1,symmetry=h]{77}
+\pgfornament[height=1cm,color=NavajoWhite1,symmetry=c]{77}
+\pgfornament[height=1cm,color=NavajoWhite1]{77}
+\pgfornament[height=1cm,color=NavajoWhite1,symmetry=v]{77}
+
 \pagebreak
 
 %%%%%%%%%%% Author's Publication %%%%
@@ -5586,6 +5705,14 @@ plt.show()
 	\markright{Bibliography}
 	\printbibliography[heading=none]
 
+
+\vspace{0.8em}
+\pgfornament[height=1cm,color=NavajoWhite1]{70}
+\pgfornament[height=1cm,color=NavajoWhite1]{70}
+\pgfornament[height=1cm,color=NavajoWhite1]{70}
+\pgfornament[height=1cm,color=NavajoWhite1]{70}
+\pgfornament[height=1cm,color=NavajoWhite1]{70}
+
 \pagebreak
 
 %%%%%%%%%%% Indices %%%%%%%
@@ -5600,13 +5727,8 @@ plt.show()
 \indexprologue{This index lists the most essential concepts and definitions used in the thesis, including both\\ geological and technical terminology (programming, statistics, mathematics)}
 \printindex[concepts]
 
-\indexprologue{This index lists the historical development of the available research and literature sources on the deep-sea trenches in the Pacific Ocean, by years (chronologically)}
-\printindex[year-title] 
-\pagebreak
-
-%%%%%%%%%%% Glossary %%%%%%%
-\printnoidxglossaries
-\pagebreak
+%\indexprologue{This index lists the historical development of the available research and literature sources on the deep-sea trenches in the Pacific Ocean, by years (chronologically)}
+%\printindex[year-title] 
 
 %%%%%%%%%%% Nomenclature %%%%%%%
 

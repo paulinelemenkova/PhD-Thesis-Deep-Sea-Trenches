@@ -54,30 +54,9 @@
 \setlength{\headheight}{14pt}
 %%%%%%%% header end %%%%%%
 
-\usepackage{lastpage}
-\usepackage{subfig}
-\usepackage{caption}
-\usepackage{appendix}
-\captionsetup{margin=10pt,font=small,labelfont=bf}
-\usepackage{setspace}
-\usepackage[printonlyused,withpage]{acronym}
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
-\makeatother
-\usepackage{rotating}
-\usepackage[svgnames,dvipsnames,x11names,table]{xcolor}
-\usepackage{tikz} % load xcolor before tikz
-\usetikzlibrary{calc,shadows.blur,shadings,decorations.pathmorphing,
-	shapes.arrows,shapes.symbols,arrows,arrows.spaced,arrows.meta,
-	decorations.text}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
-\usepackage[super]{nth}
-\usepackage{verbatim}
-\usepackage{multicol} 
-\usepackage{textcomp}
-
 %%%%%%%%% R: начало %%%%%%%
 \usepackage{listings} % insert R codes
+\lstloadlanguages{R,Python,Octave,Awk,sh,bash}
 \lstset{
 	language=R, 
 	basicstyle=\scriptsize\ttfamily,
@@ -102,18 +81,69 @@
 	title=\lstname,
     	escapeinside={},
     	otherkeywords={!=, ~, $,*, \&, \%/\%, \%*\%, \%\%, <-,<<-, /, .,},
-	%morekeywords={as},
-}
+	}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	otherkeywords={1, 2, 3, 4, 5, 6, 7, 8 ,9 , 0, -, =, +, [, ], (, ), \{, \}, :, *, !},
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	emph={class, pass, in, for, while, if, is, elif, else, not, and, or,
+	def, print, exec, break, continue, return},
+	emphstyle=\color{black}\bfseries,
+	emph={[2]True, False, None, self},
+	emphstyle=[2]\color{Maroon},
+	emph={[3]from, import, as},
+	emphstyle=[3]\color{blue},
+	upquote=true,
+	morecomment=[s]{"""}{"""},
+	commentstyle=\color{gray}\slshape,
+	rulesepcolor=\color{blue},
+	}
+\lstnewenvironment{latexCode}[1]{
+	\lstset{language=[latex]tex} \lstset{#1}
+	}{}
 %%%%%%%%% R: конец %%%%%%%
 %%%%%%%%%Matlab
-%\lstset{basicstyle=\scriptsize\ttfamily,
-  %stringstyle=\color{DarkGreen},
-  %showstringspaces=false,
-  %commentstyle=\color{red},
-  %keywordstyle=\color{blue}
-%}
+\lstset{
+	language=Octave,
+	basicstyle=\scriptsize\ttfamily,
+  	stringstyle=\color{DarkGreen},
+  	showstringspaces=false,
+  	commentstyle=\color{red},
+  	keywordstyle=\color{blue}
+	}
+\lstset{
+	language=Awk,
+	basicstyle=\scriptsize\ttfamily,
+  	stringstyle=\color{DarkGreen},
+  	showstringspaces=false,
+  	commentstyle=\color{red},
+  	keywordstyle=\color{blue}
+	}
 
 %%%%%%%%%Matlab
+\usepackage{lastpage}
+\usepackage{subfig}
+\usepackage{caption}
+\usepackage{appendix}
+\captionsetup{margin=10pt,font=small,labelfont=bf}
+\usepackage{setspace}
+\usepackage[printonlyused,withpage]{acronym}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\makeatother
+\usepackage{rotating}
+\usepackage[svgnames,dvipsnames,x11names,table]{xcolor}
+\usepackage{tikz} % load xcolor before tikz
+\usetikzlibrary{calc,shadows.blur,shadings,decorations.pathmorphing,
+	shapes.arrows,shapes.symbols,arrows,arrows.spaced,arrows.meta,
+	decorations.text}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\usepackage[super]{nth}
+\usepackage{multicol} 
+\usepackage{textcomp}
 
 \usepackage{pythonhighlight}
 
@@ -1919,7 +1949,7 @@ The inter quartile ranges in the boxplot and higher density portion in KDE are p
 The cluster map was plotted by Seaborn function seaborn.clustermap() to group bathymetric values within the 25 profiles by ranges. Ist structured representation arranges depth values by their semantic similarity using clustering method by ignoring outliers in colormap limits. While plotting clustermap Python assigns each of the 518 samples to a specific cluster of depths, divided into 6 groups with maximal cluster of depths over 7.500 meters. Cluster centers serves as a local target points with largest node resting at the center and attracting other values of bathymetric depths data that belong to this cluster. The clustermap (Fig. \ref{fig:MedFAR-6}) highlights groups of similar bathymetric depths with colors assigned as increasing darkness to the deepest values. The clustermap plotting was done using Python Seaborn library by Python code \ref{P:02}. 
 
 \subsubsection{Histograms plotted by Python}\label{ssec:Py05}
-Because Mariana Trench crosses 4 tectonic plates – Mariana, Pacific, Philippine and Caroline, the data set contained environmental variables separately for these plates that should be analyzed. This required merging the columns into one category: ‘tectonic plates’. Tsherefore, the columns with the plate names were melted into one class using the Python code \ref{P:03}. Now the analysis of the data by plates became possible. The data were read in and processed as such by Python code \ref{P:04}. The histograms show the underlying frequency distribution of a submarine topography of the Mariana Trench (Figure \ref{fig:COMU-7}). Hence, it allows the inspection of the data for the type of distribution, that in this case is normal distribution, as well as outliers, skewness. The data are distributed and colored by tectonic plates: Mariana, Caroline, Pacific and Philippine Plates.
+Because Mariana Trench crosses 4 tectonic plates – Mariana, Pacific, Philippine and Caroline, the data set contained environmental variables separately for these plates that should be analyzed. This required merging the columns into one category: ‘tectonic plates’. Tsherefore, the columns with the plate names were melted into one class. Now the analysis of the data by plates became possible. The data were read in and processed as such by Python code \ref{P:04}. The histograms show the underlying frequency distribution of a submarine topography of the Mariana Trench (Figure \ref{fig:COMU-7}). Hence, it allows the inspection of the data for the type of distribution, that in this case is normal distribution, as well as outliers, skewness. The data are distributed and colored by tectonic plates: Mariana, Caroline, Pacific and Philippine Plates.
 
 \begin{figure}[H]
 	\centering
@@ -2208,7 +2238,7 @@ n is the sample size;
 rho is the sample autocorrelation at lag k, and 
 h is the number of lags being tested.\\
 The comparison of all the six subplots enables to analyze the form of their shape against a straight line. The quantiles are bathymetric sample observations with geologic attribute values placed in the ascending order. The \ac{QQ} statistics is used over the pool of the sampling data to study their distribution. A \ac{QQ} statistic is a visual representation of the quantiles of a standard normal distribution of the geological data set across the Mariana Trench, showing their variation in space. \\
-The quantile regression estimates conditional median and other quantiles of the response geological variables. Thus the upper two rows of the plot show (Fig. 4, \cite{Lemenkova201989}) data distribution for sediment thickness (m) versus geologic parameters across tectonic plates, data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted (Figure \ref{fig:ASE-4}) using Python code \label{P:24} by \ac{StatsModel}. Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Tab. 3 in \cite{Lemenkova201989} which shows computations for the quantile regression for sediment thickness versus geologic parameters and tectonic plates. 
+The quantile regression estimates conditional median and other quantiles of the response geological variables. Thus the upper two rows of the plot show (Fig. 4, \cite{Lemenkova201989}) data distribution for sediment thickness (m) versus geologic parameters across tectonic plates, data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted (Figure \ref{fig:ASE-4}) using Python code \ref{P:24} by \ac{StatsModel}. Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Tab. 3 in \cite{Lemenkova201989} which shows computations for the quantile regression for sediment thickness versus geologic parameters and tectonic plates. 
 	
 \subsubsection{Weighted Least Squares}
 A \ac{WLS} for the geological variables analysis data distribution: by tectonic plates, sediment thickness and bathymetry, as well as slope angle degree. A \ac{WLS} is a statistical approach representing a special case of the generalized least squares. The approach of a weighted least squares is a standard approach in regression analysis to approximate the solution of overdetermined systems which is the case for the complex marine geological systems. The least squares algorithms has two sub-types: linear or ordinary least squares and nonlinear least squares. In the scope of this research, only the linear least squares were tested: ordinary least squares and weighted least square which is a generalization of the first one. In this case, the off-diagonal entries of the correlation matrix of the geological residuals are null the variances of the observations, yet unequal along the covariance matrix. The calculation is based on the principle of the Gauss-Newton algorithm that solves a non-linear least squares problem by modifying a Newton's method for finding a minimum of a function. The computation was based on the general approach of existing equation (after \cite{Bjoerck1996}):
@@ -2764,7 +2794,7 @@ Various factors affect formation, functioning and sustainability of the marine h
 
 \section{Perspectives of the IT tools for geology}
 
-Advanced data computing and processing by a combined approach of the advanced scripting tools for data analysis (\ac{GMT}, Python, R, Matlab, AWK) in marine geology is a promising dynamically developing extension of the existing traditional GIS tools. Scripting libraries and programming languages enable to deal with the massive amounts of the oceanographic data produced by cruise observations. That means, the batch processing of the big data becomes possible. Applying methods derived from the \ac{IT }and computer science domain and statistics towards traditional geological analysis increases the reliability of the results and the precision of the output. The number of use cases in processing large data sets in the marine geology is increasing since they are produced in a machine-generated stream in almost every oceanographic cruise as massive of the observation series taken from the research vessels, not only as a data arrays, but also as captured streams of video and imageries. \\
+Advanced data computing and processing by a combined approach of the advanced scripting tools for data analysis (\ac{GMT}, Python, R, Matlab, AWK) in marine geology is a promising dynamically developing extension of the existing traditional GIS tools. Scripting libraries and programming languages enable to deal with the massive amounts of the oceanographic data produced by cruise observations. That means, the batch processing of the big data becomes possible. Applying methods derived from the \ac{IT} and computer science domain and statistics towards traditional geological analysis increases the reliability of the results and the precision of the output. The number of use cases in processing large data sets in the marine geology is increasing since they are produced in a machine-generated stream in almost every oceanographic cruise as massive of the observation series taken from the research vessels, not only as a data arrays, but also as captured streams of video and imageries. \\
 The value of big data in geoscience is indisputable nowadays. However, the question is not about the need for the massive data processing and their storage but in \emph{how} can we manipulate effectively with the large structured data sets in oceanography, and which \ac{ML} algorithms and advanced methods can be applied for the stream data processing. The effective answer to these questions are successively given by the programming languages, such as Python, AWK, Matlab and R that enable to process data arrays by complex methods. Graph-based analysis of the geological data modelling by GMT, Python, R and Matlab, together with table reshaping by AWK enables to process data as a stream through scripting, as demonstrated in this dissertation. \\
 Effective data processing naturally helps to gain more insights into the seafloor geomorphology, dynamics of the tectonic slab processes, functioning of the marine ecosystems and benthos, directions of the water currents, and other parameters, otherwise not feasible by the traditional methods and approaches. Hence, current research demonstrated a multi-disciplinary approach combining effective manipulating of the spatial data sets by programming languages and scripting tools using statistical algorithms.	\\
 The study demonstrated that the combined use of Python, AWK, R and Octave/Matlab programming is effective tool for the geospatial data processing. The study of the ocean floor is possible not only through the \ac{QGIS}, yet also by means of the available R statistical approaches: network analysis, factors analysis, plotting, diagrams, cluster analysis by various methods (k-means, dendrograms, silhouettes), triple correlation by ternary diagrams, to mention a few.\\
@@ -2830,6 +2860,7 @@ In case the surface of the whole trench is being modeled, the extrapolation or i
 \chapter*{Author's Publications}\label{chp:7}
 	\addcontentsline{toc}{chapter}{Author's Publications}
 	\markright{Author's Publications}
+		\nocite{Lemenkova201992}
 		\nocite{Lemenkova201991}
 		\nocite{Lemenkova201990}
 		\nocite{Lemenkova201989}
@@ -2854,37 +2885,23 @@ In case the surface of the whole trench is being modeled, the extrapolation or i
 	
 \chapter{Programming codes}\label{chp:8}
 
-\section{\TeX macro language}
-	\subsection{\LaTeX code to create bathymetric profiles}\label{L:01}
-\begin{verbatim*}
-\begin{filecontents*}{MyTab18.csv}
-ELEV ,y2,x2
-145.528246366,47.0433461696,-7800 # bathymetric data here in 3 columns 
-\end{filecontents*}
-\begin{tikzpicture}
-\begin{axis}[grid=major,minor x tick num=10,minor y tick num=10,
-	colorbar sampled line,colormap name=bluered,
-	title={Mariana Trench. Bathymetric Profiles Nr.16,17,18},
-	ylabel={Depth (m)},
-	legend entries={Profile18,Profile17,Profile16,},
-	scaled ticks=false,
-	yticklabel style={/pgf/number format/fixed,/pgf/number format/fixed zerofill,}]
-\addplot+ [scatter,only marks,mark=Mercedes star flipped,colormap name=bluered,]
-table [x=x, y=d, col sep=comma] {MyTab16.csv};
-\addplot+ [scatter, colorbar sampled line,only marks,mark=asterisk,colormap
-name=bluered,] 
-table [x=long, y=d, col sep=comma] {MyTab17.csv};
-\addplot+ [scatter, colorbar sampled line,only marks,mark=10-pointed star,colormap
-name=bluered,] 
-table [x=y2,y=ELEV, col sep=comma] {MyTab18.csv}; 
-\end{axis} 
-\end{tikzpicture}
-\end{verbatim*}
+\section{Octave/Matlab language}
+\subsection{Octave/Matlab script for cartographic visualization of the bathymetric profiles}\label{Oc:01}
+\lstinputlisting[language=Octave]{Octave.m}
+
+\section{\TeX \space macro language}
+\subsection{\LaTeX code to create bathymetric profiles}\label{L:01}
+\lstinputlisting[language=tex]{Latex-bathymetry.tex}
 \pagebreak
 
-\section{Matlab language scripts}
-\subsection{GMT script for cartographic visualization of the ETOPO1 based bathymetric map, bash code}\label{M:01}
+\section{AWK language}
+\subsection{AWK shell script for table reshaping}\label{Awk:01}
+\lstinputlisting[language=awk]{AWK.sh}
+\pagebreak
 
+\section{GMT shell/bash scripts}
+\subsection{GMT script for bathymetric mapping, ETOPO1}\label{GMT:01}
+\lstinputlisting[language=bash]{GMT-01.sh}
 \pagebreak
 
 \section{R language scripts}
@@ -3081,631 +3098,83 @@ Source data available on my \href{https://github.com/paulinelemenkova/40-R-Scatt
 \section{Python language scripts}
 
 \subsection{Python code for statistical data analysis by violin plots}\label{P:01}
-\begin{python}
-dfM = pd.read_csv("Tab-Bathy.csv")
-dfM.head(5)
-sb.set_style('darkgrid')
-sb.catplot(data=dfM, kind="violin", scale='count', palette="Paired", 
-          orient="v", legend=True, legend_out=True, margin_titles=True, linewidth=0.2,)
-plt.xticks(rotation=45)
-plt.title('Violin plots for the Mariana Trench bathymetry', fontsize=12, fontfamily='serif')
-plt.subplots_adjust(bottom=0.15,top=0.85)
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-01.py}
 
-\subsection{Python code for Clustermap showing bathymetric data distribution by 25 profiles, Mariana Trench.}\label{P:02}
-\begin{python}
-from string import ascii_letters 
-import numpy as np 
-import pandas as pd 
-import seaborn as sb 
-from matplotlib import pyplot as plt 
-import os os.chdir('/Users/pauline/Documents/Python') sb.set(style="white")
-df = pd.read_csv("Tab-Bathy.csv") 
-sb.set(color_codes=True)  
-g = sb.clustermap(df, cmap="mako", robust=True) 
-rotation = 45 
-for i, ax in enumerate(g.fig.axes):   ## getting all axes of the fig object
-	ax.set_xticklabels(ax.get_xticklabels(), rotation = rotation)          
-g.fig.suptitle('Mariana Trench: Clustermap of the bathymetric observations. \nDataset: 25 cross-section profiles, 518 observations in each. \nMethod: ignored outliers in colormap limits')  
-plt.subplots_adjust(bottom=0.20,top=0.90, right=0.90, left=0.10) 
-plt.show()
-\end{python}
+\subsection{Python code for clustermap: bathymetric data distribution by profiles}\label{P:02}
+\lstinputlisting[language=python]{Python-02.py}
 
-\subsection{Python code to merge categorical values into long-format table}\label{P:03}
-\begin{python}
-dfM = pd.read_csv("Tab-Morph.csv") 
-df = dfM.melt(id_vars=['profile'],                
-	value_vars=['plate_phill', 'plate_pacif', 'plate_maria', 'plate_carol'],       
-	var_name='Plates', value_name='Mean') 
-print(df.head)
-\end{python}
+\subsection{Python code for histograms: distribution of the observation samples}\label{P:03}
+\lstinputlisting[language=python]{Python-03.py}
 
-\subsection{Python code for statistical data analysis by histograms}\label{P:04}
-\begin{python}
-dfM = pd.read_csv("Tab-Morph.csv")
-dfM.head(5)
-sb.distplot(dfM['plate_maria'],kde=True, rug=True, hist=True, norm_hist=True, axlabel='Mariana Plate observations',label='Mariana Plate', vertical=False)
-plt.show()
-\end{python}
+\subsection{Letter-value plots for the Mariana Trench bathymetry}\label{P:04}
+\lstinputlisting[language=python]{Python-04.py}
+\pagebreak
 
-\subsection{Python code for the strip plots}\label{P:05}
-\begin{python}
-dfM = pd.read_csv("Tab-Morph.csv") 
-sb.set_style('darkgrid') 
-df = dfM.melt(id_vars=['profile'],                
-	value_vars=['plate_phill', 'plate_pacif', 'plate_maria', 'plate_carol'],               
-	var_name='Plates', value_name='Min') 
-sb.stripplot(x='Plates', y='Min', hue = 'profile', palette='RdYlGn', data=df, jitter=True) 
-plt.title('Strip plots for the max depth values: Mariana Trench bathymetry', fontsize=10, fontfamily='serif') 
-plt.legend(bbox_to_anchor=(1.14, .8), loc=1, borderaxespad=-4., ncol=2,  markerscale=.5, fancybox=True, shadow=True, mode='expand', t
-	itle='Bathymetric \nProfiles:', title_fontsize=8, labelspacing=.4); 	plt.subplots_adjust(bottom=0.15,top=0.85, right=0.80) 
-plt.show()
-\end{python}
+\subsection{Python code for the strip plots (here: Philippine Trench)}\label{P:05}
+\lstinputlisting[language=python]{Python-05.py}
 
 \subsection{Python code for the correlogram matrices by Seaborn library}\label{P:06}
-\begin{python}
-df = pd.read_csv("Tab-Morph.csv")
-corr = df.corr(method='kendall') # for Kendall correlogram
-corr = df.corr(method='spearman') # for Spearman correlogram
-f, ax = plt.subplots(figsize=(11, 9))
-cmap="YlGnBu" # for Kendall correlogram
-pal = sb.color_palette("RdGy") # for Spearman correlogram
-cmap=pal # for Spearman correlogram
-\end{python}
+\lstinputlisting[language=python]{Python-06.py}
 
 \subsection{Python code for the regression analysis}\label{P:07}	
-\begin{python}
-import numpy as np
-import seaborn as sb
-import pandas as pd
-import matplotlib.pyplot as plt
-# import data
-import os
-os.chdir('/Users/pauline/Documents/Python')
-dfM = pd.read_csv("Tab-Bathy.csv")
-sb.set_style('darkgrid')
-df = dfM.melt(id_vars=['observ'], 
-              value_vars=["profile1", "profile2", "profile3", "profile4", "profile5", 
-              "profile6", "profile7","profile8", "profile9", "profile10","profile11",
-               "profile12", "profile13", "profile14", "profile15","profile16", 
-               "profile17", "profile18", "profile19", "profile20","profile21", 
-               "profile22", "profile23", "profile24", "profile25"],
-              var_name='Profiles', value_name='Depths')
-#print(df.head)
-g = sb.lmplot(data=df, x="observ", y="Depths", col="Profiles", hue="Profiles", col_wrap=5, 
-              fit_reg=True, truncate=True, x_jitter=True, y_jitter=True, scatter=True,
-              markers='.', order=2, height=6)
-g = (g.set_axis_labels("Observation points", "Depths, m")
-     .fig.subplots_adjust(wspace=.04))
-#plt.title('Regression Analysis plot for the Mariana Trench bathymetry', y=1.05, fontsize=12, fontfamily='sans-serif')
-sb.set(font_scale=3)
-plt.tight_layout()
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-07.py}
 
 \subsection{Python code for Letter-value plots for the Mariana Trench bathymetry}\label{P:08}	
-\begin{python}
-import seaborn as sb
-from matplotlib import pyplot as plt
-import pandas as pd
-import os
-os.chdir('/Users/pauline/Documents/Python')
-dfM = pd.read_csv("Tab-Bathy.csv")
-dfM.head(5)
-sb.set_style('darkgrid')
-sb.catplot(data=dfM, kind="boxen",palette='Paired', 
-          orient="v", legend=True, legend_out=True, margin_titles=True)
-plt.xticks(rotation=45)
-plt.title('Letter-value plots for the Mariana Trench bathymetry', fontsize=12, fontfamily='serif')
-plt.subplots_adjust(bottom=0.15,top=0.85)
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-04.py}
 
 \subsection{Python code for joint Hexagonal and KDE plots}\label{P:09}
-\begin{python}
-import seaborn as sb
-from matplotlib import pyplot as plt
-import pandas as pd
-import os
-os.chdir('/Users/pauline/Documents/Python')
-dfB = pd.read_csv("Tab-Bathy.csv")
-df = dfB.melt(id_vars=['observ'], 
-              value_vars=['profile1', 'profile2', 'profile3', 'profile4',  'profile5', 'profile6',
-               'profile7', 'profile8','profile9','profile10', 'profile11', 'profile12','profile13', 
-               'profile14', 'profile15', 'profile16',  'profile17', 'profile18','profile19', 
-               'profile20', 'profile21', 'profile22', 'profile23', 'profile24','profile25'],
-              var_name='Profiles', value_name='Depths')
-sb.set(style="white")
-sb.set_color_codes()
-sb.jointplot(x='observ',y='Depths',data=df,kind='kde', dropna=True, color="m")
-sb.jointplot("observ", "Depths", data=df, kind="hex", dropna=True)
-plt.subplots_adjust(bottom=0.15,top=0.85, right=0.90, left=0.10)
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-09.py}
 
-\subsection{Python code for the correlogram plot}\label{P:10}
-\begin{python}
-from string import ascii_letters
-import numpy as np
-import pandas as pd
-import seaborn as sb
-from matplotlib import pyplot as plt
-import os
-os.chdir('/Users/pauline/Documents/Python')
-sb.set(style="white")
-df = pd.read_csv("Tab-Morph.csv")
-corr = df.corr(method='pearson')
-f, ax = plt.subplots(figsize=(11, 9))
-pal = sb.color_palette("tab20c")
-cmap=pal
-sb.heatmap(corr, cmap=cmap, vmax=0.3, center=0, annot=True, annot_kws={"size":8},
-           square=True, linewidths=.05, linecolor='grey', 
-           cbar=True, mask=False, cbar_kws={"shrink": .5}, )
-plt.title('Mariana Trench: Pearson correlation for the environmental factors', fontsize=13, fontfamily='serif')
-plt.subplots_adjust(bottom=0.20,top=0.90, right=0.90, left=0.10)
-plt.xticks(rotation=30, size=9) 
-plt.yticks(rotation=0, size=9)
-plt.show()
-\end{python}
+\subsection{Python code for the correlogram plot (here: Pearson's method)}\label{P:10}
+\lstinputlisting[language=python]{Python-10.py}
 
 \subsection{Python code for a box-and-whisker plot for the Mariana Trench bathymetry}\label{P:11}
-\begin{python}
-import seaborn as sb
-from matplotlib import pyplot as plt
-import pandas as pd
-import os
-os.chdir('/Users/pauline/Documents/Python')
-dfB = pd.read_csv("Tab-Bathy.csv")
-dfB.head(5)
-sb.set_style('whitegrid')
-sb.boxplot(data=dfB, orient="v", palette='coolwarm', saturation=1, 
-           width=0.8, dodge=True, fliersize=5, linewidth=0.2, 
-           whis=5, notch=True, ax=None)
-sb.despine(offset=10, trim=True) # to offset the spines away from the bathymetric data
-plt.xticks(rotation=45)
-plt.yticks(rotation=45)
-plt.title('Box-and-whisker plot for the Mariana Trench bathymetry', fontsize=12, fontfamily='sans-serif')
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-11.py}
 
 \subsection{Python code for sorting data in stem plots: analysis of the angle steepness}\label{P:12}
-\begin{python}
-# Step-1. loading libraries
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import os
-import pylab as plt
-# Step-2. defining figure
-fig = plt.figure()
-st = fig.suptitle('Geomorphologycal analysis of the Mariana Trench: 25 bathymetric profiles \nunsorted (A) and sorted (B) plots by steepness angles', fontsize=12)
-ax1 = fig.add_subplot(211)
-ax2 = fig.add_subplot(212)
-# Step-3. defining subplot 1
-plt.subplot(2, 1, 1)
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-x=df.profile
-values=df.tg_angle
-markerline, stemlines, baseline = plt.stem(x, values, markerfmt="o", basefmt='-')
-plt.setp(markerline, mfc='salmon', markersize=13, alpha=0.7, markeredgewidth=.2) 
-plt.setp(stemlines, linewidth=.5, color='dimgray') 
-plt.setp(baseline, color='purple', linewidth=1)
-plt.xlabel('Bathymetric profiles', fontsize=10, fontfamily='sans-serif')
-plt.ylabel('tg$^\circ$ (A/H)', fontsize=10, fontfamily='sans-serif')
-# Step-4. defining subplot 2
-plt.subplot(2, 1, 2)
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-df = pd.DataFrame({'group':df.profile, 'values':df.tg_angle}) # take only two values: bathymetric profiles and angles
-ordered_df = df.sort_values(by='values') # sort df by values
-markerline, stemlines, baseline = plt.stem(x, ordered_df['values'], markerfmt="o", basefmt='-')
-plt.setp(markerline, mfc='salmon', markersize=13, alpha=0.7, markeredgewidth=.2) 
-plt.xticks( x, ordered_df['group'])
-plt.setp(stemlines, linewidth=.5, color='dimgray') 
-plt.setp(baseline, color='purple', linewidth=1)
-plt.xlabel('Bathymetric profiles', fontsize=10, fontfamily='sans-serif')
-plt.ylabel('tg$^\circ$ (A/H)', fontsize=10, fontfamily='sans-serif')
-# Step-5. annotating labels
-ax1.annotate('(A)', xy=(1.02, .90), xycoords="axes fraction")
-ax2.annotate('(B)', xy=(1.02, .90), xycoords="axes fraction")
-# 0,0 is lower left of axes and 1,1 is upper right
-# Step-5. plotting
-plt.subplots_adjust(hspace=.2)
-plt.show()
-\end{python}	
+\lstinputlisting[language=python]{Python-12.py}
 
 \subsection{Python code for plotting dendrograms}\label{P:13}	
-\begin{python}
-# Step-1. Loading Libraries
-import pandas as pd
-from matplotlib import pyplot as plt
-from scipy.cluster import hierarchy
-from scipy.cluster.hierarchy import dendrogram, linkage
-import numpy as np
-import os
-# Step-2. Loading geological data set
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Env.csv")
-df = df.set_index('profile')
-del df.index.name
-# Step-3. Calculating the distance between each sample using ‘average’ method
-Z = hierarchy.linkage(df, 'average') 
-# Step-4. Plotting the dendrogram
-dendrogram(Z, labels=df.index, leaf_rotation=0, orientation="left", distance_sort='ascending')
-# Step-5. Adding title and visualizing graph.
-plt.title('Hierarchical cluster dendrogram for the geomorphic similarity \nof the 25bathymetric profiles, Mariana Trench', fontsize=10, fontfamily='sans-serif')
-plt.show())
-\end{python}
+\lstinputlisting[language=python]{Python-13.py}
 
-\subsection{Python code for 3D scatter plots showing correlation of the factors: sediment thickness, slope steepness, bathymetry}\label{P:14}
-\begin{python}
-# Step-1. libraries
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-import numpy as np
-import pandas as pd
-import matplotlib.cm as cmx
-# Step-2. Dataset
-df = pd.read_csv("Tab-Morph.csv")
-# Step-3. Plotting
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(df.plate_maria, df.sedim_thick, df.slope_angle, c='#0095d9', edgecolors='grey', s=130, alpha=.7)
-ax.view_init(30, 185)
-plt.title('Mariana Plate \ncorrelation of the factors: \n sediment thickness, slope steepness, bathymetry',  fontsize=10, fontfamily='serif')
-plt.show()
-\end{python}
+\subsection{Python code for 3D scatter plots: correlation of the factors (sediment thickness, slope steepness, bathymetry)}\label{P:14}
+\lstinputlisting[language=python]{Python-14.py}
 
 \subsection{Python code for ANOVA}\label{P:15}
-\begin{python}
-# Libraries
-from __future__ import print_function
-import scipy
-import os
-from statsmodels.compat import urlopen
-import numpy as np
-import pandas as pd
-pd.set_option("display.width", 100)
-import matplotlib.pyplot as plt
-from matplotlib.patches import Polygon
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-from statsmodels.graphics.api import interaction_plot, abline_plot
-from statsmodels.stats.anova import anova_lm
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-E = df.sedim_thick
-M = df.plate_pacif
-X = df.igneous_volc
-S = df.slope_angle
-cw_lm=ols('M ~ S + C(E)', data=df).fit() 
-print(sm.stats.anova_lm(cw_lm, typ=2))
-print(cw_lm.summary())
-cw_lm=ols('M ~ E + C(X)', data=df).fit() 
-print(sm.stats.anova_lm(cw_lm, typ=2))
-print(cw_lm.summary())
-\end{python}
+\lstinputlisting[language=python]{Python-15.py}
 
 \subsection{Python code for \ac{KDE}, example for the subplot (F)}\label{P:16}
-\begin{python}
-# step-1. Loading libraries
-import seaborn as sns
-from matplotlib import pyplot as plt
-import pandas as pd
-import os
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-sns.set_style('darkgrid')
-# step-2. plotting 4 variables
-ax=sns.kdeplot(df['Min'], shade=True, color="r")
-ax=sns.kdeplot(df['Mean'], shade=True, color="#ffd900")
-ax=sns.kdeplot(df['Max'], shade=True, color="b")
-ax=sns.kdeplot(df['1stQ'], shade=True, color="#65318e")
-ax=sns.kdeplot(df['3rdQ'], shade=True, color="#00a3af")
-# step-3. Adding aesthetics and annotations
-ax.set(xlabel='Depths, m', ylabel='KDE')
-plt.title("Kernel Density Esimation: \nprobability of the statistical depth ranges, profiles 1-25")
-ax.annotate('F', xy=(0.03, .90), xycoords="axes fraction", fontsize=18,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-16.py}
 
 \subsection{Python code for stacked area charts on the bathymetry}\label{P:17}
-\begin{python}
-# Step-1. Loading libraries
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
-import os
-# Step-2. Importing data
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-df.head(5)
-# Step-3. Plotting the dataset
-fig = plt.figure(figsize=(8, 6))
-df = pd.DataFrame(data=df, columns=['Min', '1stQ', 'Median', 'Mean', '1stQ','Max']) 
-ax = df.plot.area(stacked=False, alpha=0.8, colormap='PuBu_r')
-# Step-4. Adding aesthetics and annotations
-plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-plt.title('Stacked area chart for the Mariana Trench bathymetry: \ndepths by 25 cross-section profiles', fontsize=12, fontfamily='serif')
-ax.set_xlabel('Bathymetric profiles')
-ax.set_ylabel('Depths, m')   
-plt.xticks(np.arange(1, 26, step=1), rotation=30)
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-17.py}
 
 \subsection{Python code for the facetted plot of the radar charts}\label{P:18}
-\begin{python}
- Code (3) of Python, for Radar charts in 4 steps (a case study for profile Nr. 1):
-# Step-1. Loading libraries and data
-import matplotlib.pyplot as plt
-import pandas as pd
-from math import pi
-import seaborn as sns
-import numpy as np
-import os
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-#df.head(5)
-# Step-2.  Show 6 different variables on our radar chart, so take them out and set as a np.array. 
-labels=np.array(['Median', 'Max', '1stQ', '3rdQ', 'Min', 'Mean'])
-stats=df.loc[1, labels].values
-# Step-3. close the plot
-angles=np.linspace(0, 2*np.pi, len(labels), endpoint=False)
-stats=np.concatenate((stats,[stats[0]]))
-angles=np.concatenate((angles,[angles[0]]))
-# Step-4
-fig = plt.figure()
-ax = fig.add_subplot(111, polar=True)
-ax.plot(angles, stats, 'o-', linewidth=2)
-ax.fill(angles, stats, c='g',alpha=0.2)
-ax.set_thetagrids(angles * 180/np.pi, labels)
-plt.setp(ax.get_xticklabels(), fontsize=10)
-plt.setp(ax.get_yticklabels(), fontsize=8)
-plt.title('Radar chart for the Mariana Trench \nStatistics on bathymetric profile (nr.1)', 
-          fontsize=12, fontfamily='sans-serif')
-ax.grid(True)
-ax.annotate('(A)', fontsize=18, xy=(1.02, .90), xycoords="axes fraction")
-plt.show()
-\end{python} 
+\lstinputlisting[language=python]{Python-18.py}
 
 \subsection{Python code for the distribution of the bathymetric data by stacked bar plots}\label{P:19}
-\begin{python} 
-# Step-1. Loading libraries
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import rc
-import pandas as pd
-import os
-# Step-2. Importing data
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-# Step-3. Setting up values of each group
-bars1 = df.plate_phill
-bars2 = df.plate_pacif
-bars3 = df.plate_maria
-bars4 = df.plate_carol
-# Step-4. Defining the positons
-profiles = df.profile
-# Step-5. Selecting the names of the group
-names = ["profile1", "profile2", "profile3", "profile4", "profile5",  "profile6", "profile7","profile8", "profile9", "profile10", "profile11", "profile12", "profile13", "profile14", "profile15", "profile16", "profile17", "profile18", "profile19", "profile20", "profile21", "profile22", "profile23", "profile24", "profile25"]
-barWidth = 1 
-# Step-6.Creating bars
-ax = plt.subplot(111)
-plt.bar(profiles, bars1, color='#dbd0e6', edgecolor='white', width=barWidth, label='Philippine Plate')
-plt.bar(profiles, bars2, bottom=(bars1), color='#a0d8ef', edgecolor='white', width=barWidth, 
-        label='Pacific Plate')
-plt.bar(profiles, bars3, bottom=(bars1 + bars2), color='#eebbcb', edgecolor='white', width=barWidth,
-       label='Mariana Plate')
-plt.bar(profiles, bars4, bottom=(bars1 + bars2 + bars3), color='#c1d8ac', edgecolor='white', width=barWidth,
-       label='Caroline Plate')
-# Step-7. Adding aesthetics
-plt.xticks(profiles, names, fontweight='normal', fontsize=7, rotation=30)
-plt.legend()
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.10), shadow=True, 
-          markerscale=2, ncol=4, fontsize=6, title=False)
-plt.title('Mariana Trench: Stacked barplots for the distribution \nof the bathymetric observations across tectonic plates', 
-          fontsize=10, fontfamily='sans-serif')
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-19.py}
 
 \subsection{Python code for analysis of the distribution of sediment thickness, stacked bar charts }\label{P:20}
-\begin{python} 
-# Step-1. Loading libraries
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import rc
-import pandas as pd
-import os
-# Step-2. Importing aata
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-# Step-3. Defining values for each group
-bars1 = df.plate_phill
-bars2 = df.plate_pacif
-bars3 = df.plate_maria
-bars4 = df.plate_carol 
-# Step-4. Setting up position of the bars on the x-axis
-profiles = df.profile
-# Step-5. Selecting the names of the groups and bar width
-names = ["profile1", "profile2", "profile3", "profile4", "profile5", "profile6", "profile7","profile8", "profile9", "profile10",
-         "profile11", "profile12", "profile13", "profile14", "profile15", "profile16", "profile17", "profile18", "profile19", "profile20",
-         "profile21", "profile22", "profile23", "profile24", "profile25"]
-barWidth = 1 
-# Step-6. Plotting bars
-ax = plt.subplot(111)
-plt.bar(profiles, bars1, color='#dbd0e6', edgecolor='white', width=barWidth, label='Philippine Plate')
-plt.bar(profiles, bars2, bottom=(bars1), color='#a0d8ef', edgecolor='white', width=barWidth, 
-        label='Pacific Plate')
-plt.bar(profiles, bars3, bottom=(bars1 + bars2), color='#eebbcb', edgecolor='white', width=barWidth,
-       label='Mariana Plate')
-plt.bar(profiles, bars4, bottom=(bars1 + bars2 + bars3), color='#c1d8ac', edgecolor='white', width=barWidth,
-       label='Caroline Plate')
-# Step-7. Customizing aesthetics
-plt.xticks(profiles, names, fontweight='normal', fontsize=7, rotation=30)
-plt.legend()
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.10), shadow=True, 
-          markerscale=2, ncol=4, fontsize=6, title=False)
-plt.title('Mariana Trench: Stacked barplots for the distribution \nof the bathymetric observations across tectonic plates', fontsize=10, fontfamily='sans-serif')
-plt.show()
-\end{python} 
+\lstinputlisting[language=python]{Python-20.py}
 
 \subsection{Python code for pie charts visualizing bathymetry vs tectonic plates}\label{P:21}
-\begin{python} 
-# Step-1. Loading libraries
-import pandas as pd
-import numpy as np
-from matplotlib import pyplot as plt
-import os
-os.chdir('/Users/pauline/Documents/Python')
-dfM = pd.read_csv("Tab-Morph.csv")
-# Step-2. Importing dataset
-df = pd.DataFrame({'Pacific Plate':dfM.plate_pacif, 'Philippine Plate':dfM.plate_phill,
-                   'Mariana Plate':dfM.plate_maria, 'Caroline Plate':dfM.plate_carol},
-                  index=dfM.profile)
-# Step-3. Plotting chart
-df.plot(kind='pie', subplots=True, figsize=(10, 10),  legend=False, table=False, 
-        fontsize=8, sort_columns=True, layout=(2, 2), colormap='tab20b', 
-        title='Mariana Trench: Pie Charts for the \nBathymetry distribution by tectonic plates')
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-21.py}
 
 \subsection{Python code for QQ plots visualizing descriptive statistics for the bathymetry}\label{P:22}
-\begin{python}
-#!/usr/bin/env python
-# coding: utf-8
-# In[14]:
-from __future__ import print_function
-#get_ipython().run_line_magic('matplotlib', 'inline')
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy import stats
-import pandas as pd
-import seaborn as sns
-import statsmodels.api as sm
-from statsmodels.graphics.api import qqplot
-import seaborn as sns
-import os
-sns.set_style('darkgrid')
-
-# Step-2. Import data
-os.chdir('/Users/pauline/Documents/Python')
-df = pd.read_csv("Tab-Morph.csv")
-
-fig, axes = plt.subplots(2, 3, figsize=(14,7), sharey=True, sharex=True)
-#st = fig.suptitle('QQ statistics plots of the geology of the Mariana Trench', 
- #            fontsize=12)
-plt.suptitle('QQ statistics plots of the geology of the Mariana Trench', 
-             x=0.54, y=.92, fontsize=12,)
-
-fig = qqplot(df.sedim_thick, line='q', fit=True, 
-                 linewidth=.5, alpha = .5, markerfacecolor='#00a497', markeredgecolor='grey', ax=axes[0, 0])
-axes[0, 0].annotate('A', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-
-fig = qqplot(df.slope_angle, line='q', fit=True, 
-                 linewidth=.5, alpha = .5, markerfacecolor='#4d5aaf', markeredgecolor='grey', ax=axes[0, 1])
-axes[0, 1].annotate('B', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-
-fig = qqplot(df.plate_pacif, line='q', fit=True, 
-                 linewidth=.5, alpha = .4, markerfacecolor='#69821b', markeredgecolor='grey', ax=axes[0, 2])
-axes[0, 2].annotate('C', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-
-fig = qqplot(df.plate_phill, line='q', fit=True, 
-                 linewidth=.5, alpha = .4, markerfacecolor='#640125', markeredgecolor='grey', ax=axes[1, 0])
-axes[1, 0].annotate('D', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-
-fig = qqplot(df.plate_maria, line='q', fit=True, 
-                 linewidth=.1, alpha = .4, markerfacecolor='#b44c97', markeredgecolor='grey', ax=axes[1, 1])
-axes[1, 1].annotate('E', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-
-fig = qqplot(df.igneous_volc, line='q',  fit=True, 
-                 lw=.1, alpha = .4, markerfacecolor='#4d5aaf', markeredgecolor='grey', ax=axes[1, 2])
-axes[1, 2].annotate('F', xy=(0.05, .9), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-
-plt.show()
-# In[ ]:
-\end{python}
+\lstinputlisting[language=python]{Python-22.py}
 
 \subsection{Python code for WLS calculations}\label{P:23}
-\begin{python}
-	# Step-1. 
-mod_wls = sm.WLS(y, X, weights=1./(w ** 2))
-res_wls = mod_wls.fit()
-print(res_wls.summary())
-	# Step-2.
-res_ols = sm.OLS(y, X).fit()
-print(res_ols.params)
-print(res_wls.params)
-	# Step-3.
-se = np.vstack([[res_wls.bse], [res_ols.bse], [res_ols.HC0_se], [res_ols.HC1_se], [res_ols.HC2_se], [res_ols.HC3_se]])
-se = np.round(se,4)
-colnames = ['x1', 'const']
-rownames = ['WLS', 'OLS', 'OLS_HC0', 'OLS_HC1', 'OLS_HC3', 'OLS_HC3']
-tabl = SimpleTable(se, colnames, rownames, txt_fmt=default_txt_fmt)
-print(tabl)
-\end{python}
+\lstinputlisting[language=python]{Python-23.py}
 
 \subsection{Python code for quantile (QQ) regression}\label{P:24}
-\begin{python}
-# Step-1. Least Absolute Deviation 
-mod = smf.quantreg('profile ~ slope_angle', data) 
-res = mod.fit(q=.5) 
-print(res.summary())  
-# Step-2. Placing the quantile regression results in a Pandas DataFrame, and the OLS results in a dictionary 
-quantiles = np.arange(.05, .96, .1) 
-	def fit_model(q):     
-		res = mod.fit(q=q)     
-		return [q, res.params['Intercept'], res.params['slope_angle']] +             				res.conf_int().loc['slope_angle'].tolist()      
-models = [fit_model(x) for x in quantiles] 
-models = pd.DataFrame(models, columns=['q', 'a', 'b','lb','ub'])  
-ols = smf.ols('profile ~ slope_angle', data).fit() 
-ols_ci = ols.conf_int().loc['slope_angle'].tolist() 
-ols = dict(a = ols.params['Intercept'], b = ols.params['slope_angle'], lb = ols_ci[0],            
-		ub = ols_ci[1])  
-print(models) 
-print(ols)
-\end{python}
+\lstinputlisting[language=python]{Python-24.py}
 
 \subsection{Python code for SARIMA model}\label{P:25}
-\begin{python}
-mod = sm.tsa.statespace.SARIMAX(data['sedim_thick'], trend='c', order=(1,1,1))
-res = mod.fit(disp=False)
-print(res.summary())
-fig = sm.graphics.tsa.plot_pacf(data.iloc[1:]['Ddf.geology'], lags=25, ax=axes[1])
-The algorithm fits a model where the disturbances follow a linear specification of the bathymetric distribution across the trench. The dependent and independent geological variables vary by profiles (Figure 5). Plotting was done using sublplot function of Matplotlib:
-fig, axes = plt.subplots(2, 2, figsize=(15,8))
-\end{python}
+\lstinputlisting[language=python]{Python-25.py}
 
 \subsection{Python code for Euler-Venn diagrams}\label{P:26}
-\begin{python}
-# Step-1. Activating libraries
-from matplotlib import pyplot as plt
-from matplotlib import cm
-from matplotlib_venn import venn2, venn2_circles, venn3, venn3_circles
-figure, axes = plt.subplots(2, 2)
-# Step-2, the Euler-Venn circles drawn, given is the case for the first diagram (A):
-venn3(subsets=(6317, 3552, 2949, 0, 0, 0, 132), ax=axes[0][0], alpha = .3, 
-    set_colors=('blue','lightblue', 'green'), 
-    set_labels = ('Philippine', 'Mariana', 'Pacific', 'Caroline'))
-plt.annotate('Caroline', xy=(-0.6, 1.3), xycoords="axes fraction", fontsize=12)
-plt.annotate('A', xy=(-1.55, 2.4), xycoords="axes fraction", fontsize=12,
-           bbox=dict(boxstyle='round, pad=0.3', fc='w', edgecolor='grey', linewidth=1, alpha=0.9))
-plt.suptitle('Interplay of various factors in \nMariana Trench system: Euler-Venn diagrams', 
-             x=0.54, y=.98, fontsize=12)
-plt.show()
-\end{python}
+\lstinputlisting[language=python]{Python-26.py}
 
 \hspace{1em}\pgfornament[width=15cm,color=Plum3]{88}
 \end{appendices}

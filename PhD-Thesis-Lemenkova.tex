@@ -346,6 +346,8 @@
 \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
 \setlength{\cftmyequationsnumwidth}{2.5em}% Width of equation number in List of Equations
 
+\renewcommand*{\bibfont}{\small}
+
 %%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%
 
 %%%%%% Begin Lemenkova Polina's PhD Thesis Document%%%%%
@@ -418,12 +420,19 @@ by Lemenkova Polina
 
 \pagebreak
 
-\chapter*{Funding}
-\addcontentsline{toc}{section}{Funding}
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
 
 I gratefully acknowledge the funding of this research from the China Scholarship Council (CSC),\\
-State Ocean Administration (SOA), Marine Scholarship of China, \\People's Republic of China (P.R.C.), Beijing.\\
-Grant \#2016SOA002, 2016-2020.\\
+State Ocean Administration (SOA), Marine Scholarship of China, People's Republic of China \\
+(P. R. C.), Beijing, Grant \#2016SOA002, 2016-2020 for the total amount of 340,000 RMB. \\
+
+Travel support of this study has been kindly provided by Peter Lemenkov: 9 full fare return air tickets Moscow-Beijing covering 4 semesters of my PhD studies at OUC, for the total amount of 134,303 CZK. \\
+
+I thank Dr. Wang, Yonghong for the supervision of this thesis, general governance of the project, 
+defining the scope of the research and our discussions on issues of the hadal trench geomorphology, their geological structure and formation, location and movements of the tectonic plates in the Pacific Ocean. \\
+
+I thank Peter Lemenkov, Senior Software Engineer at Red Hat Czech s.r.o. Brno, Czech Republic, for the technical support in programming, our discussions on algorithms of data analysis, visualization and modelling, his assistance in optimizing syntax of Python coding, help in Unix utilities, AWK and R.
 
 \chapter*{Disclaimer}
 	\markright{Disclaimer}
@@ -464,11 +473,27 @@ The results revealed variation in the shape and steepness of the submarine geomo
 The novelty of this dissertation lies in its strongly multi-disciplinary nature demonstrating a combination of the following approaches: 1) geospatial data analysis; 2) statistical data modelling and processing via libraries of the Python and R programming languages; 3) table data processing in AWK and Octave/Matlab; 3) geological literature analysis; 3) cartographic mapping, mainly in GMT and occasional visualization in QGIS. More specifically, the technical innovativeness consists in a combination of GIS, GMT, Python, AWK, R and Octave/Matlab programming. While traditional geological data analysis is mostly based on the GIS software, the technical tools supporting this research  include application of the advanced IT based data analysis: high-level programming languages Python and R, AWK and Octave/Matlab are traditionally used in the Computer Science and Statistics domains, while geological mapping is mostly based on the GIS. \\
 This work demonstrated successful combination of these approaches enabling to manipulate with data in a smooth way in various scripting environments. The presented research contributes to the studies on the geomorphological modelling of the hadal trenches. The scripts of 5 languages used during this research for data analysis and modelling are presented in full with explanations in comments in the Appendix section. \\
 
+\begin{tikzpicture} 
+	\pgfornament[height=1cm,color=Thistle]{15}
+	\pgfornament[height=1cm,color=Thistle]{16}
+	\pgfornament[height=1cm,color=Thistle]{15}
+	\pgfornament[height=1cm,color=Thistle]{16}
+	\pgfornament[height=1cm,color=Thistle]{15}
+	\pgfornament[height=1cm,color=Thistle]{16}
+	\pgfornament[height=1cm,color=Thistle]{15}
+	\pgfornament[height=1cm,color=Thistle]{16}
+\end{tikzpicture}
+
 \chapter*{Keywords}
 	\markright{Keywords}
 	\addcontentsline{toc}{section}{Keywords}
 
 \keywords{Pacific Ocean; geomorphology; bathymetry; Mariana Trench; Philippine Trench; R; Python; Matplotlib; NumPy; SciPy; Pandas; Seaborn; programming language; statistics; spatial analysis; statistical analysis; cluster analysis; factor analysis; marine geology; geomorphology; algorithm; oceanography; GIS; QGIS, Geoinformatics;}
+
+\vspace{0.5em}
+\begin{tikzpicture}[thick]
+	\draw[decorate,Plum3,decoration={coil,aspect=0}] (0,4) -- (16,4); 
+\end{tikzpicture}
 
 \pagebreak
 	
@@ -605,8 +630,13 @@ The structure of the presented thesis is as follows. The thesis is structured in
 	\item \textit{Chapter 4, Results}:  presents results of the work: comparison of the geomorphology of the 17 hadal trenches used by GMT, R and Python statistical methods.
 	\item \textit{Chapter 5, Discussion}: presents the results obtained in this research and discusses findings in geostatistical analysis by R and Python. Besides, this chapter provides a detailed interpretation of the results suggesting impact factors affecting trench formation.
 	\item \textit{Chapter 6}: discusses the conclusion of the undertaken research. It concerns the effects of the impact factors that influence geomorphic structure of the ocean trenches. In a global summary it reflects the perspectives of the geostatistical analysis in marine geology, as well as using GMT scripting toolset and programming languages in the marine geology. The recommendations for further studies are provided. The dissertation ends by providing some perspectives and further outlook for the similar research.
-
  \end{itemize}
+ 
+\begin{tikzpicture} 
+	\pgfornament[height=1cm,color=Thistle]{71}
+	\pgfornament[height=1cm,color=Thistle]{71}
+	\pgfornament[height=1cm,color=Thistle]{71}
+\end{tikzpicture}
 
 \pagenumbering{arabic}
 \rfoot{\footnotesize{PhD Thesis by P. Lemenkova \\ \emph{Deep-Sea Trenches of the Pacific Ocean: \\a Comparative Analysis of the Submarine Geomorphology by Data Modeling in GMT, R and Python}}}
@@ -705,6 +735,7 @@ The major technical tools of this research is open source \ac{GIS} software and 
 While the usage of the traditional methods of geoinformatics and spatial analysis is, beyond doubts, strongly recommended for any research in geoscience, there is another powerful tool for the geospatial data processing other than \ac{GIS}, sometimes overlooked or skipped by the geographers: a data modelling by use of Python or R programming languages. Python, an open source free programming language is highly suitable for the statistical analysis in geoscience research, since it has a powerful statistical and math libraries, e.g. \ac{StatsModels}, highly effective for scientific computing and used in the current research. The functionality of R and Python languages and their statistical libraries, tested in this work, is proved to be highly effective for the statistical analysis of the geo-marine sets. \\
 The proposed approach of the R and Python based statistical analysis enables accurate and efficient computation and modelling of the large data sets in marine geology and oceanology. A challenge in the evaluation of geological big data sets (that is, several thousand of observation points) concerns the difficulty in manual identifying a correct algorithms in the computations and data distribution analysis. The necessity to apply a precise \ac{ML} algorithms is recently increased in geographic sciences with respect to the importance of choosing an effective method for data visualization and computation. The solutions to the mentioned above problems are provided by Pandas data frames: for example, optimizing structure of the data, selecting the correct parts from the whole data frame (columns, rows in the data arrays) and plotting. Based on the presented results, the application of R and Python programming languages is strongly recommended in geoscience research as an addition to the traditional \ac{GIS} methods.
 
+\vspace{2em}
 \hspace{7em}\pgfornament[color=Plum,width=10cm]{84}
 
 %%%%%%%%%%%%%%%%%  Chapter  2: Trenches of the Pacific Ocean %%%%%%%%%%%
@@ -713,7 +744,13 @@ The proposed approach of the R and Python based statistical analysis enables acc
 	\counterwithin{figure}{section}
 	\counterwithin{table}{section}
 	
-The geologic structure of the Pacific Ocean has a complex character (Fig. \ref{fig:GeolW}). The global seafloor fabric, magnetic lineation picks, slab contours and tectonic plates boundaries are presented on Fig. \ref{fig:TectW}. 
+The bathymetric patters of the seafloor of the Pacific Ocean (\ref{fig:PO}) shows more complex and deep structure in its western part. The geologic structure of the Pacific Ocean has a complex character (Fig. \ref{fig:GeolW}). The global seafloor fabric, magnetic lineation picks, slab contours and tectonic plates boundaries are presented on Fig. \ref{fig:TectW}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{Fig-PO.jpg}
+	\caption{The bathymetric raster map of the seafloor of the Pacific Ocean}\label{fig:PO}
+\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -895,7 +932,7 @@ Geologically, the Aleutian Islands arc \index[places]{Aleutian Arc} is classifie
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-A3.jpg}
+		\includegraphics[width=10cm]{Fig-A3.jpg}
 	\caption{Modelling 3D mesh grid of the Aleutian Islands and Aleutian Trench area}\label{fig:A3}
 \end{figure}
 
@@ -903,13 +940,13 @@ The geological composition of the andesite substrate in Aleutian Trench results 
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-A4.jpg}
+		\includegraphics[width=10cm]{Fig-A4.jpg}
 	\caption{Modelling geoid of the Aleutian Islands and Aleutian Trench area}\label{fig:A4}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-A5.jpg}
+		\includegraphics[width=10cm]{Fig-A5.jpg}
 	\caption{Modelling gravimetry of the Aleutian Islands and Aleutian Trench area}\label{fig:A5}
 \end{figure}
 
@@ -923,7 +960,7 @@ This part the research presents studies of the Middle America Trench \index[plac
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT1.jpg}
+		\includegraphics[width=12cm]{Fig-MAT1.jpg}
 	\caption{Bathymetry of the \ac{MAT}. Cartographic base data: ETOPO1. The computations were done using GMT modules by the code provided in Appendix}\label{fig:MAT1}
 \end{figure}
 
@@ -934,7 +971,7 @@ The work aims at understanding submarine geomorphology of the \ac{MAT}, Figure \
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT2.jpg}
+		\includegraphics[width=12cm]{Fig-MAT2.jpg}
 	\caption{Topographic contour map of the study area: \ac{MAT}}\label{fig:MAT2}
 \end{figure}
 
@@ -945,7 +982,7 @@ The Guatemala Trench is a southern part of the \ac{MAT}, located off Middle Amer
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT3.jpg}
+		\includegraphics[width=10cm]{Fig-MAT3.jpg}
 	\caption{3D topographic mesh model plot on the bathymetry of the \ac{MAT}}\label{fig:MAT3}
 \end{figure}
 
@@ -956,7 +993,7 @@ The \ac{MAT} borders the end of the North American continent up to the Middle Am
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT4.jpg}
+		\includegraphics[width=10cm]{Fig-MAT4.jpg}
 	\caption{Geoid model of the \ac{MAT}}\label{fig:MAT4}
 \end{figure}
 
@@ -967,7 +1004,7 @@ Geochemistry of the sediments of the \ac{MAT} is presented by the olivine-plagio
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT5.jpg}
+		\includegraphics[width=10cm]{Fig-MAT5.jpg}
 	\caption{Geological settings of the \ac{MAT}}\label{fig:MAT5}
 \end{figure}
 
@@ -978,7 +1015,7 @@ The \ac{MAT} runs parallel to the ancient structures that can be explained by th
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT6.jpg}
+		\includegraphics[width=10cm]{Fig-MAT6.jpg}
 	\caption{Gravity model of the \ac{MAT}}\label{fig:MAT6}
 \end{figure}
 
@@ -986,7 +1023,7 @@ The Motagua Fault runs across the Middle America, continuing offshore until it m
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT7.jpg}
+		\includegraphics[width=10cm]{Fig-MAT7.jpg}
 	\caption{Vertical gravity model of the \ac{MAT}}\label{fig:MAT7}
 \end{figure}
 
@@ -997,7 +1034,7 @@ Marine biological analysis of the samples taken from the \ac{MAT} \cite{Shipboar
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT8.jpg}
+		\includegraphics[width=10cm]{Fig-MAT8.jpg}
 	\caption{Surface modelling: topographic map generated from the ASCII xyz data, \ac{MAT}}\label{fig:MAT8}
 \end{figure}
 
@@ -1008,7 +1045,7 @@ The brief sedimentation history of the \ac{MAT} area was well summarized by \cit
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-MAT9.jpg}
+		\includegraphics[width=10cm]{Fig-MAT9.jpg}
 	\caption{Surface modelling: gravity model generated from the ASCII xyz data, \ac{MAT}}\label{fig:MAT9}
 \end{figure}
 
@@ -1128,7 +1165,7 @@ and interpretation of the topographic profiles, geological sampling, gravity mod
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=15cm]{Fig-M1.jpg}
+		\includegraphics[width=10cm]{Fig-M1.jpg}
 	\caption{Bathymetric map of the study area based on the SRTM high-resolution 15 sec grid}\label{fig:M1}
 \end{figure}
 
@@ -1139,28 +1176,31 @@ The Manila Trench \index[places]{Manila Trench} is located in South China Sea \i
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-M2.jpg}
+		\includegraphics[width=10cm]{Fig-M2.jpg}
 	\caption{Geologic map of the Manila Trench based on the ETOPO1 1 min grid.}\label{fig:M2}
 \end{figure}
+
 The hypocenters of the tsunami of the Manila Trench are located at the depths <100 km \cite{Ruangrassamee}. The tsunami hazard from the Manila Trench source has been assessed in more details in several research papers \cite{Nguyen}, \cite{Bautista}, \cite{Soloviev}. The zone of the Eurasian Plate \index[places]{Eurasian Plate} subduction explains the belt of volcanoes in the Manila Trench area (Fig. \ref{fig:M2}), on the west side of the Philippine island of Luzon \index[places]{Luzon Island}. The area between the northernmost Manila subduction zone and southern Taiwan is considered a transition from subduction to initial collision and a weakly coupled nature for the northern part of the Manila Trench \cite{Chin}. 
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=13cm]{Fig-M3.jpg}
-	\caption{Model of the geoid along the Manila Trench.}\label{fig:M3}
-\end{figure}
 Submarine regions, in contrast with the terrestrial ones, still remain the least accessible areas on the Earth due to their remote location. Therefore, modelling hadal trench is one of the most complicated issues in the marine geology explained by their inaccessibility. Ocean trenches can only be studied using computer based modelling, advanced mapping and algorithms of the data analysis. Therefore, using special software and tools designed for the geospatial data modelling enables to get an insight into the deepest regions of the ocean and to visualize areas with the most difficult access \cite{Calder}. The importance of the seafloor is caused by the uneven distribution of the elevations on the Earth with distinctly uneven hypsography. Thus, the majority of the depths on the Earth is occupied by the deep basins (ca. 4-6.5 km) while relatively few areas are covered by the shallow zones. 
+
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-M4.jpg}
-	\caption{Model of the gravimetry along the of the Manila Trench}\label{fig:M4}
+		\subfloat {\includegraphics[width=6.3cm]{Fig-M3.jpg}}
+			\hspace{3mm}
+		\subfloat {\includegraphics[width=7cm]{Fig-M4.jpg}}
+			\hspace{3mm}
+	\caption{Model of color geoid image (left) and gravimetry (right) of the Manila Trench}\label{fig:M3M4}
 \end{figure}
+
 The tectonic plate boundaries are the hotspot areas where the most of the largest earthquakes take place and oceanic slabs descend beneath the continental lithosphere causing trench migration \cite{Zhangetal2017}. The largest earthquakes mostly occur in the shallow part of the subduction zones \cite{Yu2018}. The earthquakes are sometimes accompanied by strong tsunami waves. Slab dynamics is one of the most important drivers for the trench formation, dynamics and migration. Many factors affect speed and direction of the trench migration. These include plate-mantle coupling, slab interactions with the mantle transition, plate geometry, kinematics, strain rate, temperature, fluid pressure, deformation mechanisms, as well as mantle rheology \cite{Faccennaetal2018}. \\
 The geological complexity of the Manila Trench is also expressed by the connection with the Philippine Trench where a horizontal mantle flow exists between the Manila Trench and the Philippine Trench. It is caused by the collision between the Palawan block and the Philippine Mobile Belt, and movement off the South China Sea \index[places]{South China Sea} slab \cite{Fan}. Various factors cause the formation of the Manila Trench. Being a hadal trench, it presents a special area of the ocean seafloor with distinct geomorphological structures characterized by the notable depths and steep gradient angles, located in the zones of the continental margin tectonic plates bending. The convergence between the two plates forming the Manila Trench is roughly northwestward. There is a high-velocity zone present in the crust and upper mantle beneath the Luzon Arc \index[places]{Luzon Arc} where the Manila Trench is stretching \cite{Doo2016}. All these factors briefly mentioned to illustrate the tectonic settings of the study area indicate high seismicity and special tectonic zone where the Manila Trench has been formed. The seafloor of the hadal trench presents a complex structure combined of of various landforms: mid-ocean ridges, transform faults, ocean plains complicated by chains of seamounts, minor ridges, trenches and plateaus. 
+
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-M5.jpg}
+		\includegraphics[width=10cm]{Fig-M5.jpg}
 	\caption{3D map of the Manila Trench visualizing geomorphology}\label{fig:M5}
 \end{figure}
+
 Factors influencing geomorphic development, structure and bathymetric patterns of the trench are diverse. To mention some of them: geological, hydro-chemical, geothermal, climatic, tectonic and bathymetric determinants. The steepness of the Manila geomorphology varies: the dip angles along the Manila Trench \index[places]{Manila Trench} increasing gradually southwards from ca. 25\degree at the latitudes between 18\degree and 21\degree N, 32\degree at the latitude 17\degree N, and nearly vertical at the latitude 14\degree N \cite{Chengetal2019}. The tectonic front of the Manila Trench continuing northward into the frontal thrust faults in the western Taiwan shows active plate boundary between the Eurasian and Philippine Sea plates in the Luzon-Taiwan region \cite{Yu2004}. The structure of the northern Manila Trench has been studied in various papers focused on the problems of crustal structure and deformation in the north of the Manila Trench \cite{Lietal2013}, \cite{He2016}, \cite{Ku2009}. Among other findings, the increasing dip angle of the Manila Trench from north to south has been discovered. The Manila Trench loses its sharp bathymetric pattern in the early collision zone and gradually becomes a less well-defined deformation front \cite{Lester2013}. However, the comparative analysis of its southern and northern parts is still missing. Therefore, current paper contributes to better understanding of the Manila Trench by comparative analysis of its geomorphology in the northern and southern segments.
 
 \pagebreak
@@ -1169,7 +1209,7 @@ The \index[places]{Ryukyu Trench} is a 1400 km long hadal oceanic trench, stretc
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-R1.jpg}
+		\includegraphics[width=10cm]{Fig-R1.jpg}
 	\caption{Bathymetric map of the East China Sea, northern Philippine Sea, Ryukyu Arc and Ryukyu Trench. The bathymetry is based on GEBCO mapped using GMT.}\label{fig:R1}
 \end{figure}
 
@@ -1180,7 +1220,7 @@ The subduction of the Philippine Sea tectonic plate causes eruption of the appro
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-R2.jpg}
+		\includegraphics[width=10cm]{Fig-R2.jpg}
 	\caption{Geologic map of the Ryukyu Trench based on ETOPO1, GMT}\label{fig:R2}
 \end{figure}
 
@@ -1191,29 +1231,24 @@ Geomorphology of the ocean seafloor results from the complex geodynamic processe
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-R3.jpg}
-	\caption{Model of the geoid in the Ryukyu Trench area}\label{fig:R3}
+		\subfloat {\includegraphics[width=6.7cm]{Fig-R3.jpg}}
+			\hspace{3mm}
+		\subfloat {\includegraphics[width=7cm]{Fig-R4.jpg}}
+			\hspace{3mm}
+	\caption{Model of color geoid image (left) and gravimetry (right) of the Ryukyu Trench area}\label{fig:R3R4}
 \end{figure}
 
 Another example is the effect of the thickness of the subduction channels and earthquake rupture segments on the geomorphology of the oceanic landforms. Thus, the spatial differences of the Ryukyu Trench geomorphology is reflected in its sediment composition that change systematically from lighter off northern Ryukyu arc to heavier along the central part of the Ryukyu arc. This is explained by the dominance of the terrigenous and pelagic sedimentation off of the northern and central Ryukyu arc, respectively \cite{Shu}.
 
 \subsection{Sedimentation}
-The hadal trench presents a structural trap in the continental margins of the Pacific since the sediments are carried by the ocean currents passing through the system of trenches on the west of the Pacific. The sediment types of the Ryukyu Trench include among others mud diapirs, hemipelagic sediments, mud-supported breccia, fossil planktonic foraminifera, calcareous nannofossils \cite{Ujiie}.
-The content of the planktonic foraminifera varies according to the seasonal warming of surface waters and vertical mix as a result of the NW monsoon \cite{Xu}. Seismic investigations of the Ryukyu Trench area show that the sedimentary thickness is ca. 2-3 km on the oceanic plate, oceanic crust thickness is 5-6 km. The upper mantle material underlying the oceanic plate has low seismic velocities, explained by the geochemical processes of the mantle peridotites \cite{Klingelhoefer}.
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=13cm]{Fig-R4.jpg}
-	\caption{Model of the gravitational settings in the Ryukyu area.}\label{fig:R4}
-\end{figure}
-Submarine margins of the continents can be divided into two types: the passive and active ones, depending on the features of the geomorphology and geology. The active margin in the Ryukyu area is located off northern Taiwan in the southern Ryukyu forearc (Fig. \ref{fig:R2}). A mega-splay fault system associated with great earthquakes in the south of the Ryukyu region is described by \cite{Hsu}. Indeed, the southwestern Ryukyu system is characterized by the edge regime that is heavily influenced by the juxtaposing continental lithosphere \cite{Kuo}.
+The hadal trench presents a structural trap in the continental margins of the Pacific since the sediments are carried by the ocean currents passing through the system of trenches on the west of the Pacific. The sediment types of the Ryukyu Trench include among others mud diapirs, hemipelagic sediments, mud-supported breccia, fossil planktonic foraminifera, calcareous nannofossils \cite{Ujiie}. The content of the planktonic foraminifera varies according to the seasonal warming of surface waters and vertical mix as a result of the NW monsoon \cite{Xu}. Seismic investigations of the Ryukyu Trench area show that the sedimentary thickness is ca. 2-3 km on the oceanic plate, oceanic crust thickness is 5-6 km. The upper mantle material underlying the oceanic plate has low seismic velocities, explained by the geochemical processes of the mantle peridotites \cite{Klingelhoefer}. Submarine margins of the continents can be divided into two types: the passive and active ones, depending on the features of the geomorphology and geology. The active margin in the Ryukyu area is located off northern Taiwan in the southern Ryukyu forearc (Fig. \ref{fig:R2}). A mega-splay fault system associated with great earthquakes in the south of the Ryukyu region is described by \cite{Hsu}. Indeed, the southwestern Ryukyu system is characterized by the edge regime that is heavily influenced by the juxtaposing continental lithosphere \cite{Kuo}.
 
 \subsection{Marine biology}
 Although the seafloors of the Ryukyu trench is separated vertically from the euphotic zone, is serves as a depositional center for the organic carbon accumulation. This is caused by the geomorphological factors: steep slopes enable lateral transport from the adjacent continental margins \cite{Itohetal2011}. Studies on the spatial biodiversity of the Ryukyu Trench show \cite{Kitahashietal2014b} low values at shallow depths, but increased with water depth reaching maximum between the trench floors and abyssal plains. This proves that bathymetric patterns of the deep-sea biomass of the Ryukyu Trench spatially differ in various regions of the trench. 
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-R5.jpg}
+		\includegraphics[width=10cm]{Fig-R5.jpg}
 	\caption{3-D mesh geomorphological modelling of the Ryukyu Trench}\label{fig:R5}
 \end{figure}
 
@@ -1267,10 +1302,15 @@ The lithological structure and sediment thickness are among the other factors af
 	\subsubsection{Geomorphology}
 	\paragraph{Geomorphic structure}
 Mariana Trench has a complicated geomorphic structure \index[concepts]{geomorphology} with various types of the continental tectonic plate \index[concepts]{tectonic plate} boundaries producing a unique type of its seafloor  \index[concepts]{seafloor} bathymetry  \index[concepts]{bathymetry}. The seafloor of the Mariana Trench is a background, on which all the processes occurring in the Mariana Trench are reflected \cite{Dic1974}. The main morphostructure elements of the seafloor are the outskirts of the continents and of the ocean bedrock \index[concepts]{ocean bedrock}. The structure of the Mariana Trench and the nature of its relief are greatly complicated by the multiple secondary tectonic disturbances, i.e. by the occurrence of faults and displacements on of graben, 
-horsts \index[concepts]{horsts} and lateral geologic shifts \index[concepts]{lateral geologic shifts} \cite{Lisicynetal1990}. Among other trenches, Mariana Trench is distinct for its edge type associated with the marginal tectonic plate subduction processes \cite{Boutelieretal2014}. Namely, Mariana Trench is formed in the process of the subduction of one plate beneath another. Submarine terrain of the Mariana trench has a complex structure of various objects, the scale of which sharply exceeds the dimensions forms of the earth's surface on the margin continents. These include the system of the mid-ocean ridges, crossing their sub-system of transform faults, deep-sea ridges \index[concepts]{deep-sea ridges}, vast ocean plains complicated by chains and mountain groups, ridges \index[concepts]{ridge} and plateaus \index[concepts]{plateau} \cite{Jarrard1986}. The width of the continental shelf \index[concepts]{continental shelf} of the margin plates connecting to the Mariana trench occupies varies from a few tens to thousands of km and the average bottom slope is 17-25 \degree \cite{PushharovskijMelanholina1992}. The main ridge axes of the Mariana trench represent a place in the system where the upwelling magma encounters cold seawater in the location of four tectonic plates crossing Mariana trench. Since functionality of the biological communities of the Marina trench goes beyond the scopes of the current research, it should be only briefly mention as an example of interconnection of the system \cite{Galloetal2015}, \cite{Laceyetal2016}. Hence, the hydrothermal cooling of magma at the ridge axes causes recycling of the entire volume of the water in the hadal column. In this way it provides nutrients for biological communities\index[concepts]{biological communities} in the abyssal of trench \index[concepts]{abyssal of trench}, as studies, for example in various research papers \cite{Langetal2014}, \cite{Luoetal2017}, \cite{Ichinoetal2015}. The main part of the seabed of the Mariana Trench is composed by the oceanic crust forming rift zones of the mid-ocean ridges with a capacity of 5 to 10 km \cite{Morgan1974}. Since the system of the Mariana trench is complicated and constituent of the interrelated factors forming its tectonic structure, there are various attempt to answer the question of trench tectonics. Thus, it is discovered \cite{RuffKanamori1980} that deformations of the trench respond to the coupling between the upper and lower plates, that is, coupling itself relating to the continental slab age-buoyancy \index[concepts]{continental slab age-buoyancy}. Nevertheless, is has been found \cite{HeuretLallemand2005} that back-arc deformation roughly correlate with upper continental tectonic plate velocity \index[concepts]{tectonic plate velocity}. The trench migration rates are chiefly controlled by the lower continental tectonic plate velocity \cite{Lallemandetal2008}, which in turn depends on the tectonic slab age buoyancy \cite{Chase1978}. Its transverse profile is strongly asymmetric: the slopes of the Mariana Trench are higher on the side of the island arc. The slopes of the trench are dissected by deep underwater canyons. On the slopes of the trench are also often found various narrow steps. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and sedimental processes. Mariana Trench is the largest structural trap located in the continental margins of the Pacific Ocean: the sediments are being carrying by the ocean waves in a clockwise direction, passing through the trenches on the west of the Pacific (i.e. the Kermadec Trench and the Tonga Trench. Through the Samoan Passage). They furthermore flow northwest across the equator to the east Mariana Trench.
-The adjusting continental slopes are high, reaching up to several thousand meters and inclining to 3-6 \degree (in the south-western part of the trench up to 30-40 \degree), the upper boundary of which coincides with the edges of the shelf (depths of 150-200 m). Slopes of the passive margins \index[concepts]{passive margins} are strongly complicated by the terraces \index[concepts]{terraces}, ledges, marginal plateaus \index[concepts]{plateau, marginal} and canyons \index[concepts]{canyons}. Slopes of the margins are steeper, reaching can 5-7 km in height. The geomorphic structure of the Mariana Trench is complicated by the longitudinal ridges \index[concepts]{ridges, longitudinal}, steps\index[concepts]{steps}, large landslide \index[concepts]{landslide}, bodies and ledges \index[concepts]{ledges}. At the base of the continental slope of passive margins formed by the adjacent tectonic plates, Philippine Sea, Pacific and Caroline on the south-west, continental foot forms accumulative body. In turn it is formed by the merged cones of the removal and plumes of the suspension flows \index[concepts]{suspension flows} and submarine landslides \index[concepts]{landslides, submarine} with abyssal sedimentation \index[concepts]{sedimentation, abyssal}. Submarine margins of continents \index[concepts]{submarine margins of continents}, or transition zones depend on the features of the relief and geology. According to them they are divided into two types: the passive ones and the active ones. The first ones include the shelf \index[concepts]{shelf}, that is mainland bank \index[concepts]{mainland bank}, the slope and the mainland foot. Having complicated relief structure with marginal seas \index[concepts]{marginal seas}, island arcs \index[concepts]{island arcs} and deep-sea gutters, Mariana Trench belongs to the active type of trench. Due to the geodynamic reasons, Mariana Trench motion, migration and upper plate deformation \index[concepts]{plate deformation} can be described as the result of the response to the mantle flow and the imbalance between the forces exerted by the lower and upper continental plates at the plate interface.
+horsts \index[concepts]{horsts} and lateral geologic shifts \index[concepts]{lateral geologic shifts} \cite{Lisicynetal1990}. Among other trenches, Mariana Trench is distinct for its edge type associated with the marginal tectonic plate subduction processes \cite{Boutelieretal2014}. Namely, Mariana Trench is formed in the process of the subduction of one plate beneath another. Submarine terrain of the Mariana trench has a complex structure of various objects, the scale of which sharply exceeds the dimensions forms of the earth's surface on the margin continents. These include the system of the mid-ocean ridges, crossing their sub-system of transform faults, deep-sea ridges \index[concepts]{deep-sea ridges}, vast ocean plains complicated by chains and mountain groups, ridges \index[concepts]{ridge} and plateaus \index[concepts]{plateau} \cite{Jarrard1986}. The width of the continental shelf \index[concepts]{continental shelf} of the margin plates connecting to the Mariana trench occupies varies from a few tens to thousands of km and the average bottom slope is 17-25 \degree \cite{PushharovskijMelanholina1992}. \\
 
-	\paragraph{Cracks}
+The main ridge axes of the Mariana trench represent a place in the system where the upwelling magma encounters cold seawater in the location of four tectonic plates crossing Mariana trench. Since functionality of the biological communities of the Marina trench goes beyond the scopes of the current research, it should be only briefly mention as an example of interconnection of the system \cite{Galloetal2015}, \cite{Laceyetal2016}. Hence, the hydrothermal cooling of magma at the ridge axes causes recycling of the entire volume of the water in the hadal column. In this way it provides nutrients for biological communities\index[concepts]{biological communities} in the abyssal of trench \index[concepts]{abyssal of trench}, as studies, for example in various research papers \cite{Langetal2014}, \cite{Luoetal2017}, \cite{Ichinoetal2015}. The main part of the seabed of the Mariana Trench is composed by the oceanic crust forming rift zones of the mid-ocean ridges with a capacity of 5 to 10 km \cite{Morgan1974}. Since the system of the Mariana trench is complicated and constituent of the interrelated factors forming its tectonic structure, there are various attempt to answer the question of trench tectonics. Thus, it is discovered \cite{RuffKanamori1980} that deformations of the trench respond to the coupling between the upper and lower plates, that is, coupling itself relating to the continental slab age-buoyancy \index[concepts]{continental slab age-buoyancy}. Nevertheless, is has been found \cite{HeuretLallemand2005} that back-arc deformation roughly correlate with upper continental tectonic plate velocity \index[concepts]{tectonic plate velocity}. The trench migration rates are chiefly controlled by the lower continental tectonic plate velocity \cite{Lallemandetal2008}, which in turn depends on the tectonic slab age buoyancy \cite{Chase1978}. Its transverse profile is strongly asymmetric: the slopes of the Mariana Trench are higher on the side of the island arc. \\
+
+The slopes of the trench are dissected by deep underwater canyons. On the slopes of the trench are also often found various narrow steps. Mariana Trench has complicated steps of various shapes and sizes, caused by active tectonic and sedimental processes. Mariana Trench is the largest structural trap located in the continental margins of the Pacific Ocean: the sediments are being carrying by the ocean waves in a clockwise direction, passing through the trenches on the west of the Pacific (i.e. the Kermadec Trench and the Tonga Trench. Through the Samoan Passage). They furthermore flow northwest across the equator to the east Mariana Trench. The adjusting continental slopes are high, reaching up to several thousand meters and inclining to 3-6 \degree (in the south-western part of the trench up to 30-40 \degree), the upper boundary of which coincides with the edges of the shelf (depths of 150-200 m). Slopes of the passive margins \index[concepts]{passive margins} are strongly complicated by the terraces \index[concepts]{terraces}, ledges, marginal plateaus \index[concepts]{plateau, marginal} and canyons \index[concepts]{canyons}. Slopes of the margins are steeper, reaching can 5-7 km in height. The geomorphic structure of the Mariana Trench is complicated by the longitudinal ridges \index[concepts]{ridges, longitudinal}, steps\index[concepts]{steps}, large landslide \index[concepts]{landslide}, bodies and ledges \index[concepts]{ledges}. \\
+
+At the base of the continental slope of passive margins formed by the adjacent tectonic plates, Philippine Sea, Pacific and Caroline on the south-west, continental foot forms accumulative body. In turn it is formed by the merged cones of the removal and plumes of the suspension flows \index[concepts]{suspension flows} and submarine landslides \index[concepts]{landslides, submarine} with abyssal sedimentation \index[concepts]{sedimentation, abyssal}. Submarine margins of continents \index[concepts]{submarine margins of continents}, or transition zones depend on the features of the relief and geology. According to them they are divided into two types: the passive ones and the active ones. The first ones include the shelf \index[concepts]{shelf}, that is mainland bank \index[concepts]{mainland bank}, the slope and the mainland foot. Having complicated relief structure with marginal seas \index[concepts]{marginal seas}, island arcs \index[concepts]{island arcs} and deep-sea gutters, Mariana Trench belongs to the active type of trench. Due to the geodynamic reasons, Mariana Trench motion, migration and upper plate deformation \index[concepts]{plate deformation} can be described as the result of the response to the mantle flow and the imbalance between the forces exerted by the lower and upper continental plates at the plate interface.
+
+\paragraph{Cracks}
 Mariana Trench is notable for its well-developed systems of cracks in the structure. Cracks of the Mariana Trench are abundantly developed at the edge of the terrace, in the middle and upper part of the terrace \cite{HeuretLallemand2005}. The explanation of the formation of these cracks is, besides gravitational instability \index[concepts]{gravitation} \index[concepts]{gravitational instability}, that horizontal extension is due to the trench-ward increase of the dip angle of the ocean floor surface, and that this might cause slope instability due to gravity pull \index[concepts]{gravity pull}. The cracks on the surface of the \index[concepts]{seabed} on the oceanward slopes of the Mariana Trench are attributed to tensile rock failure induced by a combination of slope instability \index[concepts]{slope instability} and earthquake \index[concepts]{earthquake} shaking \cite{Schellart2007}. The cracks \index[concepts]{cracks} of the Mariana Trench are found on the horizontal or very gentle slopes just above steep cliffs, and are mostly elongated in directions nearly parallel to the strike of the cliffs \index[concepts]{cliffs}, although some are aligned, branching or merging have no vertical nor lateral displacement \index[concepts]{lateral displacement}, that could be explained by open tension fractures \index[concepts]{tension fractures}. Surface edges of the Mariana Trench cracks are generally very sharp, indicating their young origin, with a noticeable pressure ridge caused by mud overflow during closure of one crack. The cracks were formed at the horizontally stretched surface of the down-going subducting oceanic plate under tensional stress. This tensional stress may have been caused by a combination of gravitational slope instability plus additional inertia during earthquake shaking which occurs close to these areas \cite{Demetsetal1990}. Thus, the cracks were formed at topographically specific areas, where gravitational instability occurs at the edges of the slope or top of the ridge \cite{Ishizukaetal2010}.
 
 	\subsubsection{Submarine earthquakes}
@@ -1296,14 +1336,6 @@ As for the structure, magnetism, and dynamics of subduction zones, the continuat
 
 	\subsubsection{Seafloor spreading}
 Processes of the deep-sea terrigenous sedimentation are formed by the transfer of erosion materials from the adjacent land. The main processes are: transportation, deposition and re-deposition of the sedimentation materials. There are two general types of sedimentation in the Mariana Trench. The first one is represented by the pelagic sediments, accumulated as a result of gravitational forces moving suspended matter from the water column into the deeper parts. The second type is represented by the aleurite-clay sediments. In high latitudes they may be mixed with the iceberg sediments. The speed of such terrigenous sedimentation can reach 175-200 mm/thousand years. The most interest have sediments in the bottoms of deep ocean trenches, that mainly accumulate horizontally sand and silt turbidites with gradational stratification. The seafloor spreading fabric in the Mariana Trench is obscured by the absence of magnetic anomaly lineations. Elongated topographic structures accompanied by plate bending exist in the oceanward slope of the Challenger Deep \cite{Zhangetal2014}. The Japanese Lineation set is a Mesozoic magnetic anomaly lineation, it exists in the East Mariana Basin, east of the Mariana Trench \cite{Nakanishietal1992}, which means that the subducting plate along the southern part of the Mariana Trench is a part of the Pacific plate formed in the Mesozoic. Other remarkable topographic feature of the Mariana Trench includes a set of many elongated ridges and escarpments accompanied by the plate bending on the outer slopes with two existing distinct strikes for these structures. The elongated structures have two strikes: N85\degree E and the same as the trench axis; N70\degree E. Most bending-related structures except those near the trench axis, were formed by the reactivation of the seafloor spreading fabric. The presence of cracks is another distinguished geological feature of the Mariana Trench \cite{Ogawaetal1997}. Mariana Trench has many open prominent cracks on its surface, up to a few meters deep and a few hundred meters long on the diatomaceous clayey sediment surfaces of its oceanward slopes. The shape of the cross-section is Y-shaped. More precisely, the bottom is a very narrow (1-3 km), yet in some places wide (several tens of kilometers) flattened.
-
-\subsection{Data Analysis}
-The geomorphology of the Mariana Trench was studied through the spatial and statistical analysis of the 25 cross-section bathymetric profiles digitized across the trench. Each profile has a length of 1000 km and a distance between each two is 100 km. The methodology consists of two parts: geospatial data processing and statistical analysis. \\
-First, during the geospatial part of the research, the data were collected from the \ac{QGIS} project as vector layers. The attribute tables contained numerical data on bathymetry, geology, tectonic plates and geometric features of the Mariana Trench in its various segments of the geographic location: north-west, centre, south-west. \\
-Second, during the statistical part of the research, the table in .csv format was then read into the Python environment using Pandas package. The profiles were observed using methods of the statistical modelling performed by Python programming language. During the statistical testing and experiment, several existing approaches \cite{BoxTiao1992}; \cite{Timm2007}; \cite{Oliphant2007}; \cite{Oliphant2015} provided by the Python \ac{StatsModel} and Matplotlib libraries were used as the core algorithms described below. 
-The \ac{GIS} part of the research is performed in the \ac{QGIS}. 
-
-Using \ac{QGIS} plugins several complex tasks were separated into smaller and more manageable components (e.g. reading coordinates, crossing profile lines, etc). Various geospatial data have been uploaded into the \ac{GIS} to form the project: bathymetric features of the trench, sediment thickness, location of igneous volcanic zones, distribution of the tectonic plates, etc. The \ac{GIS} project has been projected into the \ac{UTM} cartesian coordinate system (square N-55). The GIS processing part consisted in following steps. Firstly, 25 1000-km long cross-section bathymetric profiles were digitized across the trench. The geometry of the first of the 25 profiles has been digitized across the Mariana Trench manually. Then, the line has been copied and re-entered for the next 24 profiles with a distance between every two neighbor lines of 100 km. The numbering of the profiles goes consequently from the north to the south, from 1 to 25. Hence, every profile contained 518 measurement points, XY coordinates, elevation depth data and thematic geological data (e.g. thickness of the sediment layer) stored in an attribute table. The \ac{QGIS} tool plugin 'Lat Lon Tools' adding projected coordinated has been installed to activate \ac{QGIS} option of adding x and y values directly to the Spreadsheet. The data were copied into a table which was used further in this work for the statistical processing. 
 
 \pagebreak
 \section{Izu-Bonin Trench}
@@ -1375,7 +1407,7 @@ The geological layers (lines and points) were added on the thematic geological m
 
 \subsection{Geoid gravitational regional model}
 The geoid model was analyzed to determine the oceanographic properties of the study area: a mathematical shape that of the ocean surface on the Earth with the sole impact of the gravity and rotation, with absent other influence (e.g. winds and tides). A modeled geoid presents a smooth yet irregular surface with visualized shape resulted from the uneven distribution of the mass on the Earth's surface. The sequence of \ac{GMT} modules (gmtset, grd2cpt, grdimage, pscoast, grdcontour, psbasemap, psscale, psimage, logo, pstext, psconvert) was used to map the geoid model for the trench areas for plotting contours of the terrestrial and water areas, geoid and bathymetry, net grids and basic cartographic elements such as titles, scales, annotations. Each \ac{GMT} module consists of the set of code lines, which, combined together as a script produce and visualize maps. \\
-The geoid modelling of the Ryukyu Trench (Fig. \ref{fig:R3}) was done using following code:  gmt grdimage geoid.egm96.grd -I+a45+nt1 -R120/134/20/33 - JD127/24/27/30/6i -Cgeoid.cpt -P -K > \$ps Example of modelling geoid of \ac{MAT} area is on Fig. \ref{fig:MAT4}. The additional cartographic elements were added using GMT basemap module: grid, title, costline and GMT pscoast module. The full script is presented in Appendix \ref{GMT:04}.
+The geoid modelling of the Ryukyu Trench (Fig. \ref{fig:R3R4}) was done using following code:  gmt grdimage geoid.egm96.grd -I+a45+nt1 -R120/134/20/33 - JD127/24/27/30/6i -Cgeoid.cpt -P -K > \$ps Example of modelling geoid of \ac{MAT} area is on Fig. \ref{fig:MAT4}. The additional cartographic elements were added using GMT basemap module: grid, title, costline and GMT pscoast module. The full script is presented in Appendix \ref{GMT:04}.
 
 \subsection{Modelling 3D mesh grid}
 The 3D mesh gridding aimed to visualize and highlight the topographic and bathymetric landforms and patterns of the region of the trenches, through dividing the input grid model into smaller shapes formed after discretization of the geometric model of the area. 
@@ -1386,7 +1418,7 @@ The initial data was cut off from the 5 minute grid using GMT 'grdcut' module. T
 \subsection{Modelling gravity}
 Gravity model is used to support geophysical investigations, geological prognosis as well as geological resources management. Here the \ac{GMT} script is presented for modelling gravity from m the ‘grdimage’ GMT module, and ‘img2grd’ module was used for the data conversion. The combination between the GMT modules and cartographic features enables to properly visualize thematic map by the GMT tools. The essential GMT elements include selecting map projections, fonts, map layout, grid, adding elements on the map. 
 The gravity data showing free-air gravity anomalies covering study area including terrestrial and marine regions, were taken from the  data sets based on the 1 arc-minute resolution CryoSat-2 and Jason-1 satellite-derived raster grids described in detailed in relevant studies (\cite{Sandwelletal1995}, \cite{Sandwelletal2013}, \cite{SmithSandwell1997b}, \cite{Sandwelletal2014}), for the trenches and surrounding regions. \\
-The gravity data reveled ground information for the geologic and geophysical settings of the study area, as free-air gravity anomalies reflect subsurface density variations \cite{Dooetal2018}. The gravity map was plotted using \ac{GMT} following code (example for Ryukyu Trench): gmt grdimage gravRT.grd -I+a45+nt1 -R105/123/8/24 -JY114/12/6.5i - CgravRT.cpt -P -K > \$ps . Here the -R function shows the selected region, the JY114/12/6.5i stands for the cylindrical equal-area Gall-Peters projection and 6,5 inches the overall dimensions of the map; -I+a45+nt1 shows the illumination parameters and -CgravRT.cpt selects the color palette created on the previous step. The chosen color palette (gravRT.cpt)  shows the transition from lower (red) values (loser than 20 mGal) to higher values (bright blue) gravity values (over 90 mGal). The gravity modelling (examples of Aleutian Trench: Fig. \ref{fig:A5}) was performed using the following script. The example of the Ryukyu Trench is on Fig. \ref{fig:R4}, \ac{MAT}: Fig. \ref{fig:MAT6} and Fig. \ref{fig:MAT7}. The full GMT code of modelling gravity is available in Appendix, \ref{GMT:07}.
+The gravity data reveled ground information for the geologic and geophysical settings of the study area, as free-air gravity anomalies reflect subsurface density variations \cite{Dooetal2018}. The gravity map was plotted using \ac{GMT} following code (example for Ryukyu Trench): gmt grdimage gravRT.grd -I+a45+nt1 -R105/123/8/24 -JY114/12/6.5i - CgravRT.cpt -P -K > \$ps . Here the -R function shows the selected region, the JY114/12/6.5i stands for the cylindrical equal-area Gall-Peters projection and 6,5 inches the overall dimensions of the map; -I+a45+nt1 shows the illumination parameters and -CgravRT.cpt selects the color palette created on the previous step. The chosen color palette (gravRT.cpt)  shows the transition from lower (red) values (loser than 20 mGal) to higher values (bright blue) gravity values (over 90 mGal). The gravity modelling (examples of Aleutian Trench: Fig. \ref{fig:A5}) was performed using the following script. The example of the Ryukyu Trench is on Fig. \ref{fig:R3R4}, \ac{MAT}: Fig. \ref{fig:MAT6} and Fig. \ref{fig:MAT7}. The full GMT code of modelling gravity is available in Appendix, \ref{GMT:07}.
 
 \subsection{Modelling automatically digitized cross-section profiles}
 The geomorphological modelling consisted in plotting sets of the cross-section orthogonal profiles in perpendicular direction to the main trench axis, and then comparing their parameters for each of the 16 trenches. Plotting cross-sectional profiles, or transects along the selected segment of the study area is a common technique in geological investigations. Examples of the geological cross-section profiles plotting and data analysis can be seen in \cite{RossShor1965}, \cite{Mooreetal1982}. In this study, the orthogonal cross-section bathymetric profiles were drawn automatically using presented \ac{GMT} script across the trenches. Because the scope of the current work is rather large (16 profiles of the Pacific Ocean), the automatization of the process was crucial point in the methodology and a key decision for selecting \ac{GMT}. \\
@@ -1569,6 +1601,11 @@ Current work contributes to filling the gap in the need for using such effective
 Understanding complex interrelation and spatial variation of the geological and geophysical factors affecting the \ac{KKT} is crucial to analysis of its geomorphic patterns. Various  factors contribute to the trench geomorphology and shape: motion of the Pacific plate subduction to the adjacent small Okhotsk plate, seismicity and location of the earthquakes. Special geophysical settings, geological parameters and special sedimentation processes induced by active volcanism and seismicity in the region are among the crucial factors affecting trench geomorphology. Geological settings of the Kamchatka region in general are notable for the mountains chains in the adjacent land, recorded active seismicity and magmatism, steep gradients of the mountains Hokkaido and Sakhalin islands, and Kamchatka Peninsula, as well as frequent earthquakes and erodible lithology. Necessarily, these factors contribute towards the active sedimentation processes which in turn affect geomorphology of the trench. Large amounts of the sediments are being transported to the Sea of Okhotsk and then driven in SE direction from the Hokkaido and NW from the Kamchatka Peninsula to the neighboring \ac{KKT}. 
 
 \section{QuantumGIS}\label{ssec:QGIS}
+The geomorphology of the Mariana Trench was studied through the spatial and statistical analysis of the 25 cross-section bathymetric profiles digitized across the trench. Each profile has a length of 1000 km and a distance between each two is 100 km. The methodology consists of two parts: geospatial data processing and statistical analysis. \\
+First, during the geospatial part of the research, the data were collected from the \ac{QGIS} project as vector layers. The attribute tables contained numerical data on bathymetry, geology, tectonic plates and geometric features of the Mariana Trench in its various segments of the geographic location: north-west, centre, south-west. \\
+Second, during the statistical part of the research, the table in .csv format was then read into the Python environment using Pandas package. The profiles were observed using methods of the statistical modelling performed by Python programming language. During the statistical testing and experiment, several existing approaches \cite{BoxTiao1992}; \cite{Timm2007}; \cite{Oliphant2007}; \cite{Oliphant2015} provided by the Python \ac{StatsModel} and Matplotlib libraries were used as the core algorithms described below. 
+The \ac{GIS} part of the research is performed in the \ac{QGIS}. \\
+Using \ac{QGIS} plugins several complex tasks were separated into smaller and more manageable components (e.g. reading coordinates, crossing profile lines, etc). Various geospatial data have been uploaded into the \ac{GIS} to form the project: bathymetric features of the trench, sediment thickness, location of igneous volcanic zones, distribution of the tectonic plates, etc. The \ac{GIS} project has been projected into the \ac{UTM} cartesian coordinate system (square N-55). The GIS processing part consisted in following steps. Firstly, 25 1000-km long cross-section bathymetric profiles were digitized across the trench. The geometry of the first of the 25 profiles has been digitized across the Mariana Trench manually. Then, the line has been copied and re-entered for the next 24 profiles with a distance between every two neighbor lines of 100 km. The numbering of the profiles goes consequently from the north to the south, from 1 to 25. Hence, every profile contained 518 measurement points, XY coordinates, elevation depth data and thematic geological data (e.g. thickness of the sediment layer) stored in an attribute table. The \ac{QGIS} tool plugin 'Lat Lon Tools' adding projected coordinated has been installed to activate \ac{QGIS} option of adding x and y values directly to the Spreadsheet. The data were copied into a table which was used further in this work for the statistical processing. \\
 The digitizing of the 25 bathymetric profiles across the trench has been performed in \ac{QGIS}. The \ac{GIS} part of the research is performed in the \ac{QGIS} by creating 25 bathymetric profiles crossing Mariana Trench. Each profile has a length of 1000 km, a distance gap of 100 km in between and 518 measurement points in each. Bathymetric GIS processing of the geospatial data in \ac{QGIS} consisted in creating cross-section profiles across the trench; converting coordinates to the \ac{UTM}; reading depths of the observation points into the attribute table. 
 The methodological scheme for the presented geomorphological analysis of the 16 trenches of the Pacific Ocean contained a four-step approach: 
 
@@ -1682,6 +1719,7 @@ The histogram plots (Fig. \ref{fig:4-3-1}) show normal distribution of the depth
 
 	\subsubsection{Violin plots}
 The violin plots (Fig. \ref{R:25}) were created to show Kernel probability density distribution of the bathymetric observations, as multimodal distributions with multiple peaks. Kernel density distribution plot as shown on the Fig. 2 was created using library \{violinmplot\} of R in a combined plot, which includes calculated quantiles for 0.25 and 0.75 of the data pool. 
+
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-3-1b.jpg}\caption{Violin plots showing depth data distribution for observation points of the 25 bathymetric profiles of the Mariana Trench. Computed in R by code: \ref{R:25}}\label{fig:4-3-1b}
@@ -2727,14 +2765,16 @@ The statistical results (Fig. \ref{fig:M7}) show differences in the depth ranges
 \end{figure}
 
 The histogram for the northern part has a clear bimodal distribution with two peaks. The second peak shows areas crossing the Luzon island. On the contrary, southern part demonstrates 142 values for the minimal bathymetry with values -3,500 to - 3400 m; the second peak also shows areas of the Luzon Island. The comparison of the statistical data analysis clearly shows that the northern part of the trench is deeper.
+
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-M8.jpg}
 	\caption{Gradient trend modelling for the cross-section profiles of the Manila Trench}\label{fig:M8}
 \end{figure}
+
 The southern part of the trench has steeper slope gradient from the oceanward part and on the contrary, the northern part is steeper in the continental slope part (Fig. \ref{fig:M8}, A and F). The submarine terraces can be noted on the northern segment of the trench (Fig. \ref{fig:M8} F) at depths - 2,000 m. Generally, the modelling of the northern part shows more steep degree of the oceanward slope (pairwise comparing on Figure 8: subplots C and H; D and I; E and J).\\
 However, a gradually slanting terrace on the southern part of the trench can be seen on the fragment 50-100 of the cross-section with depths from -1,100 to -1,300 m. Hence, the comparison between two segments of the trench located on the northern and south-eastern part of the trench show that northern part of the trench has shallower values of depths comparing to the southern yet more steep slope on the Luzon Island side.\\
-As for the geophysical modelling, based on the patterns of the free-air gravity map of the Manila Trench (Fig. \ref{fig:M4}), the high density materials are distributed continuously from the northern the southern Taiwan vertically southwards to the Luzon Island \index[places]{Luzon Island}, the Philippines \index[places]{Philippines}  from -50 mGal to -200 mGal. The majority of the values in the South China Sea areas lie between the 10 to 30 mGal, while values reaching >60 mGal can be noted in the island areas and southern Philippines. The results of the geomorphological modelling and mapping of the Manila Trench highlighted underlying tectonics conditions where the collision of two tectonic plates causes instability in the region: often earthquakes, submarine volcanism, seismicity in this region.
+As for the geophysical modelling, based on the patterns of the free-air gravity map of the Manila Trench (Fig. \ref{fig:M3M4}), the high density materials are distributed continuously from the northern the southern Taiwan vertically southwards to the Luzon Island \index[places]{Luzon Island}, the Philippines \index[places]{Philippines}  from -50 mGal to -200 mGal. The majority of the values in the South China Sea areas lie between the 10 to 30 mGal, while values reaching >60 mGal can be noted in the island areas and southern Philippines. The results of the geomorphological modelling and mapping of the Manila Trench highlighted underlying tectonics conditions where the collision of two tectonic plates causes instability in the region: often earthquakes, submarine volcanism, seismicity in this region.
 
 \section{Ryukyu Trench}
 The statistical results (Fig. \ref{fig:R8}) on the modelling Ryukyu Trench \index[places]{Ryukyu Trench} show certain differences in the depth ranges of the Ryukyu Trench along the Ryukyu Arc \index[places]{Ryukyu Arc}. The depth and geometry of the slope vary considerably: maximal values of -5,500 to -5,700 m are notable for the northern part of the trench where 334 observation points are recorded, as shown on Fig. \ref{fig:R8} (A). With a minor difference, southern part demonstrates comparable values (329 samples) for the same depth range.
@@ -2754,7 +2794,7 @@ The forearc basin deeper than 2,000 m and shallower than 1,000 m \ac{BSL} shows 
 	\caption{Modelling of the trend curves showing general geomorphological transects and slope gradients using various mathematical approximations, GMT.}\label{fig:R7}
 \end{figure}
 
-As can be noticed on the comparison of Fig. \ref{fig:R6} A and Fig. \ref{fig:R6} B, the median stacked profile on the southern part (Fig. \ref{fig:R6} A) demonstrates slightly more gentle slope shape with submarine terraces, while there are no clear on northern part of the forearc slope (Fig. \ref{fig:R6} B). At the same time the depth of the forearc slope increases in the northern segment of the trench (Fig. \ref{fig:R6} B). These changes of the slope geomorphology are also highlighted by the contour of the increased marine free-air gravity anomaly, as a triangle shaped ‘island’ located at 126\degree E 24\degree N (Fig. \ref{fig:R4}). The geometric approximation of the trend curves (Fig. \ref{fig:R7}) shows similarity between the segments while applying coarse linear model (Fig. \ref{fig:R7}: E and J; Fig. \ref{fig:R7}: D and I). However, the differences in the geomorphic variations become more notable at the polynomial functions (Fig. \ref{fig:R7}: C and H; Fig. \ref{fig:R7}: B and G).
+As can be noticed on the comparison of Fig. \ref{fig:R6} A and Fig. \ref{fig:R6} B, the median stacked profile on the southern part (Fig. \ref{fig:R6} A) demonstrates slightly more gentle slope shape with submarine terraces, while there are no clear on northern part of the forearc slope (Fig. \ref{fig:R6} B). At the same time the depth of the forearc slope increases in the northern segment of the trench (Fig. \ref{fig:R6} B). These changes of the slope geomorphology are also highlighted by the contour of the increased marine free-air gravity anomaly, as a triangle shaped ‘island’ located at 126\degree E 24\degree N (Fig. \ref{fig:R3R4}). The geometric approximation of the trend curves (Fig. \ref{fig:R7}) shows similarity between the segments while applying coarse linear model (Fig. \ref{fig:R7}: E and J; Fig. \ref{fig:R7}: D and I). However, the differences in the geomorphic variations become more notable at the polynomial functions (Fig. \ref{fig:R7}: C and H; Fig. \ref{fig:R7}: B and G).
 
 \begin{figure}[H]
 	\centering
@@ -2762,7 +2802,7 @@ As can be noticed on the comparison of Fig. \ref{fig:R6} A and Fig. \ref{fig:R6}
 	\caption{Statistical histograms showing frequency of the distribution of various depths values in southern and northern parts of the Ryukyu Trench.}\label{fig:R8}
 \end{figure}
 
-The geoid model shows geoidal undulation in the south-western part of the area east off Taiwan Island \index[places]{Taiwan Island} (Fig. \ref{fig:R3}). Generally, the major part of the area has geoid values range of 25 to 35 mGal. The increased values (>35 to 85 mGal) can be seen on the south-eastern part in the Philippine Sea area, while lower values (15-25 mGal) bordering continental shelf stretch along the East China Sea and the lowest (<15 m Gal) mainly occupy land areas.
+The geoid model shows geoidal undulation in the south-western part of the area east off Taiwan Island \index[places]{Taiwan Island} (Fig. \ref{fig:R3R4}). Generally, the major part of the area has geoid values range of 25 to 35 mGal. The increased values (>35 to 85 mGal) can be seen on the south-eastern part in the Philippine Sea area, while lower values (15-25 mGal) bordering continental shelf stretch along the East China Sea and the lowest (<15 m Gal) mainly occupy land areas.
 
 \section{Palau Trench}
 
@@ -2827,9 +2867,15 @@ The information and conceptual framework for the sediment thickness of the World
 
 \section{Japan Trench}
 
-\vspace{0.5em}
-\begin{tikzpicture}[thick]
-	\draw[decorate,Tan1,decoration={coil,segment length=5pt}] (0,4) -- (15,4); 
+\begin{tikzpicture} 
+	\pgfornament[height=1cm,color=Thistle]{11}
+	\pgfornament[height=1cm,color=Thistle]{14}
+	\pgfornament[height=1cm,color=Thistle]{11}
+	\pgfornament[height=1cm,color=Thistle]{14}
+	\pgfornament[height=1cm,color=Thistle]{11}
+	\pgfornament[height=1cm,color=Thistle]{14}
+	\pgfornament[height=1cm,color=Thistle]{11}
+	\pgfornament[height=1cm,color=Thistle]{14}
 \end{tikzpicture}
 
 \pagebreak
@@ -2878,8 +2924,8 @@ The big data are often used in the marine research, since they are taken from th
 The importance of the precision of the numerical computing in Earth sciences cannot be underestimated. Current dissertation contributed towards the development of the numerical approaches in the marine geology demonstrating the combined usage of \ac{GMT}, Python, AWK, R and Octave/Matlab. The use of the \ac{IT} approaches in Earth sciences proved to be an effective method for the marine geology where data has to be statistically processed and visualized. Clear syntax and semantics of Python minimizes the chance of conflicts caused by hard-to-find bugs in a code.\\
 The statistical data analysis has been implemented using \ac{ML} algorithms. The seamless integration of the multi-dimensional data by the R and Python statistical packages enabled to perform marine geodata analysis and proper selection of the optimal algorithms to process the data features. The fully provided codes written on the programming language make this research easily repeatable and accessible for other scientists. The adoption of the open source programming rapidly replacing the commercial technologies, Python and R will soon become popular among the marine geologists. This research contributes towards the development of the technical implementation of the \ac{ML} algorithms for effective processing of the geodata. 	
 	
-\vspace{0.5em}
-\hspace{8em}\pgfornament[color=LightSteelBlue,width=10cm]{86}
+\vspace{1.5em}
+\hspace{8em}\pgfornament[color=Plum,width=12cm]{86}
 
 \pagebreak
 
@@ -2967,6 +3013,12 @@ In case the surface of the whole trench is being modeled, the extrapolation or i
 \section{\TeX \space macro language}
 \subsection{\LaTeX code to create bathymetric profiles}\label{L:01}
 \lstinputlisting[language=tex]{Latex-bathymetry.tex}
+
+\vspace{0.5em}
+\begin{tikzpicture}[thick]
+	\draw[decorate,Plum3,decoration=zigzag] (0,4) -- (16,4); 
+\end{tikzpicture}
+
 \pagebreak
 
 \section{AWK language}
@@ -3025,7 +3077,13 @@ In case the surface of the whole trench is being modeled, the extrapolation or i
 
 \subsection{GMT script for 3D bar histogram plot (here: KKT)}\label{GMT:13}
 \lstinputlisting[language=bash]{GMT-13.sh}
+
+\vspace{1.5em}
+\begin{tikzpicture}[thick]
+	\draw[decorate,Plum,decoration={coil,segment length=5pt}] (0,4) -- (15,4); 
+\end{tikzpicture}
 \pagebreak
+
 %%%%%%%%%%%%%%%%%%% GMT scripts end %%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%% Python scripts start %%%%%%%%%%%%%%%%%%%%%%%
@@ -3301,9 +3359,9 @@ Source data available on my \href{https://github.com/paulinelemenkova/40-R-Scatt
 \subsection{R code for diagonal scatterplot matrices by (car) library}\label{R:42}
 Source data available on my \href{https://github.com/paulinelemenkova/40-R-Scatterplot-matrix}{GitHub}.
 \lstinputlisting[language=R]{R-42.r}
-\pagebreak
 %%%%%%%%%%%%%%%%%%% R scripts end %%%%%%%%%%%%%%%%%%%%%%%
 
+\vspace{0.8em}
 \hspace{1em}\pgfornament[width=15cm,color=Plum3]{88}
 \end{appendices}
 \pagebreak
@@ -3329,17 +3387,46 @@ Source data available on my \href{https://github.com/paulinelemenkova/40-R-Scatt
 \indexprologue{This index lists authors of the cited literature sources used in the thesis}
 \printindex[name-authors] 
 
-\vspace{0.5em}
-\begin{tikzpicture}[thick]
-	\draw[decorate,Plum3,decoration={coil,aspect=0}] (0,4) -- (16,4); 
+ \begin{tikzpicture} 
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
+	\pgfornament[height=1cm,color=Thistle]{20}
 \end{tikzpicture}
+
 
 \indexprologue{This index lists the geographic places and locations mentioned in the thesis}
 \printindex[places]
 
-\vspace{0.5em}
-\begin{tikzpicture}[thick]
-	\draw[decorate,Plum3,decoration=zigzag] (0,4) -- (16,4); 
+ \begin{tikzpicture} 
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
+	\pgfornament[height=1cm,color=Thistle]{4}
 \end{tikzpicture}
 
 \indexprologue{This index lists the most essential concepts and definitions used in the thesis, including both\\ geological and technical terminology (programming, statistics, mathematics)}
@@ -3349,11 +3436,23 @@ Source data available on my \href{https://github.com/paulinelemenkova/40-R-Scatt
 %\printindex[year-title] 
 
 %%%%%%%%%%% Nomenclature %%%%%%%
-
-\begin{tikzpicture} 
-	\pgfornament[height=1cm,color=Thistle]{71}
-	\pgfornament[height=1cm,color=Thistle]{71}
-	\pgfornament[height=1cm,color=Thistle]{71}
+ \begin{tikzpicture} 
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
+	\pgfornament[height=1cm,color=Thistle]{7}
 \end{tikzpicture}
 
 \end{document}

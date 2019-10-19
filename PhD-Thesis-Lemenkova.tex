@@ -239,7 +239,7 @@
 }
 
 \addbibresource{PacificOcean.bib}
-
+\renewcommand*{\bibfont}{\small}
 
 %%%%%% добавление французского архива HAL L'archive ouverte : начало %%%%%%%
 \DeclareFieldFormat{hal}{%
@@ -358,8 +358,6 @@
 \newcommand{\myequations}[1]{%
 \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
 \setlength{\cftmyequationsnumwidth}{2.5em}% Width of equation number in List of Equations
-
-\renewcommand*{\bibfont}{\small}
 
 %%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%
 
@@ -533,6 +531,7 @@ This work demonstrated successful combination of these approaches enabling to ma
 	\acro{HSD}{Honest Significant Differences}
 	\acro{IBCAO}{International Bathymetric Chart of the Arctic Ocean}
 	\acro{IDLE}{Integrated Development and Learning Environment}
+	\acro{IHO}{International Hydrographic Organization}
 	\acro{IRIS}{Incorporated Research Institutions for Seismology}
 	\acro{IT}{Information Technology}
 	\acro{KKT}{Kuril-Kamchatka Trench}
@@ -661,11 +660,11 @@ The structure of the presented thesis is as follows. The thesis is structured in
 	\counterwithin{table}{section}
 
 \markright{Introduction}
-The study focuses on the application of R programming language towards marine geological research with a case study of Mariana Trench. Due to its logical and straightforward syntax, multi-functional standard libraries, R is especially attractive to the geologists for the scientific computing. Using R libraries, the unevenness of various factors affecting Mariana Trench geomorphic structure has been studied. These include sediment thickness, slope steepness, angle aspect, depth at the basement and magmatism of the nearby areas. Methods includes using following R libraries: \{ggplot2\} for regression analysis, Kernel density curves, compositional charts; \{ggalt\} for Dumbbell charts for data comparison by tectonic plates, ranking dot plots for correlation analysis; \{vcd\} for mosaic plots, silhouette plots for compositional similarities among the bathymetric profiles, association plots; \{car\} for \ac{ANOVA}. Bathymetric GIS data processing was dome in \ac{QGIS} and \LaTeX. Text typesetting also in \LaTeX using available manuals and resources \cite{Knuth1984}. The innovativeness of the work consists in the multi-disciplinary approach combining \ac{GIS} analysis and statistical methods of R which contributes towards studies of ocean trenches, aimed at geospatial analysis of big data.\\
+The study focuses on the comparative analysis of the submarine geomorphology of the trenches located in the Pacific Ocean by means of data processing,  visualization mapping and modeling through scripting approves by GMT, R and Python. According to the \ac{IHO} classification, trenches are 'long narrow, characteristically very deep and asymmetrical depressions of the sea floor, with relatively steep sides' \cite{IHO2008}. The innovativeness of the work consists in the multi-disciplinary approach combining \ac{GIS} analysis and statistical methods of R which contributes towards studies of ocean trenches, aimed at geospatial analysis of big data.\\
 The study object is Mariana Trench, located in the west Pacific Ocean, formed in the area of subduction of the tectonic plates, Pacific Plate subducts beneath the Philippine Sea Plate, Mariana and Caroline Plates are located besides. Mariana Trench is the deepest hadal trench on the Earth having the oldest oceanic crust. Understanding patterns of the correlation between the geomorphic and geological features of the seafloor of the hadal trenches is critical for proper ocean modelling. 
 
 \section{Summary}
-The dissertation work is focused upon understanding variability of factors responsible for the deep ocean trench formation and comparative analysis of their geomorphic structure. Upcoming work continues investigations of the geology of the Pacific Ocean and the interplay between geomorphic, geological, tectonic and volcanic factors affecting submarine landform formation. The Pacific Ocean.
+The dissertation is focused upon understanding variability of factors responsible for the deep ocean trench formation and comparative analysis of their geomorphic structure. Upcoming work continues investigations of the geology of the Pacific Ocean and the interplay between geomorphic, geological, tectonic and volcanic factors affecting submarine landform formation. 
 The aim of this work is to identify main impact factors affecting variations in the geomorphology of the Mariana Trench which is the deepest place of the Earth, located in the west Pacific Ocean: steepness angle and structure of the sediment compression. The Mariana Trench presents a complex ecosystem with highly interconnected factors: geology (sediment thickness and tectonics including four plates that Mariana trench crosses: Philippine, Pacific, Mariana, Caroline), bathymetry (coordinates, slope angle, depth values in the observation points). To study such a complex system, an objective method combining various approaches (statistics, R, \ac{GIS}, descriptive analysis and graphical plotting) was performed. Methodology of the research includes following clusters: R programming language for writing codes, statistical analysis, mathematical algorithms for data processing, analysis and visualizing diagrams, \ac{GIS} for digitizing bathymetric profiles and spatial analysis. The statistical analysis of the data taken from the bathymetric profiles was applied to environmental factors, i.e. coordinates, depths, geological properties sediment thickness, slope angles, etc. Finally, factor analysis was performed by R libraries to analyze impact factors of the Mariana Trench ecosystem. Euler-Venn logical diagrams highlighted similarities between four tectonic plates and environmental factors. The results revealed distinct correlations between the environmental factors (sediment thickness, slope steepness, depth values by observation points, geographic location of the profiles) affecting Mariana Trench morphology. The research demonstrated that coding on R language provides a powerful and highly effective statistical tools, mathematical algorithms of factor analysis to study ocean trench formation.
 
 \subsection{Background}
@@ -673,8 +672,7 @@ The geographic focus of the current study Mariana Trench, the deepest point of t
 
 \subsubsection{Submarine geomorphology}
 	There are various geodynamic processes that influence tectonic rift dynamics and structure as well as and rifted margin geomorphology. Currently, the interest towards the geodynamics, the drivers and consequences of these processes was implemented as a key target goals of the oceanographic research in China \cite{Cuietal2014a}; \cite{Cui-Wu2018}. Knowing and proper understanding of the driving factors affecting the ocean ecosystems gives an understanding of the possible dynamics, accumulation and location of the target ocean resources that are crucial for the economic development. \\
-	Understanding bathymetry of the ocean is crucial for the marina geological research. As noted by \cite{DierssenTheberge2014b}, the distribution of elevations on the Earth or hypsography is highly uneven. Thus, the majority of the depths is occupied by deep basins (4–6.5 km) covered with abyssal plains and hills, while seafloor with ranges 2-4 km depth mostly consists of oceanic ridges and in total cover about 30\% of the total ocean seafloor. Finally, the shallow areas and continental margins with 2 km depth and shallower cover only  the least amount of area, that is 15\% of the seafloor \cite{Litvin1987}.  Finally, the valley, seamounts, and submarine canyons are only the minor features of the seafloor. 
-	Given the importance of the hadal areas,  study of the ocean trenches geomorphology and distribution of its features with regards to the bathymetry seems to be obvious. \\
+	Understanding bathymetry of the ocean is crucial for the marina geological research. As noted by \cite{DierssenTheberge2014b}, the distribution of elevations on the Earth or hypsography is highly uneven. Thus, the majority of the depths is occupied by deep basins (4–6.5 km) covered with abyssal plains and hills, while seafloor with ranges 2-4 km depth mostly consists of oceanic ridges and in total cover about 30\% of the total ocean seafloor. Finally, the shallow areas and continental margins with 2 km depth and shallower cover only  the least amount of area, that is 15\% of the seafloor \cite{Litvin1987}.  Finally, the valley, seamounts, and submarine canyons are only the minor features of the seafloor. Given the importance of the hadal areas,  study of the ocean trenches geomorphology and distribution of its features with regards to the bathymetry seems to be obvious. \\
 	There are many attempts undertaken to understand, to what extent and how do the geophysical movements in the subduction zones affect the trench geomorphology, deformation and migration, \cite{Doglioni2009}; \cite{FernandezMarques2018}; \cite{Gorbatovetal2001}; \cite{Hubbleetal2016}; \cite{Lemoineetal2002}. General concepts and understanding of the functioning and current problems in research directions of the marine hadal observations were implied in the current research. Active sedimentation on the bottom of the seafloor leads to the accumulated amount at rifted margins, particularly at the deltas of the large rivers. Sediments outflowing further to the ocean provide important geological bodies and resources.  Besides, the natural hazards taking place in the ocean, strongly correlate with submarine earthquakes and volcanic eruptions during active rifting \cite{Brune2016}. Moreover, there is a certain correlation between the high oceanic features and thickness of the subduction channels and earthquake rupture segments, as shown with a case study of the trenches in east Pacific Ocean by \cite{ContrerasReyesCarrizo2011}. Ocean hadal trenches result from the complex geodynamic processes that continuously shape the surface of the seafloor \cite{BogolepovChikov1976}. Nowadays, the ocean seafloor demonstrates ‘footprints’ of the many continuous steps of the seafloor evolution. \\
 	Traditional methods of the marine geological modelling include using \ac{GIS} based processing of the \ac{RS} images, such as for instance aerial photos, \ac{SPOT}3, \ac{SPOT}4 and \ac{ENVISAT} data, or producing digital maps based on the data capture in the field \cite{Bogdanovetal2011}. On the contrary, current paper makes an accent on using high-level programming language Python and its libraries Pandas, \ac{NumPy} and \ac{SciPy} for the processing of the large data frames\index[concepts]{data frame} imported from \ac{GIS}. The effectiveness of the data computing and visualization by Python was the key factor for the applying its functionality in this research. Some approaches of the scientific visualization and methods of the data analytics discussed previously by \cite{Crameri2018} were considered in this research. \\
 	The actuality of the studies of marine natural hazards, such as submarine earthquakes and tsunamis cannot be underestimated. Recent progress in modelling earthquakes in Pacific ocean were proposed by \cite{Kongetal2017}. Using the global dataset of broadband and long-period seismograms, recorded as a time series ranging 2006-2014, from the \ac{IRIS}, it has been detected that there is a clearly descendance in the morphology of the Pacific plate, which becomes flatten at the base of the upper mantle and further goes westward towards a northern-central China \cite{Dokhtetal2016}. Application of the geodynamic studies related to the tsunami, its possible reasons and consequencs, are presented recently reporting that the shallowest reaches of plate boundary subductions host substantial slips that generate large and destructive tsunamis \cite{Ikarietal2015}. Attempts towards studies of the ocean geomorphology, dynamics and intercorrelation between various factors affecting its functioning are given by various research, \cite{Maoetal2016}; \cite{Masson1991};  \cite{Luoetal2018}; \cite{Loheretal2018}.
@@ -776,9 +774,9 @@ The bathymetric patters of the seafloor of the Pacific Ocean (\ref{map:PO}) show
 	\caption{Pacific Ocean: tectonic structures and main lineaments on the seafloor}\label{map:TectW}
 \end{map}
 
-There are 17 major trenches of the Pacific Ocean (Tab. \ref{tab:T1}). 
+There are 20 deep-sea trenches of the Pacific Ocean (Tab. \ref{tab:T1}), including major and minor ones. 
 
-\begin{table}\caption{Summary of the statistics on the 17 deep-sea trenches of the Pacific Ocean}\label{tab:T1}
+\begin{table}\caption{Summary of the statistics on the 20 deep-sea trenches of the Pacific Ocean}\label{tab:T1}
 \begin{tabular}{@{\makebox[2em][r]{\rownumber\space}} | p{5.5cm} p{2.5cm} p{2.5cm} p{2.5cm} |}
 \multicolumn{1}{@{\makebox[2em][r]{No}} | l}{Name} & Max. depth (m) & Length (km) & Width (km) \\ 
 		\arrayrulecolor[RGB]{184,210,0}\hline\hline\hline
@@ -787,6 +785,8 @@ There are 17 major trenches of the Pacific Ocean (Tab. \ref{tab:T1}).
 	Mariana & 10,994  & 2,550 & 59 \\
         		\arrayrulecolor[RGB]{170,207,83}\hline\hline
 	Philippine & 10,540 & 1,320 & 65 \\
+        		\arrayrulecolor[RGB]{199,220,104}\hline\hline
+	East Luzon & - & - & - \\
         		\arrayrulecolor[RGB]{199,220,104}\hline\hline
 	Kuril-Kamchatka & 10,542 & 2,900 & 59 \\
         		\arrayrulecolor[RGB]{216,230,152}\hline\hline
@@ -814,6 +814,10 @@ There are 17 major trenches of the Pacific Ocean (Tab. \ref{tab:T1}).
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
 	New Hebrides & 7,600 & 1,200 & 34 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Puysegur & - & - & - \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
+	Hikurangi & - & - & - \\
+        		\arrayrulecolor[RGB]{185,208,139}\hline\hline
 	Ryukyu & 7,460 & 2,250 & 38 \\
         		\arrayrulecolor[RGB]{131,155,92}\hline\hline\hline
 \end{tabular}
@@ -834,10 +838,10 @@ The geographic object of this study is the Kuril-Kamchatka Trench \index[places]
 \end{map}
 
 Geographically, the \ac{KKT} continues south-eastwards from the coast of the Kamchatka Peninsula, in parallel to the Kuril Island chain, and meets Hokkaido Island\index[places]{Hokkaido Island}. Geologically, the \ac{KKT} presents a boundary of the large subduction zone of the Pacific tectonic plate under the Okhotsk tectonic plate \cite{Bird2003}, which causes irregularity in its bathymetric shapes and geomorphic structure. The submarine geomorphology of the seafloor underlying the \ac{KKT} is formed as a result of the complex interplay between the geological substrate, water column and a range of the geophysical processes and phenomena. As a result, the variations in the distribution of the geomorphic landforms in the trench were caused by a continuous effect of various factors through the whole history of the trench formation. \\
-The Sea of Okhotsk is a semi-enclosed sea, connected in terms of bathymetry with the open Pacific Ocean through the Bussol and Krusenstern straits\index[places]{Krusenstern strait} \cite{MaiorovaAdrianov2018b}. The Sea of Okhotsk\index[places]{Sea of Okhotsk} is not isolated, has maximal depths of 3374 m. It has deep-sea straits to the NW Pacific Ocean, the deepest of which are the Bussol with depths reaching 2300m (Avdeiko et al., 2007; Brandt et al., 2018), (Figure 2). The Sea of Okhotsk\index[places]{Sea of Okhotsk} is connected with with the Pacific Ocean hydrologically through the Bussol Strait. The upper water masses of the \ac{KKT} region are strongly influenced by the currents in opposite directions: the Oyashio\index[places]{Oyashio} coming from the Arctic southwards into the Pacific Ocean and the Kuroshio\index[places]{Kuroshio} coming from the South China and flowing in northeast direction \cite{Belkinetal2009}.
+The Sea of Okhotsk is a semi-enclosed sea, connected in terms of bathymetry with the open Pacific Ocean through the Bussol and Krusenstern straits\index[places]{Krusenstern strait} \cite{MaiorovaAdrianov2018b}. The Sea of Okhotsk\index[places]{Sea of Okhotsk} is not isolated, has maximal depths of 3374 m. It has deep-sea straits to the NW Pacific Ocean, the deepest of which are the Bussol with depths reaching 2300m \cite{Brandtetal2018}, (Map \ref{map:KKT1}). The Sea of Okhotsk\index[places]{Sea of Okhotsk} is connected with with the Pacific Ocean hydrologically through the Bussol Strait. The upper water masses of the \ac{KKT} region are strongly influenced by the currents in opposite directions: the Oyashio\index[places]{Oyashio} coming from the Arctic southwards into the Pacific Ocean and the Kuroshio\index[places]{Kuroshio} coming from the South China and flowing in northeast direction \cite{Belkinetal2009}.
 
 The trench is characterized by a geometrically long narrow, elongate, deep and asymmetrical depression of the seafloor with steep slopes. Together with Aleutian Trench, the \ac{KKT} presents contiguous complex covering area of 254,740 km2 \cite{Harrisetal2014}. 
-The \ac{KKT} is distributed along Kuril island arcs and Eurasian continent masses, developed in the association with an island-arc system where Pacific tectonic plate subducts below the North American\index[places]{North American Plate} and Okhotsk plates. The Okhotsk plate represents a region of active grabens lying southwards of a chain of small sedimentary basins in the Cherskii Mountains\index[places]{Cherskii Mountains} \cite{Savostinetal1983}. The geomorphic and topographic patterns of the land area of Kamchatka Peninsula are influenced by the climate and glaciological effects (glacier cirques) \cite{BarrSpagnolo2015}. The \ac{KKT} is divided by the Bussol Strait into southern and northern parts. Because geologic factors differ in northern and southern parts of the trench, it affects its geomorphology. The southern part of the Greater Kuril Chain\index[places]{Greater Kuril Chain} includes the large Kunashir\index[places]{Kunashir}, Iturup\index[places]{Iturup}, and Urup\index[places]{Urup} islands constituting the islands-arc-trench system. This part is confined to the northwestern Pacific subduction zone \cite{Khomich}. The topographic and geomorphic features of the trench in its northern part are different from those located further southwards near the group of the seamounts.
+The \ac{KKT} is distributed along Kuril island arcs and Eurasian continent masses, developed in the association with an island-arc system where Pacific tectonic plate subducts below the North American\index[places]{North American Plate} and Okhotsk plates. The Okhotsk plate represents a region of active grabens lying southwards of a chain of small sedimentary basins in the Cherskii Mountains\index[places]{Cherskii Mountains} \cite{Savostinetal1983}. The geomorphic and topographic patterns of the land area of Kamchatka Peninsula are influenced by the climate and glaciological effects (glacier cirques) \cite{BarrSpagnolo2015}. The \ac{KKT} is divided by the Bussol Strait into southern and northern parts. Because geologic factors differ in northern and southern parts of the trench, it affects its geomorphology. The southern part of the Greater Kuril Chain\index[places]{Greater Kuril Chain} includes the large Kunashir\index[places]{Kunashir Island}, Iturup\index[places]{Iturup Island}, and Urup\index[places]{Urup Island} islands constituting the islands-arc-trench system. This part is confined to the northwestern Pacific subduction zone \cite{Khomich}. The topographic and geomorphic features of the trench in its northern part are different from those located further southwards near the group of the seamounts.
 
 \begin{map}[H]
 	\centering
@@ -949,7 +953,7 @@ The Aleutian Trench \index[places]{Aleutian Trench} is located in the North Paci
 \end{map}
 
 The seafloor is constantly experiencing deformations under the impact of the plate tectonic processes, modelling shape of the ocean floor is one of the fundamental issues of the marine geology. However, proper techniques of the mapping, visualization and modelling deep-sea hadal trenches are still developing \cite{Wadge}, \cite{WesselSmith1991}. The study of the submarine landforms, such as hadal trenches, has certain limitations in the development and progress due to the remote location of the study object. Therefore, modelling seafloor lies by means of the free open source software by the machine algorithms, data modelling and approximations is an effective tool for the marine mapping. The particular problem in the geospatial mapping of the seafloor lies in the complexity of the processes involved in the formation of the landforms. Submarine geologic modelling should therefore encompass not only the landforms of the trench itself, but also its explicit links with tectonics, seismicity in the study area, earthquakes repeatability and magnitude, oceanological parameters (current direction and strength) as well as lithology (nature and properties of the underlying rocks).\\
-Geologically, the Aleutian Islands arc \index[places]{Aleutian Arc} is classified as an accreting margin \cite{Jicha} with most of the arc having a well-developed frontal prism formed in the Plio-Pleistocene. The central Aleutian volcanic front migrated northwards 30–60 km since the formation of the arc massif completed in the late Eocene. Aleutian Trench has weak coupling between the surface tectonic plate and subducting slabs \cite{Yoshida2017}. The seismicity of the Aleutian regions causes tsunami that affect far located regions \cite{Ryan} of which the 1946 was by far the most severe \cite{Bai}. Further studies on the seismicity, earthquake sources and effects distribution in the region of the Aleutian Islands is developed in various studies \cite{Ekstrom}, \cite{Engdahl}. The tectonics of the Aleutian-Komandorsky chain \index[places]{Aleutian-Komandorsky chain} that is proved \cite{Gaedicke} to be colliding with Kamchatka at the Kamchatka Peninsula \index[places]{Kamchatka Peninsula}. Structural evolution of the Kamchatka-Aleutian triple junction \index[places]{Kamchatka-Aleutian triple junction} area in the Mesozoic and Tertiary was affected by the subduction in Kronotskiy subduction zone and collision of the Kronotskiy arc \index[places]{Kronotskiy arc} against North-East Eurasia margin \cite{Alexeiev}. The Aleutian tectonics is deeply connected with Kuril-Kamchatka since the Aleutian transform fault separated the Kronotskiy terrane block from the Pacific plate \cite{Freitag}. Relevant studies \cite{Fliedner}, \cite{Holbroock} develop further investigations on the crustal structure transition form oceanic to continental arc in the Aleutian Islands region. 
+Geologically, the Aleutian Islands arc \index[places]{Aleutian Arc} is classified as an accreting margin with most of the arc having a well-developed frontal prism formed in the Plio-Pleistocene. The central Aleutian volcanic front migrated northwards 30-60 km since the formation of the arc massif completed in the late Eocene. Aleutian Trench has weak coupling between the surface tectonic plate and subducting slabs \cite{Yoshida2017}. The seismicity of the Aleutian regions causes tsunami that affect far located regions \cite{Ryan} of which the 1946 was by far the most severe \cite{Bai}. Further studies on the seismicity, earthquake sources and effects distribution in the region of the Aleutian Islands is developed in various studies \cite{Ekstrom}, \cite{Engdahl}. The tectonics of the Aleutian-Komandorsky chain \index[places]{Aleutian-Komandorsky chain} that is proved \cite{Gaedicke} to be colliding with Kamchatka at the Kamchatka Peninsula \index[places]{Kamchatka Peninsula}. Structural evolution of the Kamchatka-Aleutian triple junction \index[places]{Kamchatka-Aleutian triple junction} area in the Mesozoic and Tertiary was affected by the subduction in Kronotskiy subduction zone and collision of the Kronotskiy arc \index[places]{Kronotskiy arc} against North-East Eurasia margin \cite{Alexeiev}. The Aleutian tectonics is deeply connected with Kuril-Kamchatka since the Aleutian transform fault separated the Kronotskiy terrane block from the Pacific plate \cite{Freitag}. Relevant studies \cite{Fliedner}, \cite{Holbroock} develop further investigations on the crustal structure transition form oceanic to continental arc in the Aleutian Islands region. 
 
 \begin{map}[H]
 	\centering
@@ -985,7 +989,7 @@ This part the research presents studies of the Middle America Trench \index[plac
 	\caption{Middle America Trench: bathymetric map, ETOPO1 grid.}\label{map:MAT1}
 \end{map}
 
-The results of the geospatial data modelling show geomorphic shape of the submarine landforms in the \ac{MAT} and surface trends that reveal unevenness in the structure. The submarine geomorphic structure of the trench has straight shape form of the slopes with more steep oceanward forearc. Its geometry has relatively steep and strait shape which correlates with seismisity. Major depth observation samples have values of -3000 to -6200 m, seafloor is 3-5 km wide. The marine vertical gravity at the trench correlates with the tectonic slab contours. The intermediate values (20-30 mGal) are detected on the trench slopes while the highest values on the mountainous areas. GMT based data analysis enabled to map remotely located areas such as deep-sea trench, to visualize and analyze geophysical and geological factors. The techniques and methodology of the GMT scripting presented in the workflow shown effective framework for the geological mapping.
+The results of the geospatial data modelling show geomorphic shape of the submarine landforms in the \ac{MAT} and surface trends that reveal unevenness in the structure. The submarine geomorphic structure of the trench has straight shape form of the slopes with more steep oceanward forearc. Its geometry has relatively steep and strait shape which correlates with seismicity. Major depth observation samples have values of -3000 to -6200 m, seafloor is 3-5 km wide. The marine vertical gravity at the trench correlates with the tectonic slab contours. The intermediate values (20-30 mGal) are detected on the trench slopes while the highest values on the mountainous areas. GMT based data analysis enabled to map remotely located areas such as deep-sea trench, to visualize and analyze geophysical and geological factors. The techniques and methodology of the GMT scripting presented in the workflow shown effective framework for the geological mapping.
 
 \subsection{Introduction}
 The work aims at understanding submarine geomorphology of the \ac{MAT}, Map \ref{map:MAT1}. The research methodology is based on the geospatial and statistical analysis using \ac{GMT} modules. The presented segment of the geological part of the research is focused on the Guatemala Trench, which is a southern part of \ac{MAT}, located on the Cocos Plate between the Tehuantepec Ridge \index[places]{Tehuantepec Ridge} and stretching until Cocos Ridge \index[places]{Cocos Ridge}, off Middle America \index[places]{Middle America } (Map \ref{map:MAT5}). 
@@ -996,7 +1000,7 @@ The work aims at understanding submarine geomorphology of the \ac{MAT}, Map \ref
 	\caption{Middle America Trench: topographic contour map}\label{map:MAT2}
 \end{map}
 
-The specific focus of this work is laid on its multi-disciplinary scope that combines cartographic methods of the geospatial and statistical data modelling by GMT with analysis of the general setting of the study area: geological, bathymetric and geophysical properties. Methodologically, the research included data visualization, modelling cross-section profiles and mapping,  statistical analysis of the ssubmarine landforms of the trench. The initial geo data were extracted from the \ac{USGS} public sources as well as available embedded layers in the GMT (e.g. coastlines). 
+The specific focus of this work is laid on its multi-disciplinary scope that combines cartographic methods of the geospatial and statistical data modelling by GMT with analysis of the general setting of the study area: geological, bathymetric and geophysical properties. Methodologically, the research included data visualization, modelling cross-section profiles and mapping,  statistical analysis of the submarine landforms of the trench. The initial geo data were extracted from the \ac{USGS} public sources as well as available embedded layers in the GMT (e.g. coastlines). 
 
 \subsection{Geographic Settings}
 The Guatemala Trench is a southern part of the \ac{MAT}, located off Middle America, between the Tehuantepec Ridge and Cocos Ridge, bordered between the coordinates: 96$^{\circ}$W-82$^{\circ}$ W, 7$^{\circ}$N-17$^{\circ}$ N (Map \ref{map:MAT1}). The \ac{MAT} is located in the place of the subduction of Cocos Plate, a young oceanic tectonic plate, beneath the Pacific Ocean off the coast of the Central America continent. The Cocos Plate \index[places]{Cocos Plate} was created as a results of the break of Farallon Plate into two pieces that initiated two tectonic plates: Nazca Plate \index[places]{Nazca Plate} and Cocos Plate. In turn, the Cocos Plate is bounded by the North American Plate \index[places]{North American Plate} to the northeast, the Caribbean Plate \index[places]{Caribbean Plate} on the south, the Pacific Plate \index[places]{Pacific Plate} on the west and by the Nazca Plate to the south. The \ac{MAT} is unique among other Pacific trenches, since its nature is complex and varies in its different parts. 
@@ -1088,7 +1092,7 @@ The Peru-Chile Trench\index[places]{Peru-Chile Trench}, alternatively called Ata
 	\caption{Peru-Chile Trench: bathymetric map, ETOPO1}\label{map:PCT1}
 \end{map}
 
-It stretches on 5,900 km from Ecuador\index[places]{Ecuador} to Chile 6\degree00′S, 81\degree50′W to 39\degree00′S, 75\degree00′ W \cite{FischerRaitt}, Map \ref{map:PCT1}. In its total length, the trench covers an area of ca. 590,000 km2 \cite{Angel1982}. The \ac{PCT} is shallower comparing to other trenches of the Pacific Ocean (64 km width). 
+It stretches on 5,900 km from Ecuador\index[places]{Ecuador} to Chile\index[places]{Chile}  $6^\circ 00^\prime$N, $81^\circ 50^\prime$W to $39^\circ 00^\prime$S, $75^\circ 00^\prime$W \cite{FischerRaitt}, Map \ref{map:PCT1}. In its total length, the trench covers an area of ca. 590,000 km2 \cite{Angel1982}. The \ac{PCT} is shallower comparing to other trenches of the Pacific Ocean (64 km width). 
 	
 \begin{map}[H]
 	\centering
@@ -1119,16 +1123,16 @@ The Nazca Plate\index[places]{Nazca Plate} forms the oceanward boundary of the P
 	
 \subsection{Tectonics}
 	The Peru-Chile Trench is formed by the subduction of the Oligocene oceanic crust of the Nazca Plate and Antarctic\index[places]{Antarctic Plate} tectonic plates beneath the South American Plate at the Peru-Chile Trench. The convergence rate of the Nazca Plate\index[places]{Nazca Plate} is 6.7–6.9 cm/a at an angle of ac. 80\degree \cite{Geersen2019}. The tectonic setting of the trench is complex, formed by a set of the processes of tectonic plates subduction, sediments accretion and their implications on the Peru-Chile Trench. The Mocha\index[places]{Mocha} crustal block, configured by the Peru-Chile Trench, Mocha and Valdivia fracture zones, lies on the Nazca Plate\index[places]{Nazca Plate} between ca. 37.5\degree and 40\degree S. It separates two segments Maule\index[places]{Maule} segment to the north and  Chiloé\index[places]{Chiloé segment} segment to the south \cite{Contrerasetal2010}. Subduction processes in a historical context of the evolution of the Nazca and Antarctic\index[places]{Antarctic Plate} tectonic plates and their formation along the western margin of South America\index[places]{South America} has been thoroughly described (e.g., \cite{Sarmientoetal2006}; \cite{Maneaetal2017}; \cite{Sdroliasetal2004}; \cite{Cande}; \cite{Scheuberetal1994}; \cite{Braz}; \cite{Schellartetal2006}. 
-	The Central Andes\index[places]{Andes, Central} is a typical example of the convergent continental margin where the forearc, an important element directly reflects the interaction between the subducting and overriding plates \cite{Matheretal2014}. The dynamic interaction between the active Chile Ridge\index[places]{Chile Ridge} and the continental margin determines the Taitao Triple-Junction\index[places]{Taitao Triple-Junctio} (46\degree-47\degree S). North of the triple junction, the Nazca Plate\index[places]{Nazca Plate} is subducted beneath the South American Plate in an ENE direction at a rate of 8.4 cm/year. To the south, the Antarctic Plate\index[places]{Antarctic Plate} subducts along an easterly direction at only 2.4 cm/year \cite{CecioniPineda}. The Nazca Plate adjacent the Peru-Chile Trench is placed at the eastern boundary of the East Pacific Rise\index[places]{East Pacific Rise}, which is the fastest-spreading ocean ridge on Earth. The Nazca Plate is bordered by two microplates: Easter microplate\index[places]{Easter microplate} and the Juan Fernandez microplate\index[places]{Juan Fernandez microplate}. In turn, these include three major seamount chains: the Easter Seamount Chain\index[places]{Easter Seamount Chain}, the Nazca Ridge\index[places]{Nazca Ridge}, and the Carnegie Ridge\index[places]{Carnegie Ridge} \cite{Bello-Gonzalezetal2018}. The huge earthquake of 1960 resulted because of the subduction of the Mocha fracture zone\index[places]{Mocha Fracture Zone} which caused stress concentration and rupture of the Nazca Plate\cite{Cifuentes}; \cite{VitaFinzi}.
+	The Central Andes\index[places]{Andes, Central} is a typical example of the convergent continental margin where the forearc, an important element directly reflects the interaction between the subducting and overriding plates \cite{Matheretal2014}. The dynamic interaction between the active Chile Ridge\index[places]{Chile Ridge} and the continental margin determines the Taitao Triple-Junction\index[places]{Taitao Triple-Junction} (46\degree-47\degree S). North of the triple junction, the Nazca Plate\index[places]{Nazca Plate} is subducted beneath the South American Plate in an ENE direction at a rate of 8.4 cm/year. To the south, the Antarctic Plate\index[places]{Antarctic Plate} subducts along an easterly direction at only 2.4 cm/year \cite{CecioniPineda}. The Nazca Plate adjacent the Peru-Chile Trench is placed at the eastern boundary of the East Pacific Rise\index[places]{East Pacific Rise}, which is the fastest-spreading ocean ridge on Earth. The Nazca Plate is bordered by two microplates: Easter microplate\index[places]{Easter microplate} and the Juan Fernandez microplate\index[places]{Juan Fernández microplate}. In turn, these include three major seamount chains: the Easter Seamount Chain\index[places]{Easter Seamount Chain}, the Nazca Ridge\index[places]{Nazca Ridge}, and the Carnegie Ridge\index[places]{Carnegie Ridge} \cite{Bello-Gonzalezetal2018}. The huge earthquake of 1960 resulted because of the subduction of the Mocha fracture zone\index[places]{Mocha Fracture Zone} which caused stress concentration and rupture of the Nazca Plate\cite{Cifuentes}; \cite{VitaFinzi}.
 
 \subsection{Geomorphology}
-	The main geomorphological structural units in Chile\index[places]{Chile} from west to east are Coastal Cordillera\index[places]{Coastal Cordillera}, Central Depression\index[places]{Central Depression} or Central valleys\index[places]{Central valley}, and Andean Cordillera\index[places]{Andean Cordillera}. The distinguished submarine geomorphological features of the Peru-Chile Trench area include submarine ridges: Juan Fernández Ridge\index[places]{Juan Fernández Ridge}, Copiapó Ridge\index[places]{Copiapó Ridge}, Taltal Ridge\index[places]{Taltal Ridge}, Nazca Ridge\index[places]{Nazca Ridge}, and Iquique Ridge\index[places]{Iquique Ridge}. The Iquique Ridge is composed of several seamounts (b1.5 km high) surrounded by a broad region of shallow seafloor, swelling up to 250 km wide in some areas and >500 m in elevation. The submarine Taltal Ridge intersects the Peru-Chile trench at 25\degree S offshore \cite{ContrerasReyesCarrizo2011}. Other geomorphic features are O'Higgins Guyot\index[places]{O'Higgins Guyot} and Eastern seamount chain\index[places]{Eastern seamount chain} (Map \ref{map:PCT12}). The place of bending of the Peru-Chile Trench on two parts (Peru\index[places]{Peru} and Chile\index[places]{Chile}, respectively) is Arica bend (Map \ref{map:PCT12}). 
-	The geomorphology of the subducted slab in the Peru-Chile Trench region changes from flat to the steep one along its path beneath the Andes\index[places]{Andes}. The region where the Juan Fernandez Ridge\index[places]{Juan Fernandez Ridge} is subducting beneath the continental margin (27\degree S-33\degree S) correlates with a flat-slab subduction zone \cite{CecioniPineda}. On the contrary, in north- and southwards direction from this area, the Wadati-Benioff zone, i.e. a zone of seismicity corresponding to the down-going tectonic slab in a subduction zone \cite{Pronin1981}, is steeper. The flat-slab subduction zone is located northwards of the Taitao Triple Junction\index[places]{Taitao Triple Junction}, or Chile Tripe Junction\index[places]{Chile Tripe Junction} \cite{Behrmann} where geomorphological feature of the Chilean Andes is characterized by the transverse river valleys that separates the Coastal Cordillera\index[places]{Cordillera, Coastal} from the Andean Cordillera\index[places]{Cordillera, Andean} (27\degree S-33\degree S). Southwards 33\degree S, the geologic and geomorphic features in the Peru-Chine Trench region change due to the dip change of the subduction zone \cite{CecioniPineda}.
+	The main geomorphological structural units in Chile\index[places]{Chile} from west to east are Coastal Cordillera\index[places]{Coastal Cordillera}, Central Depression\index[places]{Central Depression} or Central valleys\index[places]{Central valley}, and Andean Cordillera\index[places]{Andean Cordillera}. The distinguished submarine geomorphological features of the Peru-Chile Trench area include submarine ridges: Juan Fernández Ridge\index[places]{Juan Fernández Ridge}, Copiapó Ridge\index[places]{Copiapó Ridge}, Taltal Ridge\index[places]{Taltal Ridge}, Nazca Ridge\index[places]{Nazca Ridge}, and Iquique Ridge\index[places]{Iquique Ridge}. The Iquique Ridge is composed of several seamounts (b1.5 km high) surrounded by a broad region of shallow seafloor, swelling up to 250 km wide in some areas and >500 m in elevation. The submarine Taltal Ridge intersects the Peru-Chile trench at 25\degree S offshore \cite{ContrerasReyesCarrizo2011}. Other geomorphic features are O'Higgins Guyot\index[places]{O'Higgins Guyot} and Eastern seamount chain\index[places]{Eastern seamount chain} (Map \ref{map:PCT12}). The place of bending of the Peru-Chile Trench on two parts (Peru\index[places]{Peru} and Chile\index[places]{Chile}, respectively) is the Arica bend\index[places]{Arica bend} (Map \ref{map:PCT12}). 
+	The geomorphology of the subducted slab in the Peru-Chile Trench region changes from flat to the steep one along its path beneath the Andes\index[places]{Andes}. The region where the Juan Fernandez Ridge\index[places]{Juan Fernández Ridge} is subducting beneath the continental margin (27\degree S-33\degree S) correlates with a flat-slab subduction zone \cite{CecioniPineda}. On the contrary, in north- and southwards direction from this area, the Wadati-Benioff zone, i.e. a zone of seismicity corresponding to the down-going tectonic slab in a subduction zone \cite{Pronin1981}, is steeper. The flat-slab subduction zone is located northwards of the Taitao Triple Junction\index[places]{Taitao Triple Junction}, or Chile Tripe Junction\index[places]{Chile Tripe Junction} \cite{Behrmann} where geomorphological feature of the Chilean Andes is characterized by the transverse river valleys that separates the Coastal Cordillera\index[places]{Cordillera, Coastal} from the Andean Cordillera\index[places]{Cordillera, Andean} (27\degree S-33\degree S). Southwards 33\degree S, the geologic and geomorphic features in the Peru-Chine Trench region change due to the dip change of the subduction zone \cite{CecioniPineda}.
 
 \subsection{Sedimentation}
 	\cite{Matheretal2014} report existence of >60 individual large-scale landslides located within the hyper-arid coastal Cordillera\index[places]{} of the Atacama Desert\index[places]{Atacama Desert}, Northern Chile\index[places]{Northern Chile} adjacent to the Peru-Chile Trench\index[places]{Peru-Chile Trench}. The system of such giant landslides, developed as a combination of rock avalanches and multiple rotational failures, is located along the coastline within a distance of ca. 650 km and contributes to the sedimentation of the Peru-Chile Trench. Other sources of sediments can include earthquakes, e.g. sediment thickness in the Peru-Chile Trench area in the region of 1960 earthquake ranged from ca. 300 to 700 m, thus having significantly increased sedimentation \cite{PrinceKulm}. 
 	Over 50\% of the world's deep-sea trenches are classified as sediment starved or partly sediment filled \cite{Geersenetal2018}. Northern part of the Peru-Chile Trench, that is Peruvian segment\index[places]{Peru-Chile Trench, Peruvian segment}, is classified as 'sediment starved', while southern part (Chilean segment\index[places]{Peru-Chile Trench, Chilean segment}) is 'partly sediment filled', as illustrated by \cite{Geersen2019}. As a response of sediment loading at the trench, the downward deflection of the trench plays a crucial role in determining its inlet sediments capacity (the amount of the subducted sediments). Weak and hot oceanic plates show more downward deflection at the trench due to sediment loading comparing to the old oceanic plates \cite{ContrerasOsses2010}. Thus, weak oceanic plate involves a larger space for sediment subduction. 
-	Furthermore, specifically for the Peru-Chile Trench, larger downward deflection of the plate is found along the Chiloé segment\index[places]{Peru-Chile Trench, Chiloé segment} than along the Maule segment\index[places]{Peru-Chile Trench, Maule segment} \cite{ContrerasReyesetal2013}. Hence, according to the sedimentation conditions, the Peru-Chile Trench can be divided into two main provinces: the main sediment-free province extending 8\degree S-32\degree S and the sedimentary province extending 33\degree S-57\degree S \cite{Hayes}. The margin off Isla de Chiloé\index[places]{Peru-Chile Trench, Chiloé segment} is characterized by a largely sedimented segment of the Peru-ChileTrench. This is caused by the extension of turbidite deposits seaward reaching 250 km from the trench axis \cite{Contreras2007}. The region close to the Taitao Triple Junction\index[places]{Taitao Triple Junction} is nearly devoid of sediments and has rapid narrowing of the forearc region \cite{Cande}. 
+	Furthermore, specifically for the Peru-Chile Trench, larger downward deflection of the plate is found along the Chiloé segment\index[places]{Peru-Chile Trench, Chiloé segment} than along the Maule segment\index[places]{Peru-Chile Trench, Maule segment} \cite{ContrerasReyesetal2013}. Hence, according to the sedimentation conditions, the Peru-Chile Trench can be divided into two main provinces: the main sediment-free province extending 8\degree S-32\degree S and the sedimentary province extending 33\degree S-57\degree S \cite{Hayes}. The margin off Isla de Chiloé\index[places]{Peru-Chile Trench, Chiloé segment} is characterized by a largely sedimented segment of the Peru-ChileTrench. This is caused by the extension of turbidite deposits seaward reaching 250 km from the trench axis \cite{Contreras2007}. The region close to the Taitao Triple Junction\index[places]{Taitao Triple Junction} is nearly devoid of sediments and has rapid narrowing of the forearc region \cite{Behrmann}. 
 	\pagebreak
 
 \section{Kermadec Trench}
@@ -1136,12 +1140,13 @@ Two hadal trenches located in southwest Pacific Ocean \index[places]{Pacific Oce
 
 \begin{map}[H]
 	\centering
-		\includegraphics[width=11cm]{Fig-TK-1.jpg}
+		\includegraphics[width=13cm]{Fig-TK-1.jpg}
 	\caption{Tonga and Kermadec trenches: bathymetric map, ETOPO1}\label{map:TK1}
 \end{map}
 
 The majority of research on Kermadec and Tonga trenches focus on the biota communities of the deep-sea ecosystems \cite{Leduc2015}, \cite{Leduc2016}, \cite{Nunnally} or the tectonic movements of the plates in the Pacific Ocean \cite{Duncan}, \cite{Tappin}. The southward continuation of the Kermadec Trench is the Hikurangi Trough \index[places]{Hikurangi Trough} located eastwards off the North Island of New Zealand lying between the southern end of the Cook Strait \index[places]{Cook Strait} and the Chatham Rise\index[places]{Chatham Rise}. A convergence at maximal rate ca. 249 mm/yr along the Tonga-Kermadec island arc \index[places]{Tonga-Kermadec Arc} system makes it one of the most seismically active subduction zones in the world \cite{Bevis}. Detailed description of the environmental, geological and tectonic settings of the Kermadec is in \cite{Smithetal2003}; \cite{Anderson}; \cite{Regelous}; \cite{SmithPrice}. 
 
+\pagebreak
 \section{Tonga Trench}
 The Tonga Trench \index[places]{Tonga Trench} is located in southwest Pacific Ocean \index[places]{Pacific Ocean}, eastwards from Australia \index[places]{Australia} northwards from the Kermadec Trench. The study area is focused on two hadal trenches located in south-west Pacific Ocean \index[places]{Pacific Ocean} northwards from Australia \index[places]{Australia} and New Zealand \index[places]{New Zealand}: Kermadec and Tonga. Their brief geographic description can be characterized as follows. Kermadec Trench \index[places]{Kermadec Trench} is the southern from the two located 120 km off the New Zealand with axis continuing from ca. 26\degree S to 36\degree S. It is the \nth{5} deepest trench in the world with a maximum depth of 10,177 m \cite{Jamieson2015} m and a length of 1500 km \cite{Jamiesonetal2011}. 
 
@@ -1152,39 +1157,48 @@ The Tonga Trench \index[places]{Tonga Trench} is located in southwest Pacific Oc
 \end{map}
 
 Its closeness to the Antarctic makes it one of the coldest trenches in the world \cite{Belyaev}. Kermadec Trench runs parallel to the Kermadec Ridge \index[places]{Kermadec Ridge} (southern part of the Tonga-Kermadec Ridge \index[places]{Tonga-Kermadec Ridge}) with geomorphology of V- shape formed by tectonic subduction of the Pacific Plate under the Indo-Australian Plate \index[places]{Indo-Australian Plate} extending from approximately 26\degree  to 36\degree S near the northeastern tip of New Zealand's North Island \index[places]{North Island} \cite{LeducRowden2018}. The specific conditions of the tectonic setting in the study area is the subduction of the Pacific Plate at a rapid rate beneath the Indo-Australian Plate \index[places]{Indo-Australian Plate} along the Tonga-Kermadec Trench \cite{Castilloetal2009}, Map \ref{map:TK2}, right. \\
-Similar to the Kermadec Trench, Tonga Trench belongs to the \ac{SPSG} biogeochemical province and has the same primary productivity rate rate of 87 g C m-2 y−1 \cite{Xuetal2018}. Tonga Trench is adjacent, continuing Kermadec Trench northwards with axis stretching from ca. 15\degree S to 26\degree S. Located in close proximity to the Kermadec, it is separated by a sill located on the Tonga Platform \index[places]{Tonga Platform} \cite{Wrightetal2000} and by the Louisville Seamount Chain \index[places]{Louisville Seamount Chain} \cite{Jamiesonetal2013} (Map \ref{map:TK2}, right). With maximum depths of 10,882 m, the Tonga Trenches is the 2\nth{2} deepest trench in the world \cite{Blankenship}.  Both trench axes have roughly 30\degree slight from the longitude line. Due to the complex interaction of various factors (ocean currents, closeness to the Antarctica \index[places]{Antarctica}) the deep Pacific Ocean seafloor underlying the trenches is notable for variable surface productivity \cite{Linleyetal2017}. Further studies on Tonga Trench \index[places]{Tonga Trench}, its environment and communities can be found in relevant literature \cite{Tappin}; \cite{Ewartetal1998}; \cite{Hergt}.
-
-\section{New Hebrides Trench}
-The New Hebrides Trench \index[places]{New Hebrides Trench} is located \\
+Similar to the Kermadec Trench, Tonga Trench belongs to the \ac{SPSG} biogeochemical province and has the same primary productivity rate rate of 87 g C m-2 y−1 \cite{Xuetal2018}. Tonga Trench is adjacent, continuing Kermadec Trench northwards with axis stretching from ca. 15\degree S to 26\degree S. Located in close proximity to the Kermadec, it is separated by a sill located on the Tonga Platform \index[places]{Tonga Platform} \cite{Wrightetal2000} and by the Louisville Seamount Chain\index[places]{Louisville Seamount Chain} \cite{Jamiesonetal2013} (Map \ref{map:TK2}, right). With maximum depths of 10,882 m, the Tonga Trenches is the 2\nth{2} deepest trench in the world \cite{Blankenship}.  Both trench axes have roughly 30\degree slight from the longitude line. Due to the complex interaction of various factors (ocean currents, closeness to the Antarctica \index[places]{Antarctica}) the deep Pacific Ocean seafloor underlying the trenches is notable for variable surface productivity \cite{Linleyetal2017}. Further studies on Tonga Trench \index[places]{Tonga Trench}, its environment and communities can be found in relevant literature \cite{Tappin}; \cite{Ewartetal1998}; \cite{Hergt}.
 
 \pagebreak
-\section{New Britain Trench}
-The New Britain Trench \index[places]{New Britain Trench} (a.k.a. Bougainville Trench \index[places]{Bougainville Trench} ) is located \\
+\section{New Hebrides Trench}
+The New Hebrides Trench \index[places]{New Hebrides Trench} is located 
+
+
+\pagebreak
+\section{New Britain (Bougainville) Trench}
+The New Britain Trench \index[places]{New Britain Trench} (a.k.a. Bougainville Trench\index[places]{Bougainville Trench}) is located eastwards off Papua New Guinea\index[places]{Papua New Guinea} as northern borders of the Solomon Sea\index[places]{Solomon Sea}, Pacific Ocean\index[places]{Pacific Ocean} (Map \ref{map:TK5}). The region is one of the world’s active subduction zones at the triple junction of the Pacific Plate, Indo-Australian Plate\index[places]{Indo-Australian Plate} and Solomon Sea Plate\index[places]{Solomon Sea Plate}. Additionally, the Woodlark Basin\index[places]{Woodlark Basin} subducts beneath the Solomon Islands arc\index[places]{Solomon Islands arc} region, forming a double-sided subduction zone \cite{Yoneshimaetal2005}. Because the region is situated within the complex zone of the convergence at the tectonic plates boundary, it is trapped between the converging Ontong Java Plateau\index[places]{Ontong Java Plateau} and Australian continent\index[places]{Australia}. Geologically, the study area belongs to one of the most prospective for intrusion-related mineral deposits \cite{Holmetal2019}.
 
 \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-NBT1.jpg}
-	\caption{New Britain and San Cristobal trenches: topographic map}\label{map:TK5}
+	\caption{New Britain and San Cristobal trenches: topographic map}\label{map:NBT1}
 \end{map}
 
-\begin{map}[H]
-	\centering
-		\includegraphics[width=13cm]{Fig-NBT3.jpg}
-	\caption{New Britain and San Cristobal trenches: geoid model map}\label{map:TK5}
-\end{map}
+The New Britain Trench is defined by the 6,000 m isoline. It is a narrow, 50-75 km wide trench extending northeasterly from the eastern end of the Huon Gulf\index[places]{Huon Gulf} along the south coast of New Britain\index[places]{New Britain Island} \cite{Mammerickx}. Its name is derived from the homonymous New Britain Island from the New Britain arc\index[places]{New Britain arc} (Map \ref{map:NBT1}). Its western extension are the north-dipping Ramu-Markham fault zone\index[places]{Ramu-Markham fault zone} and the West Bismarck arc\index[places]{West Bismarck arc} \cite{Abbott1994}. The northern part is characterized by the Bismark Sea\index[places]{Bismark Sea} back-arc basin (Fig. \ref{map:NBT2}) where active rifting and seafloor spreading take place. The Bismark Sea back-arc basin\index[places]{Bismark Sea back-arc basin} comprises the South\index[places]{South Bismarck Plate} and North Bismarck\index[places]{North Bismarck Plate} microplates separated by the Bismarck Sea fault\index[places]{Bismarck Sea fault} \cite{Taylor1979}. The islands of eastern Papua New Guinea\index[places]{Papua New Guinea} and the Solomon Islands\index[places]{Solomon Islands} are island arc terranes, surrounding New Britain Trench, are formed adjacent to the boundary between the Australia\index[places]{Australia Plate} and Pacific plates\index[places]{Pacific plate} \cite{Baldwinetal2012}.\\
+As pointed by \cite{Lindley2006}, the subduction along the New Britain Trench is crucial for the tectonic development in Papua New Guinea\index[places]{Papua New Guinea} because comparing to other trenches of the Pacific Ocean, the New Britain Trench differs in its seismic structure below the trench. Thus, it indicates a steeply dipping ($>80\circ$) structure to upper mantle depths (630 km), unlike other Pacific trenches where dips range between 45\degree-60\degree. Further discussion on New Britain Trench tectonics and structure exist in further works (\cite{Weibenga1973}; \cite{Cooperetal1989}). The active volcanic arc that can be seen along the north coast of New Britain Island (Fig. \ref{map:NBT2}, red triangles) correlates with subduction curve along the New Britain Trench\index[places]{New Britain Trench}.
 
 \section{San Cristobal Trench}
 
+The San Cristobal Trench\index[places]{San Cristobal Trench} stretches in SE direction from the junction from the New Britain along the group of Solomon Islands\index[places]{Solomon Islands}: Bougainville\index[places]{Bougainville}, Choiseul\index[places]{Choiseul}, Santa Isabel\index[places]{Santa Isabel}, Malaita\index[places]{Malaita} until it reaches San Cristobal Island\index[places]{San Cristobal Island} from which it derived the name. The Woodlark Basin\index[places]{Woodlark Basin} is adjacent to the San Cristobal Trench\index[places]{San Cristobal Trench} to the southwest and to the south of the Solomon Islands arc\index[places]{Solomon Islands arc} region (Fig. \ref{map:NBT2}). It is a young (ca. 5 Ma) oceanic basin that subducts beneath the New Britain Trench \cite{Yoneshimaetal2005}. The eastern part of the Solomon Plate\index[places]{Solomon Sea Plate} bordering the San Cristobal Trench, enters the front of the Pacific Plate\index[places]{Pacific Plate}. As a consequence, it results of significant earthquakes along the Solomon Plate \cite{Yangetal2018c}.
+
 \begin{map}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-NBT2.jpg}
-	\caption{New Britain and San Cristobal trenches: geological and tectonic map}\label{map:TK5}
+		\includegraphics[width=12cm]{Fig-NBT3.jpg}
+	\caption{New Britain and San Cristobal trenches: geoid model map}\label{map:NBT3}
+\end{map}
+
+The environment of the hadal trench presents a complex system with highly interconnected factors affecting geomorphological structure, formation and development of the trench: slabs and tectonics plates, bathymetry, geographic location, geologic structure of the underlying basement and sediment thickness (Lemenkova, 2018a). Further detailed explanation on structure and these factors can be found in existing literature (\cite{Daviesetal1987}; \cite{FinlaysonCull}; \cite{Tregoningetal1998}; \cite{Johnson1976}; \cite{Lindley1988}; \cite{Ripper1970}; \cite{Honzaetal1987}) describing bathymetry, geomorphology, sedimentation, submarine canyons and terraces of the New Britain Trench\index[places]{New Britain Trench}. However, these work are mainly restricted to the western part of the Solomon Sea\index[places]{Solomon Sea} and are based on the existing data at that time. Current study proposes a comparative analysis of the New Britain Trench with its contiguous San Cristobal Trench\index[places]{San Cristobal Trench}. Moreover, this study is supported by modern datasets (\ac{SRTM} 15 sec \ac{DEM}, gravity and geoid grids) using fine cartographic toolset \ac{GMT}.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=12cm]{Fig-NBT2.jpg}
+	\caption{New Britain and San Cristobal trenches: geological and tectonic map}\label{map:NBT2}
 \end{map}
 
 \begin{map}[H]
 	\centering
-		\includegraphics[width=13cm]{Fig-NBT4.jpg}
-	\caption{New Britain and San Cristobal trenches: gravimetry model map}\label{map:TK5}
+		\includegraphics[width=12cm]{Fig-NBT4.jpg}
+	\caption{New Britain and San Cristobal trenches: gravimetry model map}\label{map:NBT4}
 \end{map}
 
 \pagebreak
@@ -1251,9 +1265,11 @@ The statistical analysis was done using table containing attribute values of the
 \end{figure}
 
 	The next part of the research included calculation of the pairwise Pearson correlations and plotting correlation matrix between the geological, geomorphic and bathymetric factors of the Philippine Trench. Methods to plot correlation matrix (Fig. \ref{fig:GML9}) include R based data analysis that embed computing correlograms for the data arrays \cite{GolubVanLoan1996}. The methods and approaches of the Matplotlib and Seaborn libraries used for plotting figures by Python language were derived from the existing literature describing statistical algorithms \cite{Hunteretal2018}. Finally, the geomorphic steepness of the slopes was tested (Fig. \ref{fig:GML10}) using ranking plotting algorithm available in R libraries \{ggsignif\} and \{tidyverse\}. 
-	
+
 \pagebreak
-	
+\section{East Luzon Trench}
+
+\pagebreak
 \section{Manila Trench}
 
 \subsection{Summary}
@@ -1261,14 +1277,14 @@ and interpretation of the topographic profiles, geological sampling, gravity mod
 
 \begin{map}[H]
 	\centering
-		\includegraphics[width=10cm]{Fig-M1.jpg}
+		\includegraphics[width=13cm]{Fig-M1.jpg}
 	\caption{Manila Trench: bathymetric map, SRTM 15 sec grid}\label{map:M1}
 \end{map}
 
 The characterization of the seafloor geology was performed by analyzing the trench and tectonic slabs location as well as areas of the submarine volcanoes. The profile transects were compared and differences in the geomorphic shape in southern and northern parts of the trench were revealed: southern part has steeper slope gradient on the oceanward part; northern part is steeper on the continental slope part. The submarine terraces are located on the northern segment of the trench at depths -2,000 m. The depth and geomorphology of the slope vary for the range -3,500 to -4,500 m: minimals for the northern part of the trench with 526 samples (18,2\%) for the depths -4,000 to -4,200 m. The histogram for the northern part has bimodal distribution with two peaks. The southern part shows 142 values for the minimals - 3,500 to -3400 m. The statistical comparison of the data proved northern part of the trench to be deeper. The \ac{GMT} functionality shown in this paper enabled integration and interpretation of the multi-source data and approaches: automatically digitized profiles, geological mapping, 2D and 3D bathymetric modelling, statistical analysis, mathematical approximation for the trend modelling of the geodata. 
 
 \subsection{Geographic settings}
-The Manila Trench \index[places]{Manila Trench} is located in South China Sea \index[places]{South China Sea}, west Pacific Ocean, west of the islands of Luzon \index[places]{Luzon Island} and Mindoro \index[places]{Mindoro Island} in the Philippines (Map \ref{map:M1}). The area of the Manila Trench is located in the Manila subduction zone at the Philippine Sea plate boundary where it moves in the northwest direction toward the Eurasian plate with a high convergence rate \cite{Lo}. The Manila Trench with its maximal depth of the trench about 5,400 m \cite{Liuetal2007} and stretching in almost vertical North-South direction is created by the subduction of the Eurasian Plate (through its part Sunda Plate) under the Philippine Sea Plate. Specific geological structure of the Manila Trench causes potential repetitive earthquakes and seismicity \cite{Wu2009}. Another frequent hazard caused by the subducting slab of the Eurasian plate beneath the Manila trench (Map \ref{map:M7}) is destructive tsunamis causing catastrophic damages in the source area and along the coastlines of the Luzon Island. 
+The Manila Trench \index[places]{Manila Trench} is located in South China Sea \index[places]{South China Sea}, west Pacific Ocean, west of the islands of Luzon \index[places]{Luzon Island} and Mindoro \index[places]{Mindoro Island} in the Philippines (Map \ref{map:M1}). The area of the Manila Trench is located in the Manila subduction zone at the Philippine Sea plate boundary where it moves in the northwest direction toward the Eurasian plate with a high convergence rate \cite{Lo2017}. The Manila Trench with its maximal depth of the trench about 5,400 m \cite{Liuetal2007} and stretching in almost vertical North-South direction is created by the subduction of the Eurasian Plate (through its part Sunda Plate) under the Philippine Sea Plate. Specific geological structure of the Manila Trench causes potential repetitive earthquakes and seismicity \cite{Wu2009}. Another frequent hazard caused by the subducting slab of the Eurasian plate beneath the Manila trench (Map \ref{map:M2}) is destructive tsunamis causing catastrophic damages in the source area and along the coastlines of the Luzon Island. 
 
 \begin{map}[H]
 	\centering
@@ -1276,7 +1292,7 @@ The Manila Trench \index[places]{Manila Trench} is located in South China Sea \i
 	\caption{Manila Trench: geologic map, ETOPO1 grid}\label{map:M2}
 \end{map}
 
-The hypocenters of the tsunami of the Manila Trench are located at the depths <100 km \cite{Ruangrassamee}. The tsunami hazard from the Manila Trench source has been assessed in more details in several research papers \cite{Nguyen}, \cite{Bautista}, \cite{Soloviev}. The zone of the Eurasian Plate \index[places]{Eurasian Plate} subduction explains the belt of volcanoes in the Manila Trench area (Fig. \ref{map:M2}), on the west side of the Philippine island of Luzon \index[places]{Luzon Island}. The area between the northernmost Manila subduction zone and southern Taiwan is considered a transition from subduction to initial collision and a weakly coupled nature for the northern part of the Manila Trench \cite{Chin}. 
+The hypocenters of the tsunami of the Manila Trench are located at the depths <100 km \cite{Ruangrassamee}. The tsunami hazard from the Manila Trench source has been assessed in more details in several research papers \cite{Nguyen}, \cite{Bautista}, \cite{Soloviev}. The zone of the Eurasian Plate \index[places]{Eurasian Plate} subduction explains the belt of volcanoes in the Manila Trench area (Map \ref{map:M2}), on the west side of the Philippine island of Luzon \index[places]{Luzon Island}. The area between the northernmost Manila subduction zone and southern Taiwan is considered a transition from subduction to initial collision and a weakly coupled nature for the northern part of the Manila Trench \cite{Chin}. 
 
 \begin{map}[H]
 	\centering
@@ -1309,7 +1325,7 @@ The \index[places]{Ryukyu Trench} is a 1400 km long hadal oceanic trench, stretc
 
 \begin{map}[H]
 	\centering
-		\includegraphics[width=10cm]{Fig-R1.jpg}
+		\includegraphics[width=13cm]{Fig-R1.jpg}
 	\caption{Ryukyu Trench and Arc, East China Sea and Philippine Sea: bathymetric map}\label{map:R1}
 \end{map}
 
@@ -1355,23 +1371,24 @@ Although the seafloors of the Ryukyu trench is separated vertically from the eup
 	\caption{Ryukyu Trench: 3D mesh geomorphological modelling}\label{map:R5}
 \end{map}
 
-Such discrepancies reflect differences in the environmental conditions, e.g. primary productivity. level. This is also supported by the discoveries of the migration patterns in the Ryukyu Trench area where reefs and geomorphic landforms serves as a land bridge for the migration of terrestrial organisms from Okinawa-jima to Miyako-jima \cite{Arai}.
-
+Such discrepancies reflect differences in the environmental conditions, e.g. primary productivity. level. This is also supported by the discoveries of the migration patterns in the Ryukyu Trench area where reefs and geomorphic landforms serves as a land bridge for the migration of terrestrial organisms from Okinawa-jima\index[places]{Okinawa-jima} to Miyako-jima\index[places]{Miyako-jima} \cite{Arai}.
 
 \subsection{Conclusion}
-This work offers an overview of geomorphological situation conducted using \ac{GMT} based modelling and cartographic mapping. The research aimed at analyzing differences in two selected segments located in southern and northern parts southwards the Miyako Fault \index[places]{Miyako Fault}. The study presents a multidisciplinary approach combining cartographic modelling and marine geological analysis. The results obtained enabled to detect variations in the slope angle of the trench that shows more steep gradients and deeper bathymetric values in the northern segment and shallower depths with more gentle slope in the southern, respectively.
+This work offers an overview of geomorphological situation conducted using \ac{GMT} based modelling and cartographic mapping. The research aimed at analyzing differences in two selected segments located in southern and northern parts southwards the Miyako Fault\index[places]{Miyako Fault}. The study presents a multidisciplinary approach combining cartographic modelling and marine geological analysis. The results obtained enabled to detect variations in the slope angle of the trench that shows more steep gradients and deeper bathymetric values in the northern segment and shallower depths with more gentle slope in the southern, respectively.
 Technically, an experimental approach of the cartographic modelling combined with numerical statistical analysis (modeled trends and histograms) using \ac{GMT} modules was used to analyze geological and geophysical data sets. Cartographic visualization of the series of thematic maps (geology, bathymetry, geoid, gravimetry, 3D modelling, 2D profiles trends modelling, digitized cross-section profiles) demonstrated powerful functionality of the \ac{GMT} and proved it to be effective cartographic instrument for the data analysis. The increasing diversity of the spatially distributed data on the Earth observation together with application of the advanced cartographic methods and scripting tools greatly enhance the potential of the geospatial modeling.
  Application of the cartographic modelling towards marine geological data enables to detect spatial differences in the submarine geomorphology that can only be studied using modelling tools due to their remote location. In turn, modelling spatial variations of the trench geomorphology helps to highlight dynamics of the plate tectonics and facilitates our understanding of the ocean seafloor geomorphology.
 
 \pagebreak
 \section{Palau Trench}
-The geological settings of the Palau Trench area is shown on Map \ref{map:YPT2}.
+The Palau Trench \index[places]{Palau Trench} is located in the Philippine Sea\index[places]{Philippine Sea}, northwards from the Papua-New Guinea\index[places]{Papua New Guinea} and eastwards from the Philippines, west Pacific Ocean (Map. \ref{map:YPT1}).The geological settings of the Palau Trench area is shown on Map \ref{map:YPT2}. Palau Trench with the greatest depth at 8,080 m (situated in its southern part) has a straight shape of the geometric form, stretching from south-west to north-east (Map {map:YPT1} and Map {map:YPT6}), located within a square 133\degree - 136\degree E and 6\degree-8\degree N, east from the Yap Islands\index[places]{Yap Islands}. 
 
 \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-YPT2.jpg}
 	\caption{Yap and Palau trenches: geological map}\label{map:YPT2}
 \end{map}
+
+One of the most unique characteristics of the Palau trench is its short distance (35 km) between the trench axis and the coast of the Palau Islands\index[places]{Palau Islands} westwards \cite{Kobayashietal1997}. The geology of the Palau Trench includes sequences of serpentinized peridotite, basalt and limestone on its landward slope and a huge block of coral-reef limestones at depths 4,900 m to 6,500 m \cite{Kobayashietal1997}. Palau Trench is connected with the Kyushu-Palau Ridge\index[places]{Kyushu-Palau Ridge} in the north and Ayu Trough\index[places]{Ayu Trough} in the south. Yap and Palau trenches are distinguished from the flat-bottomed Ayu Trough by their more similar to V shape in the cross section. The Islands of Palau located westwards to the Palau Trench are composed of volcanic rocks capped by coral reef limestone. This indicates that the Palau islands were located along the volcanic front earlier \cite{Kobayashietal1997}. The tectonic situation of Yap and Palau trenches is on the Philippine Sea Plate\index[places]{Philippine Sea Plate}. The Philippine Sea Plate is the tectonic plate completely surrounded by convergent boundaries of the tectonic plates \cite{Yehetal2013}. The tectonic settings of Yap and Palau trenches presents a complex region of convergence among three tectonic plates: the Philippine Sea, the Pacific and the Caroline plates\index[places]{Caroline Plate}. Hence, Yap and Palau trenches belong to the subduction zones surrounding Philippine Sea Plate along its eastern boundary.
 
 \begin{map}[H]
 	\centering
@@ -1381,7 +1398,7 @@ The geological settings of the Palau Trench area is shown on Map \ref{map:YPT2}.
 
 \pagebreak
 \section{Yap Trench}
-The Yap Trench \index[places]{Yap Trench} is located 
+The Yap Trench \index[places]{Yap Trench} is located in the Philippine Sea, northwards from the Papua-New Guinea\index[places]{Papua-New Guinea} and eastwards from the Philippines, west Pacific Ocean (Map. \ref{map:YPT1}). Yap Trench with the greatest depth at 8,292 m is about 700km long and 50km wide \cite{Satoetal1997}. It stretches from the trench axis to Yap islands arc with a characteristic 'J' form \cite{Lee2004}. It is morphologically divided into the northern and southern segments with the the boundary between the two segments at $8^\circ26^\prime$N \cite{Fujiwaraetal2000}. 
 
 \begin{map}[H]
 	\centering
@@ -1389,13 +1406,16 @@ The Yap Trench \index[places]{Yap Trench} is located
 	\caption{Yap and Palau trenches: topographic map}\label{map:YPT1}
 \end{map}
 
+The Yap-Palau subduction zone\index[places]{Yap-Palau subduction zone} lies southwards off the Mariana arc-trench system. The Caroline Plate\index[places]{Caroline Plate} subducts here northwestwards beneath the Philippine Sea Plate. The most prominent geological structures in the Caroline Plate\index[places]{Caroline Plate} are the Caroline Ridge\index[places]{Caroline Ridge} (Map \ref{map:YPT2}), a buoyant oceanic plateau and Sorol Trough\index[places]{Sorol Trough}, spreading in the middle of the ridge \cite{Dongetal2018}.
+
 \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-YPT4.jpg}
 	\caption{Yap and Palau trenches: geoid model}\label{map:YPT4}
 \end{map}
 
-Watermass properties and deep currents in the northern Yap Trench were observed and discussed recently by \cite{Liuetal2018a}.
+Yap and Palau trenches are formed in the place of the Philippine Sea Plate\index[places]{Philippine Sea Plate} subduction and oceanic lithosphere sinking to the mantle. As the sinking Philippine Sea Plate moves deeper into the mantle, the fluids are released from the mantle rock. This cause melting of the the overlying mantle. The new magma (i.e. molten rock) rises to the surface and erupts violently forming volcanoes and arcs of islands along the convergent tectonic plate boundary. Therefore, earthquakes are common in the subduction zone of the Philippine Sea Plate\index[places]{Philippine Sea Plate} (Map. \ref{map:YPT1}, red triangles on the map). Yap and Palau trenches form a typical trench-arc-basin system which includes deep trench, island arcs, and back-arc basin, a Parece Vela Basin\index[places]{Parece Vela Basin}, located in the eastern side of the Philippine Sea Plate (Map. \ref{map:YPT2}).
+Such complex tectonic structure of the region is reflected in notable heterogeneity of the crustal and upper mantle velocity structures beneath the Philippine Sea Plate \cite{OdaSenna1994}. Necessarily, it affects the submarine seafloor topography and its geomorphic shape. Further environment of Yap and Palau Trenches (e.g. biochemical and ecological setting) are well described in the relevant papers \cite{Yangetal2018}; \cite{Xuetal2018}; \cite{Liuetal2018a}. Syntheses of the tectonic and magmatic evolution of the region of the Philippine Sea, Yap and Palau trenches can be found in further publications \cite{Beccaluvaetal1986}, \cite{Pilletetal1999}, \cite{Setonetal2012}, \cite{Oharaetal2002}, \cite{Tsuboietal2014}. Water mass properties and deep currents in the northern Yap Trench were observed and discussed recently by \cite{Liuetal2018a}.
 
 \pagebreak
 \section{Mariana Trench}
@@ -1468,15 +1488,94 @@ Processes of the deep-sea terrigenous sedimentation\index[concepts]{sedimentatio
 
 \pagebreak
 \section{Izu-Bonin Trench}
-The Izu-Bonin (a.k.a. Izu-Ogasawara Trench) \index[places]{Izu-Bonin Trench} is located \\
+The Izu-Bonin Trench \index[places]{Izu-Bonin Trench}, also known as Izu-Ogasawara Trench\index[places]{Izu-Ogasawara Trench} is a hadal trench located in west Pacific Ocean and lies south of Japan (Map \ref{map:IBT4}). 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=14cm]{Fig-IBT1.jpg}
+	\caption{Izu-Bonin Trench: bathymetric map}\label{map:IBT1}
+\end{map}
+
+Longitudinally, it extends from near Tokyo\index[places]{Tokyo}, Japan to Guam\index[places]{Guam} \cite{BarnesStraub}. In its structure, the trench continues the Japan Trench\index[places]{Japan Trench}. The Izu-Bonin Trench is formed in the area of active tectonic subduction of the Cretaceous (135 Ma) Pacific Plate beneath the Philippine Sea Plate \cite{Sanoetal2016}. As a consequence of this subduction the following structured are formed: a volcanic arc of the Izu\index[places]{Izu Islands} and Bonin Islands\index[places]{Bonin Islands} on the Izu-Bonin-Mariana Arc system and the Shikoku Basin\index[places]{Shikoku Basin} as a backarc basin (Map \ref{map:IBT2}). The Izu-Bonin Trench is boarded on the east by the Ogasawara Plateau\index[places]{Ogasawara Plateau} \cite{Nishizawaetal2006}.
+In its historical development, the Izu Bonin arc has two major periods of arc formation that differ in duration, composition, and volcanology. The first lasted ∼ 5 to 6 million years and produced voluminous boninitic-tholeiitic magmas. The second post-42 Ma Izu Bonin arc formation period produced a classical volcanic arc with stratocones \cite{BarnesStraub}. The formation of the Shikoku backarc basin took place in the early Miocene, ca. 30-15 Ma \cite{Taylor1992}. A new period of along-strike arc rifting began about 2.5 Ma ago \cite{Ishizuka2003}. The historical development of the oceanic trench is mirrored in its seabed structure, which is is well structured, including valious layers: a sedimentary cover, a basalt of the leitic composition, a complex of parallel dykes of diabases, gabbro and gabbro-ultrabasic complex lying on the mantle ultrabasites. 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT2.jpg}
+	\caption{Izu-Bonin Trench: geologic map}\label{map:IBT2}
+\end{map}
+
+The trench extends to nearly 10 km depth. The 200 km wide forearc region includes inner trench slope with a basal terrace and seamounts, outer arc connected with the Bonin Islands\index[places]{Bonin Islands\} and a thick forearc sedimentary basin east of the active arc volcanoes. The backarc region encompasses active rift basins and cross-chains of submarine arc volcanoes extending into the Shikoku Basin\index[places]{Shikoku Basin} \cite{DeBarietal1999}. The northern end of the Izu-Bonin arc is a juvenile oceanic arc colliding with the Honshu arc\index[places]{Honshu arc}, a mature island arc since Middle Miocene Saito and Tani, 2017). A chain of serpentine seamounts is exposed at the forearc slope 40-50 km west of the Izu-Bonin Trench axis. Seismically, few large earthquakes ($>M7.0$) \cite{Kamimuraetal2002} are detected at depths $<100$ km (red circles on Map \ref{map:IBT2}) and many large earthquakes at depths 100-300 km (green circles on Map \ref{map:IBT2}). The Boso triple junction\index[places]{Boso triple junction\} located on the north of the Izu-Bonin Collision Zone\index[places]{Izu-Bonin Collision Zone} (Map \ref{map:IBT2}) is the northern end of the arc colliding with the Honshu Island arc\index[places]{Honshu Island arc} as a consequence of the northwestward migration of the Philippine Sea Plate\index[places]{Philippine Sea Plate} \cite{Ogawaetal1989}.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT3.jpg}
+	\caption{Izu-Bonin Trench: geoid model map}\label{map:IBT3}
+\end{map}
+
+Many factors affect the hadal trench structure, dynamics and present geomorphology. The complexity of the processes happening at subduction zones in illustrated \cite{Woelkietal2018}: oceanic crust and sediment is recycled into the mantle, causing mantle melting and heterogeneity, arc magmatism, degassing and the creation of new continental crust. The trench is then being formed at such areas of the tectonic plates subduction. The Izu-Bonin Trench\index[places]{Izu-Bonin Trench} is boarded by the Philippine Sea tectonic plate in the west. The Philippine Sea\index[places]{Philippine Sea} is a geologically complicated region notable for complex bathymetry and plate shape \cite{Yamazakietal2010} and a complex patchwork of seafloor ages. The bounding subduction zones of the the Philippine Sea Plate\index[places]{Philippine Sea Plate} exhibit significant NS variation in slab morphology \cite{CizkovaBina2015}.
+As a results of the interplay of these factors, the trench is consisting of the Izu (north) and the Bonin (south) separated roughly by the Ogasawara Plateau\index[places]{Ogasawara Plateau}. Thus, seafloor ageing affects advancing trench through the subduction of progressively older and stiffer lithospheric material \cite{Faccennaetal2009}, which was further discussed by \cite{Ishizukaetal2018} who pointed on asymmetric spreading caused by ridge migration in the Izu-Bonin region in view of age difference between the oldest forearc basalt and the crust of the Amami Sankaku Basin\index[places]{Amami Sankaku Basin}. Besides tectonic development, other factors include, for instance, deep ocean currents that bring sediments to the trench bottom and contributing towards accumulation of the sedimental thickness layer, impact of lithosphere is illustrated by a constant exchange of matter and energy between the submarine volcanoes located nearby.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT4.jpg}
+	\caption{Izu-Bonin Trench: free-air gravity model map}\label{map:IBT4}
+\end{map}
+
+More detailed description of the Izu-Bonin tectonics, geophysical, petrological and geochemical settings, volcanism and seismic characteristics, analysis and interpretation of geomorphological, geological, and thermochronological data, are reported in relevant publications (\cite{Ichiyamaetal2017}; \cite{ArisaHeki}; \cite{Sendaetal2016}; \cite{Oshikaetal2014}; \cite{Hashimaetal2016}; \cite{Gongetal2017}). Hence, the region of the Izu-Bonin Arc\index[places]{Izu-Bonin Arc} is now one of the best and intensively studied oceanic arcs. However, lesser attention is given to the submarine geomorphology of the Izu-Bonin Trench\index[places]{Izu-Bonin Trench} as a deep-sea geomorphic structure. Referring the lack of such research, current study aims at visualizing the trench by mapping and modelling its geomorphic form using cartographic approach of the \ac{GMT}.
 
 \pagebreak
 \section{Japan Trench}
-The Japan Trench \index[places]{Japan Trench} is located \\
-The geophysical features of the Japan Trench area has beed discussed by \cite{Linetal2016} who compared Japan Trench Nankai subduction zone \index[places]{Nankai subduction zone} for the distribution of the stress state.
+The Japan Trench \index[places]{Japan Trench} is located in western part of the Pacific Ocean, eastwards off Japan\index[places]{Japan} (Map \ref{map:JT1}). The geologic and tectonic settings in the region of the Japan Trench are strongly influenced by the subduction of the Pacific Plate beneath northeastern Japan\index[places]{Japan Plate} and North American Plate\index[places]{North American Plate} along the Japan Trench (Map \ref{map:JT3}), which is well described in the previous works \cite{HueneLallemand1990}. The region of the Japan Trench is a convergent zone associated with many earthquakes \cite{Yoshii1979}. It belongs to the circum-Pacific seismic belt (a.k.a. 'Ring of Fire'\index[places]{Ring of Fire}) where large earthquakes originate within the areas of sedimentation on upper forearc slopes \cite{Araietal2014}. 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=14cm]{Fig-JT1.jpg}
+	\caption{Japan Trench: topographic map}\label{map:JT1}
+\end{map}
+
+The structure of the trench presents a typical arc-trench system \cite{Ludwigetal1966}. In terms of tectonic geomorphology, the arc-trench system is a type of the mobile belts with bathymetric and topographic relief formed under the impact of tectonic plates subduction, active volcanism, repetitive earthquakes and orogenesis. The geological complexity of the Japan Trench\index[places]{Japan Trench} results in the highly seismicity of the area, which is well studied in various works \cite{Nakamuraetal2013}, \cite{HueneCulotta1989}; \cite{Linetal2016}; \cite{Bostonetal2017}. The geology of Japan trench-arc system\index[places]{Japan trench-arc system} consists of Jurassic to Neogene accretionary prisms and Neogene to Quaternary sedimentary and volcanic rocks caused by volcanisms during the opening of the Sea of Japan\index[places]{Sea of Japan} in the middle Miocene \cite{Wakita2013}.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT3.jpg}
+	\caption{Japan Trench: geological map}\label{map:JT3}
+\end{map}
+
+The Cretaceous-Paleogene granitic rocks are exposed in several regions, especially on the fore-arc side. High seismicity of the region can be illustrated by several large interplate earthquakes that have affected the Tohoku\index[places]{Tohoku} region along the Japan Trench during the last century \cite{Yagietal2012}. Because the Japan Trench is located on the tectonic plates subduction zone, the earthquakes here belong to the largest and most destructive earthquakes in the world \cite{Janssenetal2015}. Many open cracks on the diatomaceous clayey sediment surfaces of oceanward slopes of the northern Japan Trench were detected by \cite{Ogawaetal1997}. The surface of the seabed outside the cracks (i.e. normal seabed) appears to be coated by ferroman-ganese oxides \cite{ItoOgawa1994}, and is overlain by fine pelagic mud, containing dominantly diatoms, silicoflagelates, radiolarians and sponge spicules, together with a considerable amount of detrital quartz and ash fragments.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT4.jpg}
+	\caption{Japan Trench: geoid model map}\label{map:JT4}
+\end{map}
+
+Northern and southern parts of the Japan Trench demonstrate variations in their geologic features with heterogeneously distributed seismicity around the Japan Trench. Most of the large earthquakes with magnitudes > 7 occurred in the northern forearc region of the trench. For example, the Tohoku-Oki\index[places]{earthquake,Tokachi-Oki} earthquake of 2011, is the largest earthquake that took place in forearc region of the Northeast Japan subduction zone, west off the Japan Trench \cite{Layetal2011}; \cite{Ikeharaetal2016}, through the shallow part of the subduction zone to the seafloor surface. It triggered a devastating tsunami with massive damages along the northeast coast of Honshu\index[places]{Honshu Island}, Japan \cite{Janssenetal2015}. Southern part of the trench is seismically more 'quiet': no large earthquakes were recorded during recent centuries \cite{Miuraetal2005}, except for the 1938 Shioya-oki earthquake. The subduction zone characterizes northern part of the trench \cite{Tsuruetal2000}. In a 60 km buffer gap off the trench axis, a decollement structure with soft sediments is located. The zone of this structure between two tectonic plates decouples shear stresses, which in turn, forms an aseismic zone.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT5.jpg}
+	\caption{Japan Trench: gravity model map}\label{map:JT5}
+\end{map}
+
+Comparing two devastating earthquakes: the 1968 Tokachi-Oki\index[places]{earthquake,Tokachi-Oki} and the 1994 Sanriku-Haruka-Oki\index[places]{earthquake, Sanriku-Haruka-Oki}, two distinct heterogeneities along the plate boundary at $40^\circ 10^\prime$N, located exactly at the southern boundary of the two earthquakes were detected \cite{Hayakawaetal2002}. This well illustrates the direct affect of the plate tectonics triggering earthquake events that naturally lead to significant deformations in the geomorphic landforms. It further explains the coincidence of the focal regions and the structure with slower velocities in the lower crust. The subduction of the seamount chain penetrating to the Pacific Plate\index[places]{Pacific Plate} possibly take place. It can further create irregular geomorphic landforms. When these seamounts subduct deep, they collapse due to the mechanical affects from the free water released by a collapsing seamount.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT6.jpg}
+	\caption{Japan Trench: 3D mesh model map of geomorphology}\label{map:JT6}
+\end{map}
+
+In turn, it might rise into the island-arc mantle and the lower crust. This brief illustration of the deep correlation of the tectonic and geological processes that finally result in the actual land forms and geomorphological patterns. Seismic investigations of the Japan Trench axis furthermore shown \cite{Boseetal2015} variations in the frictional resistance along a decollement on the structural development of the frontal wedges near the subduction zones. The observed slope sediments between the inner and outer wedge might have accumulated during the growth of supercritical wedge. Seismic surveys indicate \cite{Kodairaetal2012} that the shallow areas at the site of the Tohoku earthquake experienced significant deformation. Moreover, during this event multiple faults slipped above and below the pelagic clay layer \cite{Rabinowitzetal2015}. The geophysical features of the Japan Trench area has beed discussed by \cite{Linetal2016} who compared Japan Trench Nankai subduction zone \index[places]{Nankai subduction zone} for the distribution of the stress state.
 
 \vspace{1.5em}
 \hspace{5em}\pgfornament[color=Thistle,width=12cm]{82}
+
+\pagebreak
+\section{Puysegur Trench}
+
+\pagebreak
+\section{Hikurangi Trench}
 
 %%%%%%%%%%%%%%%%%  Chapter  3: Methodology  %%%%%%%%%%%%%%%%
 
@@ -1486,6 +1585,12 @@ The geophysical features of the Japan Trench area has beed discussed by \cite{Li
 
 \section{Data and Materials}
 The geospatial data analysis big project always starts from the preparation of the high-quality geospatial data sets, their assessment and integration into the cartographic project. The importance of the high-precision data naturally consists in the reliability of the result outputs. Visualizing high-resolution data can significantly improve the Earth studies and the interpretation of the submarine trench geomorphology through the advanced data analysis. The more it is actual for the bathymetric and geomorphic mapping where the precision is the key for the research output and final quality \cite{Smith}, \cite{WesselWatts}. In this research, high-resolution geo data collection was performed from the web-site \ac{USGS} and available embedded \ac{GIS} layers of the \ac{GMT} \cite{WesselSmith1996}, \cite{SmithSandwell1997b}. The main data include \ac{ETOPO1} (from \ac{NOAA}), \ac{GEBCO} (supported by \ac{BODC}) and \ac{SRTM} (supported by \ac{NASA}) used for visualization of the bathymetry.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT2.jpg}
+	\caption{Comparison of the resolution of the topographic datasets: GEBCO, SRTM, ETOPO1 and ETOPO5}\label{map:JT2}
+\end{map}
 
 \begin{table}\caption{Data sources, types and precision}\label{tab:T2}
 \begin{tabular}{@{\makebox[2em][r]{\rownumber\space}} | p{1.5cm} p{5cm} p{7cm} }
@@ -1501,14 +1606,15 @@ The geospatial data analysis big project always starts from the preparation of t
 \end{table}
 
 Hence, high precision data were selected and chosen from the variety of the available data, as a ground basis of this research as summarized in the Tab. \ref{tab:T2}. The general bathymetric maps were based on a cartographic visualizing of the \ac{ETOPO1} Global Relief Model bathymetric rastergrid \cite{AmanteEakins2009} with 1 minute resolution, as well as more precise for enlarged visualization \ac{SRTM} \cite{Farretal2007} and \ac{GEBCO}, both 15 seconds resolution. High-quality bathymetric \ac{ETOPO1} data enable to process numerical data for geomorphological modelling. The \ac{ETOPO1} dataset includes a variety of the resolution that can be selected for the data source. The \ac{ETOPO1} and \ac{ETOPO5} were used and compared. Based on an analysis of the \ac{ETOPO1} maps for the 16 trenches, suitable segments were selected for plotting sample data on the cross-section profiles. The geoid and gravity grids were visualized based on the CryoSat-2, Jason-1 raster grids. Usage of such data as \ac{GEBCO}, \ac{ETOPO1}, \ac{SRTM}, CryoSat-2 and Jason-1 raster grids enables to perform advanced spatial analysis that were demonstrated further in relevant sub-sections. The data used in the current dissertation are based on the geospatial raster and vector layers from the \ac{GMT} origins, directly embedded in the \ac{GMT}. Vector data include coastlines and downloaded high-resolution \ac{ASCII} xyz topographic and gravity data sets from the open public repositories of the \ac{USGS}.  High-precision geospatial raster grids used in the current research is summarized in Tab. \ref{tab:T2}. 
+Other data included in the current study are high-resolution bathymetric dataset \ac{GEBCO}, https://www.gebco.net/ (GEBCO Committee, 2016; Monahan, 2004). The \ac{GEBCO} project aimed at high precision mapping of the ocean seafloor originated as early as origins at the beginning of the 20th century and since then up to now have been developed by several oceanographic organizations (Mayer et al., 2018; Weatherall et al., 2015). Regular updates of the \ac{GEBCO} dataset grid, \ac{R/V} based bathymetric observation and hydrographic meetings (Ferrini, 2018) maintain both the accuracy of \ac{GEBCO} grids (Tani, 2017) and the actuality of the names of the submarine objects (Stagpoole et al., 2016). There are other data sets commonly used in the geographic studies (\ac{SRTM}, \ac{ETOPO1}, \ac{ETOPO5}). However, the \ac{GEBCO} resolution of the 15 seconds grids gives a truly reliable accuracy comparing to the other raster data (Figure 2). Using \ac{GEBCO} grid was done through the GMT scripting toolset using existing methodologies and technical documentation available both on \ac{GEBCO} (Kumar, 2013) and on the \ac{GMT} (Wessel et al., 2013).
 
 \section{Generic Mapping Tools (GMT)}\label{sec:GMT}
 
 The main toolset used in this research is \ac{GMT}\index[concepts]{Generic Mapping Tools} with modules functionality described in relevant documentation and software release announcement \cite{Wesseletal2013}. Comparing to the traditional \ac{GIS}\index[concepts]{GIS} software, the advantages of the \ac{GMT} consist in its high efficiency for the scripting based cartographic workflow rather than \ac{GUI} as well as open source availability. 
 Other approaches to perform spatial data analysis in marine geology include pure statistical data modelling using programming languages, such as Python and R\index[concepts]{programming language, R}, as well as statistical data assessment. However, the advantages of the \ac{GMT} consists in the possibility to perform both cartographic mapping and statistical data assessment using the same program. Thus, various types of data processing can be performed in \ac{GMT} environment: data analysis, modelling, mapping and statistical analysis and visualization.
-Besides, the \ac{GMT} scripting approach enables repeatability of the techniques for each of the studied 17 trenches of the Pacific Ocean. \\
+Besides, the \ac{GMT} scripting approach enables repeatability of the techniques for each of the studied 20 trenches of the Pacific Ocean. \\
 Therefore, the \ac{GMT} scripting toolset was selected as a main tool for the current research. The data modelling and cartographic mapping presented in this paper was performed using \ac{GMT} documentation \cite{WesselSmith2018}, \cite{Wesseletal2019}. Because the \ac{GMT} is a scripting toolset consisting of modules, several main modules were used for preparing maps. The auxiliary \ac{GMT} modules were used for mapping and cartographic visualizations. \\
-The use of the \ac{GMT} specifically for the Manila Trench was presented as mapping in various works, e.g. \cite{Hsuetal2012}. Examples of other advanced tools for geological data analysis include, for instance, PHASER diffractometer, direct observations received from the R/V cruises, observations from \ac{DEM} \cite{Giletycz}. The mapping in the presented paper was based on the available data sets embedded in the GMT \cite{SmithSandwell1997a}. The functionality of the \ac{GMT} approach consists in its scripting when individual features for the cartographic objects can be defined in each line of the \ac{GMT} code. Each small code line presents a reference to a specific \ac{GMT} module. Combined together as a sequential script, the codes are used for mapping. Besides, as demonstrated further in the presented codes (see Appendix for the \ac{GMT} scripts), a great advantage of the \ac{GMT} is a high cartographic functionality of the tool set\ac{GMT} enabling to fully adjust and refine cartographic elements: fonts, lines width and type, layout, a large variety of the visualization, plotting, modelling, advanced cartographic modules (mapping projections, modelling, grid raster data processing), color scales etc. \cite{WesselSmith1991}.  \\
+The use of the \ac{GMT} specifically for the Manila Trench was presented as mapping in various works, e.g. \cite{Hsuetal2012}. Examples of other advanced tools for geological data analysis include, for instance, PHASER diffractometer, direct observations received from the \ac{R/V} cruises, observations from \ac{DEM} \cite{Giletycz}. The mapping in the presented paper was based on the available data sets embedded in the GMT \cite{SmithSandwell1997a}. The functionality of the \ac{GMT} approach consists in its scripting when individual features for the cartographic objects can be defined in each line of the \ac{GMT} code. Each small code line presents a reference to a specific \ac{GMT} module. Combined together as a sequential script, the codes are used for mapping. Besides, as demonstrated further in the presented codes (see Appendix for the \ac{GMT} scripts), a great advantage of the \ac{GMT} is a high cartographic functionality of the tool set\ac{GMT} enabling to fully adjust and refine cartographic elements: fonts, lines width and type, layout, a large variety of the visualization, plotting, modelling, advanced cartographic modules (mapping projections, modelling, grid raster data processing), color scales etc. \cite{WesselSmith1991}.  \\
 The GMT scripting toolset was selected as a geospatial tool for raster grid processing, mapping and automated digitizing of the geomorphological profiles. The GMT was initially developed by the American scientists P. Wessel and P. Smith \cite{Wesseletal2013}, further maintained and improved to finally become a powerful open source scripting toolset for the geospatial analysis and cartographic visualization. The GMT is completely based on the command-line usage (see Appendix, for the example of the GMT code presented in this paper). That being said, it is not a classical GIS. Using the full powerful functionality of the GMT requires writing a script with numerous arguments for the fine-tuning and setting up of every cartographic element: projections, major and minor grids, color palettes, map legends, visualized vector elements and annotations, adding map elements (e.g. coastlines, directional roses, scale bars) etc. However, the high cost of the steep learning curve of the GMT as well as its non-visual command line based operation pays off by its powerful functionality and excellent visualization. The GMT is compatible with Unix commands (cut, rm, echo) and \ac{GDAL} raster processing, it operates with both raster and vector data, produces high-quality maps and figures, has embedded functions for the descriptive statistical analysis (e.g. histograms, median, mean). All this makes it one of the most preferred data visualization and mapping toolsets by the cartographers and professional geoscientists. 
 The flowchart demonstrating main modules used for processing in GMT is presented in Tab. \ref{tab:T3}.
 
@@ -1725,7 +1831,7 @@ GMT/AWK/Octave sequential data processing, automatic digitizing of the orthogona
 In general, the profiles in the northern part of the trench show deeper values and less steep slopes comparing to the southern segment, which refer to the erosional moats and drift of the submarine sediments. On the contrary, southern part of the trench has deeper bathymetric ranges and steeper trench gradient slope, comparing to the northern part. This can be influenced by the intensive seismicity and volcanic activities in this particular area of the trench.  Furthermore, the trench forms more V- shaped valley in its southerns segment with about 3 km wide in profiles and more U-shaped form in the northern part. The shape of the slopes and steeper morphology of the southern part is affected by the specific geophysical conditions of the southern part of the Kuril Islands characterized by the magnetized anomaly zones of the oceanic crust. The V-shaped valley of the trench segment neighboring Iturup and Urup islands goes in east-northward direction where is faces the Bussol Strait. Afterwards, the trench continues direction in the northern segment along the islands Shiashkotan, Kharimkotan, Onekotan, Paramushir and Shumshu and finally reaches Kamchatka Peninsula. Variations in the southern and northern part of the trench reflect differences in the local geological settings of the respecting segments. \\
 The oceanic trenches are associated with tectonic subduction zones. Therefore, besides the geological factors, the trench geomorphology is necessarily affected by the local tectonic settings. The seafloor spreading creates an axial rift and hills. Spreading ridges are formed by the nearby faults where subduction of the cooled tectonic plate into the mantle causes creation of the deep ocean trenches.  As a consequence, the major earthquakes occur along the \ac{KKT}. Various geophysical factors affect the geomorphological structure of the trench and cause variations in its morphological structure among which tectonics plays the major role in the trench formation. For the case of the \ac{KKT}, two tectonic plate have responses to its tectonic history, which could be caused by the ongoing subduction of the major Pacific Plate under the minor Okhotsk tectonic plate \cite{Bird2003}. The Okhotsk plate is a region of the active grabens located southwards of a chain of small sedimentary basins in the Cherskii Mountains, North Russia \cite{Savostinetal1983}. In principle, the collision of the tectonic plates could be the one more reason that has affected both the \ac{KKT} motion and the morphology of the subducting Pacific plate at depth in northern and southern parts of the trench that could be sliced in the two distinct morphologies in its northern and southern parts. The distinct changes in the trench geomorphology is illustrated by \cite{Milleretal2005} where they show changes between the slab beneath the horizontal slab and vertical arcs with a case study of Mariana trench area. The variations in physical properties within the slab could be the result of the distortion of the Pacific plate as its shape transforms between near horizontal to near vertical, as well as change in the velocity of the subduction plate, or a combination of all these factors. \\
 The seafloor of the trench presents a background for all geological, oceanological and geochemical processes that are necessarily reflected in its shape. Thus, the main morphostructure elements of the seafloor are the outskirts of the continents, tectonic plates and ocean bedrock. The structure of the trench and the nature of its geomorphic shape are therefore greatly complicated by the multiple secondary tectonic disturbances: system of faults, displacements of grabens, horsts and lateral geologic shifts. The interconnection of these complex processes is also illustrated by recent findings \cite{HeuretLallemand2005} that demonstrates correlation between the back-arc deformation and upper continental tectonic plate velocity. The trench migration rates are also mainly controlled by the lower continental tectonic plate velocity \cite{Lallemandetal2008}, which in turn depends on the tectonic slab age buoyancy \cite{Chase1978}. More detailed study on the tectonic impact goes beyond the scope and size of this manuscript which aims at development of the technical methodology of the batch geodata processing by GMT, AWK and Octave as a chain methodological workflow. As a suggestion for further studies on this phenomena, a comparative analysis of the subduction speed of the tectonic plates in northern and southern parts of the trench could be performed in a separate research based on the availability of the precise geophysical and seismic data.\\
-Combination of various data analysis tools, such as GMT scripting toolset, AWK and Octave programming languages for sorting and reshaping data, plotting graphs and mapping enabled to create geospatial analysis of the selected specific areas of the Pacific Ocean: the \ac{KKT}. Successful application of the programming languages and advanced statistical tools towards geospatial data analysis has been demonstrated in various papers: Python \cite{Yuetal2019}, \cite{Lemenkova201989}, Fortran language \cite{Agarwal}, \cite{Chiang}, R language \cite{Roberts}, \cite{Lemenkova201868}, \cite{Lemenkova201904}, \cite{Lemenkova201991}, SPSS IBM Statistics \cite{MarquesdeSa2007}, \cite{Lemenkova201990}, Gretl \cite{Lemenkova201988}. However, only few examples were given so far specifically for AWK language and its application is traditionally limited by the IT domains \cite{Prasad}, \cite{Vigneresse}.\\
+Combination of various data analysis tools, such as GMT scripting toolset, AWK and Octave programming languages for sorting and reshaping data, plotting graphs and mapping enabled to create geospatial analysis of the selected specific areas of the Pacific Ocean: the \ac{KKT}. Successful application of the programming languages and advanced statistical tools towards geospatial data analysis has been demonstrated in various papers: Python \cite{Yuetal2019}, \cite{Lemenkova201989}, Fortran language \cite{Agarwal}, \cite{Chiang}, R language \cite{Robertsetal2018}, \cite{Lemenkova201868}, \cite{Lemenkova201904}, \cite{Lemenkova201991}, SPSS IBM Statistics \cite{MarquesdeSa2007}, \cite{Lemenkova201990}, Gretl \cite{Lemenkova201988}. However, only few examples were given so far specifically for AWK language and its application is traditionally limited by the IT domains \cite{Prasad}, \cite{Vigneresse}.\\
 Current work contributes to filling the gap in the need for using such effective language as AWK \cite{Levy} in the geological and Earth sciences and  absence of the practical examples and full codes that are always useful besides technical manuals.  
 Understanding complex interrelation and spatial variation of the geological and geophysical factors affecting the \ac{KKT} is crucial to analysis of its geomorphic patterns. Various  factors contribute to the trench geomorphology and shape: motion of the Pacific plate subduction to the adjacent small Okhotsk plate, seismicity and location of the earthquakes. Special geophysical settings, geological parameters and special sedimentation processes induced by active volcanism and seismicity in the region are among the crucial factors affecting trench geomorphology. Geological settings of the Kamchatka region in general are notable for the mountains chains in the adjacent land, recorded active seismicity and magmatism, steep gradients of the mountains Hokkaido and Sakhalin islands, and Kamchatka Peninsula, as well as frequent earthquakes and erodible lithology. Necessarily, these factors contribute towards the active sedimentation processes which in turn affect geomorphology of the trench. Large amounts of the sediments are being transported to the Sea of Okhotsk and then driven in SE direction from the Hokkaido and NW from the Kamchatka Peninsula to the neighboring \ac{KKT}. 
 
@@ -1825,8 +1931,8 @@ The \ac{ML} and data mining for the marine geological research is nowadays one o
 \end{table}
 
 \pagebreak
-
 \section{R language for marine geology}\label{sec:R}
+Due to its logical and straightforward syntax, multi-functional standard libraries, R is especially attractive to the geologists for the scientific computing. Using R libraries, the unevenness of various factors affecting the trench geomorphic structure has been studied. With the case study of the Mariana Trench, These include sediment thickness, slope steepness, angle aspect, depth at the basement and magmatism of the nearby areas. Methods includes using following R libraries: \{ggplot2\} for regression analysis, Kernel density curves, compositional charts; \{ggalt\} for Dumbbell charts for data comparison by tectonic plates, ranking dot plots for correlation analysis; \{vcd\} for mosaic plots, silhouette plots for compositional similarities among the bathymetric profiles, association plots; \{car\} for \ac{ANOVA}. \\
 The methodological scheme of the statistical analysis of the bathymetric profiles includes four general steps of the statistical analysis of the morphology of the Mariana Trench. The geospatial analysis aims to extract a more regular impact factors of the geologic morphology development; whereas the cluster analysis and computing correlation matrices extracts the groups and classes in a total cloud of observation points. Statistical analysis has been performed by means of R \cite{Borradaile2003}. 
 
 \begin{figure}[H]
@@ -2646,6 +2752,7 @@ Further references are given by \cite{Leeuwetal2009}.
 
 \section{\LaTeX \space for processing bathymetric data}\label{sec:Lat}
 
+Bathymetric GIS data processing by \ac{QGIS} and \LaTeX \space is an experimental approach of the GIS data processing after imported through \ac{QGIS} digitizing, possible \LaTeX using available available resources \cite{Knuth1984}. 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-4-2-1.jpg}
@@ -2784,7 +2891,7 @@ However, other areas, particularly the terraces were less well defined, perhaps 
 	\caption{Middle America Trench: trend regression models for the cross-section profiles}\label{fig:MAT11}
 \end{figure}
 
-Modelling geospatial data highlited the geomorphology and geometric shape of the trench. The geometry of the trench demonstates its relatively steep and strait shape which correlate with previous seismic record results \cite{Shipboard1982500} showing the trench floor to be 3-5 km wide. The spatial analysis performed by the GMT revealed that major depth observation points of the \ac{MAT} are located in between the -3000 and -6200 meters (Map \ref{map:MAT10} and Fig. \ref{fig:MAT11}). Frequency data distribution of the bathymetric samples shows notable changes within the \ac{MAT} by the profiles. There is a certain increase of frequency in depths between -3000 and -4000 m (Fig. \ref{fig:MAT12}) that may be caused by the specific geologic properties of the Cocos Plate. 
+Modelling geospatial data highlighted the geomorphology and geometric shape of the trench. The geometry of the trench demonstrates its relatively steep and strait shape which correlate with previous seismic record results \cite{Shipboard1982500} showing the trench floor to be 3-5 km wide. The spatial analysis performed by the GMT revealed that major depth observation points of the \ac{MAT} are located in between the -3000 and -6200 meters (Map \ref{map:MAT10} and Fig. \ref{fig:MAT11}). Frequency data distribution of the bathymetric samples shows notable changes within the \ac{MAT} by the profiles. There is a certain increase of frequency in depths between -3000 and -4000 m (Fig. \ref{fig:MAT12}) that may be caused by the specific geologic properties of the Cocos Plate. 
 
 \begin{figure}[H]
 	\centering
@@ -2846,7 +2953,7 @@ The results of the comparative analysis of the two trenches show that Tonga Tren
 
 \section{New Hebrides Trench}
 
-\section{New Britain Trench}
+\section{New Britain (Bougainville) Trench}
 
 \begin{figure}[H]
 	\centering
@@ -2928,6 +3035,8 @@ The effects of the variations in the slope degree were tested by computed tangen
 \end{figure}
 
 The results presented in the data analysis on the Philippine Trench demonstrate the effectiveness of the data analysis in the marine geology. Using advanced data processing in Python it is possible to analyze various impact factors affecting the trench, understand the variability of the submarine geomorphology. Usage of the advanced methods of the statistical analysis enables to visualize combined effects of multiple geological and lithological attributes and factors that affect geomorphology of the hadal trenches. The results highlight the geomorphic variation and complex characteristics of the impact factors of geological origin affecting the Philippine trench. Location of the trench on various tectonic plates along with geological factors (sediment thickness) and lithology contributes in geomorphic shaping of the actual form of the Philippine Trench.  
+
+\section{East Luzon Trench}
 
 \pagebreak
 \section{Manila Trench}
@@ -3093,9 +3202,98 @@ Current analysis of the Mariana Trench geomorphology and dependence of the varia
 The similarities and differences in the geomorphic structure (steepness of the slope angle degrees), geological characteristics (sediment thickness layer), geographic location of certain tectonic plates (Mariana, Caroline, Philippine and Pacific) and bathymetry (absolute minimal depths, means and median values) exist along the trench. Large gradients in variability occur within and among norther and southern part of the trench as well as in the eastern curve of its shape directed towards  transform lines near Magellan Seamounts \index[places]{Magellan Seamounts} and Marcus-Wake seamount \index[places]{Marcus-Wake Seamounts}. Hence, it enable to identify that geomorphological structure of the trench is mainly dominated by the following factors: the most dominated is geological factors: the closeness of the submarine volcanic areas and location of Philippine and Mariana tectonic plates, whereas sediment thickness is mainly geomorphic dominated. Thus, as a result of the undertaken study, it has been found that the middle part of the Mariana Trench (profiles: 14 up to 17), with very strong slopes, have roughly equal proportions of sediment thickness layer, which indicates that spatial locations and distributions of the volcanic areas and slope angle of the ocean trench are closely interrelated and affect sediment thickness. In addition to the variation of the slope degree, the variations in the sediment thickness by profiles were defined as indirectly impacted from the changed slope degree that gives conditions for the sediment accumulations. \\
 The information and conceptual framework for the sediment thickness of the World Ocean published by \cite{Divins2003} was used in this research. Ranking geologic data has a step in geomorphic analysis where the levels of the slope degree are determined by the geospatial impact. Therefore, geomorphic variations typically necessitate an additional sub-task of the geological analysis of the study area. For example, if a certain segment of the trench is located near the active volcanic area the sedimentation rates may increase significantly in this particular region. For example, the profiles Nr. 1, 24, 25, 23 are notable for high sediment thickness on the Philippine Plate, profiles Nr. 2, 4, 6, 8 have the highest values for the Mariana Trench,  profiles Nr. 3, 5, 8, 6 have the highest values of the sediment thickness for the Pacific Plate, etc. The profiles located on the Caroline plate have the least values, since this part of the trench has only a few bathymetric points from the sample pool that cross the Caroline Plate. The results of the data analysis demonstrated spatial geomorphic unevenness of the Mariana Trench. Five unique regions across the trench length have been revealed, and the impact of various environmental factors affecting they morphology and characteristics were assessed by means of the applied statistics.
 
+\pagebreak
 \section{Izu-Bonin Trench}
 
+The cross-sectioned profiles are visualized as two segments of the Izu-Bonin Trench (as visualized on Fig. \ref{map:IBT6}). The results of the modelling demonstrated that southern segment of the trench is deeper and has more accurate V-form with a steeper gradient slope on both slopes (Fig. \ref{fig:IBT7}, B). The northern part of the trench (Fig. \ref{fig:IBT7}, A) has asymmetric shape of the slope with notable submarine terrace on the western part and more straight shape on the oceanwards side (Fig. \ref{fig:IBT7}, A). 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT5.jpg}
+	\caption{Izu-Bonin Trench: 3D mesh model map}\label{map:IBT5}
+\end{map}
+
+Furthermore, the southern segment of the trench has Bonin Ridge distinguishable on the graph. The comparison of the oceanward flank of the both segments of the Izu-Bonin Trench show similar geomorphic shape but seamounts on the northern part (Fig. \ref{fig:IBT7}). The 3D model of the Izu-Bonin shows (Fig. \ref{map:IBT5}) seamounts (exaggerated for the better visual effects) on the eastern part of the model. The trench is colored as deep-purple color with a general profile view on the grey draping border.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT6.jpg}
+	\caption{Izu-Bonin Trench: Digitizing cross-section profiles}\label{map:IBT6}
+\end{map}
+
+The statistical analysis of the two segments shows (Fig. \ref{fig:IBT8}) following results. For the northern segment (Fig. \ref{fig:IBT8}, A) that for the most illustrative range of depths (that is from -5,000 to -6,000m), the northern segments shows in total 1,037 recorded samples (304, 407, 248 and 78), while southern segments shows (Fig. \ref{fig:IBT8}, B) shows in total 931 samples (523, 304, 77 and 27). Furthermore, the histogram for the southern segment has clear bimodal distribution with two peaks: 523 samples taking 20\% shows the most frequent depth values for the southern segment that lie in the range of -5,800 to -6,000m. The 2nd peak takes almost 10\% of the data pool correlating with the Bonin Ridge location.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT7.jpg}
+	\caption{Izu-Bonin Trench: modeled graph of the cross-section profiles in two segments}\label{fig:IBT7}
+\end{map}
+
+These are the data on the range from -4,200 to -3,800 m. For the northern segment, the most repetitive samples (407 values, 13,5\%) are taken by the depths from -5,600 to -5,800 m, followed by depths in range -5,800 to -6,000 m (304 samples with 10\%). In the northern segment, the data distribution has more samples located on the shallow areas (146 recorded observations) pointing at the Izu-Bonin Arc, while for the southern segment there are no data recorded in this bathymetric range. That means that southern segment has more V-shape trench cross-section profile which is notable on Fig. \ref{fig:IBT7}.
+
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT8.jpg}
+	\caption{Izu-Bonin Trench: statistical histograms of the depth frequency}\label{fig:IBT8}
+\end{map}
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT9.jpg}
+	\caption{Izu-Bonin Trench: modeled slope gradient of the northern segment}\label{fig:IBT9}
+\end{map}
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-IBT10.jpg}
+	\caption{Izu-Bonin Trench: modeled slope gradient of the southern segment}\label{fig:IBT10}
+\end{map}
+
+\pagebreak
 \section{Japan Trench}
+
+Since the the fundamental bathymetric variable is the depth, or elevation records below the sea level, geomorphic analysis of the \ac{GEBCO} datasets in the form of DEMs, was performed for computation, comparison and descriptive statistical analysis of the two segments of the Japan Trench. Hence, the comparative analysis of the two parts of the a series of cross-section profiles (Figure \ref{fig:JT8}) revealed more steep slope on the northern part of the trench on the continental slope part beneath the frontal wedge of the North American tectonic plate. 
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT8.jpg}
+	\caption{Japan Trench: modeling geomorphic cross-section profiles}\label{fig:JT8}
+\end{figure}
+
+The southern part of the trench shows more gentle slope on the Honshu Island. The location of the swath profiles traversing the two segment of the Japan Trench South-West to North-East direction is shown in Figure \ref{map:JT7}. 12 profiles were drawn for the southern segment and 14 profiles for the northern one. The highly rugged geomorphological structure of the median profiles, as well as altitude increase in the S-N direction can be seen on the northern part of the trench (Figure \ref{map:JT10}). Furthermore, the results were interpreted based on the hypothesis that geological settings and seismicity of the area impact the trench roughness and general geomorphic shape when studying bathymetric patterns and variations by the cross- sectioning profiles of such complex targets as hadal trenches, which is shown on the geological map (Figure \ref{map:JT3}) with high level of the seismicity, repetitive earthquakes and volcanism along the path of the trench. Consequently, the western part of the trench profiles (Honshu Island slope) has steeper slopes comparing to the oceanward slopes for both segments, which can also be seen on the 3D model shown on Figure \ref{map:JT6}. 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT7.jpg}
+	\caption{Japan Trench: map of the cross-sectional profiles along two segments}\label{map:JT7}
+\end{map}
+The statistical analysis of the most frequent bathymetric value for the northern part of the Japan Trench (Figure \ref{fig:JT9}, A) shows a range of -5300- to -5500m (683 samples recorded). As for the southern part, the most frequent depths lie within interval of -5500 to -5800 meter (531 samples detected, Figure \ref{fig:JT9}, B). Furthermore, comparing the deepest values of the bathymetry, one can notice the southern part to be slightly deeper: the deepest records up to -8000 m (8 samples are recorded).
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-JT9.jpg}
+	\caption{Japan Trench: statistical analysis of the data distribution (histograms)}\label{fig:JT9}
+\end{figure}
+
+In total, 139 samples (8+29+42+59) are located on the depths from -7000 to -8000 m in the southern part of the trench (Figure \ref{fig:JT9} B, left part of the graph). In the northern part of the trench, the same depth range has 124 records (12, 59 and 53 in the deepest part of the profile, Figure \ref{fig:JT9} A, left part of the graph). Furthermore, the values located on the depths from -4000 to -5000 meter are more frequent for the southern part of the trench: 134 records in total (35+33+37+29 samples, Figure \ref{fig:JT9}, B), while northern part of the trench do not overstep 100: 91 records (21+23+21+26 records, Figure \ref{fig:JT9}, A). To sum up, the southern part is shallower than northern part of the trench. It shows (Figure \ref{fig:JT11}) more deep values and the most frequent value is deeper that by the northern segment (Figure \ref{fig:JT10}).
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=12cm]{Fig-JT10.jpg}
+	\caption{Japan Trench: modeled trends of the gradient slope degree (north)}\label{fig:JT10}
+\end{figure}
+
+The geophysical investigation of the presented modeling of geoid (a mean sea level model) and free-air gravity anomalies reflect the density variations of the Earth in the area across the Japan Trench and surroundings (Figure \ref{map:JT4} and Figure \ref{map:JT5}). The recorded area of the Japan Trench has geoid values of 0-20 mGal (Figure \ref{map:JT4}) as can be clearly seen as a light green color with dense isolines. The highest values on the geoid elevations is recorded by the Honshu Island (above 40 mGal, shown as red color on the map). The rest of the area is covered by the values in the range of 20-40 mGal, which shows moderate geoid undulations. The gravity map (Figure \ref{map:JT5}) shows density variations of the Earth’s interior in the study area. The free-air model shows gravity reduction from the topographic surface to the geoid in the study area. Map of free-air gravity anomalies (Figure \ref{map:JT5}) is defined with respect to the elevation showing values below -30 mGal in the Japan Trench area (visualized by deep purple color on the map). The marine areas of the Sea of Japan and the Pacific Ocean have values of up to 40 mGal of elevations. 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=12cm]{Fig-JT11.jpg}
+	\caption{Japan Trench: modeled trends of the gradient slope degree (south)}\label{fig:JT11}
+\end{figure}
+
+Certain areas on the Japan Islands (Honshu and Hokkaido) reach above 100 mGal (red color on the map) showing high values in concern to gravity.
 
 \begin{tikzpicture} 
 	\pgfornament[height=1cm,color=Thistle]{11}
@@ -3109,6 +3307,10 @@ The information and conceptual framework for the sediment thickness of the World
 \end{tikzpicture}
 
 \pagebreak
+\section{Puysegur Trench}
+
+\pagebreak
+\section{Hikurangi Trench}
 
 %%%%%%%%%%%%%%%% Chapter 5: Discussion %%%%%%%%%%%%%%%%%%
 
@@ -3400,6 +3602,7 @@ In case the surface of the whole trench is being modeled, the extrapolation or i
 %%%%%%%%%%%%%%%%%%% Python scripts end %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%% R scripts start %%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
 \section{R language scripts}
 \subsection{R code to create histograms using (ggplot) library}\label{R:01}
 Source data available on my \href{https://github.com/paulinelemenkova/R-1-Histograms}{GitHub}.

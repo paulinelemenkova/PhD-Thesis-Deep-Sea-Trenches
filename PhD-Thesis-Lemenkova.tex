@@ -1,5 +1,5 @@
 % 1. processing in XeLaTeX !
-% 2. BibTeX
+% 2. BibTeX (biber)
 % 3. processing in XeLaTeX !
 %%%%%%%%%%%%%%%
 \documentclass[11pt,a4paper]{report}
@@ -169,7 +169,6 @@
 
 \usepackage[
 	backend=biber, 
-%	style=authortitle,
 %	style = numeric,
 %	style=ieee,
 %	style=nature,
@@ -516,6 +515,7 @@ This work demonstrated successful combination of these approaches enabling to ma
 	\acro{BSL}{below sea level}
 	\acro{CTAN}{The Comprehensive TEX Archive Network}
 	\acro{CTD}{Conductivity-Temperature-Depth profiler}
+	\acro{GDAL}{Geospatial Data Abstraction Library}
 	\acro{GIS}{Geographic Information System}
 	\acro{GMT}{Generic Mapping Tools}
 	\acro{GEBCO}{General Bathymetric Chart of the Oceans}
@@ -786,8 +786,6 @@ There are 20 deep-sea trenches of the Pacific Ocean (Tab. \ref{tab:T1}), includi
         		\arrayrulecolor[RGB]{170,207,83}\hline\hline
 	Philippine & 10,540 & 1,320 & 65 \\
         		\arrayrulecolor[RGB]{199,220,104}\hline\hline
-	East Luzon & - & - & - \\
-        		\arrayrulecolor[RGB]{199,220,104}\hline\hline
 	Kuril-Kamchatka & 10,542 & 2,900 & 59 \\
         		\arrayrulecolor[RGB]{216,230,152}\hline\hline
 	Middle America & 6,669 & 2,750 & 34 \\
@@ -834,7 +832,7 @@ The geographic object of this study is the Kuril-Kamchatka Trench \index[places]
 \begin{map}[H]
 	\centering
 		\includegraphics[width=10cm]{Fig-KKT1.jpg}
-	\caption{Kuril-Kamchatka Trench and the Sea of Okhotsk: bathymetric map}\label{map:KKT1}
+	\caption{Kuril-Kamchatka Trench and the Sea of Okhotsk: bathymetric map. Source: \cite{Lemenkova201995}, modified.}\label{map:KKT1}
 \end{map}
 
 Geographically, the \ac{KKT} continues south-eastwards from the coast of the Kamchatka Peninsula, in parallel to the Kuril Island chain, and meets Hokkaido Island\index[places]{Hokkaido Island}. Geologically, the \ac{KKT} presents a boundary of the large subduction zone of the Pacific tectonic plate under the Okhotsk tectonic plate \cite{Bird2003}, which causes irregularity in its bathymetric shapes and geomorphic structure. The submarine geomorphology of the seafloor underlying the \ac{KKT} is formed as a result of the complex interplay between the geological substrate, water column and a range of the geophysical processes and phenomena. As a result, the variations in the distribution of the geomorphic landforms in the trench were caused by a continuous effect of various factors through the whole history of the trench formation. \\
@@ -843,51 +841,44 @@ The Sea of Okhotsk is a semi-enclosed sea, connected in terms of bathymetry with
 The trench is characterized by a geometrically long narrow, elongate, deep and asymmetrical depression of the seafloor with steep slopes. Together with Aleutian Trench, the \ac{KKT} presents contiguous complex covering area of 254,740 km2 \cite{Harrisetal2014}. 
 The \ac{KKT} is distributed along Kuril island arcs and Eurasian continent masses, developed in the association with an island-arc system where Pacific tectonic plate subducts below the North American\index[places]{North American Plate} and Okhotsk plates. The Okhotsk plate represents a region of active grabens lying southwards of a chain of small sedimentary basins in the Cherskii Mountains\index[places]{Cherskii Mountains} \cite{Savostinetal1983}. The geomorphic and topographic patterns of the land area of Kamchatka Peninsula are influenced by the climate and glaciological effects (glacier cirques) \cite{BarrSpagnolo2015}. The \ac{KKT} is divided by the Bussol Strait into southern and northern parts. Because geologic factors differ in northern and southern parts of the trench, it affects its geomorphology. The southern part of the Greater Kuril Chain\index[places]{Greater Kuril Chain} includes the large Kunashir\index[places]{Kunashir Island}, Iturup\index[places]{Iturup Island}, and Urup\index[places]{Urup Island} islands constituting the islands-arc-trench system. This part is confined to the northwestern Pacific subduction zone \cite{Khomich}. The topographic and geomorphic features of the trench in its northern part are different from those located further southwards near the group of the seamounts.
 
-\begin{map}[H]
+\begin{figure}[H]
 	\centering
-		\includegraphics[width=10cm]{Fig-KKT9.jpg}
-	\caption{Kuril-Kamchatka Trench and the Sea of Okhotsk. Mercator oblique projection}\label{map:KKT9}
-\end{map}
+		\subfloat {\includegraphics[width=7.5cm]{Fig-KKT9.jpg}}
+			\hspace{3mm}
+		\subfloat {\includegraphics[width=6.5cm]{Fig-KKT10.jpg}}
+			\hspace{3mm}
+	\caption{Kuril-Kamchatka Trench. Miscellaneous projections in GMT: Mercator oblique projection (left), conic projection (right). Source: \cite{Lemenkova201995}}\label{map:KKT9}
+\end{figure}
 
 The specific distinction of this hadal trench is its clear division into two parts: northern and southern segments separated by the Bussol Strait. The geological settings of the study area is characterized by high seismicity, repeated earthquakes, and tectonic instability caused by plate subduction. Geological factors differ in northern and southern parts of the trench, which naturally affects its geomorphology. The comparisons on the northern and southern parts of the \ac{KKT} seafloor are not assessed within the published literature. Therefore, the novelty of this study is a contribution towards the regional analysis of the geospatial variation of the trench geomorphology in its southern and northern parts.
 The formation of the hadal trench is affected by the impacts of local geological and geophysical settings varying along the trench.\\
- The methodological approach is as follows. The comparative assessment of the bathymetry of the \ac{KKT} \index[places]{Kuril-Kamchatka Trench} was performed for southern and northern segments separated by the Bussol Strait \index[places]{Bussol Strait}. The profiling was undertaken using GMT modules ‘grdimage’, ‘grdtrack’ and ‘psxy’. 
- 
- \begin{map}[H]
-	\centering
-		\includegraphics[width=10cm]{Fig-KKT10.jpg}
-	\caption{Kuril-Kamchatka Trench: contour bathymetric area. Conic projection.}\label{map:KKT10}
-\end{map}
-
- The modelling consists of the collected data of 10706 observation samples from 52 profiles in southern part and 12726 from 62 profiles in the northern segment. The \ac{GMT} modules ‘psrose’ and ‘pshistograms’ were used to plot histograms and rose diagrams visualizing bathymetric variables of depths. The geology was mapped using GMT modules ‘pscoast’, ‘grdcut’, ‘grdcontour’ and ‘psxy’ to plot lineaments and geological objects (ophiolites, faults, earthquakes, trench, magnetic anomalies, tectonic slabs, fracture zones and volcanoes).  The comparison of the bathymetry shown variations in the northern and southern segments: southern part reaches -8,200 m maximal depths while northern has -7,800 m. This is influenced by the geological settings: earthquakes magnitude\index[concepts]{earthquakes magnitude} and seismicity\index[concepts]{seismicity} are higher in the south-west. The submarine terraces and floodplains were observed at -4000 m depth forming landforms located southwards off the Bussol Strait\index[places]{Bussol Strait}. This geospatial analysis contributes to the development of the geological mapping with an example of the Kamchatka area, a region with high seismicity and repeated earthquakes. 
+ The methodological approach is as follows. The comparative assessment of the bathymetry of the \ac{KKT} \index[places]{Kuril-Kamchatka Trench} was performed for southern and northern segments separated by the Bussol Strait \index[places]{Bussol Strait}. The profiling was undertaken using GMT modules ‘grdimage’, ‘grdtrack’ and ‘psxy’. \\
+Modelling consists of the collected data of 10706 observation samples from 52 profiles in southern part and 12726 from 62 profiles in the northern segment. The \ac{GMT} modules ‘psrose’ and ‘pshistograms’ were used to plot histograms and rose diagrams visualizing bathymetric variables of depths. The geology was mapped using GMT modules ‘pscoast’, ‘grdcut’, ‘grdcontour’ and ‘psxy’ to plot lineaments and geological objects (ophiolites, faults, earthquakes, trench, magnetic anomalies, tectonic slabs, fracture zones and volcanoes).  The comparison of the bathymetry shown variations in the northern and southern segments: southern part reaches -8,200 m maximal depths while northern has -7,800 m. This is influenced by the geological settings: earthquakes magnitude\index[concepts]{earthquakes magnitude} and seismicity\index[concepts]{seismicity} are higher in the south-west. The submarine terraces and floodplains were observed at -4000 m depth forming landforms located southwards off the Bussol Strait\index[places]{Bussol Strait}. This geospatial analysis contributes to the development of the geological mapping with an example of the Kamchatka area, a region with high seismicity and repeated earthquakes. 
 
 \subsubsection{Tectonics}
-The tectonic properties of the study area mutually affect both land and submarine geomorphology. Thus, as noted by \cite{Pflanz}, the location of the  \ac{KKT} at the meeting place of active Kuril-Kamchatka \index[places]{Kuril-Kamchatka Arc} and Aleutian arcs \index[places]{Aleutian Arc} causes the coastline of the Kamchatka Peninsula \index[places]{Kamchatka Peninsula} to be affected by strong tectonic activities. Fracture zones\index[concepts]{fracture zones} have variable influence on the uplift of the Kamchatka Peninsula. The geomorphic consequence include raise of the multi- level, highly uplifted marine terraces\index[concepts]{marine terraces} displaced along the active tectonic faults. Furthermore, the tectonic movements cause the uplift of the coastal sediments \cite{Pflanz}. The \ac{KKT} belongs to the Chilean tectonic subduction type \index[places]{Chile}, which has a gentle subduction dip\index[concepts]{subduction dip} advancing at a speed of ca. 2 cm yr–1 and inter-seismic elastic shortening of 1–2 mm yr−1 \cite{DeMetsetal2010}. Strong lateral velocity in the shallower mantle wedge accounts for both the compressional subduction tectonics and back arc compression in the \ac{KKT}. This results in the seismic-velocity anomalies in the mantle under the \ac{KKT}, as shown on the tomographic images by \cite{Yoshida2017}. Despite the age of the Pacific Plate, there is no sharp variation of the age on the seafloor along the \ac{KKT} \cite{RenkinSclater}, and the old Pacific Plate \index[places]{Pacific Plate} is rejuvenated at the north of the \ac{KKT} around the Meiji Guyot seamount \index[places]{Meiji Guyot seamount}.
+The tectonic properties of the study area mutually affect both land and submarine geomorphology. Thus, as noted by \cite{Pflanz}, the location of the  \ac{KKT} at the meeting place of active Kuril-Kamchatka \index[places]{Kuril-Kamchatka Arc} and Aleutian arcs \index[places]{Aleutian Arc} causes the coastline of the Kamchatka Peninsula \index[places]{Kamchatka Peninsula} to be affected by strong tectonic activities. Fracture zones\index[concepts]{fracture zones} have variable influence on the uplift of the Kamchatka Peninsula. The geomorphic consequence include raise of the multi- level, highly uplifted marine terraces\index[concepts]{marine terraces} displaced along the active tectonic faults. Furthermore, the tectonic movements cause the uplift of the coastal sediments \cite{Pflanz}. The \ac{KKT} belongs to the Chilean tectonic subduction type \index[places]{Chile}, which has a gentle subduction dip\index[concepts]{subduction dip} advancing at a speed of ca. 2 cm yr-1 and inter-seismic elastic shortening of 1-2 mm yr-1 \cite{DeMetsetal2010}. Strong lateral velocity in the shallower mantle wedge accounts for both the compressional subduction tectonics and back arc compression in the \ac{KKT}. This results in the seismic-velocity anomalies in the mantle under the \ac{KKT}, as shown on the tomographic images by \cite{Yoshida2017}. Despite the age of the Pacific Plate, there is no sharp variation of the age on the seafloor along the \ac{KKT} \cite{RenkinSclater}, and the old Pacific Plate \index[places]{Pacific Plate} is rejuvenated at the north of the \ac{KKT} around the Meiji Guyot seamount \index[places]{Meiji Guyot seamount}.
 
  \begin{map}[H]
 	\centering
 		\includegraphics[width=10cm]{Fig-KKT11.jpg}
-	\caption{Kuril-Kamchatka Trench: 3D-topographic mesh map.}\label{map:KKT11}
+	\caption{Kuril-Kamchatka Trench: 3D-topographic mesh map. Source: \cite{Lemenkova201995}}\label{map:KKT11}
 \end{map}
 
 \subsubsection{Seismisity}
-The Kuril-Kamchatka subduction zone \index[places]{Kuril-Kamchatka subduction zone}, a part of the circum-Pacific 'Ring of Fire' \index[places]{Ring of Fire}, forms the northern part of the Kuril-Kamchatka volcanic arc in the North-West Pacific Ocean \cite{PortnyaginManea}; \cite{Gorshkov}. The subduction rate of the Pacific plate \index[places]{Pacific Plate} beneath the Eurasian Plate \index[places]{Eurasian Plate} is ~79 mm yr−1 \cite{Demetsetal1990}; \cite{Bindemanetal2010} or 8–9 m per century along the \ac{KKT} \cite{Nanayama}. This causes high seismic and volcanic activities\index[concepts]{volcanic activities}, making this region one of the most tectonically active, seismic regions of the world. More specifically, one of the most active volcanic arcs\index[concepts]{volcanic arc} in the world is located on the eastern coast of Kamchatka \cite{Gorbatovetal2001}; \cite{Pinegina}. A number of studies analyzed earthquakes across the region of the southern Sea of Okhotsk \index[places]{Sea of Okhotsk} in in the adjusting Kamchatka Peninsula \index[places]{Kamchatka Peninsula}. Nowadays, there are 29 active, and ca. 300 extinct volcanoes located on the Kamchatka Peninsula near the \ac{KKT} \cite{Solomina}.
+The Kuril-Kamchatka subduction zone\index[places]{Kuril-Kamchatka subduction zone}, a part of the circum-Pacific 'Ring of Fire' \index[places]{Ring of Fire}, forms the northern part of the Kuril-Kamchatka volcanic arc in the North-West Pacific Ocean \cite{PortnyaginManea}; \cite{Gorshkov}. The subduction rate of the Pacific plate \index[places]{Pacific Plate} beneath the Eurasian Plate \index[places]{Eurasian Plate} is ca. 79 mm yr-1 \cite{Demetsetal1990}; \cite{Bindemanetal2010} or 8-9 m per century along the \ac{KKT} \cite{Nanayama}. This causes high seismic and volcanic activities\index[concepts]{volcanic activities}, making this region one of the most tectonically active, seismic regions of the world. More specifically, one of the most active volcanic arcs\index[concepts]{volcanic arc} in the world is located on the eastern coast of Kamchatka \cite{Gorbatovetal2001}; \cite{Pinegina}. A number of studies analyzed earthquakes across the region of the southern Sea of Okhotsk \index[places]{Sea of Okhotsk} in in the adjusting Kamchatka Peninsula \index[places]{Kamchatka Peninsula}. Nowadays, there are 29 active, and ca. 300 extinct volcanoes located on the Kamchatka Peninsula near the \ac{KKT} \cite{Solomina}.
 
 \subsection{Geospatial variations}
 \subsubsection{Southern part}
 Southern part of the KKT differ, as proved by recent findings \cite{Khomich} where it is demonstrated on the example of South Kuril \index[places]{South Kuril} that intense fluid thermal fluxes\index[concepts]{fluid thermal fluxes} in the continental lithosphere\index[concepts]{lithosphere} cause of the formation of magmatic chambers\index[concepts]{magmatic chamber} and the development of volcanism and multi-metal ores\index[concepts]{ores, multi-metal}. Over 700 earthquakes\index[concepts]{earthquake} with hypo-centers >50 km are recorded in the \ac{KKT} focal zone\index[concepts]{focal zone} \cite{BeckRuff} Individual earthquakes show large variations in seismic slip and distribution of foreshocks and aftershocks that shows spatial heterogeneity in the stress level and geological settings along the tectonic plate boundary \cite{RuffKanamori1980}.
 
-\begin{map}[H]
+\begin{figure}[H]
 	\centering
-		\includegraphics[width=10cm]{Fig-KKT12.jpg}
-	\caption{Kuril-Kamchatka Trench: geoid modeled map}\label{map:KKT12}
-\end{map}
-
- \begin{map}[H]
-	\centering
-		\includegraphics[width=10cm]{Fig-KKT13.jpg}
-	\caption{Kuril-Kamchatka Trench: marine free-air gravity anomaly}\label{map:KKT13}
-\end{map}
+		\subfloat {\includegraphics[width=7cm]{Fig-KKT12.jpg}}
+			\hspace{3mm}
+		\subfloat {\includegraphics[width=7cm]{Fig-KKT13.jpg}}
+			\hspace{3mm}
+	\caption{Kuril-Kamchatka Trench: geoid modeled map (left) and marine free-air gravity anomaly (right). Source: \cite{Lemenkova201995}}\label{map:KKT12}
+\end{figure}
 
 \subsubsection{Northern part}
 Northern part of the \ac{KKT} located northwards from the Bussol Strait \index[places]{Bussol Strait} presents a geographically complicated region with smaller islands than in other parts of the Kuril volcanic arc \cite{MacInnes}, Map \ref{map:KKT2}. This area is notable for the abnormally high heat flow in the ocean floor. Reduced thermal thickness of the Pacific Plate \index[places]{Pacific Plate} upon its subduction into the northern \ac{KKT} indicates underlying mantle plume and point out that thermal thickness of the underlying plate is lesser than expected comparing to the normal oceanic plate of such age \cite{Smirnovetal1992}; \cite{Selivestrov}; \cite{SmirnovSugrobov1980a}; \cite{SmirnovSugrobov1980b}.
@@ -895,19 +886,16 @@ Northern part of the \ac{KKT} located northwards from the Bussol Strait \index[p
 \subsection{Tsunami}
 Historically, the \ac{KKT} subduction zone experienced a variety of large tsunamis along the trench \cite{Zayakin}. Reports on the seismisity of the \ac{KKT} are provided by numerous studies \cite{KaoChen}; \cite{Gorbatovetal1997}; \cite{Ruppert}. The maximum depth of the seismicity along the \ac{KKT} changes gradually from ca. 600 km to ca. 300 km with latitude increasing in a central part from ca. 50\degree N to ca. 54\degree N \cite{Gorbatovetal2001}, and then decreasing sharply to a depth of 100 km northwards. The rate occurrence of the tsunami on the Shikotan Island, the southern end of the Kuril Island Chain \index[places]{Kuril Island Chain}, is one per 250 yr. 
 
-\begin{map}[H]
+\begin{figure}[H]
 	\centering
-		\includegraphics[width=10cm]{Fig-KKT14.jpg}
-	\caption{Kuril-Kamchatka Trench: topographic surface modelling}\label{map:KKT14}
-\end{map}
+		\subfloat {\includegraphics[width=7cm]{Fig-KKT14.jpg}}
+			\hspace{3mm}
+		\subfloat {\includegraphics[width=7cm]{Fig-KKT15.jpg}}
+			\hspace{3mm}
+	\caption{Kuril-Kamchatka Trench: topographic surface modelling (left) and  gravity surface modelling (right). Source: \cite{Lemenkova201995}}\label{map:KKT14}
+\end{figure}
 
-The most active section of the \ac{KKT} subduction zone is the southern Kuril Islands and Hokkaido \index[places]{Hokkaido Island} sections with nine Mw 7.5- 8.5 earthquakes \cite{MacInnes}. Larger earthquakes estimated as Mw 9.0 occur only every ca. 500 yr on Iturup Island \index[places]{Iturup Island} \cite{Iliev}. Such seismic situation in the \ac{KKT} makes this area in the north-west Pacific coast a tsunami-prone region \cite{Gusiakov2016}. The focal mechanism of the strongest earthquakes (M ≥ 5) in the southern part of the \ac{KKT} affects the orientation of the trench in this part through the main fracture zones with respect to the direction and type of the geomorphic displacements.
-
-\begin{map}[H]
-	\centering
-		\includegraphics[width=10cm]{Fig-KKT15.jpg}
-	\caption{Kuril-Kamchatka Trench: gravity surface modelling}\label{map:KKT15}
-\end{map}
+The most active section of the \ac{KKT} subduction zone is the southern Kuril Islands and Hokkaido \index[places]{Hokkaido Island} sections with nine Mw 7.5-8.5 earthquakes \cite{MacInnes}. Larger earthquakes estimated as Mw 9.0 occur only every ca. 500 yr on Iturup Island \index[places]{Iturup Island} \cite{Iliev}. Such seismic situation in the \ac{KKT} makes this area in the north-west Pacific coast a tsunami-prone region \cite{Gusiakov2016}. The focal mechanism of the strongest earthquakes (M>5) in the southern part of the \ac{KKT} affects the orientation of the trench in this part through the main fracture zones with respect to the direction and type of the geomorphic displacements.
 
 \subsubsection{Discussion}
 The formation of the hadal trench is affected by the impacts of local geological, geophysical and oceanological settings that have resulted during the complex process of the tectonic plates movements and subduction. 
@@ -1160,9 +1148,38 @@ Its closeness to the Antarctic makes it one of the coldest trenches in the world
 Similar to the Kermadec Trench, Tonga Trench belongs to the \ac{SPSG} biogeochemical province and has the same primary productivity rate rate of 87 g C m-2 y−1 \cite{Xuetal2018}. Tonga Trench is adjacent, continuing Kermadec Trench northwards with axis stretching from ca. 15\degree S to 26\degree S. Located in close proximity to the Kermadec, it is separated by a sill located on the Tonga Platform \index[places]{Tonga Platform} \cite{Wrightetal2000} and by the Louisville Seamount Chain\index[places]{Louisville Seamount Chain} \cite{Jamiesonetal2013} (Map \ref{map:TK2}, right). With maximum depths of 10,882 m, the Tonga Trenches is the 2\nth{2} deepest trench in the world \cite{Blankenship}.  Both trench axes have roughly 30\degree slight from the longitude line. Due to the complex interaction of various factors (ocean currents, closeness to the Antarctica \index[places]{Antarctica}) the deep Pacific Ocean seafloor underlying the trenches is notable for variable surface productivity \cite{Linleyetal2017}. Further studies on Tonga Trench \index[places]{Tonga Trench}, its environment and communities can be found in relevant literature \cite{Tappin}; \cite{Ewartetal1998}; \cite{Hergt}.
 
 \pagebreak
-\section{New Hebrides Trench}
-The New Hebrides Trench \index[places]{New Hebrides Trench} is located 
+\section{Vanuatu (New Hebrides) Trench}
+The Vanuatu\index[places]{Vanuatu Trench}, a.k.a. New Hebrides Trench \index[places]{New Hebrides Trench} is located in Fiji Basin, East Australia, located in the area of the double convergent complex boundary where Pacific Plate subducts under the Indian-Australian plate westwards, and Indo-Australian plate beneath the North Fiji back-arc basin northeastwards. 
 
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-VV1.jpg}
+	\caption{Vanuatu and Vityaz trenches: topographic map}\label{map:VV1}
+\end{map}
+
+Such complex geophysical settings results in the formation of the trenches, high seismicity, geodynamic complexity and instability of the region. The Vanuatu (New Hebrides) trench-arc system divides the New Hebrides back-arc troughs and the active North Fiji marginal basin. The Vanuatu arc stretches ca. 1200 km in the SW Pacific Ocean located in the area with coordinates 10\degree S-23\degree S, 160\degree-180\degree E  (Fig. \ref{fig1}). Narrow Vanuatu Trench is bordered by the Vanuatu volcanic archipelago (alternative former spelling: New Hebrides), which is a submersed part of an oceanic island arc that extends  between 12\degree S and 25\degree S, between the Torres to Hunter Islands \citep{JeanBaptisteetal2016}, 1000 km to the northwest of the Kermadec Trench. The geomorphology of the Vanuatu (New Hebrides) Trench is reported \citep{HeezenHollister} to have masses of rubble, talus slopes and fragmented outcrops.\
+ The Vanuatu Trench is a shallower trench of ca. 7156 m. Relative to other neighbour trenches (Kermadec, Mariana), it is warmest, and underlies intermediate bio-productivity \citep{Linleyetal2017}. The Vanuatu Trench has developed in a situation of complex tectonic settings. More specifically, it is located in a double convergent boundary between the Australian and Pacific tectonic plates \citep{Beaumais}. The tectonic development of the Vanuatu Trench has two distinct subduction stages \citep{JeanBaptisteetal2016}: 1) subduction of the Pacific Plate under the Indian-Australian plate westward direction; 2) subduction of the Indo-Australian plate beneath the North Fiji back-arc basin at the margin of the Pacific Plate, north-eastwards  direction. Therefore, the convergence is marked by two opposite subduction zones, defined by the Vanuatu Trench to the west and the Tonga Trench to the east, resulting in an asymmetric opening of the North Fiji back-arc basin \citep{Auzende}. 
+
+%\pagebreak
+\section{Vityaz Trench}
+The Vityaz Trench \index[places]{Vityaz Trench} is located in the North Fiji Basin, East Australia and belongs to the New Hebrides trench-arc system is caused by the Indo-Australian subducting tectonic plate and a subduction of the d'Entrecasteaux ridge \cite{Charvis}. 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-VV2.jpg}
+	\caption{Vanuatu and Vityaz trenches: geologic map}\label{map:VV2}
+\end{map}
+
+Previous surveys on bathymetry, magnetism, seismicity and focal mechanismin the region between the southern New Hebrides Arc and North Fiji Basin enlighten the geodynamic complexity and  instability of the area \citep{Mailletetal1989}. An an active volcano Mt. Yasur, is located in Tanna Island of the Vanuatu arc \citep{Spina}. Further discussions on the geologic setting of the Vanuatu Trench exist in relevant literature (\cite{Monzieretal1997}; \cite{Sorbadere}; \cite{Turtle}; \cite{Louat}; \cite{Bourrouilh}; \cite{PilletPelletier}), where particular attention is paid to geochemistry, mineralogy, magmatism, volcanology, seismicity and tectonics of the region. The New Hebrides island arc consists of numerous volcanoes that frequently form islands situated in a tectonically complex arc-backarc system (\cite{Beier}, \cite{Calmantetal2003}), Fig. \ref{fig2}. The three flat, mainly covered by forests, islands of Mar\'{e}, Lifou and Ouv\'{e}a may illustrate tectonic deformation at various distances from the Vanuatu Trench. Loyalty Islands serve as tension cracks resulting from the elastic bulging of the Australian plate before its subduction at the Vanuatu Trench \citep{Bogdanovetal2011}. The New Hebrides archipelago is a complex reversed-arc system that divided into four major volcanic provinces \citep{CarneyMacFarlane1982}: 
+
+\begin{enumerate}
+    \item Western Belt is an Early Miocene extinct volcanic arc in the frontal arc; 
+    \item The Eastern Belt formed in the Middle Miocene, a calc-alkaline arc volcanism;
+    \item Marginal Province submerged in the Early Pleistocene is shown by volcanic activity;
+    \item The Central Chain is a present volcanic line continues Marginal Province volcanism;
+\end{enumerate}
+
+The anomalous morphology of the central New Hebrides arc is caused by the  subduction of the D’Entrecasteaux aseismic ridge which enters the central part of the Vanuatu Trench. Besides, there is a deformation distributed over numerous spreading ridges in Lau and North Fiji back-arc basins. Geometry of Lau and North Fiji back-arc basins and segmentation of the New Hebrides arc are significantly influenced by the subduction of aseismic ridges: Louisville, D’Entrecasteaux and Loyalty \citep{Pelletieretal1998} (Fig. \ref{fig2}). The basaltic rocks from the central and southern islands of the New Hebrides (Aneityum, Tanna, Erromango, Efate, Emae, Tongoa and Epi), have geochemical features typical of island arc volcanics. The basalts from Futuna island located farther from the trench display characteristics typical of calc-alkaline rocks \citep{Dupuy}.  
 
 \pagebreak
 \section{New Britain (Bougainville) Trench}
@@ -1265,9 +1282,6 @@ The statistical analysis was done using table containing attribute values of the
 \end{figure}
 
 	The next part of the research included calculation of the pairwise Pearson correlations and plotting correlation matrix between the geological, geomorphic and bathymetric factors of the Philippine Trench. Methods to plot correlation matrix (Fig. \ref{fig:GML9}) include R based data analysis that embed computing correlograms for the data arrays \cite{GolubVanLoan1996}. The methods and approaches of the Matplotlib and Seaborn libraries used for plotting figures by Python language were derived from the existing literature describing statistical algorithms \cite{Hunteretal2018}. Finally, the geomorphic steepness of the slopes was tested (Fig. \ref{fig:GML10}) using ranking plotting algorithm available in R libraries \{ggsignif\} and \{tidyverse\}. 
-
-\pagebreak
-\section{East Luzon Trench}
 
 \pagebreak
 \section{Manila Trench}
@@ -1659,7 +1673,7 @@ The gravity data reveled ground information for the geologic and geophysical set
 The geomorphological modelling consisted in plotting sets of the cross-section orthogonal profiles in perpendicular direction to the main trench axis, and then comparing their parameters for each of the 16 trenches. Plotting cross-sectional profiles, or transects along the selected segment of the study area is a common technique in geological investigations. Examples of the geological cross-section profiles plotting and data analysis can be seen in \cite{RossShor1965}, \cite{Mooreetal1982}. In this study, the orthogonal cross-section bathymetric profiles were drawn automatically using presented \ac{GMT} script across the trenches. Because the scope of the current work is rather large (16 profiles of the Pacific Ocean), the automatization of the process was crucial point in the methodology and a key decision for selecting \ac{GMT}. \\
 The profiles have length of 400 km, that is from -200 to +200 km from the trench axis, spaced 20 km, sampled every 2 km to achieve evenness of the sampling for the trenches. The depths values were calculated by each profile, and their mean and median values were modeled thereafter. The combination of several GMT modules was used for mapping geomorphological profiles. The plotting and stacking of the profiles was done using using 'grdtrack' module of \ac{GMT} by statistical mean, through the following main lines of the code based on the 'tkt\_relief.nc' raster in \ac{NetCDF} format.
 Minor GMT modules used for plotting cartographic elements included ‘psxy’, ‘logo’ ‘psconvert’, as well as Unix ‘echo’ utility. \\
-The example for the Kermadec Trench: Fig. \ref{fig:TK2}, left. The trench segment and end points were plotted and then the profiles were written into table. The modelling of the profiles was performed at the following step. The annotations were added using Unix utility 'echo'. The advantage of the \ac{GMT} for the automated profiles digitizing lies in the increased precision and speed of the plotting, as well as highlighted submarine geomorphic features of the trenches. For the case of \ac{MAT} (Map \ref{map:MAT10}), the cross-section  profiles were taken through the key sea floor features at coordinates 268.4$^{\circ}$W 13.0$^{\circ}$N 271.9$^{\circ}$W 11.6$^{\circ}$N to show the variety of the steepness angles. The full details of the \ac{GMT} bash code sequences and characterization of the module options and elements in comments including UNIX progs (echo, rm, cat) are provided in the Appendix, \ref{GMT:08}.
+The example for the Kermadec Trench: Fig. \ref{map:TK2}, left. The trench segment and end points were plotted and then the profiles were written into table. The modelling of the profiles was performed at the following step. The annotations were added using Unix utility 'echo'. The advantage of the \ac{GMT} for the automated profiles digitizing lies in the increased precision and speed of the plotting, as well as highlighted submarine geomorphic features of the trenches. For the case of \ac{MAT} (Map \ref{map:MAT10}), the cross-section  profiles were taken through the key sea floor features at coordinates 268.4$^{\circ}$W 13.0$^{\circ}$N 271.9$^{\circ}$W 11.6$^{\circ}$N to show the variety of the steepness angles. The full details of the \ac{GMT} bash code sequences and characterization of the module options and elements in comments including UNIX progs (echo, rm, cat) are provided in the Appendix, \ref{GMT:08}.
 
 \subsection{Modelling 2D statistical histograms}
 Statistical data modelling in geology is an important tool for the data analysis \cite{Davis2002}. The statistical techniques of the data analysis are widely used in geospatial studies, applied and described in previous works: \cite{MyersWell2003}; \cite{Ciaccioetal2012}; \cite{MarquesdeSa2007}; \cite{Robertsetal2018}. Proper data interpretation always include testing several algorithms, selecting appropriate approaches and statistical packages \cite{Jonesetal2014}. Current study applied the histogram techniques showing data distribution, that is depths, along the profiles. However, unlike the traditional statistical data analysis that utilizes standard tools for this purpose, such as R and Python libraries, MATLAB/Octave, \ac{SPSS} or Gretl, this research demonstrated the possibility to perform statistics directly from the cartographic \ac{GMT} toolset using embedded statistical modules. \\
@@ -2052,7 +2066,7 @@ The k-means clustering\index[concepts]{clustering, k-means}, a machine learning 
         		\arrayrulecolor[RGB]{126,190,165}\hline\hline
 \end{tabular}
 \end{table}
-The k-means of the clustering of the Mariana Trench profiles was computed and visualized in R by code \ref{R:09}, Fig. 14, the k-means clustering with different k-values is shown on Fig. 15, \cite{Lemenkova201991}. The K-means cluster analysis has been performed using set of cluster centers as the initial cluster centers. The algorithm worked iteratively to assign each profile to one of the groups (2 to 7) based on the morphometric features of the Mariana Trench across these profiles that were clustered based on their geomorphic feature similarity. The results of the k-means clustering are shown on the Fig. 15, further details are given in \cite{Lemenkova201991}. The pairwise standard scatter plot of k-means cluster correlation distributed by four tectonic plates is shown on Figure \ref{fig:4-3-14}. 
+The k-means of the clustering of the Mariana Trench profiles was computed and visualized in R by code \ref{R:09}, Fig. 14, the k-means clustering with different k-values is shown on Fig. 15, \cite{Lemenkova201991}. The K-means cluster analysis has been performed using set of cluster centers as the initial cluster centers. The algorithm worked iteratively to assign each profile to one of the groups (2 to 7) based on the morphometric features of the Mariana Trench across these profiles that were clustered based on their geomorphic feature similarity. The results of the k-means clustering are shown on the Fig. \ref{fig:4-3-14}, further details are given in \cite{Lemenkova201992}. The pairwise standard scatter plot of k-means cluster correlation distributed by four tectonic plates is shown on Figure \ref{fig:4-3-14}. 
 
 \begin{figure}[H]
 	\centering
@@ -2227,7 +2241,7 @@ Finally, the logical visualization of the results as Euler-Venn diagram (Fig. \r
 \section{Python language for marine geology}
 \subsection{Why Python ?}
 
-	Applying Python, a high-level programming language of general purpose, for marine geological data analysis and processing oceanographic data is still a novel approach. Usually applied and developed for \ac{IT} domain  applications, such as computer data analysis or data science, Python initially released in 1991 by \cite{Rossumatal2018} can effectively be applied in the marine geology. There are various significant advantages of the Python that make it a stand-alone language among the others. The advantages of Python can be summarized in a concise way in a Tab. \ref{tab:T10} as following answer to the main question of this subsection:
+	Applying Python, a high-level programming language of general purpose, for marine geological data analysis and processing oceanographic data is still a novel approach. Usually applied and developed for \ac{IT} domain applications, such as computer data analysis or data science, Python initially released in 1991 by \cite{Rossumatal2018} can effectively be applied in the marine geology. There are various significant advantages of the Python that make it a stand-alone language among the others. The advantages of Python can be summarized in a concise way in a Tab. \ref{tab:T10} as following answer to the main question of this subsection:
 	The polymorphism embedded to the Python syntax enables to seamless overload standard operators to adjust their behavior in the context of the current task. Since Python is a very-high-level evolving language, it has flexible arrays. Another feature of Python is its of the inheritance that scripts lets create subclasses containing qualities of their upper-level classes. 
 	
 \begin{figure}[H]
@@ -2384,11 +2398,11 @@ Because Mariana Trench crosses 4 tectonic plates – Mariana, Pacific, Philippin
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm,clip]{Fig-COMU-7.jpg}
-	\caption{Mariana Trench: histograms of data distribution by tectonic plates. Python}\label{fig:COMU-7}
+	\caption{Mariana Trench: histograms of data distribution by tectonic plates. Python. Source: \cite{Lemenkova201993}}\label{fig:COMU-7}
 \end{figure}
 
 \subsubsection{Strip plots by Python}\label{sssec:Py06}
-The next step included visualizing strip plot showing the relationship between the sediment thickness and slope angles as compared by four tectonic plates crossing Mariana Trench using Python code \ref{P:05}. The particularity of the scatter strip plots (stripplot()) lies in its nature: this is a categorical types of plot showing variable dependance (maximal depths values by each profile) upon another variable, i.e. tectonic plates. It represents the depth values by 25 profiles sorted along each of the tectonic plates crossing the trench. In the above plot, one can see the difference on data distribution: the Caroline Plates has just only several points, since it crosses the trench in the south-western small part of the trench. Pacific and Mariana plates are relatively comparable, while Philippine Plate covers the majority of the data. As can be seen on Figure \ref{fig:COMU-7}, the majority of the observation points are located in the Pacific and Philippine plate, following my Marian plate, while Caroline plate only covers a few points. Sedimentation processes differ significantly by four tectonic plates (Mariana, Pacific, Philippine and Caroline), due to the overall complexity of the sediment environmental processes and trigger factors and mechanisms. 
+The next step included visualizing strip plot showing the relationship between the sediment thickness and slope angles as compared by four tectonic plates crossing Mariana Trench using Python code \ref{P:05}. The particularity of the scatter strip plots (stripplot()) lies in its nature: this is a categorical types of plot showing variable dependance (maximal depths values by each profile) upon another variable, i.e. tectonic plates. It represents the depth values by 25 profiles sorted along each of the tectonic plates crossing the trench. In the above plot, one can see the difference on data distribution: the Caroline Plates has just only several points, since it crosses the trench in the south-western small part of the trench. Pacific and Mariana plates are relatively comparable, while Philippine Plate covers the majority of the data. As can be seen on Figure \ref{fig:COMU-7}, the majority of the observation points are located in the Pacific and Philippine plate, following my Marian plate, while Caroline plate only covers a few points \cite{Lemenkova201993}. Sedimentation processes differ significantly by four tectonic plates (Mariana, Pacific, Philippine and Caroline), due to the overall complexity of the sediment environmental processes and trigger factors and mechanisms. 
 
 \subsubsection{Euler-Venn diagrams by Python for visualizing logical relations}
 	The Euler-Venn diagram shows modelling intersection and correlation of various factors for four cases where overlapping in values or concepts are visualized. The Figure \ref{fig:GP-9} (A) shows the cumulative total sediment thickness by tectonic plates. Figure \ref{fig:GP-9} (B) shows detected igneous volcanic spots. Figure \ref{fig:GP-9} (C) shows slope degree and Figure \ref{fig:GP-9} (D) shows methodological overlay showing the approaches of this work: GIS data mapping and digitizing, geological analysis and Python and R programming languages. Fig. \ref{fig:GP-9} shows modelling intersection and correlation of various factors in the Mariana Trench project. In particular, it shows A): Bathymetric observations by plates, cumulative computing; B): Sediment thickness, slope degree and closeness of the volcanic spots; C): Subdivision of the slope steepness by classes; D): Methodological approaches.
@@ -2923,24 +2937,24 @@ The maximal values of the gravity above 20 mGal are recorded in the south-easter
 \end{figure}
 
 \section{Kermadec Trench}
-The resulting profiles are visualized as two segments (red and green for both trenches) on Fig. \ref{fig:TK2}, left. Automatic digitizing of the cross-section profiles for Kermadec and Tonga trenches demonstrated that Tonga trench’s geomorphology has steeper gradient slope on the western flank (Fig. \ref{fig:TK3}, A). On the contrary, Kermadec Trench (Fig. \ref{fig:TK3}, B) has more gentle shape form of the western slope off Tonga Ridge \index[places]{Tonga Ridge}. 
+The resulting profiles are visualized as two segments (red and green for both trenches) on Fig. \ref{map:TK2}, left. Automatic digitizing of the cross-section profiles for Kermadec and Tonga trenches demonstrated that Tonga trench’s geomorphology has steeper gradient slope on the western flank (Fig. \ref{fig:TK3}, A). On the contrary, Kermadec Trench (Fig. \ref{fig:TK3}, B) has more gentle shape form of the western slope off Tonga Ridge \index[places]{Tonga Ridge}. 
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-TK-3.jpg}
-	\caption{Kermadec and Tonga trenches: geomorphological modelling}\label{fig:TK3}
+	\caption{Kermadec and Tonga trenches: geomorphological modelling. Source: \cite{Lemenkova201994}}\label{fig:TK3}
 \end{figure}
 
-The results of the comparative analysis of the two trenches show that Kermadec Trench has more abrupt shape with 2,641 depth records from -6,600 to -6,800 meters (Fig. \ref{fig:TK5}). Comparing the deepest values >9,000 meters for the Kermadec Trench there are 10, 18, 48, 72 and 103, which gives together 251 observation samples proving that Tonga Trench is deeper than Kermadec Trench. If we compare the variations of the seafloor depths at range from -6,000 to -5,000, it can be sen (Fig. \ref{fig:TK5}) that Kermadec Trench has more values in this range: 1820, 2641, 1203 and 503 giving together 6167 samples. The Kermadec has more gentle slope and shallower depths which can also be seen on Fig. \ref{fig:TK3}. This illustrates tectonic and geological local variations, as well as different sedimentation of the Kermadec and Tonga trenches causing variations in their geomorphic shape despite their close location to each other.
+The results of the comparative analysis of the two trenches show that Kermadec Trench has more abrupt shape with 2,641 depth records from -6,600 to -6,800 meters (Fig. \ref{fig:TK5}). Comparing the deepest values >9,000 meters for the Kermadec Trench there are 10, 18, 48, 72 and 103, which gives together 251 observation samples proving that Tonga Trench is deeper than Kermadec Trench. If we compare the variations of the seafloor depths at range from -6,000 to -5,000, it can be sen (Fig. \ref{fig:TK5}) that Kermadec Trench has more values in this range: 1820, 2641, 1203 and 503 giving together 6167 samples  \cite{Lemenkova201994}. The Kermadec has more gentle slope and shallower depths which can also be seen on Fig. \ref{fig:TK3}. This illustrates tectonic and geological local variations, as well as different sedimentation of the Kermadec and Tonga trenches causing variations in their geomorphic shape despite their close location to each other.
 
 \pagebreak
 \section{Tonga Trench}
-The results of the comparative analysis of the two trenches show that Tonga Trench has shallower depths comparing to the Kermadec. Comparing the deepest values >9,000 meters for Tonga Trench there are 5, 39, 72, 95, 109 observations, that sums together 320 samples. Comparing the variations of the seafloor depths at range from -6,000 to -5,000, it can be sen (Fig. \ref{fig:TK5}) that Tonga Trench has 4803 numbers of samples (a sum of 1221, 2089, 1019 and 544).
+The results of the comparative analysis of the two trenches show that Tonga Trench has shallower depths comparing to the Kermadec. Comparing the deepest values >9,000 meters for Tonga Trench there are 5, 39, 72, 95, 109 observations, that sums together 320 samples. Comparing the variations of the seafloor depths at range from -6,000 to -5,000, it can be sen (Fig. \ref{fig:TK5}) that Tonga Trench has 4803 numbers of samples (a sum of 1221, 2089, 1019 and 544), \cite{Lemenkova201994}.
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-TK-4.jpg}
-	\caption{Kermadec and Tonga trenches: models of slope gradient trends by profiles}\label{fig:TK4}
+	\caption{Kermadec and Tonga trenches: models of slope gradient trends by profiles. Source: \cite{Lemenkova201994}}\label{fig:TK4}
 \end{figure}
 
  The results show deeper bathymetry and more seafloor roughness for the Tonga Trench \index[places]{Tonga Trench}. Hence, comparing to the Kermadec, Tonga Trench \index[places]{Tonga Trench} has steeper gradient of the profiles. 
@@ -2948,23 +2962,66 @@ The results of the comparative analysis of the two trenches show that Tonga Tren
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-TK-5.jpg}
-	\caption{Kermadec and Tonga trenches: histograms of the bathymetric data distribution}\label{fig:TK5}
+	\caption{Kermadec and Tonga trenches: histograms of the bathymetric data distribution. Source: \cite{Lemenkova201994}}\label{fig:TK5}
 \end{figure}
 
-\section{New Hebrides Trench}
+\section{Vanuatu (New Hebrides) Trench}
+Modelling cross-section profiles for  Vanuatu and Vityaz trenches demonstrated (Fig. \ref{map:VV9}) that bathymetry of the Vityaz Trench is generally shallower with depths not exceeding -6,100 m, while Vanuatu Trench reaches -7,000 m in values in the selected segment.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-VV9.jpg}
+	\caption{Vanuatu and Vityaz trenches: cross-section profiles map}\label{map:VV9}
+\end{map}
+
+ Furthermore, the shape of the histogram varies by two trenches: Vityaz Trench has a 'bell-shape' data distribution with two peaks at range -3,500 to -3,700 m, and the second at -4,800 to -5,000 m, that is the majority of values are in general within the range of -5,000 to -3,000 m. Here there are 1605 samples (517, 653 and 435) recorded at the first peak with depth values from -3,300 to -4,000 and 839 sample observations (238, 304, 297) at depths from -4,500 to -5,200 m. The data distribution for the Vanuatu Trench is more even with slight increase of depth in the range of -2,200 to -800 m with total 1,353 samples recorded (281, 173, 230, 225, 245, 199 for the relevant bins on the histogram left). The statistical histograms for the transecting profiles of the Vanuatu and Vityaz trenches are visualized of Fig. \ref{map:VV10}. 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-VV10.jpg}
+	\caption{Vanuatu and Vityaz trenches: cross-section profiles map}\label{map:VV10}
+\end{map}
+
+The comparative analysis of the geomoprhic modelling of Vityaz and Vanuatu trenches results in following findings. On the contrary, Vanuatu Trench (Fig. \ref{map:VV9}, B: lower plot) has more V-form classic shape for the trench with gentle shapes on both western and eastern slopes. The results of the comparison of the median values (red line on Fig. \ref{map:VV9}) of two trenches furthermore show that selected segment of the Vityaz Trench has shallower depths with maximal not exceeding -5,000 m while Vanuatu Trench is more deep with -6,000 m. The deepest values >5,000 m for Vityaz Trench give in total 413 values (238, 130, 29, 14, 2) samples. \\
+
+\pagebreak
+\section{Vityaz Trench}
+
+The geometric form of the two trenches varies: Vityaz Trench has more flat wide bottom similar to a trough, with steeper gradient slope on the eastern flank (Fig. \ref{fig9}, A: upper plot). 
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-VV8.jpg}
+	\caption{Vanuatu and Vityaz trenches: digitizing cross-section profiles}\label{map:VV8}
+\end{map}
+
+The surrounding relief of the two trenches varies: for the case of Vityaz Trench, the neighboring surface is rather flat while Vanuatu Trench is surrounded by more complex submarine relief of both North Fiji Basin (its eastern flank) and its western flank (Fig. \ref{map:VV7}). Generally, a strong correlation of the trench's axes with borders of the two tectonics plates (Pacific Plate and Info-Austrlian Plate) is evident. This implies that the geomorphology of the trenches is strongly correlated with slabs, since continuation of the plate movements, lineaments and extend of fracture zones leads to the formation of the trench axis strongly determined by plates motions. The geological local settings, stretch of the tectonic slabs, complex tectonic processes and sedimentation of the Vanuatu and Vityaz trenches explain differences in their structure and geomorphic shape form.
+
+\begin{map}[H]
+	\centering
+		\includegraphics[width=13cm]{Fig-VV7.jpg}
+	\caption{Vanuatu and Vityaz trenches: 3D models}\label{map:VV7}
+\end{map}
+
+The comparative analysis of the geophysical grids revealed structural characteristics of the two oceanic trenches, Vanuatu and Vityaz and adjacent oceanic crust of the north Fiji Basin. The coherency of the grids using gravity and vertical gravity gradient data confirms that the grids coincides well starting values of 10 mGal with the 3 to 10 meal gravity anomaly transition zone where the coherence increases. In the interval of 10 to 20 mGal the coherency declines to a very narrow interval, and correlation coincides until 100 mGal of the tested values. The gravity gradient coherency add new information to the interpretation of geodata covering active convergent margins in Southwest Pacific Ocean.\\
+The 3D modelling consists in the following steps. the data were initially extracted from the ETOPO5 grid using the following (snippet for the Vanuatu Trench):
+gmt grdcut earth\_relief\_05m.grd -R160/170/-25/-10 -Gvv3d\_relief.nc. The ETOPO5 was selected to plot the 3D with aim to reduce the grid size and hence to save computer memory space. \\
+The next step of the 3D modelling is a calculation of the regular 3D grid mesh using GMT parameters of the 'grdview' module. The dimension of the grid was chosen in a way which ensures that every point of the trench axis is located within the grid boundaries. Therefore, the coordinates for Vityaz Trench were selected as 163\degree 173\degree -15\degree 0\degree and for the Vanuatu Trench: 160\degree 170\degree -25\degree -10\degree \space\\
+Visualization parameters of the 3D models can be summarized as follows. Grid extent was in 160/45 azimuthal direction rotation with the grid ranges from 160\degree to 173\degree for both grids, in latitudinal direction from -25\degree to 0\degree, and in vertical direction from -9,000 km depths up to 1000 km. On 'Z' argument the grid was extended by 4cm as a visual distance between the 3D and basemap 2D, to enable interpreted them better. 
+Data: geoid field data of the 2D map were taken from the ETOPO1 dataset are given with resolution of 1 arc minute using following code: $gmt grdcontour earth\_relief\_01m.grd -JM6.0c -R160/170/-25/-10 -p160/45 -C500 -Gd6c -Wthinnest,dimgray -Y5.5c -P -K > \$ps$. In order to ensure that grids are visually depict geomorphic shapes of the surfaces, the '-Qsm' argument was selected to specify 's' for the surface plot, and 'm' to have mesh lines drawn on top of surface. For the vertical component, an option '-N-9000+glightgray' was selected to draw a plane at the -9,000 m level of bathymetry. Final 3D model of the two subplots is shown on Fig. \ref{map:VV7}.
 
 \section{New Britain (Bougainville) Trench}
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-NBT6.jpg}
-	\caption{New Britain and San Cristobal trenches: graph model of the cross-section profiles}\label{fig:TK5}
+	\caption{New Britain and San Cristobal trenches: graph model of the cross-section profiles}\label{fig:NBT6}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-NBT8.jpg}
-	\caption{New Britain Trench: modeled trends of the slopes gradient by profiles}\label{fig:TK5}
+	\caption{New Britain Trench: modeled trends of the slopes gradient by profiles}\label{fig:NBT8}
 \end{figure}
 
 \section{San Cristobal Trench}
@@ -2972,13 +3029,13 @@ The results of the comparative analysis of the two trenches show that Tonga Tren
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-NBT9.jpg}
-	\caption{San Cristobal Trench: modeled trends of the slopes gradient by profiles}\label{fig:TK5}
+	\caption{San Cristobal Trench: modeled trends of the slopes gradient by profiles}\label{fig:NBT9}
 \end{figure}
 
 \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-NBT5.jpg}
-	\caption{New Britain and San Cristobal trenches: segments of the digitized profiles}\label{map:TK5}
+	\caption{New Britain and San Cristobal trenches: segments of the digitized profiles}\label{map:NBT5}
 \end{map}
 
 \begin{figure}[H]
@@ -3035,8 +3092,6 @@ The effects of the variations in the slope degree were tested by computed tangen
 \end{figure}
 
 The results presented in the data analysis on the Philippine Trench demonstrate the effectiveness of the data analysis in the marine geology. Using advanced data processing in Python it is possible to analyze various impact factors affecting the trench, understand the variability of the submarine geomorphology. Usage of the advanced methods of the statistical analysis enables to visualize combined effects of multiple geological and lithological attributes and factors that affect geomorphology of the hadal trenches. The results highlight the geomorphic variation and complex characteristics of the impact factors of geological origin affecting the Philippine trench. Location of the trench on various tectonic plates along with geological factors (sediment thickness) and lithology contributes in geomorphic shaping of the actual form of the Philippine Trench.  
-
-\section{East Luzon Trench}
 
 \pagebreak
 \section{Manila Trench}

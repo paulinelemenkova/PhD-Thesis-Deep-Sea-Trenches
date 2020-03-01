@@ -874,7 +874,9 @@ However, clear and exact modelling of the structure and functioning of the deep 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \section{Research problem}
 
-There are various papers that reported problems of deep ocean slab dynamics and tectonics, \cite{Oakleyetal2008}; \cite{HeuretLallemand2005}, deep ecosystems functionings and development \cite{Robison2009}; \cite{Osbornetal2009}; \cite{CostelloBerghe2006}; \cite{Clarketal2010}; \cite{Robison2004}). Several attempts have been made so far to study correlation between factors involved in the ocean trench formation. However, there are certain limitations in these studies mostly caused by the study object: submarine trenches are the least reachable land form on the Earth that requires significant application of numerical modelling for research. 
+The problem of proper understanding of the deep-sea areas in the ocean seafloor lies in its unreachable location. As noted by \cite{Jamieson2018}, there is a need to evaluate and proper understanding seafloor geomorphology for marine resource management. However, current knowledge on ocean functioning is relatively scarce. At the same time, modeling ocean seafloor is critical for the precise bathymetric mapping. The majority of the methods of ocean modelling have overlooked the Python programming approach for statistical analysis where large data sets are being processed by a set of the embedded mathematical algorithms. 
+
+There are various papers that reported problems of deep ocean slab dynamics and tectonics, \cite{Oakleyetal2008}; \cite{HeuretLallemand2005}, deep ecosystems functionings and development \cite{Robison2009}; \cite{Osbornetal2009}; \cite{CostelloBerghe2006}; \cite{Clarketal2010}; \cite{Robison2004}). Several attempts have been made so far to study correlation between factors involved in the ocean trench formation. However, there are certain limitations in these studies mostly caused by the study object: submarine trenches are the least reachable land form on the Earth that requires significant application of numerical modelling for research. In contrast to the traditional existing approaches, this dissertation presents improvements on the marine geological data processing and interpretation methods by applying advanced methods of data analysis and visualization: a combination of GMT cartographic scripting toolset and programming languages Python, R, Octave and AWK.
 
 Increasing developments of the ocean resource exploration have caused more concerns regarding hadal ocean areas and geomorphology of the ocean trenches that is being formed as a result of complex environmental processes in the ocean ecosystems. Several studies revealed the deep interconnections between the biodiversity of the ocean and geospatial settings of the ecosystems, such as geology (sediments, tectonics and stratigraphy), bathymetry (depths), geomorphology (shape) and oceanology (deep currents).  The structure of the submarine geomorphology of the hadal trenches is a complex interplay of various processes. Various factors affect the geomorphic structure, geometry of shape, formation and development of the ocean trenches, the most important of which include the following:
 
@@ -3150,18 +3152,25 @@ The advantages of the Matplotlib consists in its versatility and capability of c
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Data preprocessing}\label{ssec:PyD}
-The \ac{QGIS}\index[concepts]{QGIS} part of the research produced an optimized representative sampling dataset consisting of 25 cross-section profiles having in total 12.590 bathymetric observation points. The data were read-in as a table in a .csv format and processed by algorithms in Python libraries: Pandas for reading and processing tables, \ac{NumPy} for array analysis, Matplotlib for large dataset modelling, analysis and visualization. Importing data from table with variables in Comma Separated Value (.csv) file was done using Python Pandas library, installed in the previous step. Data were converted from the attribute \ac{QGIS} tables, imported and stored into .csv tables. These included vector layers, the coordinates and thematic attribute data in numerical or string format. Further data processing was implemented by Python. These include cross-section profiles having data from various vector \ac{GIS} layers: bathymetry, geographic coordinates and depths, information on geology and tectonics, geometric properties of the trench: steepness angles of the profiles, ophiolite areas, seamounts, igneous volcanic zones, etc. 
+The \ac{QGIS}\index[concepts]{QGIS} part of the research produced an optimized representative sampling dataset consisting of 25 cross-section profiles having in total 12.590 bathymetric observation points. The data were read-in as a table in a .csv format and processed by algorithms in Python libraries: Pandas for reading and processing tables, \ac{NumPy} for array analysis, Matplotlib for large dataset modelling, analysis and visualization. Importing data from table with variables in Comma Separated Value (.csv) file was done using Python Pandas library, installed in the previous step. 
 
-The data.frames were created by Pandas for storing tabular 2D data. Using read\_csv() function the .csv files were read into Pandas DataFrames data type:
-Current working folder for the Python scripting was defined as follows: 
->>> import os  >>> os.getcwd() >>> os.chdir('/Users/pauline/Documents/Python'). 
-Defining working folder is crucial, as it indicates the path to the data storage, manipulating and reading by Python libraries. 
+Data were converted from the attribute \ac{QGIS} tables, imported and stored into .csv tables. These included vector layers, the coordinates and thematic attribute data in numerical or string format. Further data processing was implemented by Python. These include cross-section profiles having data from various vector \ac{GIS} layers: bathymetry, geographic coordinates and depths, information on geology and tectonics, geometric properties of the trench: steepness angles of the profiles, ophiolite areas, seamounts, igneous volcanic zones, etc. 
+
+The data.frames were created by Pandas for storing tabular 2D data. Using read\_csv() function the .csv files were read into Pandas DataFrames data type. Current working folder for the Python scripting was defined as follows: 
+
+$>>>$ import os  
+
+$>>>$ os.getcwd() 
+
+$>>>$ os.chdir('/Users/pauline/Documents/Python'). 
+
+Defining working folder is crucial, since it indicates the path to the data storage, manipulating and reading by Python libraries. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Pandas: a Python library for processing tables as data frames}
+\subsection{Pandas: a Python library for creating DataFrames}
 Geologic and tectonic data attributes were imported into the Python using Pandas library a csv table. Pandas, a data management library of Python enabled perform data management and manipulation, e.g. logical queries for spatial analysis. Pandas was used for various manipulations with geological data: loading from csv table, viewing, editing content, analyzing data range and structure, selecting target rows and columns, automation of the data processing, manipulation and inquiries, examining the descriptive basic statistic on data, etc.
 
-Therefore, the start of this project initialized with the loading an existing of the GIS data set into a Pandas environment. The csv file was imported into the Pandas Data Frame using command: df = pd.read\_csv("Tab-Bathy.csv"). The initial table for the bathymetry (a case of Mariana Trench) had 517 rows and 18 columns. At the second step, the data were analyzed by logical queries in Pandas environment for tables. Selecting necessary columns or rows and their attributes in Pandas is relatively straightforward. Thus, using ‘iloc’ and ‘loc’ as operations for retrieving data from Pandas data frames, necessary columns were selected for modelling by logical selections. 
+Therefore, the start of this project initialized with the loading an existing of the GIS data set into a Pandas environment. The csv file was imported into the Pandas DataFrame using command: df = pd.read\_csv("Tab-Bathy.csv"). The initial table for the bathymetry (a case of Mariana Trench) had 517 rows and 18 columns. At the second step, the data were analyzed by logical queries in Pandas environment for tables. Selecting necessary columns or rows and their attributes in Pandas is relatively straightforward. Thus, using ‘iloc’ and ‘loc’ as operations for retrieving data from Pandas data frames, necessary columns were selected for modelling by logical selections. 
 
 For example, X = df.iloc[ : , 1:13] was done for the case of selecting 12 first columns in the bathymetry table. Alternative syntax would be (for the case of 4 columns) X = df.iloc[ : , [1, 2, 3, 4]] for smaller data sets where the number of columns could be defined manually. Similarly, selecting necessary row during the data analysis was done using loc[] function, e.g. B = df.loc[12] returned the bathymetric observation nr. 13 (starting from 0). For instance, selecting the slope classes fir geomorphic analysis across the Mariana Trench was done using following Python snippet code:
  
@@ -3222,7 +3231,9 @@ data.groupby('slope_class', as_index=False)[['profile']].sum() # produces Pandas
 Similar logical queries are possible through Pandas environment. All manipulations with data were done using Jupyter Notebook. Data were examined and viewed to make sure that columns and rows are correctly processed. For example, a df.shape function was used to know the exact number of rows and columns., or df.ndim – to check up the dimension of the array; df.head() and df.tail() for analysis of the first and last rows of the data frame. The types of each column were checked using ‘.dtypes’ function.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Python libraries: Matplotlib, NumPy, SciPy}\label{ssec:PyMpl01}
+\subsection{Python libraries: Matplotlib, NumPy, SciPy, Seaborn, StatsModels, Bokeh}\label{ssec:PyMpl01}
+General functioning of Python is well described in the existing references and manuals \cite{Oliphant2007}; \cite{Pedregosaetal2011}; \cite{PerezGranger2007}. Using Python libraries enables to process large marine geological datasets effectively, to apply advanced computation algorithms,  to create namespaces while working with modules. Python’s modules contain packed classes, objects, functions and constants. 
+
 Processing geodata received from the attribute tables as vector layers was performed by Python libraries. Necessary installed libraries include Matplotlib, \ac{NumPy} and \ac{SciPy}. The \ac{SciPy} library has many modules used for numerical computations: statistical data transformation, simulation, modeling, visualization by \ac{ML} algorithms. The Matplotlib library is the main library used for statistical data processing \cite{Hunter2007}, visualization and plotting. Its installation was done using command via bash terminal (example for Matplotlib): \$ python3 -m pip install matplotlib. 
 
 The next step included installing certificates to enable connections to the websites containing data frames in Python 3.7.1 on the Mac OS Mojave 10.14.3. This step was necessary, because the Python 3.x has no certificates. This action required a post-install step installing the 'certifi' package, version certifi-2018.11.29. To validate \ac{SSL} connections the following command has been implemented in the bash terminal: 
@@ -3231,15 +3242,60 @@ The next step included installing certificates to enable connections to the webs
 The Jupyter Notebook, an open-source web application, was installed using bash command: 
 
 \$ sudo python3 -m pip install jupyter \\
-It is used to store and share Python codes, equations and plot visualizations with legends. Running Jupyter Notebook was done using the call: 
+It is used to store and share Python codes, equations and plot visualizations with legends. Running Jupyter Notebook was done by call: 
 
-\$ jupyter notebook. All Python scripts were processed, saved and exported via the Jupyter Notebook. 
+\$ jupyter notebook. All Python scripts were processed, saved and exported via Jupyter Notebook. 
 
-The Matplotlib library was selected as a main tool for graphical plotting by Python, as it enables operating statistical analysis and plot figures using ‘pyplot’ functions: plotting and adjusting the areas, visualizing statistical outputs, selecting colors for the plots, adding labels etc. 
+The libraries and their dependancies were installed by pip: \ac{NumPy}\index[concepts]{NumPy} and \ac{SciPy}\index[concepts]{SciPy}: 
+
+\$ python3 -m pip install numpy
+
+\$ python3 -m pip install scipy
+ 
+\ac{NumPy} is effective tool for processing arrays, sorting and selecting of read-in data from the tables. \ac{NumPy} creates a multidimensional array object from a given ‘table.csv’. Using Python’s syntax and semantics, it operates with matrices using logical, bit-wise, functional operations with elements, and performs a series of the routines for fast operations on arrays \cite{NumPyCommunity2019}. \ac{NumPy} is based on the object-oriented approach, mathematical and logical manipulations with table using 'ndarray'. 
+
+Scripts, modules and codes were written using reference semantics and built-in functions of \ac{NumPy} and Python. Saved scripts included written codes that parse command lines and perform graphs plotting by executing functions and modules. The namespaces of NumPy were imported from numpy.core and numpy.lib by calling:
+
+$>>>$ import numpy as np
+
+The depending libraries have been installed as well. These include Jinja2, \ac{NumPy}, Pillow, PyYAML, Six, Tornado. Manipulating with tabular data stored in csv files was implemented in Pandas optimized for the high-level processing of tabular data. The Matplotlib\index[concepts]{Python, Matplotlib} library\index[concepts]{Python, library} was installed and imported to customize plots. 
+
+The Matplotlib library was selected as a main tool for graphical plotting by Python, as it enables operating statistical analysis and plot figures using ‘pyplot’ functions: plotting and adjusting the areas, visualizing statistical outputs, selecting colors for the plots, adding labels etc. Seaborn library enables to perform refine plotting, modelling and analysis of a large set of marine geological data aimed at understanding poorly explained submarine geomorphic structure of the oceanic trenches. 
+
+StatsModels library was used for linear regression applied for data interpretation. The aim is to investigate correlation between various factors: bathymetry, geomorphology, tectonic plates and their correlation. The methodological approach include data analysis, modelling, plotting and visualizing. Statistical modelling by StatsModels include several tested algorithms: 
+
+\begin{enumerate}
+	\item weighted least square linear regression between geological variables;
+	\item autocorrelation; 
+	\item design matrix;
+	\item \ac{OLS} regression;
+	\item quantile regression\index[concepts]{regression, quantile}
+\end{enumerate}
+
+Spatial and statistical analysis of the correlation between factors aimed at detecting of geological and geodetic factors affecting steepness and shape of the trench. Following factors were analyzed: geology (sediment thickness), geographic location of the trench, tectonic plates and depths records along the profiles: max, mean, min values, and statistical calculations of the \nth{1} and \nth{3} quantiles. The study revealed correlations between sediment thickness, distinct variations in submarine geomorphology and sampling across the trench segments. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Data Analysis}
-The profiles were analyzed by modelling in Python. During statistical testing and experiment, numerous approaches \cite{BoxTiao1992}; \cite{Timm2007}; \cite{Oliphant2007}; \cite{Oliphant2015} provided by Python \ac{StatsModels} and Matplotlib libraries were used as the core algorithms. The statistical analysis was done using table containing attribute values of the marine geospatial parameters. Topographic values of the profiles were derived from the table with depths of samples. The min/max and quartile bathymetric values were read into table. Despite variations in density of the sample data caused by geomorphic shapes (ranging from extremely steep slope to gentle slope), it was possible to merge and integrate the results of the vector overlay.
+The profiles were analyzed by modelling in Python. A statistical modelling aimed at the analysis of the relationships between the attribute factors use following main methods: 
+
+\begin{enumerate}
+	\item Data distribution by the box plots; 
+	\item Data sorting and grouping by stem plots; 
+	\item Hierarchical clustering by dendrograms; 
+	\item Clustermaps with grouped marginal dendrograms; 
+	\item Correlation analysis by 3D comparative plots referred to 4 tectonic plates; 
+	\item Multiple facet grids, 
+	\item Area charts for big data frames, 
+	\item Regression analysis, 
+	\item Letter-value plots for data distribution, 
+	\item Hexagonal plots
+	\item Kernel density estimation, 
+	\item Pearson correlogram and clustermaps. 
+	\item \ac{PCA}; 
+	\item \ac{ANOVA}. 
+\end{enumerate}
+
+During statistical testing and experiments, numerous approaches \cite{BoxTiao1992}; \cite{Timm2007}; \cite{Oliphant2007}; \cite{Oliphant2015} provided by Python \ac{StatsModels} and Matplotlib libraries were used as the core algorithms. The statistical analysis was done using table containing attribute values of the marine geospatial parameters. Topographic values of the profiles were derived from the table with depths of samples. The min/max and quartile bathymetric values were read into table. Despite variations in density of the sample data caused by geomorphic shapes (ranging from extremely steep slope to gentle slope), it was possible to merge and integrate the results of the vector overlay.
 
 Statistical analysis was based on Python libraries that include mathematical algorithms and common approaches for data processing and analysis \cite{DavidNagaraja2003}; \cite{Borradaile2003}; \cite{Cielenetal2016}. The \ac{KDE} analysis was carried out in Seaborn library using mathematical algorithms described by \cite{Ciaccioetal2012}. Visualized results of combining five \ac{KDE} plots for the bathymetric cross-section profiles are shown on (Fig. \ref{fig:AR-3}). It can be seen that combining five profiles enables to compare the geomorphology of the trench and significantly increases recognition of the variations, depth and heights from plotting single profiles separately. Thus, the range of the density distribution in the elevations across the archipelago and trench can be seen (Fig. \ref{fig:AR-3}). 	
 
@@ -3287,6 +3343,12 @@ The structured representation arranges depth values by their semantic similarity
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Histograms plotted by Python}\label{ssec:Py05}
+In a general mathematical sense, a histogram is a function $m_{i}$ that counts the Nr. of samples that fall into each of the groups (bins), while graph of a histogram is a graphical way to visualize a histogram. Thus, if \emph{n} is the total number of samples and \emph{k} is the total number of bins, the histogram $m_{i}$ meets the following conditions, Formula \ref{eq:12}:
+
+\begin{equation}
+	n=\sum_{i=1}^{k}m_{i}
+\end{equation}\label{eq:12}\myequations{Mathematical definition for statistical histogram}
+
 The data set contained environmental variables separately for tectonic plates to be analyzed. This required merging columns by category ‘tectonic plates’. Therefore, columns with the plate names were melted into one class to enable data analysis by plates. The data were processed by code \ref{P:04}. The histograms show underlying frequency distribution of a submarine topography of the trench (Fig. \ref{fig:COMU-7}). It allows data distribution (normal), as well as outliers, skewness. The data are distributed and colored by tectonic plates.
 
 \begin{figure}[H]
@@ -3300,33 +3362,34 @@ The data set contained environmental variables separately for tectonic plates to
 Visualizing strip plots showing the relationship between the sediment thickness and slope angles as compared by tectonic plates was done by Python code \ref{P:05}. The particularity of the scatter strip plots (stripplot()) lies in its nature: this is a categorical type of plot showing variable dependance (max depths by profile) upon another variable (tectonic plates). It represents depth values by 25 profiles sorted along tectonic plates. One can see the difference on data distribution. Pacific and Mariana plates are comparable, while Philippine Plate covers the majority of the data. As can be seen on Fig. \ref{fig:COMU-7}, the majority of the observation points are located in the Pacific and Philippine plates, following by Mariana, while Caroline only covers a few points \cite{Lemenkova201993}. Sedimentation processes differ significantly by four tectonic plates, due to the overall complexity of the sedimentation, trigger factors and mechanisms. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Euler-Venn diagrams by Python for visualizing logical relations}
-	The Euler-Venn diagram shows modelling intersection and correlation of various factors for four cases where overlapping in values or concepts are visualized. The Fig. \ref{fig:GP-9} (A) shows the cumulative total sediment thickness by tectonic plates. Fig. \ref{fig:GP-9} (B) shows detected igneous volcanic spots. Fig. \ref{fig:GP-9} (C) shows slope degree and Fig. \ref{fig:GP-9} (D) shows methodological overlay showing the approaches of this work: GIS data mapping and digitizing, geological analysis and Python and R programming languages. Fig. \ref{fig:GP-9} shows modelling intersection and correlation of various factors in the Mariana Trench project. In particular, it shows A): Bathymetric observations by plates, cumulative computing; B): Sediment thickness, slope degree and closeness of the volcanic spots; C): Subdivision of the slope steepness by classes; D): Methodological approaches. The Euler-Venn diagram was done by Python code \ref{P:26}.
-
-%----------------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Python library \emph{Seaborn}}\label{ssec:PySea}
-Seaborn application enables to perform refine plotting, modelling and analysis of a large set of marine geological data aimed at understanding poorly explained submarine geomorphic structure of the oceanic trenches. A \ac{QGIS} based large dataset consisted of 12.950 samples of 25 profiles.
- 
+\subsubsection{Euler-Venn diagrams by Python}
+The Euler-Venn diagram were used for visualizing logical relations between geological variable. It shows modelling intersection and correlation of various factors for four cases where overlapping in values or concepts are visualized. Fig. \ref{fig:GP-9} (A) shows cumulative total sediment thickness by tectonic plates. Fig. \ref{fig:GP-9} (B) shows detected igneous volcanic spots. Fig. \ref{fig:GP-9} (C) shows slope degree and Fig. \ref{fig:GP-9} (D) shows methodological overlay showing the approaches of this work: GIS data mapping and digitizing, geological analysis and Python and R programming languages. Fig. \ref{fig:GP-9} shows modelling intersection and correlation of various factors in the Mariana Trench project. In particular, it shows A): Bathymetric observations by plates, cumulative computing; B): Sediment thickness, slope degree and closeness of the volcanic spots; C): Subdivision of the slope steepness by classes; D): Methodological approaches. The Euler-Venn diagram was done by Python code \ref{P:26}.
+	
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=10cm,clip]{Fig-GP-9.jpg}
 	\caption{Mariana Trench: Euler-Venn diagrams, Python.}\label{fig:GP-9}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=10cm,clip]{Fig-MedFAR-3.jpg}
-	\caption{Mariana Trench: area chart and facet grid of the profiles, Python (Seaborn)}\label{fig:MedFAR-3}
-\end{figure}
-
-A statistical modelling aimed at the analysis of the relationships between the attribute factors use following methods: multiple facet grids, area charts for big data frames, regression analysis, letter-value plots for data distribution, hexagonal and Kernel density estimation, Pearson correlogram and clustermap. The results of the data analysis show distinct unevenness in the geomorphic structure of the trench.
-
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Regression Analysis}\label{ssec:PySea01}
 
+The regression models propose that $Y_{i}$ is a function of $X_{i}$ and $\beta$, with $e_{i}$ representing an additive statistical error term (residual) that stands in for umodeled determinants of $Y_{i}$ or random statistical noise, Formula \ref{eq:11}:
+
+\begin{equation}
+	Y_{i}=f(X_{i},\beta) + e_{i}
+\end{equation}\label{eq:11}\myequations{Regression model}
+
+
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=14cm,clip]{Fig-MedFAR-4.jpg}
+		\includegraphics[width=9cm,clip]{Fig-MedFAR-3.jpg}
+	\caption{Mariana Trench: area chart and facet grid of the profiles, Python (Seaborn)}\label{fig:MedFAR-3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=12cm,clip]{Fig-MedFAR-4.jpg}
 	\caption{Mariana Trench: facet grid of the regression analysis of the profiles, Python}\label{fig:MedFAR-4}
 \end{figure}
 
@@ -3334,7 +3397,7 @@ Initially, 25 profiles were visualized by area chart and facet grid (Fig. \ref{f
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{Cluster heatmap and hexagonal data distribution and Kernel Density estimation}\label{ssec:PySea03}
-Hexagonal mapping is another useful approach for analysis of the big data sets when there are many observation points that may overlap. In this case, the data set comprised 25 profiles with 519 observation points in each, which in total gives 12.950 points. In this case, hexagonal binning that plots density, rather than points shows the concentration of data values in the specific profiles (Fig. \ref{fig:MedFAR-7}, right). Depth points are binned into gridded hexagons and distribution (the number of depths ranges per hexagon). As a result, it is displayed (Fig. \ref{fig:MedFAR-7}, right) using the density of color within the hexagons. The kernel density estimation is a non-parametric approach that visualized the probability of the density of a depth variables by profiles (Fig. \ref{fig:MedFAR-7}, left). Joint Hexagonal and \ac{KDE} plots are drawn by Python code \ref{P:09}.
+Hexagonal mapping is another useful approach for analysis of the big data sets when there are many observation points that may overlap. In this case, the data set comprised 12.950 points. Hexagonal binning that plots density rather than points showing concentration between data values in specific profiles (Fig. \ref{fig:MedFAR-7}, right). Depth points are binned into gridded hexagons and distribution (the number of depths ranges per hexagon). As a result, it is displayed (Fig. \ref{fig:MedFAR-7}, right) using the density of color within the hexagons. The kernel density estimation is a non-parametric approach that visualized the probability of the density of a depth variables by profiles (Fig. \ref{fig:MedFAR-7}, left). Joint Hexagonal and \ac{KDE} plots are drawn by Python code \ref{P:09}.
 
 \begin{figure}[H]
 	\centering
@@ -3348,10 +3411,6 @@ The color palette was selected as ‘reversed’, i.e. the most deep values are 
 \subsubsection{Correlograms by Python}\label{ssec:PySea04}
 Correlograms and covariance matrices that give the background for all standard multivariate techniques. Correlograms allow to check randomness of data, and analyze data structure \cite{Friendly2002}. Three correlation methods research were tested  (Pearson, Kendall and Spearman) to visualize the relationship between the trench variables and representing a matrix of correlations schematically in forms numbers placed within the shaded squares (two of the three methods are shown on Fig. \ref{fig:COMU-9}). 
 
-The numbers give the degree of the correlation, ranging from -1.0 to 1.0. In the shaded rows, each cell is given the assigned color, explained in the legend, subdivided into four classes ranging from two to four depending on the sign of the correlation. The intensity of color is scaled in proportion to the magnitude of the correlation. Several variations have interpreted the criterion of similarity of the properties and inter-relationships. A represented clustering of the matrix (a. k. a. heat map), made by Python code \ref{P:10}, shows the variables with the displayed correlations. Plotting correlation matrix induces a partial-ordering on the geological variables as contiguous clusters. 
-
-The associated names of the environmental variables (slope angles, sediment thickness, max/min and mean depth values) are shown on the correlogram (Fig. \ref{fig:COMU-9}) annotated on the axes. The matrices were done by \ac{NumPy} and Pandas objects read in as tables and imported by Seaborn library. The data were processed by Python code \ref{P:06}. The correlograms show dependancies between the factors affecting trench based on the relationships of the values. 
-
 \begin{figure}[H]
 	\centering
 		\subfloat {\includegraphics[width=7.5cm]{Fig-MedFAR-8.jpg}}
@@ -3361,23 +3420,11 @@ The associated names of the environmental variables (slope angles, sediment thic
 	\caption{Mariana Trench: Pearson and Kendall correlation matrices of variables, Python}\label{fig:COMU-9}
 \end{figure}
 
+The numbers give the degree of the correlation, ranging from -1.0 to 1.0. In the shaded rows, each cell is given the assigned color, explained in the legend, subdivided into four classes ranging from two to four depending on the sign of the correlation. The intensity of color is scaled in proportion to the magnitude of the correlation. Several variations have interpreted the criterion of similarity of the properties and inter-relationships. A represented clustering of the matrix (a. k. a. heat map), made by Python code \ref{P:10}, shows the variables with the displayed correlations. Plotting correlation matrix induces a partial-ordering on the geological variables as contiguous clusters. 
+
+The associated names of the environmental variables (slope angles, sediment thickness, max/min and mean depth values) are shown on the correlogram (Fig. \ref{fig:COMU-9}) annotated on the axes. The matrices were done by \ac{NumPy} and Pandas objects read in as tables and imported by Seaborn library. The data were processed by Python code \ref{P:06}. The correlograms show dependancies between the factors affecting trench based on the relationships of the values. 
+
 The effectiveness of the correlograms lies in its properties: the diagonal shows distribution of each of the geological variables by a representative square plot which helps to analyze the relationship between the pairs of numerical variables within a matrix. Correlation between each pair of variables is visualized through a numerical symbols and highlighted by colors. The use of both Pearson and Kendall correlation techniques (Fig. \ref{fig:COMU-9}) is used for exploratory analysis to observe a matrix of geological variables.
-
-%----------------------------------------------------------------------------------------------------------------------------------------------	
-\subsection{Matplotlib: an effective Python library for visualization}\label{sec:PyMpl}
-Understanding patterns of the correlation between geomorphology and geology of the seafloor of the oceanic trenches is important for proper ocean modelling. Oceanic trenches are the deepest regions on the Earth. Although geodetic location, bathymetry and geologic structure of the tectonic plates are known to be associated with geomorphic shape and geochemical content of the sediments, they have not been widely evaluated as large data sets by means of Matplotlib library of Python in the existing research. Specifically, the statistical analysis by Matplotlib includes following steps: 
-
-\begin{enumerate}
-	\item Data distribution by the box plots; 
-	\item Data sorting and grouping by stem plots; 
-	\item Hierarchical clustering by dendrograms; 
-	\item Clustermaps with grouped marginal dendrograms; 
-	\item Correlation analysis by 3D comparative plots referred to 4 tectonic plates; 
-	\item \ac{PCA}; 
-	\item \ac{ANOVA}. 
-\end{enumerate}
-
-Data analysis in geosciences supported by Python is an important novel method aimed to increase precision of the computations and operating with big data, common in marine geology. However, performing data analysis while analyzing marine geological data sets raises a challenge. Existing solutions of the analysis of the marine geological datasets mostly apply tradition methods of the \ac{GIS} using \ac{RS} sampling. This part of dissertation demonstrates a Python based data analysis based on the algorithms embedded in Matplotlib and its dependencies: \ac{NumPy}, \ac{SciPy} and Pandas \cite{Jonesetal2014}. The results show the effectiveness of Matplotlib in modelling submarine geomorphology.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------		
 \subsubsection{Data distribution}\label{ssec:PyMpl02}
@@ -3385,14 +3432,15 @@ The box plots were plotted to demonstrate the data distribution across the 25 pr
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=14cm,clip]{Fig-EgeJFAS-3.jpg}
+		\includegraphics[width=13cm,clip]{Fig-EgeJFAS-3.jpg}
 	\caption{Mariana Trench: box-and-whisker plot for bathymetric data distribution by 25 profiles}\label{fig:EgeJFAS-3}
 \end{figure}
 
 The geomorphic shape of the trench plays a crucial role in determining patterns of the sediment thickness in the proposed model. The depth ranges increases along the axis of the trench, from north to the south, with a relatively constant slope gradient, until it reaches depths >11,000 m (profiles 20 and 21 as shown on the Fig. \ref{fig:EgeJFAS-3}). In the SW part of the trench axis modeled correlation between the factors was relatively high and decreased towards SW part of the profile. The statistical analysis of the 12,950 observation points constituting a data set shown correlation between the sediment thickness, slope steepness, depths and location of the profiles crossing adjacent tectonic plates.
 
-%----------------------------------------------------------------------------------------------------------------------------------------------		
-\subsubsection{Mariana Trench: data sorting and grouping}\label{ssec:PyMpl03}
+%----------------------------------------------------------------------------------------------------------------------------------------------	
+%\pagebreak	
+\subsubsection{Data sorting and grouping}\label{ssec:PyMpl03}
 A geomorphological analysis (Fig. \ref{fig:EgeJFAS-4}), technically based on Python code \ref{P:12}, uses only calculated values of the slope steepness degree by profiles in the series of 25 cross-section transects (assuming constant values of the slope aspect), using depth values and sample points as a reference. 
 
 \begin{figure}[H]
@@ -3403,17 +3451,27 @@ A geomorphological analysis (Fig. \ref{fig:EgeJFAS-4}), technically based on Pyt
 
 This analysis shows that the (profiles Nr. 6, 9, 3, 7, 23 and 24) have similar steepness and can be grouped as the least steep, as demonstrated by the reverse values of the tangent angles. Conversely, the profiles Nr. 20, 21, 22, and 18 have the deepest values that can be explained by changes in the geometry of the trench at various geospatial locations.  
 
-%----------------------------------------------------------------------------------------------------------------------------------------------	
-\subsubsection{Mariana Trench: data clustering by hierarchical dendrogram and clustermap}\label{ssec:PyMpl04}
-The \ac{HCA} as shown on Fig. \ref{fig:EgeJFAS-5}, was done using \ac{SciPy} embedded algorithm of clustering. It demonstrates an approach of the method of cluster analysis used to build a hierarchy of bathymetric clusters based on the segmentation of the topographic features among 25 cross-section profiles. The dendrogram (Fig. \ref{fig:EgeJFAS-5}) shows geomorphic similarity among profiles crossing the trench. Specifically, it illustrates subdivision of the bathymetric values within each cluster composed by U-shaped link between a main cluster and its branches representing bathymetric grouping. The dendrogram showing the hierarchical dendrograms clusters was plotted by Python code \ref{P:13} in five steps. 
+%----------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Probability of the depths distribution by \ac{KDE} plots}
+An implementation of the fundamental frequency estimation is presented by \ac{KDE}. The algorithm of \ac{KDE} is based on a frequency-domain approach. It was applied to visualize probability of the depth ranges and bathymetric patters in various segments of the trench, Fig. \ref{fig:AR-3} and \ref{fig:KDEph}. The method was implemented using Python code \ref{P:16}. Python libraries Pandas\index[concepts]{Python, Pandas}, Matplotlib, Seaborn\index[concepts]{Python, Seaborn} and OS were used to process data by an embedded algorithms to obtain probability frequency. 
 
-The two first forks of the of the U-link ('parents' of clusters) indicate which clusters were merged, while the length of each two corresponding branches visualize the distance between the ‘children’. Marginal dendrograms are represented on the Clustermap that shows another approach of data grouping in statistical analysis where main area of the plot show ranging data and marginal dendrograms – clusters of the similarity groups. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm,clip]{Fig-GML3.jpg}
+	\caption{Philippine Trench: \ac{KDE} of the bathymetric profiles, Python (Matplotlib and Seaborn)}\label{fig:KDEph}
+\end{figure}
+
+%----------------------------------------------------------------------------------------------------------------------------------------------	
+\subsubsection{Data clustering by hierarchical dendrogram and clustermap}\label{ssec:PyMpl04}
+The \ac{HCA} as shown on Fig. \ref{fig:EgeJFAS-5}, was done using \ac{SciPy} embedded algorithm of clustering. It demonstrates an approach of the method of cluster analysis used to build a hierarchy of bathymetric clusters based on the segmentation of the topographic features among 25 cross-section profiles. 
 	
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=10cm,clip]{Fig-EgeJFAS-5.jpg}
 	\caption{Mariana Trench: hierarchical cluster dendrogram of the profiles. Python}\label{fig:EgeJFAS-5}
 \end{figure}
+
+The dendrogram (Fig. \ref{fig:EgeJFAS-5}) shows geomorphic similarity among profiles crossing the trench. Specifically, it illustrates subdivision of the bathymetric values within each cluster composed by U-shaped link between a main cluster and its branches representing bathymetric grouping. The dendrogram showing the hierarchical dendrograms clusters was plotted by Python code \ref{P:13} in five steps. Two first forks of the of the U-link ('parents' of clusters) indicate which clusters were merged, while the length of each two corresponding branches visualize the distance between the ‘children’. Marginal dendrograms are represented on the Clustermap that shows another approach of data grouping in statistical analysis where main area of the plot show ranging data and marginal dendrograms – clusters of the similarity groups. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{Principal Component Analysis (PCA)}\label{ssec:PyMpl06}
@@ -3452,15 +3510,14 @@ Computed F values (0.270259 and 0.459078) and statistical significance obtained 
 	\caption{Mariana Trench: one-way \ac{ANOVA} box plots}\label{fig:EgeJFAS-10}
 \end{figure}
 
-Deep-sea sediments have consistent correlation with the slope class of the profile steepness, Fig. \ref{fig:EgeJFAS-10} (c). Lower effect has the location of the igneous volcanic areas nearby the trench on the geometry of the profiles, as referred by the angle\degree \space(Fig \ref{fig:EgeJFAS-10}, d). While the shape of the trench is less steep and the absolute depths are lower in the upper part of the trench, that is, NE while crossing the Pacific and Mariana tectonic plates, the bathymetry patterns are substantially deeper in the SE part of the trench where it is crossing Caroline and Philippine Sea Plates. These findings are also supporting the results \cite{ZhouLin2018} showing variations in the deformation of the subducting plate along the Mariana Trench by analyzing its flexural bending and normal fault features. Most normal faults initiated outwards and grew toward the trench axis, and the trench relief and maximum fault throws are significantly greater in the south (5 km and 320 m) comparing to the northern and central areas (2 km and 200 m).
+Deep-sea sediments have consistent correlation with the slope class of the profile steepness, Fig. \ref{fig:EgeJFAS-10} (c). Lower effect has the location of the igneous volcanic areas nearby the trench on the geometry of the profiles, as referred by the angle\degree \space(Fig \ref{fig:EgeJFAS-10}, d). While the shape of the trench is less steep and the absolute depths are lower in the upper part of the trench, that is, NE while crossing the Pacific and Mariana tectonic plates, the bathymetry patterns are substantially deeper in the SE part of the trench where it is crossing Caroline and Philippine Sea Plates. 
 
-%----------------------------------------------------------------------------------------------------------------------------------------------	
-\subsection[Data Processing by Python Libraries NumPy, SciPy \& Pandas]{Data Processing by Python Libraries NumPy, SciPy and Pandas}\label{sec:PyPan}
-
-The problem of proper understanding of the deep-sea areas in the ocean seafloor lies in its unreachable location. As noted by \cite{Jamieson2018}, there is a need to evaluate and proper understanding seafloor geomorphology for marine resource management. However, current knowledge on ocean functioning is relatively scarce. At the same time, modeling ocean seafloor is critical for the precise bathymetric mapping. The majority of the methods of ocean modelling have overlooked the Python programming approach for statistical analysis where large data sets are being processed by a set of the embedded mathematical algorithms. This dissertation contributes to the need by presenting improvements on the marine geological data processing and interpretation methods by applying Python 3.2.7 language and using its most essential libraries: \ac{NumPy}, \ac{SciPy}, Pandas and Matplotlib for data visualization and analysis.
+These findings are also supporting the results \cite{ZhouLin2018} showing variations in the deformation of the subducting plate along the Mariana Trench by analyzing its flexural bending and normal fault features. Most normal faults initiated outwards and grew toward the trench axis, and the trench relief and maximum fault throws are significantly greater in the south (5 km and 320 m) comparing to the northern and central areas (2 km and 200 m).
 	
 \subsubsection{Flowchart network}
-Data analysis is aimed to analyze the potential influence of how various geological and tectonic factors affect the geomorphological shape of the trenches.  Statistical analysis of the data set in marine geology requires adequate tools for big data processing. In this context, a Python-based methodology is combined with \ac{GIS} geospatial data analysis. 
+Data analysis is aimed to analyze the potential influence of how various geological and tectonic factors affect the geomorphological shape of the trenches.  Statistical analysis of the data set in marine geology requires adequate tools for big data processing. In this context, a Python-based methodology is combined with \ac{GIS} geospatial data analysis. Current research uses libraries Pandas, \ac{NumPy} and \ac{SciPy}. Data processing also involves the subsampling of the two auxiliary masked data frames from the initial large data set that only consists of target variables: sediment thickness, slope angle degrees and bathymetric samples across the plates. Flowchart includes three main stages (Fig. \ref{fig:AR-2}) visualized as logical parts of this research: \ac{QGIS} data processing; statistical analysis by Python libraries; visualization and spatial analysis.
+
+\nth{1} block consisted in processing marine geological data by \ac{QGIS}: data import, digitizing, data export into .csv tables, processing in Python. The cross-section transects were digitized. Their attribute tables contained numerical data on geology, tectonics, volcanism and bathymetry by sample points along each profile. In total there were 25 profiles, each containing 518 observation points. The total data intakes consisted in pool of 12.590 points. \nth{2}  block contained in data interpretation and statistical analysis. 
 	
 \begin{figure}[H]
 	\centering
@@ -3468,30 +3525,15 @@ Data analysis is aimed to analyze the potential influence of how various geologi
 	\caption{Methodological network}\label{fig:AR-2}
 \end{figure}
 
-Current research uses libraries Pandas, \ac{NumPy} and \ac{SciPy}. Data processing also involves the subsampling of the two auxiliary masked data frames from the initial large data set that only consists of target variables: sediment thickness, slope angle degrees and bathymetric samples across the plates. Flowchart includes three main stages (Fig. \ref{fig:AR-2}) visualized as logical parts of this research: \ac{QGIS} data processing; statistical analysis by Python libraries; visualization and spatial analysis
+The steps include following approaches of the statistical data analysis: \ac{KDE} for analysis of the probability of data distribution; stacked area chart: data range across various trench segments; spatial series of the radar charts; stacked bar plots showing data distribution by tectonic plates; stacked bar charts: correlation of sediment thickness vs igneous volcanic areas; circular pie plots: data distribution by transects; scatterplot matrices for correlation analysis between geologic variables. \nth{3} block presents geospatial analysis. This implies correlation analysis of the scatterplot matrices by visualizing geological and tectonic interplay between the phenomenas. The results show correlation between variables. 
 
-\nth{1} block consisted in processing marine geological data by \ac{QGIS}: data import, digitizing, data export into .csv tables, processing in Python. The cross-section transects were digitized. Their attribute tables contained numerical data on geology, tectonics, volcanism and bathymetry by sample points along each profile. In total there were 25 profiles, each containing 518 observation points. The total data intakes consisted in pool of 12.590 points. \nth{2}  block contained in data interpretation and statistical analysis. The steps include following approaches of the statistical data analysis: \ac{KDE} for analysis of the probability of data distribution; stacked area chart: data range across various trench segments; spatial series of the radar charts; stacked bar plots showing data distribution by tectonic plates; stacked bar charts: correlation of sediment thickness vs igneous volcanic areas; circular pie plots: data distribution by transects; scatterplot matrices for correlation analysis between geologic variables. \nth{3} block presents geospatial analysis. This implies correlation analysis of the scatterplot matrices by visualizing geological and tectonic interplay between the phenomenas. The results show correlation between variables. Mathematical algorithms were applied from the statistical functionality of Python \cite{Beazley2009}. The \ac{SciPy}, an extension of \ac{NumPy}, a Python library, was loaded for mathematical computations. Specific questions of usage SciPy were supported by large explanations of the \ac{SciPy} principles and its usage in the statistical analysis.
-
-%----------------------------------------------------------------------------------------------------------------------------------------------	
-\subsubsection{\ac{NumPy} for processing arrays}
-Using Python modules and libraries enables to process large marine geological data more effective and significantly improves the computation algorithms. The general functioning of the Python followed the existing references and manuals, \cite{Oliphant2007}; \cite{Pedregosaetal2011}; \cite{PerezGranger2007}. Using libraries enable to create namespaces while working with modules. Python’s modules contain packed classes, objects, functions and constants used in this dissertation. The installation of libraries was done using pip by installing \ac{Python}, \ac{NumPy}\index[concepts]{NumPy} and \ac{Python}, \ac{SciPy}\index[concepts]{SciPy}, its dependancies: 
-
-\$ python3 -m pip install numpy
-
-\$ python3 -m pip install scipy
- 
-Sorting and selecting of read in data from the tables was performed using NumPy. NumPy creates a multidimensional array object from a given ‘table.csv’. Using Python’s syntax and semantics, it operates with matrices using logical, bit-wise, functional operations with elements, and performs a series of the routines for fast operations on arrays \cite{NumPyCommunity2019}. \ac{NumPy} enables various object-oriented approach, mathematical and logical manipulations with table using ndarray. Scripts, modules and codes were written using reference semantics and built-in functions of \ac{NumPy} and Python. Saved scripts included written codes that parse command lines and perform graphs plotting by executing functions and modules. The namespaces of NumPy were imported from numpy.core and numpy.lib by calling:
-
->>> import numpy as np
-The depending libraries have been installed as well. These include Jinja2, \ac{NumPy}, Pillow, PyYAML, Six, Tornado. Manipulating with tabular data stored in csv files has been implemented in suitable Python library Pandas optimized for the high-level processing of tabular data. The Matplotlib\index[concepts]{Python, Matplotlib} library\index[concepts]{Python, library} was installed as well and imported to customize plots. 
+Mathematical algorithms were applied from the statistical functionality of Python \cite{Beazley2009}. The \ac{SciPy}, an extension of \ac{NumPy}, a Python library, was loaded for mathematical computations. Specific questions of usage SciPy were supported by large explanations of the \ac{SciPy} principles and its usage in the statistical analysis.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Probability of the depths distribution by \ac{KDE} plots}
-An implementation of the fundamental frequency estimation is presented. The algorithm of \ac{KDE} is based on a frequency-domain approach. It was applied to visualize probability of the depth ranges and bathymetric patters in various segments of the trench. The method was implemented using Python code \ref{P:16}. Python libraries Pandas\index[concepts]{Python, Pandas}, Matplotlib, Seaborn\index[concepts]{Python, Seaborn} and OS were used to process data by an embedded algorithms to obtain probability frequency. 
-
-%----------------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Visualizing bathymetric pattern by stacked area charts}
+\subsubsection{Visualizing bathymetric pattern by stacked area charts}
 In marine geologic data sets, plotting stacked area charts is one of the key approaches to visualize a range of the depths. One can analyze, to what extent the depths may reach in particular segment of the trench. Apart from the visual clearance of the plot (Fig. \ref{fig:AR-4}), showing maximal abrupt depth by profiles 20 and 21 (SW of the Mariana), there are other interesting particularities in this approach. 
+
+Different phenomena of the marine geological data sets can be investigated by adding color ranges for stepwise visualization of the plot, by steps: minimal depths, \nth{3} quartiles, mean depths, median values, \nth{1} quartile, the shallowest parts of the seafloor with minimal depths. In this way, one can understand the variability of the geomorphic patters by the segments that can reveal new insights into the bathymetric variability across the complexity of the profile. 
 
 \begin{figure}[H]
 	\centering
@@ -3499,23 +3541,25 @@ In marine geologic data sets, plotting stacked area charts is one of the key app
 	\caption{Mariana Trench: bathymetric patters visualized by stacked area charts.}\label{fig:AR-4}
 \end{figure}
 
-Different phenomena of the marine geological data sets can be investigated by adding color ranges for stepwise visualization of the plot, by steps: minimal depths, \nth{3} quartiles, mean depths, median values, \nth{1} quartile, the shallowest parts of the seafloor with minimal depths. In this way, one can understand the variability of the geomorphic patters by the segments that can reveal new insights into the bathymetric variability across the complexity of the profile. The methodology was implemented by Python code \ref{P:17}. Following Python libraries were used to plot stacked area charts: Pandas, \ac{NumPy}, Matplotlib, Seaborn and OS. 
+The methodology was implemented by Python code \ref{P:17}. Following Python libraries were used to plot stacked area charts: Pandas, \ac{NumPy}, Matplotlib, Seaborn and OS. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Statistical distribution of the bathymetric values by radar charts}
-Of particular interest is the case of radar charts\index[concepts]{radar charts}. Recently, radar charts turned into a very interesting visualizing method in the data analysis. A radar chart is a graphical method of displaying multivariate data in the form of a two-dimensional circular chart of six quantitative variables represented on axes bathymetric depths and on the circular axes bathymetric values: maximal, \nth{3} quartile, median, mean \nth{3} quartile and minimal values. 
+\subsubsection{Radar charts for analysis of depth distribution}
+Radar charts\index[concepts]{radar charts} are a special case of the statistical analysis in marine geological datasets. 
+
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm,clip]{Fig-AR-5.jpg}
 	\caption{Mariana Trench: radar charts of the variation in bathymetric data}\label{fig:AR-5}
 \end{figure}
 
-The reason to choose the radar charts is that there are various statistical values that can be visualized by profiles, which requires a visualization technique for the facetted multi-plots (Fig. \ref{fig:AR-5}). This graph shows series of the radar charts showing variation on the bathymetry by selected profiles.
- The radar charts were plotted by libraries Math, Pandas, NumPy, Matplotlib, Seaborn and OS. The algorithm for the radar charts was taken from the Matplotlib library and the Python code is provided below: \ref{P:18}. 
+Recently, radar charts turned into an interesting visualizing method in data analysis as a method of graphical visualization of the multivariate data. Here it is presented in form of 2-dimensional circular chart of 6 quantitative variables with depths represented on axes attribute values on the circular axe: maximal, \nth{3} quartile, median, mean \nth{3} quartile and minimal values. 
 
-\subsubsection{Variation in the distribution of the bathymetric data by stacked bar plots}
-	Fig. \ref{fig:AR-6} shows variation in the distribution of the bathymetric data by stacked bar plots for the Mariana Trench. 
-The following Python libraries were used to plot stacked area charts: \ac{NumPy}, Pandas, Matplotlib and OS. The distribution of the bathymetric data by stacked bar plots was plotted using open source Python code: \ref{P:19}.  
+Radar charts were chosen as a part of statistical analysis since there are various values that can be visualized by profiles, which requires a facetted multi-plots technique. Fig. \ref{fig:AR-5} presents a series of the radar charts showing variation on the bathymetry by selected profiles. Radar charts were plotted by libraries Math, Pandas, NumPy, Matplotlib, Seaborn and OS. The algorithm was based on the Matplotlib library, Python code \ref{P:18}. 
+
+%----------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Stacked bar plots for variation in bathymetry}
+ Variations in the distribution of the bathymetric data by stacked area bar plots (charts) were made by following Python libraries: \ac{NumPy}, Pandas, Matplotlib and OS (Fig. \ref{fig:AR-6}), using Python code \ref{P:19}.  
 
 \begin{figure}[H]
 	\centering
@@ -3523,88 +3567,81 @@ The following Python libraries were used to plot stacked area charts: \ac{NumPy}
 	\caption{Mariana Trench: stacked bar plots on depths variations by profiles, Python.}\label{fig:AR-6}
 \end{figure}
 
-\subsubsection{Analyzing distribution of the sediment thickness by stacked bar charts}
-	Analysis of the distribution of the sediment thickness is visualized by the stacked bar charts (Fig. \ref{fig:AR-7}). The Python code \ref{P:20} in 7 steps provides an approach to visualize the sediment thickness by profiles and its correlation with closeness of the igneous volcanic areas as by distance. The code was written using calling following Python libraries: \ac{NumPy}, Matplotlib, Pandas and OS. 
-	
+%----------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Stacked bar charts for analysis of sediment thickness}
+
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm,clip]{Fig-AR-7.jpg}
 	\caption{Mariana Trench: stacked bar charts showing geological factors. Python.}\label{fig:AR-7}
 \end{figure}
 
-\subsubsection{Circular visualization of the bathymetry versus tectonic plates by pie charts}
-	Regarding the categorial distribution methods, a pie chart plotting is based on the analysis of the bathymetric distribution of the values by four tectonic plates (Fig. \ref{fig:AR-8}). Circular visualization of the bathymetry showing the relationship between tectonic plates and distribution of bathymetric data by pie charts was performed by Python code \ref{P:21} in 3 steps. It used the following Python libraries: Pandas, NumPy, Matplotlib and OS.  
+Analysis of the distribution of sediment thickness by profiles and its correlation with closeness of the igneous volcanic areas as by distance is visualized by the stacked bar charts (Fig. \ref{fig:AR-7}) by Python code \ref{P:20} using libraries \ac{NumPy}, Matplotlib, Pandas and OS. 
+
+%----------------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Pie charts for circular visualization of the bathymetry vs tectonic plates}
+Regarding categorial distribution methods, a pie chart plotting is based on the analysis of the distribution of the bathymetric values by tectonic plates (Fig. \ref{fig:AR-8}). Circular visualization of the bathymetry showing relationship between tectonic plates and distribution of the data by pie charts was performed by Python code \ref{P:21} in 3 steps by libraries Pandas, NumPy, Matplotlib and OS.  
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm,clip]{Fig-AR-8.jpg}
+		\includegraphics[width=12cm,clip]{Fig-AR-8.jpg}
 	\caption{Mariana Trench: pie charts of the bathymetric data distribution by tectonic plates. Python.}\label{fig:AR-8}
 \end{figure}
 
-\subsection{Python libraries Matplotlib, Seaborn and Bokeh: analysis of bathymetric data distribution}
+%----------------------------------------------------------------------------------------------------------------------------------------------		
+\subsubsection{Design matrix and model fit summary by Ordinary Least Squares}
+Variables of the geologic interest were stored in a table consisting of 18 rows where numeric information describes geology, bathymetry, geodesy and tectonics of the trench. To fit most of the models covered by \ac{StatsModels} Python library, the design or regressor matrix was created using existing approaches \cite{Everitt2002}; \cite{BoxTiao1992}; \cite{MillmanAivazis2011}. The first is a matrix of endogenous variables of sediment thickness, which show the response or geological regress and varying environmental conditions: geographic location, depth or tectonic plate. The design matrix ‘dmatrices’ shows the results of the first six lines representing values of explanatory variables in a set of geological attributes, Mariana Trench. The computing of the \ac{OLS} by StatsModels of Python was based on Formula \ref{eq:10}:
 
-The data distribution\index[concepts]{data, distribution} are presented on Fig. 3. By profiles they ranged from -10.600m (maximal depth in this data set) to -3150m (the shallowest point in the data set). The maximum depths in the profiles were found in profiles Nr. 20, 21, 19, 14 (Fig. 3, right, sorted bathymetry), and the minimal depths (i.e. the shallowest) consist the first group, that is profiles 24, 23, 22 and 10 (Fig. 3, right, sorted bathymetry). The deepest part of the trench is located in the south-west and central segments where the trench crosses Philippine and Pacific Plates. The moderate depths correlate with Mariana Plate and the majority of the Philippine Plate. The depths ranges detected across the profiles of present study are also higher in southern part of the trench than in northern segment (Fig. 3).
+\begin{equation}
+	b_{1}=\frac{\sum_{i=1}^{n}(x_{i}-\vec{x})(y_{i}-\vec{y})}{\sum_{i=1}^{n}(x_{i}-\vec{x})}
+\end{equation}\label{eq:10}\myequations{Computing Ordinary Least Square (OLS)}
 
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=14cm,clip]{Fig-GP-3.jpg}
-	\caption{Mariana Trench. Data distribution analysis: maximal depths by profiles, Python.}\label{fig:GP-3}
-\end{figure}
-
- In general, the central part of the Mariana Trench has variations in depth but the general trend shows the increased depths towards the southern part were the depths are higher than in the northern segments. By comparing the profiles Nr. 3, 4, 9, 12 from the Pandas array (Fig. \ref{fig:GP-3}, colored green) with profiles Nr. 18, 16, 15, 13 from the Pandas array (colored orange on Fig. \ref{fig:GP-3}), it is clear that the depths increase reaching its maximal depths in the following group (Profiles Nr. 20, 21, 19, 14, group colored blue, Fig. \ref{fig:GP-3}, right). 
-Methodological goal os this research was to identify variations of the steepness in various segments of the trench. The slope steepness degrees and depths of the profiles were analyzed and determined based on the statistical analysis using libraries of Python: Matplotlib, Seaborn and Bokeh. The results revealed that the most steep part of the trench is located in its north-west, central and south-west segments (profiles Nr. 3, 7, 9, 23, 24) where trench crosses Philippine and Pacific tectonic plates. \\
-This segment of the trench can be characterized by the largest local depths and sharp abrupt changes in the geomorphic shape. The highest depth gradient can be seen at the profile Nr. 21 is at the distance of 10.600 m from the seal level. The middle moderate slope degrees (Profiles Nr. 1, 11,  4, 5, 10) correlate with the areas where trench crosses Mariana tectonic plate. 
- 
- \begin{figure}[H]
-	\centering
-		\includegraphics[width=13cm,clip]{Fig-GP-4.jpg}
-	\caption{Mariana Trench: visualization of the cross-section profiles}\label{fig:GP-4}
-\end{figure}
-
-Now we can have a more detailed look on the profiles’ shape and the outline (Fig. \ref{fig:GP-4}). While Fig. \ref{fig:GP-3} shows the maximal depths by profiles (i.e. each profile has only one dot point on the plot), the Fig. \ref{fig:GP-4} illustrates the cross-section profiles. Among the various shapes of the profiles in present studies (Fig. \ref{fig:GP-4}) the section of profiles 19, 20, 21 and 22 (Fig. \ref{fig:GP-4}, E) had initially the most even shape of the geomorphology that started decreasing abruptly after the observation points 200. The unevenness of the profiles can be explained by the changes geologic conditions and transfer to the neighbor tectonic plate (i.e. from the Philippine to the Pacific Plate, and Mariana to the Philippine Plate, respectively). 
-
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=13cm,clip]{Fig-GP-5.jpg}
-	\caption{Mariana Trench: analysis of maximal depths distribution by profiles, Python (Bokeh)}\label{fig:GP-5}
-\end{figure}
-
-The groups of profiles 23, 24 and 25, (Fig. \ref{fig:GP-4}, F), have the similar geomorphic shapes: the first halve of the profiles is relatively even while the southern part is particular for the increased depths. This and analogous analyses can be drawn from the Fig. \ref{fig:GP-4}. For better visualization, the profiles are colored individually with the shared X axes. The increase of depths by profiles can be influenced by multiple various factors including geographic location and location on subducting tectonic plates, geologic settings of the sediment accumulation as well as exposure to other oceanological and environmental factors. A jitter plot visualization of the overlapped observation points by profiles (Fig. \ref{fig:GP-5}) shows the concentration of the most frequent, repeated depths by profiles is visualized. That is, comparing to the previous figures (Fig. \ref{fig:GP-3} and Fig. \ref{fig:GP-4}) where the focus is set up on the data range, the Fig. \ref{fig:GP-5} stresses the analysis of frequency in the data range by showing ranges of the maximal bathymetric depths by 25 cross-section profiles across the Mariana Trench. The Fig. \ref{fig:GP-5} is plotted using Bokeh library of Python.
-The geomorphic segments of the Mariana Trench have a relatively balanced bathymetric elevations records ranging from -7.600 m (profile Nr. 11), -7.750 m (profile Nr. 4), -7.800 m (profile Nr. 5),  -7.750 m (profile Nr. 10), to -6.200 m (profile Nr. 1). The modelled depths are shown in on Fig. \ref{fig:GP-5} (jitter plot showing depths ranges). The profiles with the least slope degree Nr. 21, 22, 18, 20 are mostly located in the southern segments where trench crosses Caroline Plate. Mostly, the depth values of deeper than -9600 m below the sea level prevails on the bathymetric model for the deepest depth range (Fig.\ref{fig:GP-5}), representing the depths of the very steep slopes of the Mariana Trench.  
-	
-\subsection{Python Library StatsModels for linear regressions}
-This research section aims is to apply linear regression statistical approaches for oceanological data interpretation. Specific aim is to investigate correlation between various factors, such as bathymetric depths, geomorphic shape, geographic location on four tectonic plates of the sampling points along the trench, and their influence on the geologic sediment thickness. Technically, the advantages of applying Python programming language\index[concepts]{programming language, Python} for oceanographic data sets was tested. The methodological approaches include GIS data collecting, data analysis, statistical modelling, plotting and visualizing. Statistical methods include several algorithms that were tested: 
-\begin{enumerate}
-	\item weighted least square linear regression between geological variables;
-	\item autocorrelation; 
-	\item design matrix;
-	\item \ac{OLS} regression;
-	\item quantile regression\index[concepts]{regression, quantile}
-\end{enumerate}
-The spatial and statistical analysis of the correlation of these factors aimed at the understanding, which geological and geodetic factors affect the distribution of the steepness and shape of the trench. Following factors were analyzed: geology (sediment thickness), geographic location of the trench on four tectonics plates and bathymetric depths records along the profiles: max, mean, min values, as well as the statistical calculations of the \nth{1} and \nth{3} quantiles. The study revealed correlations between the sediment thickness and distinct variations of the trench geomorphology and sampling locations across various segments along the crescent of the trench. 
-	
-\subsubsection{Design matrix and model fit summary by the Ordinary Least Squares}
-	The variables of geologic interest were stored in the table consisting of 18 rows where numeric information describes geology, bathymetry, geodesy and tectonics of the Mariana Trench. To fit most of the models covered by \ac{StatsModels} Python library, the design or regressor matrix was created using existing approaches \cite{Everitt2002}; \cite{BoxTiao1992}; \cite{MillmanAivazis2011}. The first is a matrix of endogenous variables of sediment thickness, which show the response or geological regressand on changed environmental conditions: geographic location, depth or tectonic plate. The design matrix ‘dmatrices’ shows the results of the first six lines representing values of explanatory variables in a set of geological attributes, Mariana Trench. The computing of the \ac{OLS} by StatsModels of Python was based on the formula (1):
-Formula (1)
 Where,      
 n is the sample size;
 x is a constant and a scalar regressor; 
 y is a random regressor, sampled together with x;
 h is the number of lags being tested;
 Each row of the calculated \ac{OLS} coefficient estimates is an individual bathymetric profile with the successive columns corresponding to the geologic and oceanographic variables and their specific values across the profiles. 
-	
+
+%----------------------------------------------------------------------------------------------------------------------------------------------		
 \subsubsection{Quantile statistics (QQ)}
-	The used algorithm is very straightforward with a selected function of qqplot() by StatsModels to perform this task. The \ac{QQ} regression is a common abbreviation for ‘quantile by quantile’ statistical plot. The plot shows (Fig. 2, \cite{Lemenkova201989}) one quantile against another across various geological parameters: Sediment thickness; Slope angle degrees; four tectonic plates; distribution of the samples of igneous volcanic areas. Technically, the plotting was performed using Python code \ref{P:22} for each corresponding plot. The \ac{QQ} statistics calculation has been based on the following formula (2) after \cite{LjungBox1978}:
-Formula (2)
+Used algorithm is very straightforward with a selected function of qqplot() by StatsModels. The \ac{QQ} regression is a common abbreviation for ‘quantile by quantile’ statistical plot. The plot shows (Fig. \ref{fig:SM-2}, \cite{Lemenkova201989}) one quantile against another across various geological parameters: Sediment thickness; Slope angle degrees; four tectonic plates; distribution of the samples of igneous volcanic areas. Technically, the plotting was performed using Python code \ref{P:22} for each corresponding plot. The \ac{QQ} statistics calculation has been based on the following Formula \ref{eq:11} after \cite{LjungBox1978}:
+
+\begin{equation}
+	Q=n(n+2)\sum_{k=1}^{n}\frac{l_{k}^{2}}{n-k}				
+\end{equation}\label{eq:11}\myequations{QQ statistics calculation}
+
 Where,      
 n is the sample size;
 $rho$ is the sample autocorrelation at lag k, and 
-h is the number of lags being tested.\\
-The comparison of all the six subplots\index[concepts]{plot, subplot} enables to analyze the form of their shape against a straight line. The quantiles are bathymetric sample observations with geologic attribute values placed in the ascending order. The \ac{QQ} statistics is used over the pool of the sampling data to study their distribution. A \ac{QQ} statistic is a visual representation of the quantiles of a standard normal distribution of the geological data set across the Mariana Trench, showing their variation in space. \\
-The quantile regression\index[concepts]{regression, quantile } estimates conditional median\index[concepts]{statistics, median} and other quantiles\index[concepts]{statistics, quantiles} of the response geological variables. Thus the upper two rows of the plot show (Fig. 4 in \cite{Lemenkova201989}) data distribution for sediment thickness\index[concepts]{sediment thickness} (m) versus geologic parameters across tectonic plates, data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted (Fig. \ref{fig:ASE-4}) using Python code \ref{P:24} by \ac{StatsModels}. Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Tab. 3 in \cite{Lemenkova201989} which shows computations for the quantile regression for sediment thickness versus geologic parameters and tectonic plates. 
-	
+h is the number of lags being tested.
+
+The comparison of all six subplots\index[concepts]{plot, subplot} enables to analyze the form of their shape against a straight line. The quantiles are bathymetric sample observations with geologic attribute values placed in the ascending order. The \ac{QQ} statistics is used over the pool of the sampling data to study their distribution. A \ac{QQ} statistic is a visual representation of the quantiles of a standard normal distribution of the geological data set across the trench, showing their variation in space. 
+
+Quantile regression\index[concepts]{regression, quantile} estimates conditional median\index[concepts]{statistics, median} and other quantiles\index[concepts]{statistics, quantiles} of the response geological variables. Upper two rows of the plot show (Fig. 4 in \cite{Lemenkova201989}) data distribution for sediment thickness\index[concepts]{sediment thickness} (m) versus geologic parameters across tectonic plates, data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted (Fig. \ref{fig:ASE-4}) using Python code \ref{P:24} by \ac{StatsModels}. 
+
+Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Tab. 3 in \cite{Lemenkova201989} which shows computations for the quantile regression for sediment thickness versus geologic parameters and tectonic plates. Following parameters are visualised: A) Pacific Plate B) Philippine Plate C) Mariana Plate D) Caroline Plate E) Cumulative sediment thickness and F) Slope angle degree by profiles.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm,clip]{Fig-SM2.jpg}
+	\caption{Quantile regression plotted for sediment thickness (m) versus geologic parameters}\label{fig:SM-2}
+\end{figure}
+
 \subsubsection{Weighted Least Squares}
-A \ac{WLS}\index[concepts]{least squares, weighted} for the geological variables analysis data distribution: by tectonic plates, sediment thickness and bathymetry, as well as slope angle degree. A \ac{WLS} is a statistical approach representing a special case of the generalized least squares. The approach of a weighted least squares is a standard approach in regression analysis to approximate the solution of overdetermined systems which is the case for the complex marine geological systems. The least squares algorithms\index[concepts]{algorithm, least squares} has two sub-types: linear or ordinary least squares\index[concepts]{least squares, ordinary} and nonlinear least squares\index[concepts]{least squares, nonlinear}. In the scope of this research, only the linear least squares were tested: ordinary least squares and weighted least square which is a generalization of the first one. In this case, the off-diagonal entries of the correlation matrix of the geological residuals are null the variances of the observations, yet unequal along the covariance matrix. The calculation is based on the principle of the Gauss-Newton algorithm\index[concepts]{algorithm, Gauss-Newton} that solves a non-linear least squares problem by modifying a Newton's method for finding a minimum of a function. The computation was based on the general approach of existing equation (after \cite{Bjoerck1996}):
+A \ac{WLS}\index[concepts]{least squares, weighted} for the geological variables analysis data distribution: by tectonic plates, sediment thickness and bathymetry, as well as slope angle degree. Following variables are visualized: A) Pacific Plate, B) Philippine Plate, C) Mariana Plate, D) Sediment thickness, E) Depths (max); F) Slope angle degree.
+
+A \ac{WLS} is a statistical approach representing a special case of the generalized least squares. The approach of a weighted least squares is a standard approach in regression analysis to approximate the solution of overdetermined systems which is the case for the complex marine geological systems. The least squares algorithms\index[concepts]{algorithm, least squares} has two sub-types: linear or ordinary least squares\index[concepts]{least squares, ordinary} and nonlinear least squares\index[concepts]{least squares, nonlinear}.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm,clip]{Fig-SM1.jpg}
+	\caption{Weighted Least Squares plotted for data distribution.}\label{fig:SM-2}
+\end{figure}
+
+In the scope of this research, only the linear least squares were tested: ordinary least squares and weighted least square which is a generalization of the first one. In this case, the off-diagonal entries of the correlation matrix of the geological residuals are null the variances of the observations, yet unequal along the covariance matrix. 
+
+The calculation is based on the principle of the Gauss-Newton algorithm\index[concepts]{algorithm, Gauss-Newton} that solves a non-linear least squares problem by modifying a Newton's method for finding a minimum of a function. The computation was based on the general approach of existing equation (after \cite{Bjoerck1996}):
 
 Formula (3)
 Where 
@@ -3614,7 +3651,6 @@ J (t) is a transposed Jacobian matrix;
 y is a vector of the response values.
 
 The calculations of the \ac{WLS} for the data se shows computations of the \ac{WLS} modelling for the data distribution by plates, \cite{Lemenkova201989}, done according to the reported procedures \cite{SeaboldPerktold2010}; \cite{Strutz2016} by the Python code snippet \ref{P:23}.
-
 \subsubsection{Isotonic regression}
 
 The statistical numerical method of the isotonic regression was applied as a non-metric multidimensional scaling aimed at fitting a line to a sequence of the observations provided the line has variation in forms, that is non-decreasing and or non-increasing everywhere across the observations. Furthermore, the line lies most close to the observations pool. The concept of the isotonic regression has been introduced by \cite{Kruskal1964} and further developed by \cite{BestChakravarti1990}. The principle of the computation algorithm of the isotonic regression lies in the following formula of the problem of \ac{QP}: 
@@ -4155,7 +4191,9 @@ The seafloor geomorphology of the Mariana Trench, as well as structure of the \a
 \label{map:PM14}       
 \end{map}
 
-The resulting profiles are visualized as red segments on Fig. \ref{map:PM14}, below the map. The statistical histograms showing frequency of data distribution for the transecting profiles of the Mariana and Philippine trenches bordering the \ac{PSB} are visualized on Fig. \ref{fig:PM16}. The shape of the histogram varies by the two trenches reflecting their geomorphology. The descriptive statistics on the topography and interpolation approaches shows following results. Histograms for the MT demonstrated bimodal peak for depths -5,000-- -3,000 m with samples $<$10\%. A gradual decrease in samples $<$ 5,000 m indicate a uniform way of depths distribution at -5,000-- -6,500, frequency 4\%-2\%. The depths at -6,200-- -10,800 m have a frequency $<$2\%. Shallower areas with depths $>$3000 m and $<$1,500 m have a data frequency $<$4\%. Relief surrounding left flank slope of MT presents uneven submarine terrain comparing to its right part with more complex submarine relief and to PT, steep in its shape form. On a cross-section graphs, gradient slopes of the trenches have markedly symmetric accurate 'V'-shape form in their deepest parts. MT geomorphology has steeper gradient slope on the northern flank off archipelago. The steepness on the left flank dips at 33,10\degree at 0-15 km from the center from the vertical plummet, 45\degree\space at 15-25 km, 30,75\degree\space at 25-40 km. A segment of 40-50 km before the shelf area has a steepness of 28\degree. On the right flank, its gradient steepness varies in steepness: 40,5\degree\space for a segment at 0-28 km, 43,33\degree\space at 28-37 km followed by 30,43\degree\space to \nth{50} km. The segment at 50-90 km consists in the arc-shape gradual increase of the elevation which stabilizes after 100 km $<$ -4000 m. 
+The resulting profiles are visualized as red segments on Fig. \ref{map:PM14}, below the map. The statistical histograms showing frequency of data distribution for the transecting profiles of the Mariana and Philippine trenches bordering the \ac{PSB} are visualized on Fig. \ref{fig:PM16}. The shape of the histogram varies by the two trenches reflecting their geomorphology. The descriptive statistics on the topography and interpolation approaches shows following results. Histograms for the MT demonstrated bimodal peak for depths -5,000-- -3,000 m with samples $<$10\%. A gradual decrease in samples $<$ 5,000 m indicate a uniform way of depths distribution at -5,000-- -6,500, frequency 4\%-2\%. The depths at -6,200-- -10,800 m have a frequency $<$2\%. Shallower areas with depths $>$3000 m and $<$1,500 m have a data frequency $<$4\%. 
+
+Relief surrounding left flank slope of MT presents uneven submarine terrain comparing to its right part with more complex submarine relief and to PT, steep in its shape form. On a cross-section graphs, gradient slopes of the trenches have markedly symmetric accurate 'V'-shape form in their deepest parts. MT geomorphology has steeper gradient slope on the northern flank off archipelago. The steepness on the left flank dips at 33,10\degree at 0-15 km from the center from the vertical plummet, 45\degree\space at 15-25 km, 30,75\degree\space at 25-40 km. A segment of 40-50 km before the shelf area has a steepness of 28\degree. On the right flank, its gradient steepness varies in steepness: 40,5\degree\space for a segment at 0-28 km, 43,33\degree\space at 28-37 km followed by 30,43\degree\space to \nth{50} km. The segment at 50-90 km consists in the arc-shape gradual increase of the elevation which stabilizes after 100 km $<$ -4000 m. 
 
 \begin{figure}[H]
 	\centering
@@ -4173,7 +4211,9 @@ Results on geomorphic modelling of the Mariana Trench profiles revealed that the
 
 On the contrary, the maximal depths reach up to -10,000 in the current dataset, as can be drawn from the Fig. 11: profiles 20, 21, 22 crossing mostly Philippine tectonic plate (Fig. 11). Another significant change is the decrease of depth in profiles 23, 24, 25, crossing Caroline tectonic plate, which may explain, among other factors the depth changes. Profiles Nr. 23 and 24 demonstrate the deepest depth data range. The created profiles are visualized on Fig. \ref{fig:3-1-2}. Conversely, bathymetric profiles from 1 to 16 have gradual decrease in absolute depths (Fig. 9), which can be noted in outliers sample location. A slight increase in absolute depths of the profiles nr. 4-8 was also observed of the Fig. 8.
 
-The majority of the observation points of the mentioned above profiles crosses the Pacific tectonic plate. The changes in bathymetry may, among others be explained due to the changed environmental factors of the underlying plate. Nevertheless, sedimental thickness changes notably both within the trench by profiles (1:25) and between four tectonic plates that Mariana Trench crosses: Philippine, Pacific, Mariana and Caroline. Since the tectonic properties and attribute values of them are not identical, the comparative analysis of how the data vary across four distinctive plates was performed. As can be seen on Fig. 9, right, the majority of the observation points are located in the Pacific and Philippine plate, following my Marian plate, while Caroline plate only covers a few points (red colored, Fig. 11 left). The density distribution as shown on a combined plot (Fig. 9) enables to compare the overlapping and maximal aptitude of the density curves both for the profiles and depth data distribution by four tectonic plates. Thus, the major trend of the trench angles located on the Pacific plate has downward general line trend. The Philippine tectonic plate, on the contrary, has a minimal peak by profiles \#14-21, and then moving upwards. The highest value for Caroline. Consequently, as can be drawn from the Fig. 5, Mariana plate has the highest density of depth distribution values, followed by the Philippine plate, then Pacific and Caroline, respectively.
+The majority of the observation points of the mentioned above profiles crosses the Pacific tectonic plate. The changes in bathymetry may, among others be explained due to the changed environmental factors of the underlying plate. Nevertheless, sedimental thickness changes notably both within the trench by profiles (1:25) and between four tectonic plates that Mariana Trench crosses: Philippine, Pacific, Mariana and Caroline. Since the tectonic properties and attribute values of them are not identical, the comparative analysis of how the data vary across four distinctive plates was performed. As can be seen on Fig. 9, right, the majority of the observation points are located in the Pacific and Philippine plate, following my Marian plate, while Caroline plate only covers a few points (red colored, Fig. 11 left). 
+
+The density distribution as shown on a combined plot (Fig. 9) enables to compare the overlapping and maximal aptitude of the density curves both for the profiles and depth data distribution by four tectonic plates. Thus, the major trend of the trench angles located on the Pacific plate has downward general line trend. The Philippine tectonic plate, on the contrary, has a minimal peak by profiles \#14-21, and then moving upwards. The highest value for Caroline. Consequently, as can be drawn from the Fig. 5, Mariana plate has the highest density of depth distribution values, followed by the Philippine plate, then Pacific and Caroline, respectively.
 
 \begin{figure}[H]
 	\centering
@@ -4181,9 +4221,47 @@ The majority of the observation points of the mentioned above profiles crosses t
 	\caption{Mariana Trench: graph of the 25 bathymetric profiles, QGIS}\label{fig:3-1-2}
 \end{figure}
 
-From two multiple panel by groups (Fig. 7 and 8) we can compare the slope angles and depth distribution by tectonic plates, respectively, one can see the unique patters of these categories by four plates. Summaries of the variations of the local polynomial regression of the bathymetric depths of the measured samples are presented on Fig. 4. Upon a close examination of these summaries it can be observed that, with a mean depth value ranging from 5000 to of 3000 on the profiles, the widths of the confidence intervals are expanding more rapidly by the profiles 12 to 15 and 19 to 22 thus indicating on the large amplitude of the depths variations in this part of the Mariana Trench. The indication is that profile depth rather being affected by the local geographic conditions caused by the location on four different tectonic plates with varying environmental conditions. On the other hand, profiles 22 to 25 crossing Caroline tectonic plate (again refer to Fig. 11, left), suggests that the absolute depth in this region change to become shallower than the profiles crossing Philippine and Pacific plates, and this phenomenon has adverse implications for deep inter-connections between these factors.
+From two multiple panel by groups (Fig. 7 and 8) we can compare the slope angles and depth distribution by tectonic plates, respectively, one can see the unique patters of these categories by four plates. Summaries of the variations of the local polynomial regression of the bathymetric depths of the measured samples are presented on Fig. 4. Upon a close examination of these summaries it can be observed that, with a mean depth value ranging from 5000 to of 3000 on the profiles, the widths of the confidence intervals are expanding more rapidly by the profiles 12 to 15 and 19 to 22 thus indicating on the large amplitude of the depths variations in this part of the Mariana Trench. 
+
+The indication is that profile depth rather being affected by the local geographic conditions caused by the location on four different tectonic plates with varying environmental conditions. On the other hand, profiles 22 to 25 crossing Caroline tectonic plate (again refer to Fig. 11, left), suggests that the absolute depth in this region change to become shallower than the profiles crossing Philippine and Pacific plates, and this phenomenon has adverse implications for deep inter-connections between these factors.
 
 Marine free-air gravity anomaly in the \ac{PSP} area where Mariana Trench is located shows (Fig. \ref{map:PM7}) higher values ($>80$ mGal) of the gravity fields structure at the volcanic areas and Philippine archipelago. Geometric differences between trench shapes are explained by the context of the historic development and actual geomorphic and sedimentary processes affected their formation and structure. Current study presented comparative submarine geomorphic mapping and complex analysis of the geophysical and geological settings in the Philippine Sea basin area. An application of GMT functionality is presented by selected code snippets with selected code snippets for 'psmeca' and 'psvelo', 'img2grd', 'img2grd' modules.
+
+%----------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Findings in bathymetric data distribution}
+The data distribution\index[concepts]{data, distribution} are presented on Fig. \ref{fig:GP-3}. By profiles they ranged from -10.600m (maximal depth in this data set) to -3150m (the shallowest point in the data set). The maximum depths in the profiles were found in profiles Nr. 20, 21, 19, 14 (Fig. 3, right, sorted bathymetry), and the minimal depths (i.e. the shallowest) consist the first group, that is profiles 24, 23, 22 and 10 (Fig. 3, right, sorted bathymetry). The deepest part of the trench is located in the SW and central segments where the trench crosses Philippine and Pacific Plates. Moderate depths correlate with Mariana Plate and the majority of the Philippine Sea Plate. The depths ranges detected across the profiles of present study are also higher in southern part of the trench than in northern segment (Fig. \ref{fig:GP-3}).
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm,clip]{Fig-GP-3.jpg}
+	\caption{Mariana Trench. Data distribution analysis: maximal depths by profiles, Python.}\label{fig:GP-3}
+\end{figure}
+
+In general, central part of the Mariana Trench has variations in depth but trend shows the increasing depths towards the southern part were the depths are higher than in the northern segments. By comparing the profiles Nr. 3, 4, 9, 12 from the Pandas array (Fig. \ref{fig:GP-3}, colored green) with profiles Nr. 18, 16, 15, 13 from the Pandas array (colored orange on Fig. \ref{fig:GP-3}), it is clear that the depths increase reaching its maximal depths in the following group (Profiles Nr. 20, 21, 19, 14, group colored blue, Fig. \ref{fig:GP-3}, right). 
+
+Methodological goal of this research was to identify variations of the steepness in various segments of the trench. The slope steepness degrees and depths of the profiles were analyzed and determined based on the statistical analysis using libraries of Python: Matplotlib, Seaborn and Bokeh. The results revealed that the most steep part of the trench is located in its north-west, central and south-west segments (profiles Nr. 3, 7, 9, 23, 24) where trench crosses Philippine and Pacific tectonic plates. 
+
+This segment of the trench can be characterized by the largest local depths and sharp abrupt changes in the geomorphic shape. The highest depth gradient can be seen at the profile Nr. 21 is at the distance of 10.600 m from the seal level. The middle moderate slope degrees (Profiles Nr. 1, 11,  4, 5, 10) correlate with the areas where the trench crosses Mariana plate. 
+ 
+ \begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm,clip]{Fig-GP-4.jpg}
+	\caption{Mariana Trench: visualization of the cross-section profiles}\label{fig:GP-4}
+\end{figure}
+
+More detailed look on the profiles’ shape and the outline in presented in Fig. \ref{fig:GP-4}. While Fig. \ref{fig:GP-3} shows maximal depths by profiles (each profile has only one dot point on the plot), Fig. \ref{fig:GP-4} illustrates the cross-section profiles. Among various shapes of the profiles (Fig. \ref{fig:GP-4}) the section of profiles 19, 20, 21 and 22 (Fig. \ref{fig:GP-4}, E) had initially the most even shape of the geomorphology that decreased abruptly after the observation points 200. The unevenness of the profiles can be explained by the changes geologic conditions and transfer to the neighbor tectonic plate (i.e. from the Philippine Sea to the Pacific Plate, and Mariana to the Philippine Plate, respectively). 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm,clip]{Fig-GP-5.jpg}
+	\caption{Mariana Trench: analysis of maximal depths distribution by profiles, Python (Bokeh)}\label{fig:GP-5}
+\end{figure}
+
+The groups of profiles 23, 24 and 25, (Fig. \ref{fig:GP-4}, F), have similar geomorphic shapes: the first halve of the profiles is relatively even while the southern part is particular for the increased depths. This and analogous analyses can be drawn from the Fig. \ref{fig:GP-4}. For better visualization, the profiles are colored individually with the shared X axes. The increase of depths by profiles can be influenced by multiple various factors including geographic location and location on subducting tectonic plates, geologic settings of the sediment accumulation as well as exposure to other oceanological and environmental factors. 
+
+A jitter plot visualization of the overlapped observation points by profiles (Fig. \ref{fig:GP-5}) shows concentration of the most frequent, repeated depths by profiles. Comparing to the previous figures (Fig. \ref{fig:GP-3} and Fig. \ref{fig:GP-4}) where focus is set up on the data range, Fig. \ref{fig:GP-5} stresses the analysis of frequency in the data range by showing ranges of the maximal bathymetric depths by 25 cross-section profiles across the Mariana Trench. Fig. \ref{fig:GP-5} is plotted using Bokeh library of Python.
+
+The geomorphic segments of the Mariana Trench have relatively balanced bathymetric elevation records ranging from -7.600 m (profile Nr. 11), -7.750 m (profile Nr. 4), -7.800 m (profile Nr. 5), -7.750 m (profile Nr. 10), to -6.200 m (profile Nr. 1). Modeled depths ranges are shown on Fig. \ref{fig:GP-5} (jitter plot). The profiles with the least slope degree Nr. 21, 22, 18, 20 are located in the southern segments where trench crosses Caroline Plate. The depth values of deeper than -9600 m below the sea level prevails on the bathymetric model for the deepest depth range (Fig.\ref{fig:GP-5}), representing the depths of the very steep slopes of the Mariana Trench.  
 
 \subsection{Comparative Geospatial Analysis by Four Tectonic Plates}
 Studies revealed that several environmental factors have distinct effect on the Mariana Trench morphology. Among them, findings indicate (Fig. 10) that sediment sources at the Mariana Trench are connected with trench tectonics where the values of the sedimental thickness lie between 120 and 140, decreasing to 50 mm. Thus, sedimentation processes differ significantly by four tectonic plates (Mariana, Pacific, Philippine and Caroline), due to the overall complexity of the sediment environmental processes and trigger factors and mechanisms. Among other triggers and key factors for sedimental thickness are turbidity caused by gravity sliding, biochemical deposits, closeness of seismic zones, igneous volcanic areas and differences in the sedimentation mechanisms. Besides, due to the funnelling effect, trench sediment deposits speed is faster and therefore, thickness is greater than that of the abyssal basins.
@@ -4432,6 +4510,8 @@ The goal of this dissertation was to fill in the gap in this field by connecting
 \section{Novelty}
 There are both theoretical and practical innovations of the research presented in this dissertation that can be applied in the similar works. The theoretical novelty lies in the comparative geomorphological mapping of the two hadal trenches that does not exists in the available literature. The practical novelty consists in the developed methodology of the  cross-disciplinary approach that includes a sequence of the \ac{GMT} and IT tools (Python, R, Matlab, AWK) for data processing. The combination of the advanced tools of geospatial research (\ac{GMT} based \ac{GIS} project and data analysis on Python and R programming languages) enabled to perform complex statistical analysis based on the embedded mathematical algorithms. Cross-section modelling approaches is based on the \cite{Lemenkova201994}, \cite{Lemenkova201995}, which was adapted to the geomorphic mapping from \cite{WesselSmith2018} as a basis for mapping submarine geomorphology. 
 
+Understanding patterns of the correlation between geomorphology and geology of the seafloor of the oceanic trenches, the deepest regions on the Earth, is important for proper ocean modelling. Although geospatial location, bathymetry and geologic structure of the tectonic plates are known to be associated with geomorphic shape and geochemical content of the sediments, they have not been widely evaluated as large data sets by means of programming tools so far. 
+
 As for cartographic approach, it should be stressed that a \ac{GMT}-based mapping was applied for the geospatial modelling instead of the traditional \ac{GIS}. Tested, presented and explained functionality of the several \ac{GMT} modules enabled to do automated digitizing of the orthogonal profiles crossing trenches in the perpendicular direction. Through this modelling, the shape of the landforms and steepness gradient of the trenches were visualized, compared and statistically analyzed. The traditional handmade cartographic digitizing is a tedious laborious routine usually prone to minor or major errors. On the contrary, using \ac{GMT} based machine learning for the automatization of the cartographic techniques significantly improves the quality and precision of the modelling.
 
 Modelling geomorphology of the trenches is primarily based on the ‘grdtrack’ GMT module and it considers three principal variables: length of the transect segment, distance between the samples and density of sampling, which in this study were accepted as: track 400 km long, spaces 20 km along the selected segment of the trench, and density of sampling: 2km. These variables were selected for script and then have shaped the current cross-section shapes of the landforms and defined curvatures of the modeled transects as median with errors visualized in the Pacific trenches. The X axis of the profiles, reflects the perpendicular cross segment, the Y axis is modeled based on the bathymetry data and elevation characteristics by 'psxy' module. The visualized graphs are based on the numerical model received through the digitizing of the cross-section profiles for each of the 20 trenches. 
@@ -4532,6 +4612,8 @@ The statistical data analysis has been implemented using \ac{ML} algorithms. The
 	
 This dissertation offers an overview of geomorphological situation conducted using \ac{GMT} based modelling and cartographic mapping. The research aimed at analyzing differences in two selected segments located in southern and northern parts southwards the Miyako Fault\index[places]{Miyako Fault}. The study presents a multidisciplinary approach combining cartographic modelling and marine geological analysis. The results obtained enabled to detect variations in the slope angle of the trench that shows more steep gradients and deeper bathymetric values in the northern segment and shallower depths with more gentle slope in the southern, respectively.
 
+Data analysis in geosciences supported by advanced methods of data analysis is an important novel method aimed to increase precision of the computations and operating with big data, common in marine geology. However, performing data analysis while analyzing marine geological data sets raises a challenge. Existing solutions of the analysis of the marine geological datasets mostly apply tradition methods of the \ac{GIS} using \ac{RS} sampling. This dissertation demonstrated a programming langaiuges use din marine geology. Specifically, Python based data analysis was tested using algorithms embedded in Matplotlib and its dependencies: \ac{NumPy}, \ac{SciPy} and Pandas \cite{Jonesetal2014}. 
+
 \ac{GMT} based data analysis enabled to map remotely located areas such as deep-sea trench, to visualize and analyze geophysical and geological factors. The techniques and methodology of the \ac{GMT} scripting presented in the workflow shown effective framework for the geological mapping. Other approaches to perform spatial data analysis in marine geology include pure statistical data modelling using programming languages, such as Python and R\index[concepts]{programming language, R}, and statistical analysis. However, the advantages of the \ac{GMT} consists in the possibility to perform both cartographic mapping and statistical analysis using the same program. Various types of data processing can be performed in \ac{GMT} environment: data analysis, modelling, mapping and statistical analysis and visualization. Besides, the \ac{GMT} \ac{ML} approach enables repeatability of the techniques for each of the studied 20 trenches of the Pacific Ocean. Therefore, the \ac{GMT} scripting toolset was selected as a main tool. Data modelling and cartographic mapping  was performed using \ac{GMT} documentation \cite{WesselSmith2018}, \cite{Wesseletal2019}.
 
 Technically, an experimental approach of the cartographic modelling combined with numerical statistical analysis (modeled trends and histograms) using \ac{GMT} modules was used to analyze geological and geophysical data sets. Cartographic visualization of the series of thematic maps (geology, bathymetry, geoid, gravimetry, 3D modelling, 2D profiles trends modelling, digitized cross-section profiles) demonstrated powerful functionality of the \ac{GMT} and proved it to be effective cartographic instrument for the data analysis. The increasing diversity of the spatially distributed data on the Earth observation together with application of the advanced cartographic methods and scripting tools greatly enhance the potential of the geospatial modeling.
@@ -4541,11 +4623,15 @@ High-resolution data sets (GEBCO, SRTM\_15) were visualized for the bathymetric,
 
 Twenty deep-sea trenches dissecting the margins of the Pacific Ocean have been the target of the presented research which investigated spatial variability of their submarine geomorphology, as well as highlighted impact factors that control their formation. There is a broad interest to the geologic structure and tectonic evolution of oceanic trenches supported by numerous studies, e.g. for the case of Mariana Trench and Philippine Trench (\cite{OdaSenna1994}, \cite{Larsen1968}; \cite{Oharaetal2002}, \cite{Hiranoetal2002}), however those studies are mostly focused on the geophysical settings of the trenches. Standardized practical \ac{GMT} based reference framework on visualizing and modelling oceanic trenches with aim of their comparative analysis needs to receive more attention. 
 
-From this point of view, this work presented a \ac{GMT} based methodology for visualization, modelling and interpretation of the bathymetric and geological data demonstrating new approaches to the cartographic mapping of the hadal trenches by \ac{GIS} by using high-resolution data grids. In contrast to the classic cartographic approaches having \ac{GUI}, e.g. ArcGIS \ac{ESRI} based, in geodata visualization and mapping (\cite{Gauger2007}; \cite{Kuhnetal2006}; \cite{Suetovaetal2005a}; \cite{Klauco2013}), the \ac{GMT} is notable for its scripting algorithms as a core conceptual methodology. 
+From this point of view, this work presented a \ac{GMT} based methodology for visualization, modelling and interpretation of the bathymetric and geological data demonstrating new approaches to the cartographic mapping of the hadal trenches by \ac{GIS} by using high-resolution data grids. In contrast to the classic cartographic approaches having \ac{GUI}, e.g. ArcGIS \ac{ESRI} based, in geodata visualization and mapping (\cite{Gauger2007}; \cite{Kuhnetal2006}; \cite{Suetovaetal2005a}; \cite{Klauco2013}), the \ac{GMT} is notable for its scripting algorithms as a core conceptual methodology. Technically, the results show the effectiveness of Python and R in modelling submarine geomorphology. The results of the data analysis show distinct unevenness in the geomorphic structure of the trenches. 
  
-Main objective of the presented research was to contribute to deeper understanding of the differences in geomorphology and geophysical settings of the oceanic trenches located along the margins of the Pacific Ocean, as well as to test a \ac{GMT} approach. Profile transect modelling was exemplified using sampling on the two case segments of the \ac{AOI} in topography of the respective trenches as modelling goals. Technical objective of this study was to perform comparative analysis and classification of the the geomorphology of the deep-sea trenches, located in the margins of the Pacific Ocean. Mapping deep-sea trenches needs support of reliable, detailed and accurate seafloor maps. Although existing general seafloor maps (eg. Fig. \ref{FIG:1}) enables to visualize the seafloor with acceptable resolution and accuracy, there is still a lack of detailed maps of deep-sea trenches, their models and visualization focused on geomorphic form and shape. The datasets used in this study compiled from the GEBCO, ETOPO1, geoid and gravity raster grids, and  geological vector layers are statistically analyzed. Integrating \ac{GMT} based mapping with geological, gravity and bathymetric datasets enabled accurate, high-resolution maps of the geomorphology and cross-section bathymetric models to be produced. 
+Main objective of the presented research was to contribute to deeper understanding of the differences in geomorphology and geophysical settings of the oceanic trenches located along the margins of the Pacific Ocean, as well as to test a \ac{GMT} approach. Profile transect modelling was exemplified using sampling on the two case segments of the \ac{AOI} in topography of the respective trenches as modelling goals. Technical objective of this study was to perform comparative analysis and classification of the the geomorphology of the deep-sea trenches, located in the margins of the Pacific Ocean. Mapping deep-sea trenches needs support of reliable, detailed and accurate seafloor maps. 
 
-The general conceptual idea of the presented study may be extrapolated to other objects of ocean topography. Methodologically, the study contributes towards technical application of the \ac{GMT} based methods for bathymetric modelling and mapping supported by Python and R. Hence, this study aimed to produce a set of the cross-section profiles for three deep-sea trenches varying in geomorphology which could be utilized at similar works for spatial marine data analysis and detailed seafloor mapping. The comparison of the geomorphology and highlighted differences are presented for 20 trenches of the Pacific Ocean. In that sense the study objectives were achieved. Demonstrated benefits of the \ac{GMT} based seafloor mapping technology to a broad spectrum of cartographers and users visualizing ocean space, as well as convergence toward a standard suite of high quality datasets (e.g. GEBCO, SRTM15, ETOPO1, EGM96 gravity), map products and interpreted statistical reports, were demonstrated in this research. \ac{GMT} is aiming to enable cartographic visualization and modelling of a high standards, quality maps based on the raster/vector datasets which can be effectively used for mapping the shape of the seabed and submarine landforms, thereby providing the knowledge base to detail the topography of the World Ocean. 
+Although existing general seafloor maps (eg. Fig. \ref{FIG:1}) enables to visualize the seafloor with acceptable resolution and accuracy, there is still a lack of detailed maps of deep-sea trenches, their models and visualization focused on geomorphic form and shape. The datasets used in this study compiled from the GEBCO, ETOPO1, geoid and gravity raster grids, and  geological vector layers are statistically analyzed. Integrating \ac{GMT} based mapping with geological, gravity and bathymetric datasets enabled accurate, high-resolution maps of the geomorphology and cross-section bathymetric models to be produced. 
+
+The general conceptual idea of the presented study may be extrapolated to other objects of ocean topography. Methodologically, the study contributes towards technical application of the \ac{GMT} based methods for bathymetric modelling and mapping supported by Python and R. Hence, this study aimed to produce a set of the cross-section profiles for three deep-sea trenches varying in geomorphology which could be utilized at similar works for spatial marine data analysis and detailed seafloor mapping. The comparison of the geomorphology and highlighted differences are presented for 20 trenches of the Pacific Ocean. In that sense the study objectives were achieved. 
+
+Demonstrated benefits of the \ac{GMT} based seafloor mapping technology to a broad spectrum of cartographers and users visualizing ocean space, as well as convergence toward a standard suite of high quality datasets (e.g. GEBCO, SRTM15, ETOPO1, EGM96 gravity), map products and interpreted statistical reports, were demonstrated in this research. \ac{GMT} is aiming to enable cartographic visualization and modelling of a high standards, quality maps based on the raster/vector datasets which can be effectively used for mapping the shape of the seabed and submarine landforms, thereby providing the knowledge base to detail the topography of the World Ocean. 
 
 Approaches to the geological data analysis are diverse: techniques of ternary diagrams visualizing correlation between variables \cite{Reyes2010}, \cite{Lemenkova201991}, geophysical methods, e.g. DC-resistivity and SASW \cite{Lindh1999}, measurements of soil and lime properties, e.g. compression soil tests, indirect tensile tests, triaxial tests \cite{Lindh2004}, various approaches to the data analysis, plotting and visualization, e.g. factor analysis \cite{Lemenkova201866}, correlograms \cite{Lemenkova201871}, scatterplot matrices \cite{Lemenkova201901}, regression analysis \cite{Lemenkova201989} etc. 
 

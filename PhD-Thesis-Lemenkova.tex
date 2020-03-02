@@ -609,6 +609,7 @@ Technical scripts used for advanced statistical analysis are presented in full i
 	\acro{SPOT}{Satellite Pour l’Observation de la Terre}
 	\acro{SPSS}{Statistical Package for the Social Sciences}
 	\acro{StatsModels}{Statistical Models}
+	\acro{UPGMA}{Unweighted Pair Group Method with Arithmetic Mean}
 	\acro{USGS}{United States Geological Survey}
 	\acro{UTM}{Universal Transverse Mercator coordinate system}
 	\acro{WGS84}{World Geodetic System of 1984}
@@ -2040,19 +2041,19 @@ The original dataset of the focal mechanism solutions are from the was taken fro
 	\item Data time span: 1976-2010.
 \end{itemize}
 
-While magnitude is a widely understood concept, describing the energy of the earthquake release on a logarithmic scale, some technical details are presented in Table \ref{tab:11} and Table \ref{tab:12} used for mapping velocity (Fig. \ref{map:PM4}), assigning and interpreting magnitudes. Introduced in the 1930's, the Richter Scale is the best known scale for measuring the magnitude of earthquakes  \cite{Muller2002}. Surface wave magnitude, creating the strongest disturbance within the upper layers of the Earth, is computed by the following algebraic Formula \ref{eq:8}:
+While magnitude is a widely understood concept, describing the energy of the earthquake release on a logarithmic scale, some technical details are presented in Table \ref{tab:11} and Table \ref{tab:12} used for mapping velocity (Fig. \ref{map:PM4}), assigning and interpreting magnitudes. Introduced in the 1930's, the Richter Scale is the best known scale for measuring the magnitude of earthquakes  \cite{Muller2002}. Surface wave magnitude, creating the strongest disturbance within the upper layers of the Earth, is computed by the following algebraic Formula \ref{eq:foc}:
 
 \begin{equation}
 	MS=\log_10(A/T)+1.66\log_10(D)+3.30
-\end{equation}\label{eq:8}\myequations{Surface wave magnitude (Ms)}
+\end{equation}\label{eq:foc}\myequations{Surface wave magnitude (Ms)}
 
 where T is the measured wave period and D is the distance in radians. 
 
-On the contrary, earthquakes occurring deep in the Earth do not generate large surface waves. Therefore, a body wave magnitude (Mb) is scaled based on the seismic waves penetrating through the Earth's interior (body) \cite{Muller2002}. Body wave magnitude (mb) is measured based on the maximum amplitude \emph{A} by a Formula \ref{eq:9}:
+On the contrary, earthquakes occurring deep in the Earth do not generate large surface waves. Therefore, a body wave magnitude (Mb) is scaled based on the seismic waves penetrating through the Earth's interior (body) \cite{Muller2002}. Body wave magnitude (mb) is measured based on the maximum amplitude \emph{A} by a Formula \ref{eq:mag}:
 
 \begin{equation}
 	Mb=\log_10(A/T)+Q(D,h)
-\end{equation}\label{eq:9}\myequations{Body wave magnitude (mb)}
+\end{equation}\label{eq:mag}\myequations{Body wave magnitude (mb)}
 
 where T is the measured wave period and Q is an empirical function of focal depth $h$ and epicentral distance $D$ \cite{Muller2002}.
 
@@ -2843,7 +2844,13 @@ The principal approach of this method is to demonstrate the division of the whol
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsection{Mosaic, silhouette and association plots}\label{ssec:Mos}
-Mosaic chart aims at categorial comparison of the geomorphological features of the trench by four tectonic plates (Fig. \ref{fig:mos}). Visualizing mosaic plot is a statistical method that involves a subdivision of a rectangular tiles into the areas that represent the conditional relative frequency for a cell in the contingency table. The algorithms and approaches used in mosaic plotting vary slightly. Upon examination of possible packages, the R library \{vcd\} was selected for this research (R code: \ref{R:31}). Using {vcd} library, each tile is colored to show the deviation from the expected frequency, that is residuals, from a Pearson X2 or likelihood ratio G2 test. 
+Mosaic chart aims at categorial comparison of the geomorphological features of the trench by four tectonic plates (Fig. \ref{fig:mos}). Visualizing mosaic plot is a statistical method that involves a subdivision of a rectangular tiles into the areas that represent the conditional relative frequency for a cell in the contingency table. The algorithms and approaches used in mosaic plotting vary slightly. Upon examination of possible packages, the R library \{vcd\} was selected for this research (R code: \ref{R:31}). Using {vcd} library, each tile is colored to show the deviation from the expected frequency, that is residuals, from a Pearson X2 or likelihood ratio \emph{G}-test showing maximum likelihood statistical significance by Formula \ref{eq:gt}: 
+
+\begin{equation}
+	G=2\sum_{i}O_{i}*ln(\frac{O_{i}}{E_{i}})
+\end{equation}\label{eq:gt}\myequations{\emph{G}-test of maximum likelihood statistical significance}
+
+The algorithm set includes execution of the R code. The convenience of the mosaic plot for the geomorphological analysis of the ocean trenches consists in its visual representation of the association between the environmental variables. Thus, it gives an overview of the data structure and enables to recognize relationships between the different environmental variables. Conversely, boxes across categories constituting Pacific and Mariana plates have similar areas. The area of the tiles, the bin size, includes the identification of the sampling data, giving the proportional value to the number of observations within that category.
 
 \begin{figure}[H]
 	\centering
@@ -2851,11 +2858,15 @@ Mosaic chart aims at categorial comparison of the geomorphological features of t
 	\caption{Mosaic and silhouette plots for the Mariana Trench}\label{fig:mos}
 \end{figure}
 
-The algorithm set includes execution of the R code. The convenience of the mosaic plot for the geomorphological analysis of the ocean trenches consists in its visual representation of the association between the environmental variables. Thus, it gives an overview of the data structure and enables to recognize relationships between the different environmental variables. Conversely, boxes across categories constituting Pacific and Mariana plates have similar areas. The area of the tiles, the bin size, includes the identification of the sampling data, giving the proportional value to the number of observations within that category.
-
 The interpretation and validation of consistency within clusters of geomorphologic and geological variables have beet tested using silhouette plotting (Fig. \ref{fig:mos}). This technique provides a succinct graphical representation of the suitability and fitness of each from 518 observation points across 25 bathymetric profiles within the clusters. The silhouette value measured similarity of the points derived from the thematic layers (sediment thickness, slope steepness of the trench) to the cluster by cohesion and comparison them with other clusters, and separating them from the distinct points. Lower sediment thickness area would lie within one class while a class of areas with high level of sedimental level fits to another. 
 
-The silhouette was calculated with Euclidean distance metric by calling library \{cluster\} using following R code: \ref{R:30}. The given script plots the silhouettes, returns the values in the n-by-1 vectors. A deviations from the independence of rows and columns containing bathymetric data and environmental variables is presented in a two-dimensional contingency table of the Cohen-Friendly association plots (Fig. \ref{fig:assoc}). Extended association plot in R reveals relationships between the variables by the assoc() function in the \{vcd\} package. In this case, it is tectonic plates and geomorphological values (bathymetric depths, slope steepness). 
+The silhouette was calculated with Euclidean distance metric by calling library \{cluster\} using following R code: \ref{R:30}. The Euclidean distance metric is computed by Formula \ref{eq:ed}:
+
+\begin{equation}
+	\|a-b\|_{2}=\sqrt{\sum_{i}(a_{i}-b_{i})^{2}}
+\end{equation}\label{eq:ed}\myequations{Euclidean distance metric}
+
+The R script plots the silhouettes, returns the values in the n-by-1 vectors. A deviations from the independence of rows and columns containing bathymetric data and environmental variables is presented in a two-dimensional contingency table of the Cohen-Friendly association plots (Fig. \ref{fig:assoc}). Extended association plot in R reveals relationships between the variables by the assoc() function in the \{vcd\} package. In this case, it is tectonic plates and geomorphological values (bathymetric depths, slope steepness). 
 
 \begin{figure}[H]
 	\centering
@@ -2866,11 +2877,11 @@ The silhouette was calculated with Euclidean distance metric by calling library 
 Pearson's residuals on the association plot report test for the statistical goodness of fit: it enables to assess the model fit at each of samples for each profile for the generalized linear models within the context of the chi- square, as shown further in \cite{Lemenkova201904}. It has been computed as a raw residual divided by the square root of the variance function. Technically, association plot method includes execution of the following R code: \ref{R:31}.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
-\subsection{Clustering (k-means method), correlation ellipses and data partition}\label{ssec:Ckme}
+\subsection{Clustering (\emph{k}-means method), correlation ellipses and data partition}\label{ssec:Ckme}
 Finding correlations among the geomorphic factors that impact the morphological formation of the profiles was done by cluster analysis and correlation ellipses.
 
 \paragraph{Clustering (k-means method) by R library(facto-extra)}
-The k-means clustering\index[concepts]{clustering, k-means}, a machine learning technique for classification performs data partition into set up number of clusters, has been done using R library (factoextra). The goal of the k-means clustering was to perform partition of the dataset of the observations across Mariana Trench into clusters, in which each depth observation belongs to the cluster with the nearest mean, serving as a prototype of the cluster\index[concepts]{cluster}. The performed clustering is sensitive to the initial random selection of the cluster centers. Therefore, several clusters has been tested: starting from 2 to 7. This function provides a solution using a hybrid approach by combining the hierarchical clustering and the k-means methods. The workflow procedure include following steps: Tab. \ref{tab:T6}.
+The \emph{k}-means clustering\index[concepts]{clustering, k-means}, a machine learning technique for classification performs data partition into set up number of clusters, has been done using R library (factoextra). The goal of the \emph{k}-means clustering was to perform partition of the dataset of the observations across the trench into clusters, in which each depth observation belongs to the cluster with the nearest mean, serving as a prototype of the cluster\index[concepts]{cluster}. The performed clustering is sensitive to the initial random selection of the cluster centers. Therefore, several clusters has been tested: starting from 2 to 7. This function provides a solution using a hybrid approach by combining the hierarchical clustering and the \emph{k}-means methods. The workflow procedure include following steps: Tab. \ref{tab:T6}.
 
 \begin{table}
 \caption{Statistical algorithm of clustering, R code: \ref{R:09}}\label{tab:T6}
@@ -2889,7 +2900,7 @@ The k-means clustering\index[concepts]{clustering, k-means}, a machine learning 
         		\arrayrulecolor[RGB]{126,190,165}\hline\hline
 \end{tabular}
 \end{table}
-The k-means of the clustering of the Mariana Trench profiles was computed and visualized in R by code \ref{R:09}, Fig. 14, the k-means clustering with different k-values is shown on Fig. 15, \cite{Lemenkova201991}. The K-means cluster analysis has been performed using set of cluster centers as the initial cluster centers. The algorithm worked iteratively to assign each profile to one of the groups (2 to 7) based on the morphometric features of the Mariana Trench across these profiles that were clustered based on their geomorphic feature similarity. The results of the k-means clustering are shown on the Fig. \ref{fig:4-3-14}, further details are given in \cite{Lemenkova201992}. The pairwise standard scatter plot of k-means cluster correlation distributed by four tectonic plates is shown on Fig. \ref{fig:4-3-14}. 
+The \emph{k}-means of the clustering of the trench profiles was computed and visualized in R by code \ref{R:09}, Fig. 14, the \emph{k}-means clustering with different \emph{k}-values is shown on Fig. 15, \cite{Lemenkova201991}. The \emph{k}-means cluster analysis has been performed using set of cluster centers as the initial cluster centers. The algorithm worked iteratively to assign each profile to one of the groups (2 to 7) based on the morphometric features of the trench across these profiles that were clustered based on their geomorphic feature similarity. The results of the \emph{k}-means clustering are shown on the Fig. \ref{fig:4-3-14}, further details are given in \cite{Lemenkova201992}. The pairwise standard scatter plot of k-means cluster correlation distributed by four tectonic plates is shown on Fig. \ref{fig:4-3-14}. 
 
 \begin{figure}[H]
 	\centering
@@ -2897,8 +2908,13 @@ The k-means of the clustering of the Mariana Trench profiles was computed and vi
 	\caption{Mariana Trench: classification of the k-means clustering by plates, R code \ref{R:09}}\label{fig:4-3-14}
 \end{figure}
 
-The k-means cluster analysis\index[concepts]{cluster analysis, k-means} has been done using following R code: \ref{R:09}.
-The advantages of the k-means clustering applied for Mariana Trench consists in the algorithm nature: rather than defining groups before looking at the data, clustering enabled to find and analyze the groups in the profiles that have formed organically. As the structure of the tectonics and trench geomorphic properties are rather complex, clustering facilitated data partition and grouping.
+The k-means cluster analysis\index[concepts]{cluster analysis, k-means} has been done using following R code: \ref{R:09}. The mathematical background is as follows. k-means clustering aims to partition the n observations into $k(\leq n)$ sets $S=\{S1, S2, ..., Sk\}$ so as to minimize the within-cluster sum of squares (WCSS) by the Formula \ref{eq:km}:
+
+\begin{equation}
+	arg_{s} min\sum_{i=1}^{k}\sum_{x\in S_{i}}\big\|x-\mu_{i}\big\|^{2} = arg_{s} min\sum_{i=1}^{k}\big|S_{i}\big|VarS_{i}
+\end{equation}\label{eq:km}\myequations{\emph{k}-means Clustering equation}
+
+Where $\mu_{i}$ is the mean of points in $S_{i}$. The advantages of the \emph{k}-means clustering applied for Mariana Trench consists in the algorithm nature: rather than defining groups before looking at the data, clustering enabled to find and analyze the groups in the profiles that have formed organically. As the structure of the tectonics and trench geomorphic properties are rather complex, clustering facilitated data partition and grouping.
 
 \paragraph{Correlogram Ellipses and Numerical Correlogram}
 The correlogram ellipses\index[concepts]{correlogram ellipse} were generated to visualize correlation between the factors affecting the morphology of the trench \cite{Lemenkova201991}. The methodological approach includes calling \{ellipse\} library and executing following script: \ref{R:32}.
@@ -3048,17 +3064,48 @@ The location of the Caroline and Philippine Plates do not affect that much trenc
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{\ac{ANOVA} to assess hypothesis testing}\label{ssec:ANO}
-The results have been interpreted on the homogeneity of variance by means of the one-way \ac{ANOVA} series of tests (Fig. \ref{fig:ANOVA}). Several \ac{ANOVA} test methods were executed. The brief description of their advantages and particularities is given below. The Tukey \ac{HSD} multiple pairwise-comparisons was applied to the \ac{ANOVA} results. Since the \ac{ANOVA} test is significant, the Tukey \ac{HSD} test was computed by R code: \ref{R:28}. TukeyHSD() takes the fitted \ac{ANOVA} as an argument. This test enabled to perform multiple pairwise-comparison between the means of groups. The library \{multcomp\} was used to perform a Pairewise t-test and to calculate pairwise comparisons between the group levels with the corrections for the multiple testing using R function pairewise.t.test(). 
+The results have been interpreted on the homogeneity of variance by means of the one-way \ac{ANOVA} series of tests (Fig. \ref{fig:ANOVA}). Several \ac{ANOVA} test methods were executed. The brief description of their advantages and particularities is given below. The Tukey \ac{HSD} multiple pairwise-comparisons was applied to the \ac{ANOVA} results. The Formula \ref{eq:tt}: for Tukey's test is as follows: 
 
-The Levene’s test was used to analyse the homogeneity of variances at the next step of \ac{ANOVA} testing by calling function leveneTest() in the {car} package: \ref{R:28}. Comparing to the Pairewise t-test, the advantages of the Levene’s test is its lesser sensitiveness towards the departures from the normal distribution. Afterwards, the Welch test was executed in parallel to the oneway.test() in experimental mode. The Welch-test does not require that assumption have been implemented in the function oneway.test() which make is more suitable comparing to the last one. The Shapiro test was alternatively used to analyze variance of the residuals (Fig. \ref{fig:ANOVA}). 
+\begin{equation}
+	q_{s}=\frac{Y_{A}-Y_{B}}{SE}
+\end{equation}\label{eq:tt}\myequations{Tukey's honest significance test (ANOVA)}
 
+where $Y_{A}$ is the larger of the two means being compared, $Y_{B}$ is the smaller of the two means being compared, and SE is the standard error of the sum of the means. Since \ac{ANOVA} test is significant, the Tukey \ac{HSD} test was computed by R code: \ref{R:28}. TukeyHSD() takes the fitted \ac{ANOVA} as an argument. This test enabled to perform multiple pairwise-comparison between the means of groups. The library \{multcomp\} was used to perform a Pairewise t-test and to calculate pairwise comparisons between the group levels with the corrections for the multiple testing using R function pairewise.t.test(). 
+
+The Levene's test was used to analyse the homogeneity of variances at the next step of \ac{ANOVA} testing by calling function leveneTest() in the {car} package: \ref{R:28}. This is an inferential statistic used to assess the equality of variances for a variable calculated for two or more groups by Formula \ref{eq:lt}:
+
+\begin{equation}
+	W=\frac{N-k}{k-1}*\frac{\sum_{i=1}^{k}N_{i}(Z_{i}-Z..)^{2}}{\sum_{i=1}^{k}\sum_{j=1}^{N_{i}} (Z_{ij}-Z_{i})^{2}}
+\end{equation}\label{eq:lt}\myequations{Levene's test (ANOVA) to assess the equality of variances}
+
+Where k is the number of different groups to which the sampled cases belong; $N_{i}$ is the number of cases in the i group; N is the total number of cases in all groups; $Z_{ij}$ is received from the value of the measured variable for the jth case from the ith group.
+  
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-ANOVA.jpg}
 	\caption{Mariana Trench: ANOVA hypothesis testing, by R code: \ref{R:28}}\label{fig:ANOVA}
 \end{figure}
+  
+Comparing to the Pairewise t-test, the advantages of the Levene's test is its lesser sensitiveness towards the departures from the normal distribution. Afterwards, the Welch t-test was executed in parallel to the oneway.test() in experimental mode defined by the following Formula \ref{eq:wt}: 
 
-Finally, a non-parametric Kruskal-Wallis rank sum test was applied to finish with a series of \ac{ANOVA} testing. The result have been interpreted on homogeneity of variance by means of one-way \ac{ANOVA} tests. Since the p-value (Fig. \ref{fig:ANOVA}) is less than the significance level 0.05, one can conclude that there are significant differences between the groups highlighted with “*" in the model summary, that is four tectonic plates. The Tukey multiple pairwise-comparisons test enabled to perform multiple pairwise-comparison between the means of groups and demonstrated 95\% family-wise confidence level of the results. The plotted homogeneity of variances of the results are shown in Fig. \ref{fig:ANOVA}.
+\begin{equation}
+	t=\frac{\hat{X_{1}}-\hat{X_{2}}}{\sqrt{\frac{s_{1}^{2}}{N_{1}}+\frac{s_{2}^{2}}{N_{2}}}}  
+\end{equation}\label{eq:wt}\myequations{Welch unequal variances t-test (ANOVA)}
+
+The Welch-test does not require that assumption have been implemented in the function oneway.test() which make is more suitable comparing to the last one. The Shapiro test was alternatively used to analyze variance of the residuals to assess a test of normality (Fig. \ref{fig:ANOVA}) by Formula \ref{eq:sha}:
+
+\begin{equation}
+	W=\frac{(\sum_{i=1}^{n}a_{i}x_{i})^{2}}{\sum_{i=1}^{n}(x_{i}-\hat{x})^{2}}
+\end{equation}\label{eq:sha}\myequations{Shapiro-Wilk test of normality (ANOVA)}
+
+Finally, a non-parametric Kruskal-Wallis rank sum test was applied to finish with a series of \ac{ANOVA} testing. The test statistic is given by Formula \ref{eq:kw}:
+
+\begin{equation}
+	H=(N-1)\frac{\sum_{i=1}^{g}n_{i}(\bar{r}-\bar{r})^{2}}{\sum_{i=1}^{g}\sum_{j=1}^{n_{i}}(\bar{r_{ij}}-\bar{r})^{2}}
+\end{equation}\label{eq:kw}\myequations{Kruskal-Wallis rank sum test (ANOVA)}
+
+where: $n_{i}$ is the number of observations in group i; $r_{i,j}$ is the rank (among all observations) of observation j from group i; N is the total number of observations across all groups; $\bar{r}_{i}$ is the average rank of all observations in group; $\bar{r}$ is the average of all the $r_{i,j}$.
+The result have been interpreted on homogeneity of variance by means of one-way \ac{ANOVA} tests. Since the p-value (Fig. \ref{fig:ANOVA}) is less than the significance level 0.05, one can conclude that there are significant differences between the groups highlighted with “*" in the model summary, that is four tectonic plates. The Tukey multiple pairwise-comparisons test enabled to perform multiple pairwise-comparison between the means of groups and demonstrated 95\% family-wise confidence level of the results. The plotted homogeneity of variances of the results are shown in Fig. \ref{fig:ANOVA}.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Euler-Venn Diagram}\label{ssec:EV}
@@ -3409,7 +3456,7 @@ The color palette was selected as ‘reversed’, i.e. the most deep values are 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------		
 \subsubsection{Correlograms by Python}\label{ssec:PySea04}
-Correlograms and covariance matrices that give the background for all standard multivariate techniques. Correlograms allow to check randomness of data, and analyze data structure \cite{Friendly2002}. Three correlation methods research were tested  (Pearson, Kendall and Spearman) to visualize the relationship between the trench variables and representing a matrix of correlations schematically in forms numbers placed within the shaded squares (two of the three methods are shown on Fig. \ref{fig:COMU-9}). 
+Correlograms, or covariance matrices, give the background for all standard multivariate techniques. Correlograms allow to check randomness of data, and analyze data structure \cite{Friendly2002}. Three correlation methods research were tested  (Pearson, Kendall and Spearman) to visualize the relationship between the trench variables and representing a matrix of correlations schematically in forms numbers placed within the shaded squares (two of the three methods are shown on Fig. \ref{fig:COMU-9}). 
 
 \begin{figure}[H]
 	\centering
@@ -3420,23 +3467,31 @@ Correlograms and covariance matrices that give the background for all standard m
 	\caption{Mariana Trench: Pearson and Kendall correlation matrices of variables, Python}\label{fig:COMU-9}
 \end{figure}
 
-The numbers give the degree of the correlation, ranging from -1.0 to 1.0. In the shaded rows, each cell is given the assigned color, explained in the legend, subdivided into four classes ranging from two to four depending on the sign of the correlation. The intensity of color is scaled in proportion to the magnitude of the correlation. Several variations have interpreted the criterion of similarity of the properties and inter-relationships. A represented clustering of the matrix (a. k. a. heat map), made by Python code \ref{P:10}, shows the variables with the displayed correlations. Plotting correlation matrix induces a partial-ordering on the geological variables as contiguous clusters. 
+The \ac{UPGMA} algorithm constructs a rooted tree (dendrogram) that reflects the structure present in a pairwise similarity matrix (or a dissimilarity matrix). The mean distance between elements of each cluster is computed by Formula \ref{eq:upgma}: 
 
-The associated names of the environmental variables (slope angles, sediment thickness, max/min and mean depth values) are shown on the correlogram (Fig. \ref{fig:COMU-9}) annotated on the axes. The matrices were done by \ac{NumPy} and Pandas objects read in as tables and imported by Seaborn library. The data were processed by Python code \ref{P:06}. The correlograms show dependancies between the factors affecting trench based on the relationships of the values. 
+\begin{equation}
+	\frac{1}{\big| A \big| * \big| B \big|}\sum_{x\in A}\sum_{y\in B}d(x,y)
+\end{equation}\label{eq:upgma}\myequations{Hierarchical clustering method (simple agglomerative approach)}
+
+The numbers give the degree of the correlation, ranging from -1.0 to 1.0. In the shaded rows, each cell is given the assigned color, explained in the legend, subdivided into four classes ranging from two to four depending on the sign of the correlation. The intensity of color is scaled in proportion to the magnitude of the correlation. Several variations have interpreted the criterion of similarity of the properties and inter-relationships. A represented clustering of the matrix (a. k. a. heat map), made by Python code \ref{P:10}, shows the variables with the displayed correlations. Plotting correlation matrix induces a partial-ordering on the geological variables as contiguous clusters. The covariance matrix $K_{xx}$ is the matrix whose (i, j) entry is the covariance estimated by Formula \ref{eq:cov}:
+
+\begin{equation}
+	K_{x_{i}x_{j}}=cov\left[ X_{i},X_{j}\right]=E\left[(X_{i}-E\left[X_{i}\right])(X_{j}-E\left[X_{j}\right])\right]
+\end{equation}\label{eq:cov}\myequations{Covariance matrix formula}
+
+where the operator E denotes the expected value (mean) of its argument. The associated names of the environmental variables (slope angles, sediment thickness, max/min and mean depth values) are shown on the correlogram (Fig. \ref{fig:COMU-9}) annotated on the axes. The matrices were done by \ac{NumPy} and Pandas objects read in as tables and imported by Seaborn library. The data were processed by Python code \ref{P:06}. The correlograms show dependancies between the factors affecting trench based on the relationships of the values. 
 
 The effectiveness of the correlograms lies in its properties: the diagonal shows distribution of each of the geological variables by a representative square plot which helps to analyze the relationship between the pairs of numerical variables within a matrix. Correlation between each pair of variables is visualized through a numerical symbols and highlighted by colors. The use of both Pearson and Kendall correlation techniques (Fig. \ref{fig:COMU-9}) is used for exploratory analysis to observe a matrix of geological variables.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------		
 \subsubsection{Data distribution}\label{ssec:PyMpl02}
-The box plots were plotted to demonstrate the data distribution across the 25 profiles with vertical lines extending from the boxes (whiskers) indicating variability of the depths outside the upper and lower quartiles. The plot was made via Python code \ref{P:11}, supported by the existing methods of the statistical analysis \cite{Friggeetal1989}; \cite{BatesWatts1988}; \cite{McGilletal1978}.
+The box plots were plotted to demonstrate the data distribution across the 25 profiles with vertical lines extending from the boxes (whiskers) indicating variability of the depths outside the upper and lower quartiles. The plot was made via Python code \ref{P:11}, supported by the existing methods of the statistical analysis \cite{Friggeetal1989}; \cite{BatesWatts1988}; \cite{McGilletal1978}. The geomorphic shape of the trench plays a crucial role in determining patterns of the sediment thickness in the proposed model. The depth ranges increases along the axis of the trench, from north to the south, with a relatively constant slope gradient, until it reaches depths >11,000 m (profiles 20 and 21 as shown on the Fig. \ref{fig:EgeJFAS-3}). In the SW part of the trench axis modeled correlation between the factors was relatively high and decreased towards SW part of the profile. The statistical analysis of the 12,950 observation points constituting a data set shown correlation between the sediment thickness, slope steepness, depths and location of the profiles crossing adjacent tectonic plates.
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm,clip]{Fig-EgeJFAS-3.jpg}
 	\caption{Mariana Trench: box-and-whisker plot for bathymetric data distribution by 25 profiles}\label{fig:EgeJFAS-3}
 \end{figure}
-
-The geomorphic shape of the trench plays a crucial role in determining patterns of the sediment thickness in the proposed model. The depth ranges increases along the axis of the trench, from north to the south, with a relatively constant slope gradient, until it reaches depths >11,000 m (profiles 20 and 21 as shown on the Fig. \ref{fig:EgeJFAS-3}). In the SW part of the trench axis modeled correlation between the factors was relatively high and decreased towards SW part of the profile. The statistical analysis of the 12,950 observation points constituting a data set shown correlation between the sediment thickness, slope steepness, depths and location of the profiles crossing adjacent tectonic plates.
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 %\pagebreak	
@@ -3453,17 +3508,27 @@ This analysis shows that the (profiles Nr. 6, 9, 3, 7, 23 and 24) have similar s
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Probability of the depths distribution by \ac{KDE} plots}
-An implementation of the fundamental frequency estimation is presented by \ac{KDE}. The algorithm of \ac{KDE} is based on a frequency-domain approach. It was applied to visualize probability of the depth ranges and bathymetric patters in various segments of the trench, Fig. \ref{fig:AR-3} and \ref{fig:KDEph}. The method was implemented using Python code \ref{P:16}. Python libraries Pandas\index[concepts]{Python, Pandas}, Matplotlib, Seaborn\index[concepts]{Python, Seaborn} and OS were used to process data by an embedded algorithms to obtain probability frequency. 
+An implementation of the fundamental frequency estimation is presented by \ac{KDE}. The algorithm of \ac{KDE} is based on a frequency-domain approach. It was applied to visualize probability of the depth ranges and bathymetric patters in various segments of the trench, Fig. \ref{fig:AR-3} and \ref{fig:KDEph}. 
+
+Mathematically, \ac{KDE} is a non-parametric way to estimate the probability density function of a random variable. The $(x_{1}, x_{2}, …, x_{n})$ is a univariate independent, identically distributed sample drawn from distribution with a density \emph{f}. Estimating shape of this function \emph{f} is based on its kernel density estimator by Formula \ref{eq:kde}:
+
+\begin{equation}
+	\hat{f}_{h}(x)=\frac{1}{n}\sum_{i=1}^{n}K_{h}(x-x_{i})=\frac{1}{nh}\sum_{i=1}^{n}K(\frac{x-x_{i}}{h})
+\end{equation}\label{eq:kde}\myequations{Kernel density estimator of the the probability density function}
+
+where K is the kernel, i.e. a non-negative function and $h>0$ is a smoothing parameter, the bandwidth. This method was implemented using Python code \ref{P:16}. Python libraries Pandas\index[concepts]{Python, Pandas}, Matplotlib, Seaborn\index[concepts]{Python, Seaborn} and OS were used to process data by an embedded algorithms to obtain probability frequency. 
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=14cm,clip]{Fig-GML3.jpg}
+		\includegraphics[width=15cm,clip]{Fig-GML3.jpg}
 	\caption{Philippine Trench: \ac{KDE} of the bathymetric profiles, Python (Matplotlib and Seaborn)}\label{fig:KDEph}
 \end{figure}
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
-\subsubsection{Data clustering by hierarchical dendrogram and clustermap}\label{ssec:PyMpl04}
-The \ac{HCA} as shown on Fig. \ref{fig:EgeJFAS-5}, was done using \ac{SciPy} embedded algorithm of clustering. It demonstrates an approach of the method of cluster analysis used to build a hierarchy of bathymetric clusters based on the segmentation of the topographic features among 25 cross-section profiles. 
+\subsubsection{Hierarchical dendrogram and clustermap}\label{ssec:PyMpl04}
+The \ac{HCA} as shown on Fig. \ref{fig:EgeJFAS-5}, was done using \ac{SciPy} embedded algorithm of clustering. It demonstrates an approach of the method of cluster analysis used to build a hierarchy of bathymetric clusters based on the segmentation of the topographic features among 25 cross-section profiles. The dendrogram (Fig. \ref{fig:EgeJFAS-5}) shows geomorphic similarity among profiles crossing the trench. Specifically, it illustrates subdivision of the bathymetric values within each cluster composed by U-shaped link between a main cluster and its branches representing bathymetric grouping. The dendrogram showing the hierarchical dendrograms clusters was plotted by Python code \ref{P:13} in five steps. The choice of an appropriate metric influences the shape of the clusters, since elements may be close to each other according to one distance and farther away to the other. 
+
+Two first forks of the of the U-link ('parents' of clusters) indicate which clusters were merged, while the length of each two corresponding branches visualize the distance between the ‘children’. Marginal dendrograms are represented on the Clustermap that shows another approach of data grouping in statistical analysis where main area of the plot show ranging data and marginal dendrograms – clusters of the similarity groups. 
 	
 \begin{figure}[H]
 	\centering
@@ -3471,11 +3536,9 @@ The \ac{HCA} as shown on Fig. \ref{fig:EgeJFAS-5}, was done using \ac{SciPy} emb
 	\caption{Mariana Trench: hierarchical cluster dendrogram of the profiles. Python}\label{fig:EgeJFAS-5}
 \end{figure}
 
-The dendrogram (Fig. \ref{fig:EgeJFAS-5}) shows geomorphic similarity among profiles crossing the trench. Specifically, it illustrates subdivision of the bathymetric values within each cluster composed by U-shaped link between a main cluster and its branches representing bathymetric grouping. The dendrogram showing the hierarchical dendrograms clusters was plotted by Python code \ref{P:13} in five steps. Two first forks of the of the U-link ('parents' of clusters) indicate which clusters were merged, while the length of each two corresponding branches visualize the distance between the ‘children’. Marginal dendrograms are represented on the Clustermap that shows another approach of data grouping in statistical analysis where main area of the plot show ranging data and marginal dendrograms – clusters of the similarity groups. 
-
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{Principal Component Analysis (PCA)}\label{ssec:PyMpl06}
-The \ac{PCA} was made by \ac{PCA} function from Sci-Kit Learn library of Python (from sklearn.decomposition import \ac{PCA}). 
+The \ac{PCA} was made by \ac{PCA} function from Sci-Kit Learn library of Python (from sklearn.decomposition import \ac{PCA}). PCA is mathematically defined as an orthogonal linear transformation that modifies the data to a new coordinate system. In this way, the greatest variance by scalar projection of the data lies on the first coordinate (\nth{1} principal component), the \nth{2} greatest variance on the \nth{2}  coordinate, etc.
 
 \begin{figure}[H]
 	\centering
@@ -3483,7 +3546,19 @@ The \ac{PCA} was made by \ac{PCA} function from Sci-Kit Learn library of Python 
 	\caption{Mariana Trench: \ac{PCA} of the sediment thickness by 25 bathymetric profiles, 3D view.}\label{fig:EgeJFAS-8}
 \end{figure}
 
-Using orthogonal transformation procedure embedded in \ac{PCA} to convert a set of samples on sediment thickness and possibly correlated variables into a set of values of the linearly uncorrelated variables \cite{AbdiWilliams2010}. Using \ac{PCA} is especially useful technique in case of marine geological large datasets and other implications of the big geodataset with many variables for each sample for exploratory data analysis \cite{Journel2000}. The \ac{PCA} enable to better visualize the variations: sediment thickness, steepness of the slope angle and bathymetric depth ranges.The \ac{PCA} on the bathymetric spatial series was performed in order to assess the overall spatial geomorphic variability of the cross-section profiles and their similarities (Fig. \ref{fig:EgeJFAS-8}). For this calculation the sediment thickness as a categorical value of the studied area was used. 
+Using orthogonal transformation procedure embedded in \ac{PCA} to convert a set of samples on sediment thickness and possibly correlated variables into a set of values of the linearly uncorrelated variables \cite{AbdiWilliams2010}. In order to maximize variance, the first weight vector w(1) in \ac{PCA} satisfies Formula \ref{eq:pca1}:
+
+\begin{equation}
+	w_{1}=arg\space max_{\|w\|=1}=\Bigr\{\sum_{i}(t_{1})^{2}_{i}\Bigr\}=arg\space max_{\|w\|=1}=\Bigr\{\sum_{i}(x_{i}*w)^{2}\Bigr\}
+\end{equation}\label{eq:pca1}\myequations{PCA formula for the \nth{1} weight vector}
+
+The $n^{th}$ component is found by subtracting the \nth{1} \emph{k-1} components from \emph{X} by Formula \ref{eq:pca2}: 
+
+\begin{equation}
+	\hat{X}_{k}=X-\sum_{s=1}^{k-1}Xw_{s}w_{s}^{T}
+\end{equation}\label{eq:pca2}\myequations{PCA formula for the $n^{th}$ weight vector}
+
+Using \ac{PCA} is especially useful technique in case of marine geological large datasets and other implications of the big geodataset with many variables for each sample for exploratory data analysis \cite{Journel2000}. The \ac{PCA} enables to better visualize variations: sediment thickness, slope steepness and depth ranges.The \ac{PCA} on the bathymetric spatial series was performed to assess the overall spatial geomorphic variability of the cross-section profiles and their similarities (Fig. \ref{fig:EgeJFAS-8}). For this calculation the sediment thickness as a categorical value of the studied area was used. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{Data correlation}\label{ssec:PyMpl05}	
@@ -3499,8 +3574,13 @@ The 3D scatterplot matrices (Fig. \ref{fig:EgeJFAS-7}) show variability of the g
 
 %----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{\ac{ANOVA}}\label{ssec:PyMpl07}
-The purpose of the \ac{ANOVA} method in Python part of this dissertation was to test significant differences between the means of the marine geological variables, that is sedimentation, tectonic and geospatial factors. Test differences in means for groups of these variables for the statistical significance was done by existing algorithms \cite{Gelman2005}; \cite{Montgomery2001}; \cite{Bailey2008}. The \ac{ANOVA} is accomplished by analyzing variance: 
-partitioning total variance into the components, due to true random error (i.e., within-group SS) and the components that are due to differences between the means. 
+The purpose of the \ac{ANOVA} method in Python part of this dissertation was to test significant differences between the means of the marine geological variables, that is sedimentation, tectonic and geospatial factors. The definitional equation of sample variance is as follows in Formula \ref{eq:an}:
+
+\begin{equation}
+	s^{2}=\frac{1}{n-1}\sum(y_{i}-\bar{y})^{2}
+\end{equation}\label{eq:an}\myequations{ANOVA definitional equation of sample variance}
+
+Where the divisor is called the degrees of freedom, the sum presents the sum of squares, the result is the mean square and the squared terms are deviations from the sample mean. The fundamental technique is a partitioning of the total sum of squares into components related to the effects used in the model. Test differences in means for groups of these variables for the statistical significance was done by existing algorithms \cite{Gelman2005}; \cite{Montgomery2001}; \cite{Bailey2008}. The \ac{ANOVA} is accomplished by analyzing variance: partitioning total variance into the components, due to true random error (i.e., within-group) and the components that are due to differences between the means. 
 
 Computed F values (0.270259 and 0.459078) and statistical significance obtained from testing with \ac{ANOVA} shows the effect of depth and model scenario on the sediment thickness estimated through the \ac{StatsModels} library of Python (statsmodels.stats.anova anova\_lm) by embedded function \ac{ANOVA} by Python code \ref{P:15}, and Pandas for table data processing. The correlation cluster dendrogram between a spatial series of the transects shows grouping between the profiles based on their geomorphic similarities. One-way \ac{ANOVA} box plots were computed and plotted to show relationship between the selected environmental, bathymetric and geomorphological variables based on the analysis of similarities.
 
@@ -3593,34 +3673,30 @@ Regarding categorial distribution methods, a pie chart plotting is based on the 
 Variables of the geologic interest were stored in a table consisting of 18 rows where numeric information describes geology, bathymetry, geodesy and tectonics of the trench. To fit most of the models covered by \ac{StatsModels} Python library, the design or regressor matrix was created using existing approaches \cite{Everitt2002}; \cite{BoxTiao1992}; \cite{MillmanAivazis2011}. The first is a matrix of endogenous variables of sediment thickness, which show the response or geological regress and varying environmental conditions: geographic location, depth or tectonic plate. The design matrix ‘dmatrices’ shows the results of the first six lines representing values of explanatory variables in a set of geological attributes, Mariana Trench. The computing of the \ac{OLS} by StatsModels of Python was based on Formula \ref{eq:10}:
 
 \begin{equation}
-	b_{1}=\frac{\sum_{i=1}^{n}(x_{i}-\vec{x})(y_{i}-\vec{y})}{\sum_{i=1}^{n}(x_{i}-\vec{x})}
+	b_{1}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})}
 \end{equation}\label{eq:10}\myequations{Computing Ordinary Least Square (OLS)}
 
-Where,      
-n is the sample size;
-x is a constant and a scalar regressor; 
-y is a random regressor, sampled together with x;
-h is the number of lags being tested;
-Each row of the calculated \ac{OLS} coefficient estimates is an individual bathymetric profile with the successive columns corresponding to the geologic and oceanographic variables and their specific values across the profiles. 
+Where, n is the sample size; x is a constant and a scalar regressor;  y is a random regressor, sampled together with x; h is the number of lags being tested. Each row of the calculated \ac{OLS} coefficient estimates is an individual bathymetric profile with the successive columns corresponding to the geologic and oceanographic variables and their specific values across the profiles. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------		
 \subsubsection{Quantile statistics (QQ)}
-Used algorithm is very straightforward with a selected function of qqplot() by StatsModels. The \ac{QQ} regression is a common abbreviation for ‘quantile by quantile’ statistical plot. The plot shows (Fig. \ref{fig:SM-2}, \cite{Lemenkova201989}) one quantile against another across various geological parameters: Sediment thickness; Slope angle degrees; four tectonic plates; distribution of the samples of igneous volcanic areas. Technically, the plotting was performed using Python code \ref{P:22} for each corresponding plot. The \ac{QQ} statistics calculation has been based on the following Formula \ref{eq:11} after \cite{LjungBox1978}:
+Used algorithm is very straightforward with a selected function of qqplot() by StatsModels. The \ac{QQ} regression is a common abbreviation for ‘quantile by quantile’ statistical plot. The plot shows (Fig. \ref{fig:SM-2}, \cite{Lemenkova201989}) one quantile against another across various geological parameters: Sediment thickness; Slope angle degrees; four tectonic plates; distribution of the samples of igneous volcanic areas. Technically, the plotting was performed using Python code \ref{P:22} for each corresponding plot. The \ac{QQ} statistics calculation has been based on the following Formula \ref{eq:qq} after \cite{LjungBox1978}:
 
 \begin{equation}
 	Q=n(n+2)\sum_{k=1}^{n}\frac{l_{k}^{2}}{n-k}				
-\end{equation}\label{eq:11}\myequations{QQ statistics calculation}
+\end{equation}\label{eq:qq}\myequations{QQ statistics calculation}
 
-Where,      
-n is the sample size;
-$rho$ is the sample autocorrelation at lag k, and 
-h is the number of lags being tested.
+Where, n is the sample size; $rho$ is the sample autocorrelation at lag k, and  h is the number of lags being tested. The comparison of the six subplots\index[concepts]{plot, subplot} enables to analyze the form of their shape against a straight line. The quantiles are bathymetric sample observations with geologic attribute values placed in the ascending order. The \ac{QQ} statistics is used over the pool of the sampling data to study their distribution. A \ac{QQ} statistic is a visual representation of the quantiles of a standard normal distribution of the geological data set across the trench, showing their variation in space. 
 
-The comparison of all six subplots\index[concepts]{plot, subplot} enables to analyze the form of their shape against a straight line. The quantiles are bathymetric sample observations with geologic attribute values placed in the ascending order. The \ac{QQ} statistics is used over the pool of the sampling data to study their distribution. A \ac{QQ} statistic is a visual representation of the quantiles of a standard normal distribution of the geological data set across the trench, showing their variation in space. 
+Quantile regression\index[concepts]{regression, quantile} estimates conditional median\index[concepts]{statistics, median} and other quantiles\index[concepts]{statistics, quantiles} of the response geological variables. Upper two rows of the plot show (Fig. 4 in \cite{Lemenkova201989}) data distribution for sediment thickness\index[concepts]{sediment thickness} (m) versus geologic parameters across tectonic plates, data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted for the following variables: A) Sediment thickness; B) Slope angle degrees; C) Pacific Plate; D); Philippine Plate E) Mariana Plate; F) Volcanic spots, Fig. \ref{fig:ASE-4} by Python code \ref{P:24} by \ac{StatsModels}. 
 
-Quantile regression\index[concepts]{regression, quantile} estimates conditional median\index[concepts]{statistics, median} and other quantiles\index[concepts]{statistics, quantiles} of the response geological variables. Upper two rows of the plot show (Fig. 4 in \cite{Lemenkova201989}) data distribution for sediment thickness\index[concepts]{sediment thickness} (m) versus geologic parameters across tectonic plates, data distribution for the cumulative sediment thickness and slope angle degree by profiles. The quantile regressions were plotted (Fig. \ref{fig:ASE-4}) using Python code \ref{P:24} by \ac{StatsModels}. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=12cm,clip]{Fig-QQ.jpg}
+	\caption{Plotted QQ statistics for the data distribution}\label{fig:QQ}
+\end{figure}
 
-Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Tab. 3 in \cite{Lemenkova201989} which shows computations for the quantile regression for sediment thickness versus geologic parameters and tectonic plates. Following parameters are visualised: A) Pacific Plate B) Philippine Plate C) Mariana Plate D) Caroline Plate E) Cumulative sediment thickness and F) Slope angle degree by profiles.
+Essentially, quantile regression is another approach of the linear regression tested in the current research. The quantitative results of the quantile regression are shown on Tab. 3 in \cite{Lemenkova201989} which shows computations for the quantile regression for sediment thickness versus geologic parameters and tectonic plates. Following parameters are visualized: A) Pacific Plate B) Philippine Plate C) Mariana Plate D) Caroline Plate E) Cumulative sediment thickness and F) Slope angle degree by profiles.
 
 \begin{figure}[H]
 	\centering
@@ -3628,10 +3704,11 @@ Essentially, quantile regression is another approach of the linear regression te
 	\caption{Quantile regression plotted for sediment thickness (m) versus geologic parameters}\label{fig:SM-2}
 \end{figure}
 
+%----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{Weighted Least Squares}
-A \ac{WLS}\index[concepts]{least squares, weighted} for the geological variables analysis data distribution: by tectonic plates, sediment thickness and bathymetry, as well as slope angle degree. Following variables are visualized: A) Pacific Plate, B) Philippine Plate, C) Mariana Plate, D) Sediment thickness, E) Depths (max); F) Slope angle degree.
+A \ac{WLS}\index[concepts]{least squares, weighted} for the geological variables analysis data distribution: by tectonic plates, sediment thickness, bathymetry and slope \degree. Following variables are visualized: A) Pacific Plate, B) Philippine Plate, C) Mariana Plate, D) Sediment thickness, E) Depths (max); F) Slope angle degree.
 
-A \ac{WLS} is a statistical approach representing a special case of the generalized least squares. The approach of a weighted least squares is a standard approach in regression analysis to approximate the solution of overdetermined systems which is the case for the complex marine geological systems. The least squares algorithms\index[concepts]{algorithm, least squares} has two sub-types: linear or ordinary least squares\index[concepts]{least squares, ordinary} and nonlinear least squares\index[concepts]{least squares, nonlinear}.
+A \ac{WLS} is a statistical approach representing a special case of the generalized least squares. \ac{WLS} is a standard approach in regression analysis to approximate the solution of the overdetermined systems for complex marine geological systems. The least squares algorithms\index[concepts]{algorithm, least squares} has two sub-types: linear or ordinary least squares\index[concepts]{least squares, ordinary} and nonlinear least squares\index[concepts]{least squares, nonlinear}.
 
 \begin{figure}[H]
 	\centering
@@ -3639,45 +3716,41 @@ A \ac{WLS} is a statistical approach representing a special case of the generali
 	\caption{Weighted Least Squares plotted for data distribution.}\label{fig:SM-2}
 \end{figure}
 
-In the scope of this research, only the linear least squares were tested: ordinary least squares and weighted least square which is a generalization of the first one. In this case, the off-diagonal entries of the correlation matrix of the geological residuals are null the variances of the observations, yet unequal along the covariance matrix. 
+In scope of this dissertation, only linear least squares were tested: \ac{OLS} and its generalization, a \ac{WLS}. The off-diagonal entries of the correlation matrix of geological residuals are null variances of the observations, yet unequal along the covariance matrix. The calculation is based on the principle of the Gauss-Newton algorithm\index[concepts]{algorithm, Gauss-Newton} that solves a non-linear least squares problem by modifying a Newton's method for finding a min of a function. The computation is based on general approach of the existing equation \cite{Bjoerck1996}, Formula \ref{eq:gna}:
 
-The calculation is based on the principle of the Gauss-Newton algorithm\index[concepts]{algorithm, Gauss-Newton} that solves a non-linear least squares problem by modifying a Newton's method for finding a minimum of a function. The computation was based on the general approach of existing equation (after \cite{Bjoerck1996}):
+\begin{equation}
+	S(\beta)=\sum_{i=1}^{m}r_{i}^{2}(\beta)
+\end{equation}\label{eq:gna}\myequations{Gauss-Newton algorithm for non-linear least squares problem}
 
-Formula (3)
-Where 
-W is a diagonal when the observational errors are uncorrelated and the weight matrix;
-J (t) is a transposed Jacobian matrix;
-β are unbiased estimators as linear column vectors, the entries of the Jacobian matrix;
-y is a vector of the response values.
+Where m functions $r=(r_{1}, …, r_{m})$ (residuals) of n variables $\beta=(\beta1, …, \beta n)$, with $m\geq n$
 
 The calculations of the \ac{WLS} for the data se shows computations of the \ac{WLS} modelling for the data distribution by plates, \cite{Lemenkova201989}, done according to the reported procedures \cite{SeaboldPerktold2010}; \cite{Strutz2016} by the Python code snippet \ref{P:23}.
 \subsubsection{Isotonic regression}
 
-The statistical numerical method of the isotonic regression was applied as a non-metric multidimensional scaling aimed at fitting a line to a sequence of the observations provided the line has variation in forms, that is non-decreasing and or non-increasing everywhere across the observations. Furthermore, the line lies most close to the observations pool. The concept of the isotonic regression has been introduced by \cite{Kruskal1964} and further developed by \cite{BestChakravarti1990}. The principle of the computation algorithm of the isotonic regression lies in the following formula of the problem of \ac{QP}: 
+The statistical numerical method of the isotonic regression was applied as a non-metric multidimensional scaling aimed at fitting a line to a sequence of the observations provided the line has variation in forms, that is non-decreasing and or non-increasing everywhere across the observations. Furthermore, the line lies most close to the observations pool. The concept of the isotonic regression has been introduced by \cite{Kruskal1964} and further developed by \cite{BestChakravarti1990}. The principle of the computation algorithm of the isotonic regression lies in the following Formula \ref{eq:isr} of the problem of \ac{QP}: 
 
-(FORMULA-1)
- Where,      
-x(i) and x(j) are constraints;
-E are the edges or the is the set of pairs (i, j) for each constraint;
-w is a weights vector;
-n is a number of observations.
-The isotonic estimator, g minimizes the weighted least squares-like condition:
+\begin{equation}
+	min\sum_{i=1}^{n}w_{i}(x_{i}-a_{i})^{2}
+\end{equation}\label{eq:isr}\myequations{Isotonic regression function of quadratic program}
 
-(FORMULA-2)
- Where, 
-A is the set of all piecewise linear, non-decreasing continuous functions; 
-f is a known function. 
-Further references on isotonic regression and its applications are given by \ref{Wuetal2017}. The presented plot of the isotonic regression (Fig.\ref{fig:GP-7}) shows a non-decreasing approximation of a function while minimizing the mean squared error on the training bathymetric data set of the 25 profiles. 
+subject to $x_{i}\leq x_{j}$ for all (i,j) $\in E$, where $x_{i}$ and $x_{j}$ are constraints; E are the edges or the is the set of pairs (i, j) for each constraint; w is a weights vector; n is a number of observations. The isotonic estimator, g minimizes the weighted least squares-like condition by Formula \ref{eq:soc}:
+
+\begin{equation}
+	min_{g\in A}\sum_{i=1}^{n}w_{i}(g(x_{i})-f(x_{i}))^{2}
+\end{equation}\label{eq:soc}\myequations{Simply ordered case for isotonic regression}
+
+Where, A is the set of all piecewise linear, non-decreasing continuous functions; f is a known function. Further references on isotonic regression and its applications are given by \ref{Wuetal2017}. The presented plot of the isotonic regression (Fig.\ref{fig:GP-7}) shows a non-decreasing approximation of a function while minimizing the mean squared error on the training bathymetric data set of the 25 profiles. 
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[width=13cm,clip]{Fig-GP-7.jpg}
+		\includegraphics[width=14cm,clip]{Fig-GP-7.jpg}
 	\caption{Mariana Trench: isotonic regression for the geological and bathymetric variables, Python}\label{fig:GP-7}
 \end{figure}
 
 The benefit of this kind of a model is consists in the flexibility of the model, that is, the function does not assume any form for the target function such as linearity. Thus, the real data o the observed values by 25 profiles can be compared with the isotonic curves, as can be seen on the isotonic regression graph for the selected variables: geological data on sediment thickness layer (A) and maximal depths recorded by 25 profiles (B) (Fig. \ref{fig:GP-7}).
 Further references are given by \cite{Leeuwetal2009}.
-	
+
+%----------------------------------------------------------------------------------------------------------------------------------------------	
 \subsubsection{Dynamic regression model: SARIMA}
 The methodology of the dynamic regression model is based on the StatsModels embedded algorithm \cite{SeaboldPerktold2010}. The abbreviation \ac{SARIMA} stands for the model, initially developed by \cite{AnsleyKohn1985}. The concept of the application of the \ac{SARIMA} time series estimation and post estimation lies in the following. The changes in the variables that are taken as time lags in classic dynamic regression models are applied towards bathymetric profiles from 1 to 25. In this way, unlike in time series case when the ARIMA fits the univariate models with time-dependent disturbances, this case applies space-dependent disturbances, crossing the sampling (X axe), \cite{Lemenkova201989}. 
 

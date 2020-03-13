@@ -794,7 +794,7 @@ The seafloor of the trench presents a background for all geological, oceanologic
 		\arrayrulecolor[RGB]{184,210,0}\hline\hline\hline
 	Aleutian & 8,109 & 3,400 & 59 \\
        		\arrayrulecolor[RGB]{195,216,37}\hline\hline
-	Mariana & 10,994  & 2,550 & 59 \\
+	Mariana & 11,022  & 2,550 & 59 \\
         		\arrayrulecolor[RGB]{170,207,83}\hline\hline
 	Philippine & 10,540 & 1,320 & 65 \\
         		\arrayrulecolor[RGB]{199,220,104}\hline\hline
@@ -804,7 +804,7 @@ The seafloor of the trench presents a background for all geological, oceanologic
         		\arrayrulecolor[RGB]{224,235,175}\hline\hline
 	Peru-Chile & 8,065 & 5,900 & 64 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline	
-	Palau & 11,034 & 700 & 47 \\
+	Palau & 8,080 & 700 & 47 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
 	Japan & 8,513 & 800 & 59 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
@@ -824,11 +824,11 @@ The seafloor of the trench presents a background for all geological, oceanologic
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
 	New Hebrides & 7,600 & 1,200 & 34 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
-	Puysegur & - & - & - \\
+	Puysegur & 6,300 & 835 & 65 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
-	Hikurangi & - & - & - \\
+	Hikurangi & 3,750 & 342 & 95 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
-	Vityaz & - & - & - \\
+	Vityaz & 4,980 & 413 & 47 \\
         		\arrayrulecolor[RGB]{185,208,139}\hline\hline
 	Ryukyu & 7,460 & 2,250 & 38 \\
         		\arrayrulecolor[RGB]{131,155,92}\hline\hline\hline
@@ -2927,7 +2927,7 @@ Developed by Karl Pearson from a related idea of Francis Galton in the 1880s, a 
 	r=\frac{\displaystyle \sum(x-mx)(y-my)}{\sqrt{\displaystyle \sum(x-mx)2\displaystyle \sum(y-n)}}
 \end{equation}\label{eq:6}\myequations{Pearson correlation coefficient}
 	
-In this case, the environmental variables and geomorphological factors were tested by Pearson correlation: sediment thickness, slope angle and class, aspect degree, hill shade in values, location of igneous volcanic zones across the abyssal valley, tectonics by 4 plates, bathymetric values, that is max/min depths, median, means for each profile, $\tan$ angle\degree. Pearson correlation has a value between +1 and −1, where 1 is total positive linear correlation, 0 is no linear correlation, and −1 is total negative linear correlation. It is presented on Fig.\ref{fig:4-56}, computed and visualized by R script: \ref{R:41}.
+In this case, the environmental variables and geomorphological factors were tested by Pearson correlation: sediment thickness, slope angle and class, aspect degree, hill shade in values, location of igneous volcanic zones across the abyssal valley, tectonics by 4 plates, bathymetric values, that is max/min depths, median, means for each profile, $\tan$ angle\degree. Pearson correlation has a value between $+1$ and $-1$, where 1 is a total positive linear correlation, 0 is no linear correlation, and $-1$ is total negative linear correlation. It is presented on Fig.\ref{fig:4-56}, computed and visualized by R script: \ref{R:41}.
 
 \begin{figure}[H]
 	\centering
@@ -3813,8 +3813,64 @@ After a square of the area was crossed by the profiles, the .csv table was impor
 \pagebreak
 \section{Classification of the submarine geomorphology}
 
-Following geomorphological profile shape types have been identifies and trenches are classified into seven types: U-formed (in plan), V-formed (in plan), asymmetric, crescent-formed, sinuous-formed, elongated, cascade-formed. For each geomorphological type (U, V, asymmetric and so on) characteristic steepness sub-types are identified: strong, very strong, extreme, steep, very steep. Furthermore, valley slopes are classified as follows: very high, high, moderate, low based on the degree of curvature. Hence, size classes and valley slope classes are analyzed in the context of physical environment as well as tectonic and geological development of the area of trench formation.
+Oceanic trenches present important part of the oceanic lithosphere. They are developed on the oceanward side of both island arcs and orogens that form above subduction zones. Deep-sea trenches are the largest linear depressed features of the Earth’s surface, notable for their depth and continuity. For example, the \ac{PCT} is 4500 km long and reaches depths of 7--8km \ac{BSL}. The trenches in the western Pacific Ocean are typically deeper than those of the eastern Pacific Ocean, the greatest trench depths, of 10--11km, detected in the Mariana and Tonga–Kermadec trenches. 
 
+Following geomorphological profile shape types have been identifies and trenches are classified into seven types: U-formed (in plan), V-formed (in plan), asymmetric, crescent-formed, sinuous-formed, elongated, elongated to upside-down-ridge-like, cascade-formed, circular-like, arcuate, symmetric of irregular: left- or right-sided. 
+
+For each geomorphological type (U, V, asymmetric and so on) characteristic steepness sub-types are identified: strong, very strong, extreme, steep, very steep. Furthermore, valley slopes are classified as follows: very high, high, moderate, low based on the degree of curvature. Hence, size classes and valley slope classes are analyzed in the context of physical environment as well as tectonic and geological development of the area of trench formation. Flexural bending shape of a subducting lithospheric plate has effects on the tectonic loading at the trench axis, strength as well as faulting effects of the subducting tectonic plate. Necessarily, it is reflected in the variety of the trench shape forms. 
+
+Main factor controlling the max depth of a trench is tectonics: the age of the subducted oceanic lithosphere, since it determines the depth to the oceanic crust entering the trench. The remarkable contrast between trench depths in the east and west Pacific Ocean is largely explained by the systematic difference in the age of the seafloor in these regions. Generally, plate age (relatively young or old plates) is a prevailing factor in controlling trench cross-sectiongin shape, independent from the axial sediment loadings. Trench geomorphology and width of the cross-section profiles are mainly controlled by the elastic thickness reduced by tectonic faulting near the trench axis. In turn, they are affected slightly by the initial thickness of the subjecting tectonic plate. The reduction of the tectonic plate causes significant deepening and narrowing of trench valleys.
+
+As seen intros dissertation base don the cross-sections, trenches are generally 50--100km in width. In cross-section they form an asymmetric V-shape with the steepest slope, of 8--20\degree, on the side opposite the subducting ocean floor. The sediment fill of the trenches vary greatly as demonstrate din this work, from virtually nothing, as in the \ac{TT} and \ac{KT}, to almost complete, as in the \ac{AT}. This is explained by the supply of sediment coming from the adjacent continental areas. Trench depth is also reduced by the subduction of aseismic ridges.
+
+Bending of the lithosphere plate gives rise to the topographic bulge presented in the subducting tectonic plate on the oceanward side of the island arc. Regional rise of the seafloor bathymetry is located between 100--200km from the trench axis. It has an amplitude of several hundred m. The presence of this bulge is a consequence of the downward deflection of the subducting plate.
+
+In this dissertation, a systematic mapping and analysis of their geometric shape forms has been conducted abseils don the detailed analyses of 20 trenches of the Pacific Ocean with a diverse range of characteristics (geology, tectonics and geophysical settings). 
+
+\ac{PT}: irregular sharp V-shaped trench (in plan) trench. The cross-sections of the selected segment have a strongly asymmetric view which is caused by the Philippine Islands (Mindanao) located on the west. Therefore, western part of the cross-sections has a smooth gradual decrease in depths in a uniform way from -75 to 40 km in the left flank with a slope of 31\degree. The \nth{2} segment stretches from 40 until 10 km of the left cross-section with a gradient slope of 40,60\degree. The last and short segment on the left (10-0 km) has a steepness of 28\degree. The right flank of the profile has following variation in steepness. A segment of 0-20 km has a slope of 44\degree, following by the fragment of 20-35 km (41,70\degree) and 35-50 km (25,0\degree). A long segment on the right (50-200 km) has a very uniform geomorphology with almost no significant variations and dominating depths at around -6,000 \ac{BSL}. The deepest segment of the \ac{PT}  (10-0 km on the profile from the center line) has more gentle slope with a steepness of 28\degree versus 44\degree on the right flank for the same segment. The cross-sections of the \ac{PT} have asymmetric profile caused by the adjacent Mindanao Island. \ac{PT} has a V-shape form in its deepest parts. Fig. \ref{map:PM12} and \ref{map:PM14} show vertical cross section transects perpendicular to the segment for \ac{PT}. A lower placed graph shows a median stacked cross-section profile (red line) and an interval of the error bars for the measurements. Variation in the trench gradient angles, steepness and elevation variation from the western and eastern flanks are caused by tectonic settings. 
+
+\ac{KKT}: cascade-shaped trench. Variations in the geomorphology  fo the \ac{KKT} are as follows. Southern part reaches -8,200 m maximal depths while northern has -7,800 m. Trench morphology in the northern termination of the southern segment of the \ac{KKT}, just approaching the Bussol Strait is at the U-trending seafloor rise. Wedge-shaped form of the trench is being formed in its S part on the W trench slope. Area around the northern part of the trench identified features of the trench geomorphological system (submarine canyons, trench wedge, submarine ridges, and basins) in the N part of the trench. Wedge-like or U-shaped morphology of the trench in two parts S- and N are distinct from the inner-ward slope and in longitudinal direction along the trench axis. S profiles along the trench, comparing to the N segment, located near the intense volcanic area demonstrate erosional moats at -3000 m depths. Orthogonal bathymetric profiles across the S and N segments of the \ac{KKT} identify two distinct U- and V-shaped morphologic features with affecting dominant processes: (1) in its N segment, the dominant processes along the Kamchatka Peninsula are sediment deposition; (2) S part is distinct by the processes of erosion and intense sediment transportation. N part of the trench show deeper values and less steep slopes comparing to the S segment, which refer to the erosional moats and drift of the submarine sediments. S part has deeper bathymetric ranges and steeper gradient slope. This is influenced by the intensive seismicity and volcanic activities. \ac{KKT} forms more V- shaped valley in its S segment with about 3 km wide in profiles and more U-shaped form in the N part. 
+
+\ac{KT}: elongated to upside-down-ridge-like trench. Profiles in Fig. \ref{fig:TK3} are roughly perpendicular to the trench axis. Latitude beside each profile indicates position of the axial bottom. \ac{KT} has abrupt shape with 2,641 depth records from -6,600 to -6,800 m (Fig. \ref{fig:TK5}). The deepest values >9,000 meters for the \ac{KT} there are 10, 18, 48, 72 and 103, which gives together 251 observation samples. \ac{KT} has more gentle slope and shallower depths which can also be seen on Fig. \ref{fig:TK3}. This illustrates tectonic and geological local variations, as well as different sedimentation of the \ac{KT} causing variations in its geomorphic shape despite their close location.
+
+\ac{PaT}: irregular V-shaped left-sided trench. Bathymetric profiles of the axis of the \ac{PaT} have very sharp yet irregular V-shape except for its northern portion. Such a form indicates bare bottom or very thin sediment cover of the axis. Northern portion about 25 km long north of 7\degree38'N has U-shaped bottom that becomes gradually wider in northward direction. Fig. \ref{fig:YPT7} shows bathymetric profiles of the \ac{PT}. The average dip of the landward slope is ca. 12\degree, whereas much steeper 10 to 50 m high scarps are occasionally take place. Barrow-like bathymetric pattern is recognized on the lower landward slope close to the trench axis. It may be a slumped block with no deep-sea terraces which have trapped sediments. If surface sediments or rocks are collapsed into the axis, the V-shaped bottom will be buried to form flat basin, unless subduction or tectonic erosion proceeds. Such avalanche appears to occur easily and frequently, as dipping angles of the lower landward slope exceeds slope failure limit in \ac{PT}.
+
+\ac{MnT}: sinuous-shaped trench. It is a relatively young, shallow and narrow subducting plate trench (ca. 15--36 Ma), small trench relief and width. Along the trench axis, the bathymetry is deeper and narrower at the S and C sections than that of the N area. Depth and geomorphology of the slope of the \ac{MnT} vary significantly for the depths range -3,500 to -4,500: minimal values are notable for the northern part of the trench where 526 observation points (18,2\%) are recorded for the depths -4,000 to -4,200 m, as shown on Fig. \ref{fig:M7} A. S part of the trench has steeper slope gradient from the oceanward part. N part is steeper in the continental slope part (Fig. \ref{map:M6b}). Submarine terraces can be noted on the N segment of the trench (Fig. \ref{map:M6b}) at depths - 2,000 m. Generally, model of the N part shows more steep degree of the oceanward slope ( Fig. \ref{map:M6b}). Gradually slanting terrace on the S segment can be seen on the fragment 50-100 of the cross-section with depths from -1,100 to -1,300 m. Two segments of the trench located on the N and SE part of the trench differ: N segment has shallower values of depths comparing to the S, but more steep slope on the Luzon Island side.
+
+\ac{AT}: elongated-shaped trench. Geomorphic analysis of the \ac{AT} shown that NW part of the trench on the side of the islands chain has steeper and shorter slope with located series of marine terraces. The average slopes of its northern side range between 3\degree\space and 4\degree, while those of its even shallower southern side are 1\degree\space or 2\degree.
+
+\ac{MT}: V-shaped (in plan) trench. It is relatively old subducting plate (ca. 140--160 Ma) and large trench relief and width. \ac{MT} is located in the west Pacific Ocean, where the Pacific plate is subducting under the Mariana and Philippine Sea plates in the Mariana Trench. Dominating are steep (7--9\degree) slopes and flat bottom. Gradient slopes of the \ac{MT} have markedly symmetric accurate 'V'-shape form in its deepest parts. Perpendicular transects cross-sections of the \ac{MT} demonstrated that it has steeper gradient slope on the northern (Fig. \ref{map:PM14}, below) flank on the archipelago's side (Fig. \ref{map:PM14}). Slope steepness on the left flank has a 33,10\degree\space at 0-15 km from the center from the vertical plummet. A segment on 15-25 km has a steepness of 45\degree, segment of 25-40 km -- 30,75\degree, a segment of 40-50 km -- 28\degree. On the right flank of the trench its gradient steepness varies as follows. The segment at distance 0-28 km has a steepness of 40,5\degree\space from the vertical plummet, 28-37 km from the start point has a 43,33\degree\space of steepness. It then becomes gradually becomes gentles to 30,43\degree\space until \nth{50} km. The segment at 50-90 km consists in the arc-shape gradual increase of the elevation which stabilizes after 100 km <-4000 \ac{BSL} (Fig. \ref{map:PM14}). The relief surrounding left flank slope of the \ac{MT} presents uneven submarine terrain comparing to its right flank with complex submarine relief which presents an accurate and steep in its shape form. Major depth samples of the \ac{MT} are between -3000 -- -5000 m (Fig. \ref{fig:3-1-2}). 
+
+%----------------------------------------------------------------------------------------------------------------------------------------------
+\ac{MAT}: symmetric-shaped trench. 
+
+\ac{PCT}: asymmetric-shaped trench. 
+
+\ac{NBT}: irregular-shaped: left-sided trench. 
+
+\ac{SCT}: irregular-shaped: left-sided trench. 
+
+\ac{TT}: U-shaped (in plan) trench. 
+
+\ac{YT}: V-shaped (in plan) trench.
+
+\ac{IBT}: asymmetric-shaped trench.
+
+\ac{RT}: irregular-shaped: right-sided trench.
+
+\ac{HT}: arcuate barrel-shaped trench.
+
+\ac{PsT}: sharp irregular right-sided V-shaped trench. 
+
+\ac{VtT}: trough-like W-shaped trench. 
+
+\ac{VT}: crescent-shaped circular-like (in plan) trench. 
+
+\ac{JT}: irregular-V-shaped trench (north); elongated left-sided trench (south). 
+
+In total, about two dozen deep-sea trenches in the Atlantic, Pacific and Indian oceans are known. Their depth in general exceeds 6,000 m. The six deepest trenches of the Earth are located in the Pacific Ocean: \ac{MT} (11 034 m), \ac{JT} (10 554 m), \ac{KKT} (10 542 m) and \ac{PT} (10 540 m) trenches, as well as \ac{TT} trenches (10 882 m) and \ac{KT} (10 047) m.
+
+Deep-sea trenches are one of the most enigmatic and not enough studied geomorphic systems on the Earth. At the same time, it is in deep-sea trenches that geophysicists can observe how sections of the oceanic seafloor of the the old Earth's crust is subducting, and model processes that tee place in the mantle of the Earth, to see how it interacts with the oceanic crust. In view of this, the importance of the studies of deep-sea trenches is clear for Earth science. 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \pagebreak
 \section{Kuril-Kamchatka Trench}
@@ -3977,7 +4033,7 @@ The resulting profiles are visualized as two segments (red and green for both tr
 	\caption{Kermadec and Tonga trenches: geomorphological modelling. Source: \cite{Lemenkova201994}}\label{fig:TK3}
 \end{figure}
 
-The results of the comparative analysis of the two trenches show that \ac{KT} has more abrupt shape with 2,641 depth records from -6,600 to -6,800 meters (Fig. \ref{fig:TK5}). Comparing the deepest values >9,000 meters for the \ac{KT} there are 10, 18, 48, 72 and 103, which gives together 251 observation samples proving that Tonga Trench is deeper than \ac{KT}. If we compare the variations of the seafloor depths at range from -6,000 to -5,000, it can be sen (Fig. \ref{fig:TK5}) that \ac{KT} has more values in this range: 1820, 2641, 1203 and 503 giving together 6167 samples  \cite{Lemenkova201994}. The Kermadec has more gentle slope and shallower depths which can also be seen on Fig. \ref{fig:TK3}. This illustrates tectonic and geological local variations, as well as different sedimentation of the Kermadec and Tonga trenches causing variations in their geomorphic shape despite their close location.
+The results of the comparative analysis of the two trenches show that \ac{KT} has more abrupt shape with 2,641 depth records from -6,600 to -6,800 meters (Fig. \ref{fig:TK5}). Comparing the deepest values >9,000 meters for the \ac{KT} there are 10, 18, 48, 72 and 103, which gives together 251 observation samples proving that Tonga Trench is deeper than \ac{KT}. If we compare the variations of the seafloor depths at range from -6,000 to -5,000, it can be sen (Fig. \ref{fig:TK5}) that \ac{KT} has more values in this range: 1820, 2641, 1203 and 503 giving together 6167 samples  \cite{Lemenkova201994}. \ac{KT} has more gentle slope and shallower depths which can also be seen on Fig. \ref{fig:TK3}. This illustrates tectonic and geological local variations, as well as different sedimentation of the Kermadec and Tonga trenches causing variations in their geomorphic shape despite their close location.
 
 Oceanic lithosphere has a complex structure varying in different parts of the trenches located in the areas of the subducted tectonic plates. There are reports on typology and classification of the sediments on the seafloor \cite{Dolotov2010}, \cite{Dongetal2018}; \cite{Dutkiewiczetal2015}; \cite{LachariteMetaxas2017}; \cite{Lisicyn1974}; \cite{Udintsev1987}. The approaches are generalized into standard geospatial analysis aimed at the description of the location and features of the sediments in various trenches of the ocean. Correlation between the subduction, earthquakes, sediment thickness on the seafloor of the trench and upper plate strain is discussed \cite{Heuretetal2012}.
 
@@ -4168,7 +4224,7 @@ The results of the geomorphological modelling and mapping of the \ac{MnT} (Map \
 	\caption{Manila Trench: transect of the digitized cross-section profilesh}\label{fig:M6a}
 \end{figure}
 
-Depth and geomorphology of the slope vary for the range -3,500 to -4,500 m: minimals for the northern part of the trench with 526 samples (18,2\%) for the depths -4,000 to -4,200 m. The histogram for the northern part has bimodal distribution with two peaks. The southern part shows 142 values for the minimals - 3,500 to -3400 m. The statistical comparison of the data proved northern part of the trench to be deeper. The \ac{GMT} functionality shown in this paper enabled integration and interpretation of the multi-source data and approaches: automatically digitized profiles, geological mapping, 2D and 3D bathymetric modelling, statistical analysis, mathematical approximation for the trend modelling. 
+Depth and geomorphology of the slope vary for the range -3,500 to -4,500 m: minimals for the northern part of the trench with 526 samples (18,2\%) for the depths -4,000 to -4,200 m. The histogram for the northern part has bimodal distribution with two peaks. Southern part shows 142 values for the minimals - 3,500 to -3400 m. The statistical comparison of the data proved northern part of the trench to be deeper. The \ac{GMT} functionality shown in this paper enabled integration and interpretation of the multi-source data and approaches: automatically digitized profiles, geological mapping, 2D and 3D bathymetric modelling, statistical analysis, mathematical approximation for the trend modelling. 
 
 Two different trench segments were analyzed aimed at detecting their spatial changes for an area covering \ac{MnT} and adjusting Luzon Island\index[places]{Luzon Island} (northern Philippines\index[places]{Philippines}). The south-east directed second segment (plotted as green line on the Map \ref{map:M6b}) shown steeper slopes on the oceanward side of the trench and deeper bathymetric records. On the contrary, northern segment (plotted as almost vertical yellow-colored line on Map \ref{map:M6b}) demonstrated softer geomorphic shapes yet steeper gradient from the Luzon Island side. The fine-resolution data such as \ac{SRTM} grid was used to map bathymetry and topography of the study area and 1- min resolution from the gravity data (Jason-1, CryoSat).
 

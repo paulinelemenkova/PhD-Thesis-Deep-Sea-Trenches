@@ -16,7 +16,7 @@
 \usepackage{calc}
 \parindent 0pt
 \usepackage{float}
-%	\floatstyle{boxed} % to add frame box around pictures
+%	\floatstyle{boxed} % to add a frame box around pictures
 	\floatstyle{plain}
 \restylefloat{figure}
 \usepackage{gensymb} % degree symbol
@@ -39,14 +39,16 @@
 	placement=tp,
 	within=section,
 	chapterlistsgaps=on,
-]{map}
+]{map}	
 \newsubfloat{map}
+	
 %%%%%%%%%%%%%% List of Maps: end %%%%%%%
 
 %%%%%%%% color table: strat %%%%%%%% 
 \usepackage{booktabs} 
+\usepackage{array}
 \usepackage{tabularx}
-\usepackage{array,etoolbox}
+\usepackage{etoolbox}
 \usepackage{boldline}
 \usepackage{colortbl} %% color table
 \setlength{\arrayrulewidth}{0.3mm}
@@ -610,9 +612,6 @@ Technical scripts used for advanced statistical analysis are presented in full i
 	\acro{YT}{Yap Trench}
 \end{acronym}
 
-\vspace{1.5em}
-\hspace{5em}\pgfornament[color=Thistle,width=12cm]{82}
-
 %%%%%%%%%%%%%% List of Equations %%%%%%%%
 \pagebreak
 \section*{List of Equations}\label{chp:equ}
@@ -625,7 +624,7 @@ Technical scripts used for advanced statistical analysis are presented in full i
 \pagebreak
 \section*{}\label{chp:fig}
 \singlespace
-\setcounter{lofdepth}{3}
+\setcounter{lofdepth}{2}
 	\markright{List of Figures}
 	\addcontentsline{toc}{section}{List of Figures}
 \listoffigures
@@ -661,19 +660,21 @@ Technical scripts used for advanced statistical analysis are presented in full i
 \pagebreak
 \section*{}\label{chp:map}
 \singlespace
-\setcounter{lofdepth}{3}
+\setcounter{lomdepth}{2}
 	\markright{List of Maps}
 	\addcontentsline{toc}{section}{List of Maps}
 \listofmaps
-		
+
+\vspace{1.5em}
+\hspace{5em}\pgfornament[color=Thistle,width=12cm]{82}		
+
 %%%%%%%%%%%%%% List of Tables %%%%%%%%
-%\pagebreak
+\pagebreak
 \section*{}\label{chp:tab}
 \singlespace
 	\markright{List of Tables}
 	\addcontentsline{toc}{section}{List of Tables}
 \listoftables
-\pagebreak
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 % Document Outline
@@ -682,11 +683,11 @@ Technical scripts used for advanced statistical analysis are presented in full i
 \markright{Structure of the Doctoral Thesis}
 	\addcontentsline{toc}{chapter}{Document Outline}
 
-The structure of the presented thesis is as follows. The thesis is structured into 10 main chapters:
+The content of dissertation: 104 maps, 101 Figures, 13 Tables, 40 listed equations, 670 cited literature references, in total 418 pages. The structure consists of 10 main chapters:
 \begin{itemize}
-	\item \textit{Chapter \ref{chp:1}}: Introduction summarizing the scope, goal and main aim of the research. In the Background section it presents the geographic focus on the study area (Pacific Ocean) and research object (20 hadal trenches). The existing research is reviewed and discussed, the research gap identified, research problem formulated. Research objective gives the direction of the study divided by general objective (geospatial analysis) and specific objective (technical approaches). The research questions and hypothesis underline the introductory chapter. Abbreviations used in this research are introduced in the List of Acronyms.
-	\item \textit{Chapter \ref{chp:2}}: Study Area (Trenches of the Pacific Ocean). It gives a review of each of the 20 trenches of the Pacific Ocean presenting study area, geographic and geological settings based on the related literature. It depicts geomorphic features of each pf the trenches based on the existing research. Figures supporting and illustrating the Chapter are made in \ac{GMT} environment. 
-	\item \textit{Chapter \ref{chp:3}}: Methodology and data. It describes the used data and workflow of the \ac{GMT}, R, Python, AWK and Matlab scripting algorithms mentioned in List of Tools. The functionality of the applied tools is discussed and the graphical output presented as graphs, diagrams and charts. Mathematical algorithms used in statistical data modelling and \ac{GIS}\index[concepts]{GIS} are presented and listed in the List of Equations. The tables summarizing used statistical approaches and methods are presented in the List of Tables. Graphs and maps are listed in the List of Figures and List of Maps, correspondingly. The full programming codes are provided in the Appendix \ref{chp:8}. Advanced solutions of \ac{GMT} toolset enabling high quality mapping by various cartographic techniques are discussed and described. 
+	\item \textit{Chapter \ref{chp:1}}: Introduction summarizing the scope, goal and aim of the research. Background section presents research focus and object (20 hadal trenches). Existing works are reviewed and discussed, research gap identified, problem formulated. Research objective gives the direction of the study divided by general objective (geospatial analysis) and specific objective (technical approaches). Research questions and hypothesis underline the introductory chapter. Abbreviations are introduced in the List of Acronyms.
+	\item \textit{Chapter \ref{chp:2}}: Study Area (trenches of the Pacific Ocean). It gives a review of each of the 20 trenches of the Pacific Ocean presenting study area, geographic and geological settings, depicts geomorphic features of the trenches based on the existing research. 
+	\item \textit{Chapter \ref{chp:3}}: Methodology and Data. It describes used data, workflow of the \ac{GMT}, R, Python, AWK and Matlab scripting algorithms. The functionality of the applied tools is discussed, graphical output presented as graphs, diagrams and charts. Mathematical algorithms used in statistical data modelling and \ac{GIS}\index[concepts]{GIS} are presented and listed in the List of Equations. Tables summarizing statistical approaches and methods are presented in the List of Tables. Graphs and Maps are listed in the List of Figures and List of Maps. Full programming codes are provided in the Appendix \ref{chp:8}. Advanced solutions of \ac{GMT} toolset enabling high quality mapping by various cartographic techniques are discussed and described. 
 	\item \textit{Chapter \ref{chp:4}}: Results of the work: classification and comparison of the geomorphology of the 20 hadal trenches used by \ac{GMT}, R and Python statistical methods. The results are presented as a series of the thematic maps of geological and geophysical visualization of the 20 trenches of the Pacific Ocean and their geomorphic modelling.  
 	\item \textit{Chapter \ref{chp:5}}: Discussion obtained in this research and discusses findings in geostatistical analysis by R and Python. Besides, this chapter provides a detailed interpretation of the results suggesting impact factors affecting trench formation.
 	\item \textit{Chapter \ref{chp:6}}: Conclusion on the undertaken research. It concerns the effects of the impact factors that influence geomorphic structure of the ocean trenches. In a global summary, it reflects the perspectives of the geostatistical analysis in marine geology, using \ac{GMT} and programming languages in marine geology. The dissertation ends by providing recommendations for further studies and discussing perspectives and further outlook for similar research.
@@ -967,11 +968,11 @@ Southern part of the Greater Kuril Chain\index[places]{Greater Kuril Chain} incl
 %\begin{figure}[H]
 \begin{map}[H]
 	\centering
-		\subfloat {\includegraphics[width=7.5cm]{Fig-KKT9.jpg}}
+		\subfloat[Mercator oblique projection]{\includegraphics[width=7.5cm]{Fig-KKT9.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=6.5cm]{Fig-KKT10.jpg}}
+		\subfloat[Conic projection]{\includegraphics[width=6.5cm]{Fig-KKT10.jpg}}
 			\hspace{3mm}
-	\caption{Kuril-Kamchatka Trench. Miscellaneous projections in GMT: Mercator oblique projection (left), conic projection (right). Source: \cite{Lemenkova201995}}\label{map:KKT9}
+	\caption{Kuril-Kamchatka Trench. Miscellaneous projections in GMT, \cite{Lemenkova201995}}\label{map:KKT9}
 \end{map}
 
 Specific distinction of the \ac{KKT} is its division into two parts: northern and southern segments separated by the Bussol Strait. The geological settings of the study area is characterized by high seismicity\index[concepts]{seismicity}, repeated earthquakes\index[concepts]{earthquake}, and tectonic instability caused by plate subduction. Geological factors differ in northern and southern parts of the trench, which naturally affects its geomorphology. The comparisons on the northern and southern parts of the \ac{KKT} seafloor are not assessed within the published literature. Therefore, the novelty of this study is a contribution towards the regional analysis of the geospatial variation of the trench geomorphology in its southern and northern parts. The formation of the hadal trench is affected by the impacts of local geological and geophysical settings varying along the trench. 
@@ -990,22 +991,22 @@ The Kuril-Kamchatka subduction zone\index[places]{Kuril-Kamchatka subduction zon
 
 \begin{map}[H]
 	\centering
-		\subfloat {\includegraphics[width=7cm]{Fig-KKT12.jpg}}
+		\subfloat[Geoid modeled map]{\includegraphics[width=7cm]{Fig-KKT12.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-KKT13.jpg}}
+		\subfloat[Marine free-air gravity anomaly]{\includegraphics[width=7cm]{Fig-KKT13.jpg}}
 			\hspace{3mm}
-	\caption{Kuril-Kamchatka Trench: geoid modeled map (left) and marine free-air gravity anomaly (right). Source: \cite{Lemenkova201995}}\label{map:KKT12}
+	\caption{Kuril-Kamchatka Trench \cite{Lemenkova201995}}\label{map:KKT12}
 \end{map}
 
 Southern part of the KKT differ, as proved by recent findings \cite{Khomich} where it is demonstrated on the example of South Kuril\index[places]{South Kuril} that intense fluid thermal fluxes\index[concepts]{fluid thermal fluxes} in the continental lithosphere\index[concepts]{Earth!lithosphere} cause of the formation of magma chambers\index[concepts]{Earth!magma!magma chamber} and the development of volcanism\index[concepts]{volcanism} and multi-metal ores\index[concepts]{ores, multi-metal}. Over 700 earthquakes\index[concepts]{earthquake} with hypo-centers >50 km are recorded in the \ac{KKT} focal zone\index[concepts]{earthquake!focal!zone} \cite{BeckRuff} Individual earthquakes show large variations in seismic slip and distribution of foreshocks and aftershocks that shows spatial heterogeneity in the stress level and geological settings along the tectonic plate boundary \cite{RuffKanamori1980}.
 
 \begin{map}[H]
 	\centering
-		\subfloat {\includegraphics[width=7cm]{Fig-KKT14.jpg}}
+		\subfloat[Topographic map]{\includegraphics[width=7cm]{Fig-KKT14.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-KKT15.jpg}}
+		\subfloat[Gravity surface model]{\includegraphics[width=7cm]{Fig-KKT15.jpg}}
 			\hspace{3mm}
-	\caption{Kuril-Kamchatka Trench: topographic (left) and gravity surface model maps (right). \cite{Lemenkova201995}}\label{map:KKT14}
+	\caption{Kuril-Kamchatka Trench \cite{Lemenkova201995}}\label{map:KKT14}
 \end{map}
 
 Northern part of the \ac{KKT} located northwards from the Bussol Strait\index[places]{Bussol Strait} presents a geographically complicated region with smaller islands than in other parts of the Kuril volcanic arc \cite{MacInnes}, Map \ref{map:KKT2}. This area is notable for the abnormally high heat flow in the ocean floor. Reduced thermal thickness of the Pacific Plate\index[places]{Pacific Plate} upon its subduction into the northern \ac{KKT} indicates underlying mantle plume\index[concepts]{Earth!mantle!mantle plume} and point out that thermal thickness of the underlying plate is lesser than expected comparing to the normal oceanic plate of such age \cite{Smirnovetal1992}; \cite{Selivestrov}; \cite{SmirnovSugrobov1980a}; \cite{SmirnovSugrobov1980b}.
@@ -1420,11 +1421,11 @@ The geological complexity of the \ac{MnT} is also expressed by the connection wi
 
 \begin{map}[H]
 	\centering
-		\subfloat {\includegraphics[width=6.8cm]{Fig-M2.jpg}}
+		\subfloat[Geologic map]{\includegraphics[width=6.8cm]{Fig-M2.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=7.5cm]{Fig-M3.jpg}}
+		\subfloat[Geoid model]{\includegraphics[width=7.5cm]{Fig-M3.jpg}}
 			\hspace{3mm}
-	\caption{Manila Trench: geologic map, ETOPO1 grid (left), geoid model (right). \cite{Lemenkova201995}}\label{map:M3}
+	\caption{Manila Trench \cite{Lemenkova201995}}\label{map:M3}
 \end{map}
 
 \begin{map}[H]
@@ -1658,11 +1659,11 @@ The \ac{IBT}\index[places]{Izu-Bonin Trench} is boarded by the Philippine Sea te
 
 \begin{map}[H]
 	\centering
-		\subfloat {\includegraphics[width=6.5cm]{Fig-IBT3.jpg}}
+		\subfloat[Geoid model]{\includegraphics[width=6.5cm]{Fig-IBT3.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=7.5cm]{Fig-IBT4.jpg}}
+		\subfloat[Free-air marine gravity model]{\includegraphics[width=7.5cm]{Fig-IBT4.jpg}}
 			\hspace{3mm}
-	\caption{Izu-Bonin Trench: geoid model map (left), free-air gravity model map (right).}\label{map:IBT4}
+	\caption{Izu-Bonin Trench}\label{map:IBT4}
 \end{map}
 
 More detailed description of the Izu-Bonin tectonics, geophysical, petrological and geochemical settings, volcanism\index[concepts]{volcanism} and seismic characteristics, analysis and interpretation of geomorphological\index[concepts]{geomorphology}, geological, and thermochronological data, are reported in relevant publications \cite{Ichiyamaetal2017}; \cite{ArisaHeki}; \cite{Sendaetal2016}; \cite{Oshikaetal2014}; \cite{Hashimaetal2016}; \cite{Gongetal2017}. Hence, the region of the Izu-Bonin-Mariana Arc\index[places]{Izu-Bonin-Mariana Arc} is now one of the best and intensively studied oceanic arcs. However, lesser attention is given to the submarine geomorphology\index[concepts]{geomorphology} of the \ac{IBT}\index[places]{Izu-Bonin Trench} as a deep-sea geomorphic structure. Referring the lack of such research, current study aims at visualizing the trench by mapping and modelling its geomorphic form using cartographic approach of the \ac{GMT}.
@@ -2956,9 +2957,9 @@ The initial step included created unsorted dendrogram. Several adjustments were 
 	
 \begin{figure}[H]
 	\centering
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-8a.jpg}}
+		\subfloat[Unsorted dendrogram]{\includegraphics[width=7cm]{Fig-4-3-8a.jpg}}
 			\hspace{5mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-8b.jpg}}
+		\subfloat[Sorted dendrogram]{\includegraphics[width=7cm]{Fig-4-3-8b.jpg}}
 	\caption{Mariana Trench: hierarchical dendrogram tree of the profiles, by R code: \ref{R:06}}\label{fig:4-3-8ab}
 \end{figure}
 
@@ -2966,9 +2967,9 @@ Hierarchical dendrogram method was selected due to its flexibility: this type of
 	
 \begin{figure}[H]
 	\centering
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-8d.jpg}}
+		\subfloat[Bootstrap resampling]{\includegraphics[width=7cm]{Fig-4-3-8d.jpg}}
 			\hspace{5mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-8e.jpg}}
+		\subfloat[Bootstrap probability]{\includegraphics[width=7cm]{Fig-4-3-8e.jpg}}
 	\caption{Mariana Trench: hierarchical clustering, R code: \ref{R:06}}\label{fig:4-3-8de}
 \end{figure}
 
@@ -3033,10 +3034,10 @@ The schematic process of factor analysis includes grid generation, model setup, 
 
 \begin{figure}[H]
 	\centering
-		\subfloat {\includegraphics[width=8cm]{Fig-4-3-9e.jpg}}
+		\subfloat[EFA correlation matrix]{\includegraphics[width=8cm]{Fig-4-3-9e.jpg}}
 			\hspace{5mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9f.jpg}}
-	\caption{Mariana Trench: EFA correlation matrix and iCLUST analysis, by R code \ref{R:26}}\label{fig:4-3-9ef}
+		\subfloat[iCLUST analysis]{\includegraphics[width=7cm]{Fig-4-3-9f.jpg}}
+	\caption{Mariana Trench: Factor Analysis, R code \ref{R:26}}\label{fig:4-3-9ef}
 \end{figure}
 
 A \{FactoMiner\} library was used for cluster analysis iCLUST (Fig. \ref{fig:4-3-9ef}). The goal is the same as for the factor or components analysis, but methodologically, it reduces the complexity of the data and attempts to identify homogeneous sub-groups. Here, \ac{EFA} aims to extract more regular impact factors of the geologic morphological development, whereas cluster analysis and hierarchical dendrogram extract the groups and classes in a total cloud of the bathymetric observation points. Factor analysis results in illustrating cross-influences of the most notable factors: geological, geomorphological\index[concepts]{geomorphology}, tectonic, geographic and environmental parameters. This enabled to quantitatively analyze correlation between the actual shape of the trench and its impact factors (Fig. 6 \cite{Lemenkova201866}). Fm: one of several factoring methods, such as “pa” (principal axis) or “ml” (maximum likelihood), as shown on the code: \ref{R:26}. 
@@ -3045,9 +3046,9 @@ The $\omega$ testing was done to find out two alternative estimates of the relia
 
 \begin{figure}[H]
 	\centering
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9g.jpg}}
+		\subfloat[General factor saturation ($\omega h$)]{\includegraphics[width=7cm]{Fig-4-3-9g.jpg}}
 			\hspace{5mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-9h.jpg}}
+		\subfloat[General factor saturation through omega coefficient: 3 factors $\omega$]{\includegraphics[width=7cm]{Fig-4-3-9h.jpg}}
 	\caption{Mariana Trench: fragment of factor analysis, by R code \ref{R:26}}\label{fig:4-3-9gh}
 \end{figure}
 
@@ -3110,11 +3111,11 @@ Logical visualization of the results as Euler-Venn diagram\index[concepts]{plot!
 
 \begin{figure}[H]
 	\centering
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-10a.jpg}}
+		\subfloat[Variables: tectonic plates] {\includegraphics[width=7cm]{Fig-4-3-10a.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=7cm]{Fig-4-3-10b.jpg}}
+		\subfloat[Variables: geomorphology]{\includegraphics[width=7cm]{Fig-4-3-10b.jpg}}
 			\hspace{3mm}
-	\caption{Mariana Trench: Euler-Venn diagram by tectonic plates and factors, R code \ref{R:23}}\label{fig:4-3-10ab}
+	\caption{Mariana Trench: Euler-Venn diagram, R code \ref{R:23}}\label{fig:4-3-10ab}
 \end{figure}
 
 The Euler-Venn diagrams\index[concepts]{plot!Euler-Venn diagram} enable to analyze logical factors crossing and categories affecting morphology. It shows possible logical relationships between entries of a datasets: tectonic plates, sediment thickness; geometry of the trench (slope\degree, aspect class, hill shade group class derived as quantitative values from \ac{GIS}\index[concepts]{GIS}); morphology; volcanism\index[concepts]{volcanism} and depths. The area of the shape is proportional to the number of elements it contains, which is useful for explaining complex hierarchies and overlapping definitions as the case of factors affecting trench morphology (Fig. \ref{fig:4-3-10ab}). Mariana plate crosses all other plates, yet the most correlation has with Pacific Plate. Comparing crossings between categories: sediment thickness and slope angle, igneous zones and trench slope\degree. Upon analysis of possible combinations, intersections and similarities between categories, one can see the relationship between the factors (Fig. \ref{fig:4-3-10ab}).
@@ -3438,11 +3439,11 @@ Correlograms, or covariance matrices\index[concepts]{correlation!covariance matr
 
 \begin{figure}[H]
 	\centering
-		\subfloat {\includegraphics[width=7.5cm]{Fig-MedFAR-8.jpg}}
+		\subfloat[Pearson's correlation (parametric approach)]{\includegraphics[width=7.5cm]{Fig-MedFAR-8.jpg}}
 			\hspace{3mm}
-		\subfloat {\includegraphics[width=7.5cm]{Fig-COMU-9.jpg}}
+		\subfloat[Kendal rank correlation (non-parametric approach)]{\includegraphics[width=7.5cm]{Fig-COMU-9.jpg}}
 			\hspace{3mm}
-	\caption{Mariana Trench: Pearson and Kendall correlation matrices of variables, Python}\label{fig:COMU-9}
+	\caption{Mariana Trench: correlation matrices for bivariate analysis, Python}\label{fig:COMU-9}
 \end{figure}
 
 The \ac{UPGMA} algorithm constructs a rooted tree (dendrogram) that reflects the structure present in a pairwise similarity matrix (or a dissimilarity matrix). The mean distance between elements of each cluster is computed by Formula \ref{eq:upgma}: 
@@ -3805,19 +3806,44 @@ In this dissertation, a systematic mapping and analysis of their geometric shape
 
 \ac{MnT}: sinuous-shaped\index[concepts]{trench!profile!sinuous-shaped} trench. It is a relatively young, shallow and narrow subducting plate trench (ca. 15--36 Ma), small trench relief and width. Along the trench axis, the bathymetry is deeper and narrower at the S and C sections than that of the N area. Depth and geomorphology\index[concepts]{geomorphology} of the slope of the \ac{MnT} vary significantly for the depths range -3,500 to -4,500: minimal values are notable for the northern part of the trench where 526 observation points (18,2\%) are recorded for the depths -4,000 to -4,200 m, as shown on Fig. \ref{fig:M7} A. S part of the trench has steeper slope gradient from the oceanward part. N part is steeper in the continental slope part (Fig. \ref{map:M6b}). Submarine terraces can be noted on the N segment of the trench (Fig. \ref{map:M6b}) at depths - 2,000 m. Generally, model of the N part shows more steep degree of the oceanward slope ( Fig. \ref{map:M6b}). Gradually slanting terrace on the S segment can be seen on the fragment 50-100 of the cross-section with depths from -1,100 to -1,300 m. Two segments of the trench located on the N and SE part of the trench differ: N segment has shallower values of depths comparing to the S, but more steep slope on the Luzon Island side.
 
-\ac{AT}: elongated\index[concepts]{trench!profile!elongated} trench. Geomorphic\index[concepts]{geomorphology} analysis of the \ac{AT} shown that NW part of the trench on the side of the islands chain has steeper and shorter slope with located series of marine terraces. The average slopes of its northern side range between 3\degree\space and 4\degree, while those of its even shallower southern side are 1\degree\space or 2\degree.
+\ac{AT}: elongated. NW part of the trench on the side of the islands chain has steeper and shorter slope with located series of marine terraces. The average slopes of its northern side range between 3\degree\space and 4\degree, while those of its even shallower southern side are 1\degree\space or 2\degree 
 
-\ac{MT}: V-shaped\index[concepts]{trench!profile!V-shaped} (in plan) trench. It is relatively old subducting plate (ca. 140--160 Ma) and large trench relief and width. \ac{MT} is located in the west Pacific Ocean, where the Pacific plate is subducting under the Mariana and Philippine Sea plates in the Mariana Trench. Dominating are steep (7--9\degree) slopes and flat bottom. Gradient slopes of the \ac{MT} have markedly symmetric accurate 'V'-shape form in its deepest parts. Perpendicular transects cross-sections of the \ac{MT} demonstrated that it has steeper gradient slope on the northern (Fig. \ref{map:PM14}, below) flank on the archipelago's side (Fig. \ref{map:PM14}). Slope steepness on the left flank has a 33,10\degree\space at 0-15 km from the center from the vertical plummet. A segment on 15-25 km has a steepness of 45\degree, segment of 25-40 km -- 30,75\degree, a segment of 40-50 km -- 28\degree. On the right flank of the trench its gradient steepness varies as follows. The segment at distance 0-28 km has a steepness of 40,5\degree\space from the vertical plummet, 28-37 km from the start point has a 43,33\degree\space of steepness. It then becomes gradually becomes gentles to 30,43\degree\space until \nth{50} km. The segment at 50-90 km consists in the arc-shape gradual increase of the elevation which stabilizes after 100 km <-4000 \ac{BSL} (Fig. \ref{map:PM14}). The relief surrounding left flank slope of the \ac{MT} presents uneven submarine terrain comparing to its right flank with complex submarine relief which presents an accurate and steep in its shape form. Major depth samples of the \ac{MT} are between -3000 -- -5000 m (Fig. \ref{fig:3-1-2}). 
+\ac{MT}: V-shaped (in plan).  Large trench relief and width. Dominating are steep (7--9\degree) slopes and flat bottom. Gradient slopes markedly symmetric accurate 'V'-shape form in its deepest parts. Perpendicular transects cross-sections: steeper gradient slope on the N (Fig. \ref{map:PM14}, below) flank on the archipelago's side (Fig. \ref{map:PM14}).
 
-\ac{MAT}: symmetric-shaped\index[concepts]{trench!profile!symmetric} trench. The submarine geomorphic structure of the trench has straight shape form of the slopes with more steep oceanward forearc. Its geometry has relatively steep and strait shape which correlates with seismicity. Major depth observation samples have values of -3000 to -6200 m, seafloor is 3-5 km wide. The output model of the cross-section profiles is provided at Map \ref{map:MAT10} showing the initial bathymetric map (Map \ref{map:MAT10} B) and above a plotted series of the profiles (Map \ref{map:MAT10} A), such as oceanward backers of the trench and more steeper slope on the continental side. However, other areas, particularly the terraces were less well defined, perhaps due to the local specific geomorphic features of the study object: the geomorphology of the \ac{MAT} presents a very straight steep slopes without significant curvatures. Spatial analysis performed by the GMT revealed that major depth observation points of the \ac{MAT} are located in between the -3000 and -6200 meters (Map \ref{map:MAT10} and Fig. \ref{fig:MAT11}). The deepest bathymetry data range with 1,111 records takes 25\% of the total pool of the sample observation points. As can be seen on Fig. \ref{fig:MAT12}, right, the mean values of the observation samples have a value of -2,200, while LMS mode indicates 7,5\% of values at -4,000 to -3,500 m, and median values have values of -3,200 to -3,300 m. 
+\begin{table}[H]\caption{Mariana Trench: variations in gradient steepness of the right flank}
+\begin{tabular}{>{\bfseries}l p{10cm}}
+\toprule
+Segment at distance 0-28 km & Slope steepness of 40,5\degree\space from the vertical plummet.\\ \midrule
+Segment at distance 28-37 km & Slope steepness of 43,33\degree\space from the vertical plummet.\\ \midrule
+Segment at distance 37-50 km & Slope steepness of 30,43\degree\space from the vertical plummet.\\ \midrule
+Segment at distance 50-90 km & Arc-shape gradual increase of the elevation which stabilizes after 100 km <-4000 \ac{BSL}.\\ \bottomrule
+\end{tabular}
+\end{table}
 
-\ac{PCT}: asymmetric-shaped\index[concepts]{trench!profile!asymmetric} trench that differs in two parts. The Chilean trench’s geomorphology has deeper bathymetry and steeper gradient slope on the Nazca Plate (Fig. \ref{fig:PCT6}, A); on the contrary, the Peruvian segment of the trench (Fig. \ref{fig:PCT6}, B) demonstrates a gentler landform on the oceanward side. A comparison of the highest data frequency for both segments shows: the Peruvian segment has the majority of data (23\%) 1,410 samples (-4,500 m to -4,700 m are the most frequent values for the Peruvian segment of the trench). It shows a peak of all data with a very steep pattern in distribution. Other data in the neighbor diapason are much lower: 559 samples (-4,700 to -5,000 m) and 807 (-4,200 to -4,400 m) for the Peruvian segment. At the same time, the Chilean segment has more even data distribution. Furthermore, data range: 205 samples for -4,700 m to -5,000 m (agains 559 for the Peruvian segment); 731 for -4,200 m to -4,400 m (against 807 for the Peruvian segment); 317 for the range of -4,500 m to -4,700 m (against 1,410 in the Peruvian segment). The most frequent depth for the Peruvian segment of the \ac{PCT} is a range from -4,000 m to -4,200 m (827 samples) against a range of -4,500 m to -4,700 m for the Peruvian segment (1,410 samples). Hence, Peruvian segment of the \ac{PCT} is generally deeper and the geomorphology is steeper with abrupt slopes (Fig. \ref{fig:PCT6}).
+\begin{table}[H]\caption{Mariana Trench: variations in gradient steepness of the left flank}
+\begin{tabular}{>{\bfseries}l p{10cm}}
+\toprule
+Segment at distance 0-15 km & Slope steepness of 33,10\degree\space from the vertical plummet.\\ \midrule
+Segment at distance 15-25 km & Slope steepness of 45\degree\space from the vertical plummet.\\ \midrule
+Segment at distance 25-40 km & Slope steepness of 30,75\degree\space from the vertical plummet.\\ \midrule
+Segment at distance 40-50 km & Slope steepness of 28\degree\space from the vertical plummet.\\ \bottomrule
+\end{tabular}
+\end{table}
 
-\ac{NBT}: asymmetric U-shaped\index[concepts]{trench!profile!U-shaped} trench. \ac{NBT} has asymmetrical U-shaped cross-section dipping westwards with 35\degree\space eastward slope, and 41\degree\space westward slope (Fig. \ref{fig:NBT6}, A). The \ac{SCT} has 33\degree\space slope oceanwards while 33,69\degree\space landwards increasing in relief more direct on the oceanward side. The increase in depth by \ac{NBT} is more gentle: in 50 km segment it reaches 2000 m \ac{BSL} (-7,000 to -5,000) on the Solomon Sea side. In the cross-section graph, the \ac{NBT} is markedly asymmetric in the landward slope and has an arc form in the east (Fig. \ref{fig:NBT6}, B). \ac{NBT} is shallower comparing to the \ac{SCT}: it has median <-7,000m. The highest sample values are recorded in range -5,000 to -5,200 m (272) gradually followed by ranges -5,200 to -5,000, -5,000 to -4,800 and -4,800 to -4,600 m (number of samples: 204, 189, 157). The depth to the bottom of the \ac{NBT} becomes gradually deeper in a segment of -50 to 0 m in cross-section, decreasing from -3,000 to -7,000 in WE direction, with maximum depths reaching -7,000 m and median value -8,000 m.
+The relief surrounding left flank slope: uneven submarine terrain comparing to its right flank with complex submarine relief. It presents accurate and steep in its shape form. Major depth samples are between -3000 -- -5000 m (Fig. \ref{fig:3-1-2}) 
+\ac{AT}: elongated\index[concepts]{trench!profile!elongated}. Geomorphology\index[concepts]{geomorphology} in NW part of the trench on the side of the islands chain has steeper and shorter slope with located series of marine terraces. The average slopes of its northern side range between 3\degree\space and 4\degree, while those of its even shallower southern side are 1\degree\space or 2\degree 
 
-\ac{SCT}: symmetric, 'V'-shaped\index[concepts]{trench!profile!symmetric} trench. The \ac{SCT} is symmetric with accurate 'V' form for the segment of - 50 to -50 km on the graph (Fig. \ref{fig:NBT6}, A). The increase for \ac{SCT} is abrupt in profile: for the distance 0-50 km the depths rise from -8,000 to -5,200 m. For the transect segment of -50 to 0 m in a cross-section the depth to the bottom becomes deeper decreasing from -3,000 to -8,000 in WE direction, that is, the gradient slope is steeper. Geomorphology is explained by the context of the historic and actual geomorphic and sedimentary processes that finally affected trench formation and structure. San Cristobal is deeper comparing to the \ac{NBT} with bathymetric data reaching -9,000 m while \ac{NBT} has only 1 sample point <-8,000 m. The most frequent values for the \ac{SCT} lie in range -4,600 to -4,800 m (217 samples), -4,600 to -4,400 (202 samples) and -4,400 to -4,200 (167 samples), Fig. \ref{fig:NBT6}. The majority of the observation samples for both trenches lie in range of - 4000 to -5,000 m.
+\ac{MT}: V-shaped\index[concepts]{trench!profile!V-shaped} (in plan). Large trench relief and width. Dominating are steep (7--9\degree) slopes and flat bottom. Gradient slopes markedly symmetric accurate 'V'-shape form in its deepest parts. Perpendicular transects cross-sections: steeper gradient slope on the N (Fig. \ref{map:PM14}, below) flank on the archipelago's side (Fig. \ref{map:PM14}). Slope steepness on the left flank: 33,10\degree\space at 0-15 km from the center of the vertical plummet. A segment 15-25 km has a steepness of 45\degree, segment of 25-40 km -- 30,75\degree, a segment of 40-50 km -- 28\degree. Gradient steepness of the right flank varies: the segment at distance 0-28 km has a steepness of 40,5\degree\space from the vertical plummet, 28-37 km from the start point has a 43,33\degree\space of steepness. It then gradually gentles to 30,43\degree\space until \nth{50} km. The segment 50-90 km: arc-shape gradual increase of the elevation which stabilizes after 100 km <-4000 \ac{BSL} (Fig. \ref{map:PM14}). The relief surrounding left flank slope: uneven submarine terrain comparing to its right flank with complex submarine relief. It presents accurate and steep in its shape form. Major depth samples are between -3000 -- -5000 m (Fig. \ref{fig:3-1-2}) .
 
-\ac{TT}: U-shaped\index[concepts]{trench!profile!U-shaped} (in plan) trench. \ac{TT} has generally shallower depths comparing to the \ac{KT}. The deepest values of \ac{TT} >9,000 meters cover 320 samples. Variations of the seafloor depths at range from -6,000 to -5,000 m (Fig. \ref{fig:TK5}) that \ac{TT} has 4803 samples \cite{Lemenkova201994}. Cross-section profiles demonstrated that \ac{TT} geomorphology has steeper gradient slope on the western flank (Fig. \ref{fig:TK3}, A). The results show deeper bathymetry and more seafloor roughness for the \ac{TT}\index[places]{Tonga Trench}. Hence, \ac{TT}\index[places]{Tonga Trench} has steep gradient of the profiles. 
+\ac{TT}: U-shaped\index[concepts]{trench!profile!U-shaped} (in plan). \ac{TT} has shallower depths comparing to the \ac{KT}. The deepest values of \ac{TT} >9,000 meters cover 320 samples. Variations of the seafloor depths at range from -6,000 to -5,000 m (Fig. \ref{fig:TK5}) that \ac{TT} has 4803 samples \cite{Lemenkova201994}. Cross-section profiles demonstrated that \ac{TT} geomorphology has steeper gradient slope on the western flank (Fig. \ref{fig:TK3}, A). The results show deeper bathymetry and more seafloor roughness for the \ac{TT}\index[places]{Tonga Trench}. Hence, \ac{TT}\index[places]{Tonga Trench} has steep gradient of the profiles. 
+
+\ac{MAT}: symmetric-shaped\index[concepts]{trench!profile!symmetric}. The submarine geomorphic structure of the trench has straight shape form of the slopes with more steep oceanward forearc. Its geometry has relatively steep and strait shape which correlates with seismicity. Major depth observation samples have values of -3000 to -6200 m, seafloor is 3-5 km wide. The output model of the cross-section profiles is provided at Map \ref{map:MAT10} showing the initial bathymetric map (Map \ref{map:MAT10} B) and above a plotted series of the profiles (Map \ref{map:MAT10} A), such as oceanward backers of the trench and more steeper slope on the continental side. However, other areas, particularly the terraces were less well defined, perhaps due to the local specific geomorphic features of the study object: the geomorphology of the \ac{MAT} presents a very straight steep slopes without significant curvatures. Spatial analysis performed by the GMT revealed that major depth observation points of the \ac{MAT} are located in between the -3000 and -6200 meters (Map \ref{map:MAT10} and Fig. \ref{fig:MAT11}). The deepest bathymetry data range with 1,111 records takes 25\% of the total pool of the sample observation points. As can be seen on Fig. \ref{fig:MAT12}, right, the mean values of the observation samples have a value of -2,200, while LMS mode indicates 7,5\% of values at -4,000 to -3,500 m, and median values have values of -3,200 to -3,300 m. 
+
+\ac{PCT}: asymmetric-shaped\index[concepts]{trench!profile!asymmetric}. Geomorphology differs in two parts. Chilean segment: deeper bathymetry and steeper gradient slope on the Nazca Plate (Fig. \ref{fig:PCT6}, A). Peruvian segment of the trench (Fig. \ref{fig:PCT6}, B) demonstrates a gentler landform on the oceanward side. A comparison of the highest data frequency for both segments: Peruvian segment has the majority of data (23\%) 1,410 samples (-4,500 m to -4,700 m are the most frequent values for the Peruvian segment of the trench). It shows a peak of all data with a very steep pattern in distribution. Other data in the neighbor diapason are much lower: 559 samples (-4,700 to -5,000 m) and 807 (-4,200 to -4,400 m) for the Peruvian segment. Chilean segment has more even data distribution. Furthermore, data range: 205 samples for -4,700 m to -5,000 m (agains 559 for the Peruvian segment); 731 for -4,200 m to -4,400 m (against 807 for the Peruvian segment); 317 for the range of -4,500 m to -4,700 m (against 1,410 in the Peruvian segment). The most frequent depth for the Peruvian segment of the \ac{PCT} is a range -4,000 m to -4,200 m (827 samples) against a range of -4,500 m to -4,700 m for the Peruvian segment (1,410 samples). Peruvian segment  is generally deeper and steeper with abrupt slopes (Fig. \ref{fig:PCT6}).
+
+\ac{NBT}: asymmetric U-shaped\index[concepts]{trench!profile!U-shaped}. \ac{NBT}: asymmetrical U-shaped cross-section dipping westwards with 35\degree\space eastward slope, and 41\degree\space slope (Fig. \ref{fig:NBT6}, A). The \ac{SCT} has 33\degree\space slope oceanwards while 33,69\degree\space landwards increasing in relief more direct on the oceanward side. The increase in depth by \ac{NBT} is more gentle: in 50 km segment it reaches 2000 m \ac{BSL} (-7,000 to -5,000) on the Solomon Sea side. In the cross-section graph, the \ac{NBT} is markedly asymmetric in the landward slope and has an arc form in the east (Fig. \ref{fig:NBT6}, B). \ac{NBT} is shallower comparing to the \ac{SCT}: it has median <-7,000m. The highest sample values are recorded in range -5,000 to -5,200 m (272) gradually followed by ranges -5,200 to -5,000, -5,000 to -4,800 and -4,800 to -4,600 m (number of samples: 204, 189, 157). The depth to the bottom of the \ac{NBT} becomes gradually deeper in a segment of -50 to 0 m in cross-section, decreasing from -3,000 to -7,000 in WE direction, with maximum depths reaching -7,000 m and median value -8,000 m. 
+
+\ac{SCT}: symmetric, 'V'-shaped\index[concepts]{trench!profile!symmetric}. The \ac{SCT} is symmetric with accurate 'V' form for the segment of - 50 to -50 km on the graph (Fig. \ref{fig:NBT6}, A). The increase for \ac{SCT} is abrupt in profile: for the distance 0-50 km the depths rise from -8,000 to -5,200 m. For the transect segment of -50 to 0 m in a cross-section the depth to the bottom becomes deeper decreasing from -3,000 to -8,000 in WE direction, that is, the gradient slope is steeper. Geomorphology is explained by the context of the historic and actual geomorphic and sedimentary processes that finally affected trench formation and structure. San Cristobal is deeper comparing to the \ac{NBT} with bathymetric data reaching -9,000 m while \ac{NBT} has only 1 sample point <-8,000 m. The most frequent values for the \ac{SCT} lie in range -4,600 to -4,800 m (217 samples), -4,600 to -4,400 (202 samples) and -4,400 to -4,200 (167 samples), Fig. \ref{fig:NBT6}. The majority of the observation samples for both trenches lie in range of - 4000 to -5,000 m.  
 
 \ac{HT}: arcuate barrel-shaped, trench\index[concepts]{trench!profile!arcuate barrel-shaped}. \ac{HT} has trough-like shape form in its cross-section. Whilst it serves as a terrain variable in this study to examine the geomorphic landform, variation of the geomorphic slopes were compared for the trenches and following findings noted: \ac{HT} has a trough-like flat wide bottom, steeper gradient slope on the North Island flank (Fig. \ref{fig:HPH12}, A). Data distribution for the \ac{HT}\index[places]{Hikurangi Trench} (Fig. \ref{fig:HPH13}, B) demonstrates equalized patterns for depths -600 m to -2,600 m with samples <60 for each bin, most data are detected at ca. 30-40 samples for a bin, $\leq 4\%$. Notable peak have data located on the shallow areas ($\leq-500$ m) where max values are detected for interval -400 to -300 m (258 samples): a slope of the North Island\index[places]{North Island} (frequency from 5\%-12\%). Geomorphic curvature and distribution of the seamounts\index[concepts]{seamounts} near the Puysegur, Hjort and \ac{HT}es reflect the interplay between the complex tectonic processes occurring at a subducting tectonic plates and variations in the tension between the spreading ridges and the transform faults. Generally, a strong correlation of the trench’s axe with borders of three lithospheric tectonic plates (Antarctic Plate\index[places]{Antarctic Plate}, Pacific Plate\index[places]{Pacific Plate} and Info-Australian Plate\index[places]{Indo-Australian Plate}) can be noted, which underpins strong correlation of the trench geomorphology with direction of the tectonic slab lineaments, as plate movements, geologic lineaments and extend of the fracture zones in the final end lead to the formation of the trench axis through the plates motions. Local geologic settings, linear extension of the tectonic slabs, complex tectonic processes and sedimentation of the \ac{HT} might explain variations in their geomorphic structure and shape of the submarine landforms. 
 

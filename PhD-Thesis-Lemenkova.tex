@@ -199,17 +199,17 @@
 
 \usepackage[
 	backend=biber, 
-	style = numeric,
+%	style = numeric,
 %	style=ieee, %DOI yes, repeating author names -
 %	style=nature, % no DOI
-%	style=nejm, % no DOI
+%	style=nejm, % DOI, tight
 %	style=science, % no DOI, no article names
 %	style=apa, % DOI yes, no numbers
 %	style=mla, % DOI yes, no numbers, repeating author names - 
-%	style=phys, %DOI hidden, 
+	style=phys, %DOI hidden, 
 %	maxbibnames=99,
 	maxnames=99,
-	citestyle=numeric, 
+%	citestyle=numeric, 
 %	citestyle=numeric-comp,
 	giveninits=true,
 	isbn=true,
@@ -228,7 +228,7 @@
 	useprefix=false,
 	language=auto, 
 	autolang=other,
-	backref=true,%false/true, (for: cit. on p. XX).
+	backref=false,%false/true, (for: cit. on p. XX).
 	backrefstyle=none,
 	indexing=cite,
 ]{biblatex}
@@ -460,7 +460,7 @@
 	
 Geomorphological landforms of the oceanic trenches, their formation and variation of the geometric shapes is a question of special importance to the scientific community in marine geology. The actuality of this question has significantly increased since the beginning of the rapid development of the IT tools and methods of the advanced data analysis, yet its understanding remains patchy. Since the majority of the oceanic trenches are located along the margins of the Pacific Ocean, it plays a central role for their analysis and understanding their formation oceanic trenches. \par
 Specific geological conditions, presence of the tectonic subduction zones, vast territory of the Pacific Ocean with complex circulation system, extension of the 'Ring of Fire', a seismically active belt of the earthquakes\index[concepts]{earthquake} and volcanic, make the trenches of the Pacific Ocean highly sensitive to the factors affecting their formation which cause variations in their geomorphic shape forms. In this context, the most representative indicators of the variations in the deep-sea trenches are geological and tectonic factors, such as dynamics of lithosphere crust affecting speed and intensity of plates subduction, magnitude and frequency of the submarine volcanoes causing active sedimentation. \par
-Nowadays, studying marine geological phenomena and complex processes by programming and scripting has been a powerful method. Rapid development of the advanced methods of data analysis presented such effective tools as GMT, Octave\index[concepts]{programming language!Octave}/MATLAB\index[concepts]{programming language!MATLAB}, R\index[concepts]{programming language!R} and Python\index[concepts]{programming language!Python}. It is particularly efficient when applied to the massive amounts of marine geological data. Big data processing by advanced scripting is a crucial approach, as algorithms of libraries give access to the accurate and rapid data analysis. Specific information about distant and hard-to-reach deep-sea trenches can be gained for precise visualization and analysis of their submarine geomorphology from local to regional and global scales. \par
+Nowadays, studying marine geological phenomena and complex processes by programming and scripting has been a powerful method. Rapid development of the advanced methods of data analysis presented such effective tools as GMT, Octave\index[concepts]{programming language!Octave}/MATLAB\index[concepts]{programming language!MATLAB}, R\index[concepts]{programming language!R} and Python\index[concepts]{programming language!Python}. It is particularly efficient when applied to the massive amounts of marine geological data. Big data processing by advanced scripting is a crucial approach, as algorithms of libraries give access to the accurate and rapid data analysis \cite{Lemenkova202110}. Specific information about distant and hard-to-reach deep-sea trenches can be gained for precise visualization and analysis of their submarine geomorphology from local to regional and global scales. \par
 However, despite all the efforts, there is a lack of uniformity in studying deep-sea trenches, a shortage of systematic mapping of the Pacific trenches and a lack of understanding of the geomorphological variation between the trench profiles in different parts of the ocean: southern and northern, eastern and western, and their response to the geological and tectonic local settings in the places of formation. \par
 Therefore, this dissertation develops a systematic approach to monitoring and comparative analysis of the geomorphological shape forms of the deep-sea trenches formed under specific geological and tectonic conditions along the margins of the Pacific Ocean. The study area encompasses Pacific Ocean, and more specifically, includes 20 selected target trenches: Aleutian, Mariana, Philippine, Kuril-Kamchatka, Middle America, Peru-Chile, Palau, Japan, Kermadec, Tonga, Izu-Bonin, New Britain, San Cristobal, Manila, Yap, New Hebrides, Puysegur, Hikurangi, Vityaz and Ryukyu. These are the major trenches of the Pacific Ocean and, therefore, the most representative for the geomorphological modelling. \par
 This dissertation identifies tectonic plates formation, slab subduction, historical geological development, earthquakes\index[concepts]{earthquake} and submarine volcanoes as the primary types of impact factors affecting trenches formation. Secondary factors include ocean currents, sedimentation and biota contributing to the sedimentation. Seafloor\index[concepts]{seafloor} geomorphology in hadal trenches is strongly affected by a variety of factors that necessarily affect the shape of their landforms. Using data modelling, the shapes of the profiles transecting the trenches in an orthogonal direction were compared and analyzed in order to highlight the differences and variations in their geomorphology. \par
@@ -825,10 +825,10 @@ The actuality of the studies of the ocean seafloor\index[concepts]{seafloor} can
 \begin{map}[H]
 	\centering
 	\includegraphics[width=15cm]{Fig-GMT-TectSeaf.jpg}
-	\caption{Pacific Ocean: tectonic structures and main lineaments on the seafloor, GMT}\label{map:TectW}
+	\caption{Pacific Ocean: tectonic structures and main lineaments on the seafloor, GMT. \cite{Lemenkova202106}}\label{map:TectW}
 \end{map}
 
-There are 20 deep-sea trenches of the Pacific Ocean (Tab. \ref{tab:T1}), including major and minor ones. The classification of the tectonic plate boundaries according to their cross-correlation with the kinematical and geometrical properties of the plate boundaries\index[concepts]{tectonic!plate! boundary} should reflect their geodynamics. Previous works discussed a problem of the slab movement around the trench \cite{Fujiokaetal2002}; \cite{Funicielloetal2008}; \cite{Heuretetal2012}. Bathymetric patterns of the seafloor\index[concepts]{seafloor} of the Pacific Ocean (\ref{map:PO}) show more complex and deep structure in its western part. The geologic structure of the Pacific Ocean has a complex character (Fig. \ref{map:GeolW}). Global seafloor\index[concepts]{seafloor} fabric, magnetic lineation picks, slab contours and tectonic plates boundaries are presented on Fig. \ref{map:TectW}. 
+There are 20 deep-sea trenches of the Pacific Ocean (Tab. \ref{tab:T1}), including major and minor ones. The classification of the tectonic plate boundaries according to their cross-correlation with the kinematical and geometrical properties of the plate boundaries\index[concepts]{tectonic!plate! boundary} should reflect their geodynamics. Previous works discussed a problem of the slab movement around the trench \cite{Fujiokaetal2002}; \cite{Funicielloetal2008}; \cite{Heuretetal2012}. Bathymetric patterns of the seafloor\index[concepts]{seafloor} of the Pacific Ocean (\ref{map:PO}) show more complex and deep structure in its western part. The geologic structure of the Pacific Ocean has a complex character (Fig. \ref{map:GeolW}), \cite{Lemenkova202106}. Global seafloor\index[concepts]{seafloor} fabric, magnetic lineation picks, slab contours and tectonic plates boundaries are presented on Fig. \ref{map:TectW}. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Historical milestones}
@@ -1047,7 +1047,7 @@ The \ac{AT}\index[places]{Aleutian Trench} is located in the North Pacific Ocean
 \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-A1.jpg}
-	\caption{Aleutian Trench: bathymetric map based on ETOPO1 grid}\label{map:A1}
+	\caption{Aleutian Trench: bathymetric map based on ETOPO1 grid, \cite{Lemenkova202112}}\label{map:A1}
 \end{map}
 
 Geologically, the Aleutian Islands arc\index[places]{Aleutian Arc} is classified as an accreting margin with most of the arc having a well-developed frontal prism formed in the Plio-Pleistocene. Central Aleutian volcanic front migrated northwards 30-60 km since the formation of the arc massif completed in the Late Eocene\index[concepts]{Geologic time period!Eocene!Late}. \ac{AT} has weak coupling between the surface tectonic plate and subducting slabs \cite{Yoshida2017}. The seismicity\index[concepts]{seismicity} of the Aleutian regions causes tsunami that affect far located regions \cite{Ryan} of which the 1946 was by far the most severe \cite{Bai}. Further studies on the seismicity\index[concepts]{seismicity}, earthquake\index[concepts]{earthquake} sources and effects distribution in the region of the Aleutian Islands is developed in various studies \cite{Ekstrom}, \cite{Engdahl}. The tectonics of the Aleutian-Komandorsky chain\index[places]{Aleutian-Komandorsky chain} that is proved \cite{Gaedicke} to be colliding with Kamchatka at the Kamchatka Peninsula\index[places]{Kamchatka Peninsula}. 
@@ -1059,13 +1059,13 @@ Processes of the deep-sea terrigenous sedimentation\index[concepts]{sedimentatio
 \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-A2.jpg}
-	\caption{Aleutian Trench: contour bathymetric map}\label{map:A2}
+	\caption{Aleutian Trench: contour bathymetric map, \cite{Lemenkova202112}}\label{map:A2}
 \end{map}
 
 \begin{map}[H]
 	\centering
 		\includegraphics[width=15cm]{Fig-A4.jpg}
-	\caption{Aleutian Trench and Aleutian Islands: geoid model map}\label{map:A4}
+	\caption{Aleutian Trench and Aleutian Islands: geoid model map, \cite{Lemenkova202112}}\label{map:A4}
 \end{map}
 
 Normally, the sediments transferred by rivers are deposited within the shelf sublittoral areas, and rarely reach deeper regions of the continental slope and, even less the abyssal basins. However, sediments deposited on the shelf may move to the deeper parts of the ocean including hadal trenches, due to further move from the shelf edge downwards, avalanche sedimentation\index[concepts]{sedimentation!avalanche}, i.e. gravitational flows, which are caused by the gravity. Deep currents flow through the trench ventilating its bottom water flowing through the West Pacific trenches originates from the Southern Ocean\index[places]{Southern Ocean} and Antarctic\index[places]{Antarctic} and flows northward \cite{Warrenetal1988}. 
@@ -1073,10 +1073,10 @@ Normally, the sediments transferred by rivers are deposited within the shelf sub
 \begin{map}[H]
 	\centering
 		\includegraphics[width=10cm]{Fig-A3.jpg}
-	\caption{Aleutian Trench and Aleutian Islands: 3D mesh grid model}\label{map:A3}
+	\caption{Aleutian Trench and Aleutian Islands: 3D mesh grid model, \cite{Lemenkova202112}}\label{map:A3}
 \end{map}
 
-Sediments cover is less than 10 m thick and is composed of soft, bedded clay\index[concepts]{sediments!clay} with sand-size ash\index[concepts]{sediments!ash, sand-size} fragments. This clayey sediment covers a very gentle terrace\index[concepts]{terrace!submarine} 500 m wide \cite{CurtisMoyer2005}. The turbidity currents causing deposition of turbidites\index[concepts]{rock!sedimentary!turbidite} are being generated on the outer shelf and upper continental slope\index[concepts]{continental!slope}, due to the precipitation and transport via the submarine canyons\index[concepts]{submarine!canyons} to the axial part of the trench. The speed of such sedimentation in the bottoms of trenches closely depends on the volumes of the incoming sediments\index[concepts]{sediments} ranging from 300 to 3000 mm/thousand years \cite{Ishizukaetal2018}. As a result of such sedimentation, over one kilometer of sediments have accumulated in the southern \ac{AT}\index[places]{Aleutian Trench} and Peru-Chile Trench\index[places]{Peru-Chile Trench} over the last several hundred thousand years. 
+Sediments cover is less than 10 m thick and is composed of soft, bedded clay\index[concepts]{sediments!clay} with sand-size ash\index[concepts]{sediments!ash, sand-size} fragments. This clayey sediment covers a very gentle terrace\index[concepts]{terrace!submarine} 500 m wide \cite{CurtisMoyer2005}. The turbidity currents causing deposition of turbidites\index[concepts]{rock!sedimentary!turbidite} are being generated on the outer shelf and upper continental slope\index[concepts]{continental!slope}, due to the precipitation and transport via the submarine canyons\index[concepts]{submarine!canyons} to the axial part of the trench. The speed of such sedimentation in the bottoms of trenches closely depends on the volumes of the incoming sediments\index[concepts]{sediments} ranging from 300 to 3000 mm/thousand years \cite{Ishizukaetal2018}. As a result of such sedimentation, over one kilometer of sediments have accumulated in the southern \ac{AT}\index[places]{Aleutian Trench} and Peru-Chile Trench\index[places]{Peru-Chile Trench} over the last several hundred thousand years \cite{Lemenkova202112}. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \pagebreak
@@ -1471,7 +1471,7 @@ The subduction of the Philippine Sea tectonic plate causes eruption of the appro
 
 The \ac{RT} reaches depths of 7000 m \ac{BSL} and the forearc slope between the forearc island chain and the trench is between 130 to 160 km wide. The northern group has Yaku-shima\index[places]{Yaku-shima} and Tanega-shima\index[places]{Tanega-shima} and a 200 km long Tokara Channel\index[places]{Tokara Channel} gap between the island groups \cite{Okamura}. The tectonics of the hadal trench reflects evolutional processes of the building seamounts\index[concepts]{seamounts} and the structure of the Earth’s crust\index[concepts]{Earth!crust}. Therefore, it causes variations in the lithological patters, geological conditions of the rocks formation, stratigraphy and sedimentary settings of the ocean seafloor formation during Jurassic\index[concepts]{Geologic time period!Jurassic}, Mesozoic\index[concepts]{Geologic time period!Mesozoic} and Cretaceous\index[concepts]{Geologic time period!Cretaceous}. Double subduction system of the \ac{RT} reflects the complex trench motions as an expression of the interaction between the subducting plates and the underlying mantle of the \ac{RT}. The Pacific plates subducts beneath the Philippine Sea Plate, which is in turn subducting beneath the Eurasian Plate along the \ac{RT} \cite{Faccennaetal2018}, \cite{Lemenkova202017}.
 
-Geomorphology of the ocean seafloor results from the complex geodynamic processes. These demonstrate traces of the continuous evolution and shape seabed surface as a system of the mid-ocean ridges, transform faults, vast ocean plains complicated by chains groups, ridges and plateaus as well as minor forms such as terraces, seamounts and hills, 3D\index[concepts]{plot!3D} Map \ref{map:R5}. Various factors affect the trench geomorphology and in turn, are reflected in its complex structure and functionality of the submarine environment. To mention some of them: effects of the magmatism \cite{Kiminami}, seismicity\index[concepts]{seismicity} \cite{Theunissen}, \cite{Gutscher}, volcanism\index[concepts]{volcanism} and hydrothermal system \cite{Minami2018}, \cite{Minami2016}.
+Geomorphology of the ocean seafloor results from the complex geodynamic processes. These demonstrate traces of the continuous evolution and shape seabed surface as a system of the mid-ocean ridges, transform faults, vast ocean plains complicated by chains groups, ridges and plateaus as well as minor forms such as terraces, seamounts and hills, 3D\index[concepts]{plot!3D} Map \ref{map:R5}. Various factors affect the trench geomorphology and in turn, are reflected in its complex structure and functionality of the submarine environment. To mention some of them: effects of the magmatism \cite{Kiminami}, seismicity\index[concepts]{seismicity} \cite{Gutscher}, volcanism\index[concepts]{volcanism} and hydrothermal system \cite{Minami2018}, \cite{Minami2016}.
 
 \begin{map}[H]
 	\centering
@@ -2356,13 +2356,13 @@ Gradient illumination was added to intensify the surface with azimuth 45$^{\circ
 \begin{map}[H]
 	\centering
 		\includegraphics[width=11cm]{Fig-A10.jpg}
-	\caption{Aleutian Trench: surface modelling from the ASCII xyz data}\label{map:A10}
+	\caption{Aleutian Trench: surface modelling from the ASCII xyz data. \cite{Lemenkova202112}}\label{map:A10}
 \end{map}
 
 \begin{map}[H]
 	\centering
 		\includegraphics[width=11cm]{Fig-A5.jpg}
-	\caption{Aleutian Trench and Aleutian Islands: gravimetry map}\label{map:A5}
+	\caption{Aleutian Trench and Aleutian Islands: gravimetry map. \cite{Lemenkova202112}}\label{map:A5}
 \end{map}
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
@@ -2782,7 +2782,7 @@ Since Mariana Trench is located in the collision of four tectonic plates, the co
 	\caption{Mariana Trench: ranking dot plots by data grouping, by R code: \ref{R:12}}\label{fig:Dum}
 \end{figure}
 
-Dumbbell chart is a visualization aimed to give an insight of how the margin tectonic plates constitute to the Mariana Trench pairwise. It is one of the new statistical methods that initially was widely used in biosciences, yet can be applied to spatial analyses when it is necessary to take pairwise comparison of the data distribution from any thematic layer. Plotting was carried out by calling R libraries \{ggplot2\}\index[concepts]{programming language!R!ggplot2} and \{ggalt\}\index[concepts]{programming language!R!ggalt} by code: \ref{R:12}, \cite{Lemenkova201842}. Dumbbell chart demonstrates pairwise distribution of the bathymetric points constituting the continental plates, to show the composition of the sedimentary coverage by four tectonic plates, Fig. \ref{fig:Dum} \cite{Lemenkova201904}. 
+Dumbbell chart is a visualization aimed to give an insight of how the margin tectonic plates constitute to the Mariana Trench pairwise. It is one of the new statistical methods that initially was widely used in biosciences, yet can be applied to spatial analyses when it is necessary to take pairwise comparison of the data distribution from any thematic layer. Plotting was carried out by calling R libraries \{ggplot2\}\index[concepts]{programming language!R!ggplot2} and \{ggalt\}\index[concepts]{programming language!R!ggalt} by code: \ref{R:12}. Dumbbell chart demonstrates pairwise distribution of the bathymetric points constituting the continental plates, to show the composition of the sedimentary coverage by four tectonic plates, Fig. \ref{fig:Dum} \cite{Lemenkova201904}. 
 
 %----------------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Ranking dot plots by data grouping}\label{ssec:Dot}
@@ -2852,7 +2852,7 @@ The algorithm set includes execution of the R code. The convenience of the mosai
 
 The interpretation and validation of consistency within clusters of geomorphologic and geological variables have beet tested using silhouette plotting (Fig. \ref{fig:mos}). This technique provides a succinct graphical representation of the suitability and fitness of each from 518 observation points across 25 bathymetric profiles within the clusters. The silhouette value measured similarity of the points derived from the thematic layers (sediment thickness, slope steepness) to the cluster by cohesion and comparison them with other clusters, and separating them from the distinct points. Lower sediment thickness area lie within one class while a class of areas with high level of sediment level fits to another. 
 
-The silhouette was calculated with Euclidean distance metric\index[concepts]{algorithm!Euclidean distance metric} by calling library \{cluster\} using following R code: \ref{R:30}, \cite{Lemenkova201814}. The Euclidean distance metric is computed by Formula \ref{eq:ed}:
+The silhouette was calculated with Euclidean distance metric\index[concepts]{algorithm!Euclidean distance metric} by calling library \{cluster\} using following R code: \ref{R:30}. The Euclidean distance metric is computed by Formula \ref{eq:ed}:
 
 \begin{equation}
 	\|a-b\|_{2}=\sqrt{\sum_{i}(a_{i}-b_{i})^{2}}
@@ -2944,7 +2944,7 @@ The environmental variables were tested by Spearman rank correlation coefficient
 	r_s=1-\frac{6\displaystyle\sum({d_{i}}^2)}{n({n}^2-1)}
 \end{equation}\label{eq:7}\myequations{Spearman’s $\rho$ rank correlation coefficient}
 	where\\
-$d_{i}$ = rg ⁡($X_i$) − rg ⁡ ($X_y$) is the difference between the 2 ranks of each observation, n is the number of observations.\\
+$d_{i}$ = rg ⁡($X_i$) - rg ⁡ ($X_y$) is the difference between the 2 ranks of each observation, n is the number of observations.\\
  
 Here $d_{i}$ represents the difference in the ranks given to the values of the variable for each data item received and processed from the csv table via library \{data.table\}\index[concepts]{programming language!R!data.table}. The formula of Spearman’s rank correlation coefficient $\rho$ is applied for case with no tied ranks. Technically, R script for Pearson correlation was changed for case of Spearman's\index[concepts]{correlation!Spearman} $\rho$ by following code: \ref{R:41}. On Fig.\ref{fig:4-56} the measure of rank correlation, that is a statistical dependence between the rankings of two variables has been computed using \{GGalt\} library by R code: \ref{R:41}. Spearman correlation shows (Fig.\ref{fig:4-56}) the relationship between every pair of two variables described as a monotonic function and comparing following factors: tectonics, geology, geographic, bathymetric and magmatism. Spearman's correlation assesses monotonic relationships, whether linear or not, between the  available factors. If there are no repeated data values, a perfect Spearman correlation of +1 or −1 occurs when each of variables is a perfect monotone function of the other.
 
@@ -3971,7 +3971,7 @@ The \ac{GMT} based modelling demonstrated following results. The topography in t
  \begin{map}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-A6.jpg}
-	\caption{Aleutian Trench: digitized cross-section profiles}\label{map:A6}
+	\caption{Aleutian Trench: digitized cross-section profiles. \cite{Lemenkova202112}}\label{map:A6}
 \end{map}
 
 The derived cross-section profiles on a selected segment of the trench (a map on Map \ref{map:A6}) includes a combination of the \ac{ETOPO1}\index[concepts]{cartography!data!ETOPO1} bathymetric map with a set of the automatically drawn profiles (Map \ref{map:A6}, lower part), and a statistical visualization of the median stacked profiles with error bars (Map \ref{map:A6}, graph on the upper part). Four approaches for the profile linear trend modelling were tested. Finally, a surface modelling was performed using xyz modelling from the \ac{ASCII}\index[concepts]{data!ASCII} data. The results of this study demonstrated (Map \ref{map:A10}) distribution of the local occurrence of bathymetric data along the cross-section profiles. Visualizing submarine geomorphology\index[concepts]{geomorphology} provided context and guidance for further geological and oceanographic discussions regarding hadal trench shape, occurrence of terraces, steepness of the slopes, location of canyons, as well as their distribution.
@@ -3979,7 +3979,7 @@ The derived cross-section profiles on a selected segment of the trench (a map on
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=11cm]{Fig-A7.jpg}
-	\caption{Aleutian Trench: modeled trend curves of the relief of the mean cross-section profile}\label{fig:A7}
+	\caption{Aleutian Trench: modeled trend curves of the relief of the mean cross-section profile. \cite{Lemenkova202112}}\label{fig:A7}
 \end{figure}
 
 The bathymetry was visualized using ‘geo’ color palette. The original data is derived from the sea-surface satellite altimetry measurements and ocean soundings provided by numerous global geospatial sources. Therefore, the \ac{ETOPO1}\index[concepts]{cartography!data!ETOPO1} includes existing bathymetry data and uses interpolated gravity values elsewhere. The statistical analysis of the bathymetric data shown (Fig. \ref{fig:A8}) that depths with ranges between -5600 and -5400 m have occurrence of 1106 (8\%); depths with ranges -5400 and -5200 m have occurrence of 846 (7\%); depths with ranges -4900 and -5200 m have occurrence of 1297 (11\%). The highest values demonstrated values of -4900 and -4700 with 1722 occurrences (13,2\%). Significantly low values demonstrated shallow areas with depth ranges between -4500 and -3000 m with occurrence of below 200 (all of then less than 2,5\%). Values with ranges shallower than -500 m naturally belong to the coastal shelf areas near the Aleutian Islands adjusting the trench. 
@@ -3987,7 +3987,7 @@ The bathymetry was visualized using ‘geo’ color palette. The original data i
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=13cm]{Fig-A8.jpg}
-	\caption{Aleutian Trench: histogram chart on bathymetric data distribution by profiles}\label{fig:A8}
+	\caption{Aleutian Trench: histogram chart on bathymetric data distribution by profiles. \cite{Lemenkova202112}}\label{fig:A8}
 \end{figure}
 
 Furthermore, a geomorphic analysis\index[concepts]{geomorphology} (Fig. \ref{fig:A7} and \ref{map:A3}) shown that north-western part of the trench on the side of the islands chain has steeper and shorter slope with located series of marine terraces. Several models and maps illustrate geological, geophysical and geomorphic modelling of the area including an outline of the shell scripting, the model, and visualized maps. To assist in the identification of the geomorphology of the \ac{AT}, bathymetric \ac{ETOPO1}\index[concepts]{cartography!data!ETOPO1} data were contoured at 500 m intervals using \ac{GMT} module ‘grdcontour’ (Fig. \ref{map:A2}). 
@@ -3995,7 +3995,7 @@ Furthermore, a geomorphic analysis\index[concepts]{geomorphology} (Fig. \ref{fig
 \begin{map}[H]
 	\centering
 		\includegraphics[width=10cm]{Fig-A9.jpg}
-	\caption{Aleutian Trench: topographic surface modelling from the ASCII xyz data}\label{map:A9}
+	\caption{Aleutian Trench: topographic surface modelling from the ASCII xyz data. \cite{Lemenkova202112}}\label{map:A9}
 \end{map}
 
 Geomorphic analysis\index[concepts]{geomorphology} in \ac{GMT} module ‘trend1d’ was applied to build statistical trends with four functional approaches (Fig. \ref{fig:A7}) and visualization of median and mean profiles (Map \ref{map:A6}). The results of the surface modelling (Map \ref{map:A9} and \ref{map:A10}) are received by modelling xyz dataset. 
@@ -4634,7 +4634,7 @@ A variety of the \ac{GMT} modules \cite{Wesseletal2013} adjusted for modelling g
 
 Current techniques for GIS modelling of the marine geology of trenches mostly identify and handle relations and processes among tectonic slabs, depths and seismicity \cite{Raneroetal2005} or tectonic slub subduction and migration. Existing studies do not detail much variations among geomorphological classes of the trenches, but focus on geological modelling. From this perspective, such insufficiency is the result of limited access to the trenches, systematic limits to the techniques and constraint in usage of the advanced \ac{GIS}\index[concepts]{GIS}. \ac{GMT} based marine geological modelling and visualization of the big datasets increases significantly, broadens the perspectives of the marine research to the multi-disciplinary level. 
 
-Technical scripts used for advanced statistical analysis are presented in full in the Appendix \ref{chp:8} for future replication and reproducible analysis in other trenches of the World Ocean: e.g. Makran Trench \cite{Lemenkova202015}, Puerto Rico Trench and Cayman Trough \cite{Lemenkova202018}, Cascadia Trench \cite{Lemenkova202028}, and other oceans: Sunda Trench \cite{Lemenkova202023}, Bay of Bengal and Andaman Sea of the northern Indian Ocean \cite{Lemenkova202029}, Java and Sumatra segments \cite{Lemenkova202027} of the Indonesian Archipelago in the Indian Ocean \cite{Lemenkova202020}, South Sandwich Trench, Atlantic Ocean \cite{Lemenkova202013}, Antarctic and the Southern Ocean, e.g. Ross Sea \cite{Lemenkova202101}.
+Technical scripts used for advanced statistical analysis are presented in full in the Appendix \ref{chp:8} for future replication and reproducible analysis in other trenches of the World Ocean: e.g. Makran Trench \cite{Lemenkova202015}, Puerto Rico Trench and Cayman Trough \cite{Lemenkova202018}, Cascadia Trench \cite{Lemenkova202028}, and other oceans: Sunda Trench \cite{Lemenkova202023}, Bay of Bengal and Andaman Sea of the northern Indian Ocean \cite{Lemenkova202029}, Java and Sumatra segments \cite{Lemenkova202027} of the Indonesian Archipelago in the Indian Ocean \cite{Lemenkova202020}, South Sandwich Trench, Atlantic Ocean \cite{Lemenkova202013}, Antarctic and the Southern Ocean, e.g. Ross Sea \cite{Lemenkova202101}, Weddell Sea \cite{Lemenkova202105} or Scotia Sea \cite{Lemenkova202104}.
 
 Technical application of \ac{GMT} demonstrated effectiveness and functionality for data analysis, precise and accurate high-quality cartographic mapping, shell scripting workflow for geodata processing. Proposed techniques and methodology of the \ac{GMT} shell scripting presented in a stepwise workflow provided effective framework for further geological mapping and can be applied for similar research. The \ac{GMT} proved to be is a powerful scripting cartographic toolset for geological, geophysical and topographic mapping, geomorphic modelling  and descriptive statistical analysis of the data retrieved from the automatic digitizing. Methodology of the presented dissertation laid a strong focus on the technical routines of the cartographic workflow, mapping and modelling based on the \ac{GMT} shell scripting that enabled to identify bathymetric cross section profiles of the hadal trenches that show similarity by their complex parameters, so that they could be grouped into patters. Visualized maps demonstrated excellent possibilities of the \ac{GMT} for geological mapping, geodetic\index[concepts]{geodesy} and geophysical modelling. 
 
@@ -4660,7 +4660,7 @@ There is a broad interest to the geologic structure and tectonic evolution of oc
 \section{Perspectives of the IT tools for geology}
 \lettrine[lines=3]{\color{Firebrick4}P}{resented} dissertation demonstrated a multi-disciplinary approach combining effective processing of the complex data sets by programming, shell scripting and statistical algorithms. Sequential use of Python, AWK, R and Octave/Matlab is effective for geological data processing. Study of the seafloor is possible not only by \ac{QGIS}, but using R: network analysis, factors analysis, plotting, diagrams, cluster analysis by various methods (k-means, dendrograms, silhouettes), triple correlation by ternaries \cite{Lemenkova201999}. \ac{IT} based methodology is focused on technical approaches in the analysis of trench geomorphology used as a background for classification. Classification received by application of the technical methods with geomorphic analysis are presented. 
 
-Tested functionality of \ac{GMT} modules proved it to be a highly effective cartographic toolset for geological data analysis enabling precise mapping, automated sampling of the orthogonal transects. \ac{GMT} based modelling helped to visualize and compare shape of the submarine landforms, steepness gradient of the trenches which were used as a basis for classification. Presented \ac{GMT} based approach provided a cost-effective solution to the seafloor mapping of the deep-sea trenches. Benefits of the \ac{GMT} based seafloor mapping to a broad spectrum of visualization of seafloor, and convergence toward a standard suite of high quality raster/vector datasets (e.g. \ac{GEBCO}\index[concepts]{cartography!data!GEBCO}, \ac{SRTM}15)\index[concepts]{cartography!data!SRTM}, maps and plots were demonstrated in this thesis. \ac{GMT} aimed to advance cartographic visualization and modelling at high standards, perform quality mapping. This can be effectively used for analysis of submarine landforms, providing knowledge base to detail bathymetry. 
+Tested functionality of \ac{GMT} modules proved it to be a highly effective cartographic toolset for geological data analysis enabling precise mapping, automated sampling of the orthogonal transects. \ac{GMT} based modelling helped to visualize and compare shape of the submarine landforms, steepness gradient of the trenches which were used as a basis for classification. Presented \ac{GMT} based approach provided a cost-effective solution to the seafloor mapping of the deep-sea trenches. Benefits of the \ac{GMT} based seafloor mapping to a broad spectrum of visualization of seafloor, and convergence toward a standard suite of high quality raster/vector datasets (e.g. \ac{GEBCO}\index[concepts]{cartography!data!GEBCO}, \ac{SRTM}15)\index[concepts]{cartography!data!SRTM}, maps and plots were demonstrated in this thesis. \ac{GMT} aimed to advance cartographic visualization and modelling at high standards, perform quality mapping. This can be effectively used for analysis of submarine landforms, providing knowledge base to detail bathymetry. Besides geological applications, GMT can be successfully used in agricultural mapping \cite{Lemenkova202113}, geomorphological mapping \cite{Lemenkova202111}, climate and environmental studies \cite{Lemenkova202108}.
 
 Comparing R and Python, both languages have significant functionality for marine geological data analysis. However, Python, being a high-level language, demonstrated more straightforward approach for the statistical analysis. Python is an interpreted language that enables programs to be written compactly and readably splitting them into reusable modules \cite{Rossumatal2018} that process and model big datasets. Encapsulation, inheritance and polymorphism of Python are the main advantages while working with big data in marine geology and processing large tables. Simple and vectorized syntax structures and semantics of Python enable to write code concisely and effectively resulting in fewer hard-to-find bugs comparing to the codes written on C++\index[concepts]{programming language!C++}, which minimizes the chance of conflicts in a code. Using \ac{NumPy} for processing tables in .csv format and arrays facilitate advanced mathematical operations on large numbers of data. R implies more power in data visualization. 
 
@@ -4693,9 +4693,9 @@ High-resolution data sets were visualized for bathymetric, geological and geophy
 
 From this point of view, this work presented a \ac{GMT} based methodology for visualization, modelling, interpretation and classification of the submarine geomorphology of the trenches demonstrating new approaches to the mapping. In contrast to the classic cartographic approaches with \ac{GUI}, e.g. ArcGIS \ac{ESRI} based \cite{Klauco2013}, \cite{Klauco2017}; \cite{Suetovaetal2005b}, \cite{Lemenkova2012j}, \cite{Lemenkova2011c}, in geodata visualization and mapping \cite{Gauger2007}; \cite{Lemenkova2008a}; \cite{Lemenkova2007b}; \cite{Kuhnetal2006}; \cite{Suetovaetal2005a}; \cite{Klauco2013}, \cite{Klauco2014}, \cite{Lemenkova201554} or other examples of the geospatial modelling applied for geodetic\index[concepts]{geodesy} approximations, 3D\index[concepts]{plot!3D} modelling \cite{Tomaszewski}, \cite{Banasik2017}, \cite{Janecka2019}, \ac{GMT} is notable for shell scripting algorithms as a core concept. Traditional handmade digitizing is a tedious routine prone to errors. On the contrary, \ac{GMT} based automatization of the cartographic techniques significantly improves modelling quality and precision. Technically, the results show the effectiveness of scripting in modelling submarine geomorphology. The results of the data analysis show distinct unevenness in the geomorphic structure of the trenches. 
 
-Although existing maps enable to visualize seafloor with certain resolution and accuracy, there is still a lack of detailed maps of deep-sea trenches, their models and visualization focused on geomorphic form and shape. Integrating \ac{GMT} based mapping with geological, gravity and bathymetric datasets presented accurate, high-resolution geomorphic maps and cross-section bathymetric models. Approaches to the geological data analysis are diverse: techniques of ternary diagrams visualizing correlation between variables \cite{Reyes2010}, \cite{Lemenkova201991}, geophysical methods, e.g. DC-resistivity and SASW \cite{Lindh1999}, measurements of soil and lime properties, e.g. compression soil tests, indirect tensile tests, triaxial tests \cite{Lindh2004}, various approaches to the data analysis, plotting and visualization, e.g. factor analysis \cite{ChilesDelfiner1999}, \cite{Lemenkova201866}, correlograms \cite{Lemenkova201871}, scatterplot matrices \cite{Lemenkova201901}, regression analysis \cite{Lemenkova201989} etc. In contrast with existing works, current thesis present statistical analysis made by Python and R. 
+Although existing maps enable to visualize seafloor with certain resolution and accuracy, there is still a lack of detailed maps of deep-sea trenches, their models and visualization focused on geomorphic form and shape. Integrating \ac{GMT} based mapping with geological, gravity and bathymetric datasets presented accurate, high-resolution geomorphic maps and cross-section bathymetric models. Approaches to the geological data analysis are diverse: techniques of ternary diagrams visualizing correlation between variables \cite{Reyes2010}, \cite{Lemenkova201991}, geophysical methods, e.g. DC-resistivity and SASW \cite{Lindh1999}, civil engineering \cite{Lemenkova202107}, measurements of soil and lime properties, e.g. compression soil tests, indirect tensile tests, triaxial tests \cite{Lindh2004}, various approaches to the data analysis, plotting and visualization, e.g. factor analysis \cite{ChilesDelfiner1999}, \cite{Lemenkova201866}, correlograms \cite{Lemenkova201871}, scatterplot matrices \cite{Lemenkova201901}, regression analysis \cite{Lemenkova201989}, data processing by TeX \cite{Lemenkova202103}. In contrast with existing works, current thesis present statistical analysis made by Python and R. 
 
-High-resolution datasets and raster grids were used for classification of the submarine geomorphology, performed using detailed information on bathymetry and topography of the 20 deep-sea trenches of the Pacific Ocean. The dissertation focused on the geomorphic assessment of variations in their shapes. The research contributes to the improvement of the technical methods of the geomorphic modelling. The review of the statistical methods presented in current thesis can be applied methodologically for comparing and benchmarking different research schemes on other trenches. Furthermore it can be used for analysis of the submarine earthquake\index[concepts]{earthquake!submarine} connections with ocean trench formation and tectonic slab movement or controlling impact factors during geospatial analysis. 
+High-resolution datasets and raster grids were used for classification of the submarine geomorphology, performed using detailed information on bathymetry and topography of the 20 deep-sea trenches of the Pacific Ocean \cite{Lemenkova202115}. The dissertation focused on the geomorphic assessment of variations in their shapes. The research contributes to the improvement of the technical methods of the geomorphic modelling. The review of the statistical methods presented in current thesis can be applied methodologically for comparing and benchmarking different research schemes on other trenches. Furthermore it can be used for analysis of the submarine earthquake\index[concepts]{earthquake!submarine} connections with ocean trench formation and tectonic slab movement or controlling impact factors during geospatial analysis. 
 
 To conclude, methodology of the presented dissertation includes programing languages, statistical analysis, mathematical algorithms for data processing and visualizing, \ac{GMT} for geomorphic modelling, \ac{GIS}\index[concepts]{GIS} for digitizing bathymetric profiles and spatial analysis. 
 
@@ -4707,7 +4707,7 @@ To conclude, methodology of the presented dissertation includes programing langu
 
 Methodologically, the dissertation contributed towards technical application of the \ac{GMT} based methods for bathymetric modelling and mapping for deeper understanding of the differences in geomorphology and geophysical settings of the oceanic trenches located along the margins of the Pacific Ocean. It is aimed to produce a set of the cross-section profiles for 20 deep-sea trenches varying in geomorphology. The developed techniques can be utilized at similar works for detailed seafloor mapping. The classification and comparison of the submarine geomorphology and differences among trenches are presented. The thesis elaborated and answered question of how the structure of trench can be classified, measured, compared and analyzed by means of advanced data analysis.
 
-Main objective of the presented dissertation was to perform geomorphological classification based on comparative analysis and map variations in the submarine landform structure of the 20 deep-sea trenches of the Pacific Ocean. To this aim, an objective method combining various approaches was performed including \ac{GMT} shell script based mapping, statistical analysis, \ac{GIS}\index[concepts]{GIS} visualization and graphical plotting. Profile transect modelling was exemplified using sampling on the segments of the \ac{AOI} in topography of the trenches. Mapping deep-sea trenches needs support of reliable, detailed and accurate seafloor maps. 
+Main objective of the presented dissertation was to perform geomorphological classification based on comparative analysis and map variations in the submarine landform structure of the 20 deep-sea trenches of the Pacific Ocean \cite{Lemenkova202114}. To this aim, an objective method combining various approaches was performed including \ac{GMT} shell script based mapping, statistical analysis, \ac{GIS}\index[concepts]{GIS} visualization and graphical plotting. Profile transect modelling was exemplified using sampling on the segments of the \ac{AOI} in topography of the trenches. Mapping deep-sea trenches needs support of reliable, detailed and accurate seafloor maps. 
 
 Functional \ac{GMT}-based framework for cartographic mapping and modelling of the \ac{ASCII}\index[concepts]{data!ASCII} datasets enabled to quantify variability in the bathymetry of spatially distributed transects of the trenches. The results revealed unevenness in the geomorphology among 20 trenches. Factors affecting their structure are discussed and reviewed. These include local settings, sediment thickness, slope steepness, depths, location. Distinct correlation between the geological factors affect geomorphology of the trenches. Full scripts of \ac{GMT}, AWK\index[concepts]{programming language!AWK}, R\index[concepts]{programming language!R}, Python\index[concepts]{programming language!Python} and GNU Octave\index[concepts]{programming language!Octave} programming languages are presented for repeatability in the Appendix section. 
 
@@ -4732,7 +4732,7 @@ Finally, as a last recommendation, more detailed marine geological datasets coul
 \pagebreak
 \section{Outlook and future developments}\label{sec:10} 
 	\markright{Outlook and future developments}
-\lettrine[lines=3]{\color{MediumPurple4}A}{s} demonstrated in this thesis, active use of the programming languages in geoscience research is effective to advance studies of the bathymetry. Development in statistical methods such as R and Python enables to treat multi-source types of the marine geological data. Studies of such complex objects as oceanic trenches, have specific points that distinguish them from the terrestrial areas. \nth{1}, seafloor rocks are studied mainly by \ac{RS} methods. Samples include cores obtained from drilling or platforms, collected by dredging. \nth{2}, thorough understanding of the basics of geophysics, geography, geomorphology, oceanography, cartography, informatics and principles of data interpretation are prerequisites for marine geology. Hence, a variety of methods of the advanced data analysis is necessary to study deep-sea trenches. 
+\lettrine[lines=3]{\color{MediumPurple4}A}{s} demonstrated in this thesis, active use of the programming languages in geoscience research is effective to advance studies of the bathymetry. Development in statistical methods such as R and Python enables to treat multi-source types of the marine geological data. Studies of such complex objects as oceanic trenches, have specific points that distinguish them from the terrestrial areas. \nth{1}, seafloor rocks are studied mainly by \ac{RS} methods. Samples include cores obtained from drilling or platforms, collected by dredging. \nth{2}, thorough understanding of the basics of geophysics, geography, geomorphology, oceanography, cartography, informatics and principles of data interpretation are prerequisites for marine geology \cite{Lemenkova202109}. Hence, a variety of methods of the advanced data analysis is necessary to study deep-sea trenches. 
 
 Rigorous and quantitative quantitative data analysis performed by R and Python and supported by \ac{GIS}\index[concepts]{GIS} is effective for investigation of such large-scale geologic structures as trenches. If surface of the whole trench is  modeled, the extra- or interpolation of the depths by profiles increase random errors due to the complex nature of the real situation of physical environment. It can be either the effects of the external factors on the geomorphic structure (tectonic slab movement that affects the shape of the trench segment) or mathematical approaches of the algorithm of approximation. In the most difficult segments (e.g., areas of triple junctions), it is possible to take more dense profiles digitizing. However, in this case it would be reasonable to large scale this particular area as enlarged fragment.
 
@@ -4758,7 +4758,21 @@ Future applications should include analysis of the interplay between the element
 	\addcontentsline{toc}{chapter}{Author's Publications}
 	\markright{Author's Publications}
 		
+		
+		\nocite{Lemenkova202115}
+		\nocite{Lemenkova202114}
+		\nocite{Lemenkova202113}
+		\nocite{Lemenkova202112}
+		\nocite{Lemenkova202111}
+		\nocite{Lemenkova202110}
+		\nocite{Lemenkova202109}
+		\nocite{Lemenkova202108}
+		\nocite{Lemenkova202106}
+		\nocite{Lemenkova202105}
+		\nocite{Lemenkova202104}
+		\nocite{Lemenkova202102}
 		\nocite{Lemenkova202101}
+		\nocite{Lemenkova202032}
 		\nocite{Lemenkova202031}
 		\nocite{Lemenkova202030}
 		\nocite{Lemenkova202029}
